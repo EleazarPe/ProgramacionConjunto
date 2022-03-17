@@ -149,7 +149,7 @@ public class CrearConsulta extends JDialog {
 			txtTipoSangre.setEnabled(false);
 			txtTipoSangre.setEditable(false);
 			txtTipoSangre.setColumns(10);
-			txtTipoSangre.setBounds(371, 139, 116, 22);
+			txtTipoSangre.setBounds(349, 139, 138, 22);
 			InformacionCliente.add(txtTipoSangre);
 			
 			JPanel panel_1 = new JPanel();

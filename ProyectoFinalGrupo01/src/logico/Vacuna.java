@@ -10,7 +10,7 @@ public class Vacuna {
 	
 	public Vacuna(Date fecha, String lugarString, String vacunaString,Date fechanacimiento) {
 		super();
-		this.fecha = fecha;
+		this.fecha = new Date();
 		this.fecha = fechanacimiento;
 		this.lugarString = lugarString;
 		this.vacunaString = vacunaString;

@@ -1,8 +1,6 @@
+package logico;
 import java.util.ArrayList;
 import java.util.Date;
-
-import logico.Consulta;
-import logico.Usuario;
 
 public class Paciente extends Usuario {
 

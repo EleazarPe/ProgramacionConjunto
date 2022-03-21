@@ -7,6 +7,7 @@ public class Usuario {
 	protected String Nombre;
 	protected String Apellido;
 	protected String Cedula;
+	protected String Codigo;
 	protected Date FechaNaciento;
 	protected String Ocupacion;
 	protected String telefono;

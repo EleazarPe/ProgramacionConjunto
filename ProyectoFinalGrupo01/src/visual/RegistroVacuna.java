@@ -12,6 +12,11 @@ import java.awt.event.ActionEvent;
 
 public class RegistroVacuna extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private final JPanel contentPanel = new JPanel();
 
 	/**

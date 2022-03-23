@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
@@ -206,6 +207,8 @@ public class RegMedico extends JDialog {
 						
 						nuevoMedico = new Medico(txtNombre.getText(), txtApellido.getText(), txtCedula.getText(), (Date) spinner.getValue(), txtOcupacion.getText(), txtTelefono.getText(), txtDireccion.getText(), txtUser.getText(), txtpassword.getText(),cmbConsultorio.getSelectedItem().toString() , txtEspecialidad.getText());
 						Clinica.getInstance().insertarUsuario(nuevoMedico);
+						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
+						clean();
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -213,5 +216,20 @@ public class RegMedico extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 		}
+	}
+	private void clean() {
+		txtNombre.setText("");
+		txtApellido.setText("");
+		txtCedula.setText("");
+		txtDireccion.setText("");
+		txtEspecialidad.setText("");
+		txtOcupacion.setText("");
+		txtpassword.setText("");
+		txtUser.setText("");
+		txtTelefono.setText("");
+		txtId.setText("Dr-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
+		spinner.setValue(new Date());
+		cmbConsultorio.setSelectedIndex(0);
+		
 	}
 }

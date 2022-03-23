@@ -66,7 +66,7 @@ public class RegMedico extends JDialog {
 	 * Create the dialog.
 	 */
 	public RegMedico() {
-		setTitle("Registro de Medico");
+		setTitle("Registro del Personal Medico");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegMedico.class.getResource("/img/cruz-roja.png")));
 		setBounds(100, 100, 556, 474);
 		setLocationRelativeTo(null);

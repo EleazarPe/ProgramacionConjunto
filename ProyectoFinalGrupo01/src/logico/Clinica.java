@@ -57,7 +57,7 @@ public class Clinica {
 		this.historiales = historiales;
 	}
 	
-	void insertarUsuario(Usuario us){
+	public void insertarUsuario(Usuario us){
 		usuarios.add(us);
 	}
 	

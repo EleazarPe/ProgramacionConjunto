@@ -17,6 +17,7 @@ import java.util.Random;
 import java.util.Calendar;
 import javax.swing.border.TitledBorder;
 
+import logico.Clinica;
 import logico.Medico;
 import logico.Usuario;
 
@@ -204,7 +205,7 @@ public class RegMedico extends JDialog {
 						Usuario nuevoMedico = null;
 						
 						nuevoMedico = new Medico(txtNombre.getText(), txtApellido.getText(), txtCedula.getText(), (Date) spinner.getValue(), txtOcupacion.getText(), txtTelefono.getText(), txtDireccion.getText(), txtUser.getText(), txtpassword.getText(),cmbConsultorio.getSelectedItem().toString() , txtEspecialidad.getText());
-						// Clinica.getInstance().insertarMedico(newMedico);
+						Clinica.getInstance().insertarUsuario(nuevoMedico);
 					}
 				});
 				okButton.setActionCommand("OK");

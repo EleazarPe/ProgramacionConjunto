@@ -211,12 +211,13 @@ public class RegMedico extends JDialog {
 						nuevoMedico = new Medico(txtNombre.getText(), txtApellido.getText(), txtCedula.getText(), (Date) spinner.getValue(), txtOcupacion.getText(), txtTelefono.getText(), txtDireccion.getText(), txtUser.getText(), txtpassword.getText(),cmbConsultorio.getSelectedItem().toString(),txtId.getText() , txtEspecialidad.getText());
 						Clinica.getInstance().insertarUsuario(nuevoMedico);
 						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
+						System.out.println("-------El resultado del spinner es: "+ Clinica.getInstance().buscarUsuarioByCedula(nuevoMedico.getCedula()).getFechaNaciento());
 						clean();
 						}else {
 							mimedico.setNombre(txtNombre.getText());
 							mimedico.setApellido(txtApellido.getText());
 							mimedico.setCedula(txtCedula.getText());
-							mimedico.setFechaNaciento((Date) spinner.getValue());
+							mimedico.setFechaNaciento( (Date) spinner.getValue());
 							mimedico.setOcupacion(txtOcupacion.getText());
 							mimedico.setTelefono(txtTelefono.getText());
 							mimedico.setDireccion( txtDireccion.getText());
@@ -247,7 +248,7 @@ public class RegMedico extends JDialog {
 			txtOcupacion.setText(us.getOcupacion());
 			txtUser.setText(us.getLoginString());
 			txtpassword.setText(us.getPassowrdString());
-			spinner.setValue(us.getFechaNaciento());
+			spinner.setValue((Date)us.getFechaNaciento());
 			cmbConsultorio.setSelectedItem(us.getConsultorioString());
 		}
 	}

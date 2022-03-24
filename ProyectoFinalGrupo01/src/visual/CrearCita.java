@@ -16,14 +16,16 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
 import java.util.Calendar;
-import java.awt.FlowLayout;
 
 public class CrearCita extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtApellido;
@@ -110,8 +112,8 @@ public class CrearCita extends JFrame {
 		lblDocIdentidad.setBounds(33, 54, 93, 25);
 		panel.add(lblDocIdentidad);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Cedula", "Pasaporte", "Licencia"}));
+		JComboBox<Object> comboBox = new JComboBox<Object>();
+		comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"Cedula", "Pasaporte", "Licencia"}));
 		comboBox.setBounds(117, 54, 147, 25);
 		panel.add(comboBox);
 		

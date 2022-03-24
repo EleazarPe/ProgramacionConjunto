@@ -14,6 +14,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class Principal extends JFrame {
 	/**
@@ -44,6 +45,7 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/img/cruz-roja.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		dim = getToolkit().getScreenSize();
 		setBounds(100, 100, 450, 300);
@@ -75,6 +77,19 @@ public class Principal extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
+		
+		JMenu mnNewMenu_1 = new JMenu("Consulta");
+		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Crear Consulta");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CrearConsulta consulta = new CrearConsulta();
+				consulta.setModal(true);
+				consulta.setVisible(true);
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

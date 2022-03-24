@@ -103,6 +103,7 @@ public class ListMedico extends JDialog {
 				btnmodificar.setEnabled(false);
 				btnmodificar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						dispose();
 						RegMedico reg = new RegMedico(medicoselect);
 						reg.setModal(true);
 						reg.setVisible(true);

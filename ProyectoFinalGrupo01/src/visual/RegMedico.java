@@ -225,7 +225,7 @@ public class RegMedico extends JDialog {
 							mimedico.setConsultorioString(cmbConsultorio.getSelectedItem().toString());
 							mimedico.setCodigo(txtId.getText());
 							mimedico.setEspecialidad( txtEspecialidad.getText());
-							
+							dispose();
 						}
 					}
 				});

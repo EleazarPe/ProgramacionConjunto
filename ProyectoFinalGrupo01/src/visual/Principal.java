@@ -59,7 +59,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Registrar");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				RegMedico reg = new RegMedico();
+				RegMedico reg = new RegMedico(null);
 				reg.setModal(true);
 				reg.setVisible(true);
 			}

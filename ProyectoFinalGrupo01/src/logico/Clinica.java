@@ -61,4 +61,18 @@ public class Clinica {
 		usuarios.add(us);
 	}
 	
+	public Usuario buscarUsuarioByCedula(String cedula) {
+		Usuario user = null;
+		for (Usuario findUs : usuarios) {
+			if(findUs.getCedula().equalsIgnoreCase(cedula)) {
+				user = findUs;
+			}
+		}
+		return user;
+	}
+	
+	public void eliminarUsuario(Usuario user) {
+		usuarios.remove(user);
+	}
+	
 }

@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ScrollPaneConstants;
 
 public class ListMedico extends JDialog {
 
@@ -33,6 +35,7 @@ public class ListMedico extends JDialog {
 	private JButton btnEliminar;
 	private JButton btnmodificar;
 	private Object row[];
+	private Medico medicoselect = null;
 
 	/**
 	 * Launch the application.
@@ -65,6 +68,7 @@ public class ListMedico extends JDialog {
 			panel.setLayout(new BorderLayout(0, 0));
 			{
 				JScrollPane scrollPane = new JScrollPane();
+				scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 					table = new JTable();
@@ -80,6 +84,7 @@ public class ListMedico extends JDialog {
 							if(row > -1) {
 								btnEliminar.setEnabled(true);
 								btnmodificar.setEnabled(true);
+								medicoselect = (Medico) Clinica.getInstance().buscarUsuarioByCedula(table.getValueAt(row, 0).toString());
 								
 							}
 						}
@@ -98,10 +103,24 @@ public class ListMedico extends JDialog {
 				btnmodificar.setEnabled(false);
 				btnmodificar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						RegMedico reg = new RegMedico(medicoselect);
+						reg.setModal(true);
+						reg.setVisible(true);
 					}
 				});
 				{
 					btnEliminar = new JButton("Eliminar");
+					btnEliminar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							if(medicoselect !=null) {
+								int option = JOptionPane.showConfirmDialog(null, "Está seguro de eliminar el medico: "+ medicoselect.getCedula(), "Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+								if(option == JOptionPane.YES_OPTION){
+									Clinica.getInstance().eliminarUsuario(medicoselect);
+									loadTable();
+								}
+							}
+						}
+					});
 					btnEliminar.setEnabled(false);
 					buttonPane.add(btnEliminar);
 				}
@@ -112,6 +131,7 @@ public class ListMedico extends JDialog {
 				JButton btnAceptar = new JButton("Aceptar");
 				btnAceptar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
+						dispose();
 					}
 				});
 				btnAceptar.setActionCommand("");

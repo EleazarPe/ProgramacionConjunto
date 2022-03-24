@@ -18,6 +18,7 @@ import java.util.Random;
 import java.util.Calendar;
 import javax.swing.border.TitledBorder;
 
+
 import logico.Clinica;
 import logico.Medico;
 import logico.Usuario;
@@ -48,25 +49,22 @@ public class RegMedico extends JDialog {
 	private Random rand = new Random();
 	private JComboBox<Object> cmbConsultorio;
 	private JSpinner spinner;
+	private Medico mimedico = null;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		try {
-			RegMedico dialog = new RegMedico();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Create the dialog.
 	 */
-	public RegMedico() {
-		setTitle("Registro del Personal Medico");
+	public RegMedico(Medico us) {
+		mimedico = us;
+		if(us == null) {
+			setTitle("Registro del Personal Medico");
+		}else {
+			setTitle("Modificar Registro del Personal Medico");
+		}
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegMedico.class.getResource("/img/cruz-roja.png")));
 		setBounds(100, 100, 556, 474);
 		setLocationRelativeTo(null);
@@ -200,20 +198,57 @@ public class RegMedico extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 			{
-				JButton okButton = new JButton("Registrar");
+				JButton okButton = new JButton("");
+				if(mimedico ==null) {
+					okButton.setText("Registrar");
+				}else {
+					okButton.setText("Modificar");
+				}
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
+						if(mimedico == null) {
 						Usuario nuevoMedico = null;
 						nuevoMedico = new Medico(txtNombre.getText(), txtApellido.getText(), txtCedula.getText(), (Date) spinner.getValue(), txtOcupacion.getText(), txtTelefono.getText(), txtDireccion.getText(), txtUser.getText(), txtpassword.getText(),cmbConsultorio.getSelectedItem().toString(),txtId.getText() , txtEspecialidad.getText());
 						Clinica.getInstance().insertarUsuario(nuevoMedico);
 						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
 						clean();
+						}else {
+							mimedico.setNombre(txtNombre.getText());
+							mimedico.setApellido(txtApellido.getText());
+							mimedico.setCedula(txtCedula.getText());
+							mimedico.setFechaNaciento((Date) spinner.getValue());
+							mimedico.setOcupacion(txtOcupacion.getText());
+							mimedico.setTelefono(txtTelefono.getText());
+							mimedico.setDireccion( txtDireccion.getText());
+							mimedico.setLoginString(txtUser.getText());
+							mimedico.setPassowrdString(txtpassword.getText());
+							mimedico.setConsultorioString(cmbConsultorio.getSelectedItem().toString());
+							mimedico.setCodigo(txtId.getText());
+							mimedico.setEspecialidad( txtEspecialidad.getText());
+							
+						}
 					}
 				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
+		}
+		loadMedico(mimedico);
+	}
+	private void loadMedico(Medico us) {
+		if(us != null) {
+			txtNombre.setText(us.getNombre());
+			txtApellido.setText(us.getApellido());
+			txtCedula.setText(us.getCedula());
+			txtDireccion.setText(us.getDireccion());
+			txtTelefono.setText(us.getTelefono());
+			txtEspecialidad.setText(us.getEspecialidad());
+			txtOcupacion.setText(us.getOcupacion());
+			txtUser.setText(us.getLoginString());
+			txtpassword.setText(us.getPassowrdString());
+			spinner.setValue(us.getFechaNaciento());
+			cmbConsultorio.setSelectedItem(us.getConsultorioString());
 		}
 	}
 	private void clean() {

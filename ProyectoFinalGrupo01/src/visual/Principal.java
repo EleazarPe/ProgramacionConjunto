@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import logico.Usuario;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;

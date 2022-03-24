@@ -11,8 +11,8 @@ public class Medico extends Usuario {
 	private ArrayList<Consulta> consultas;
 	
 	public Medico(String nombre, String apellido, String cedula, Date fechaNaciento, String ocupacion, String telefono,
-			String direccion, String login,String passowrd,String consultorio,String especialidad) {
-		super(nombre, apellido, cedula, fechaNaciento, ocupacion, telefono, direccion);
+			String direccion, String login,String passowrd,String consultorio,String codigo,String especialidad) {
+		super(nombre, apellido, cedula, fechaNaciento, ocupacion, telefono, direccion,codigo);
 		this.loginString = login;
 		this.passowrdString = passowrd;
 		this.consultorioString = consultorio;
@@ -44,11 +44,11 @@ public class Medico extends Usuario {
 		this.consultorioString = consultorioString;
 	}
 
-	public String getEspecialidadString() {
+	public String getEspecialidad() {
 		return especialidadString;
 	}
 
-	public void setEspecialidadString(String especialidadString) {
+	public void setEspecialidad(String especialidadString) {
 		this.especialidadString = especialidadString;
 	}
 

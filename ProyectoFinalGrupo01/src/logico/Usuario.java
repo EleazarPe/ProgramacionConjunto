@@ -14,7 +14,7 @@ public class Usuario {
 	protected String direccion;
 	
 	public Usuario(String nombre, String apellido, String cedula, Date fechaNaciento, String ocupacion, String telefono,
-			String direccion) {
+			String direccion, String code) {
 		super();
 		Nombre = nombre;
 		Apellido = apellido;
@@ -23,6 +23,7 @@ public class Usuario {
 		Ocupacion = ocupacion;
 		this.telefono = telefono;
 		this.direccion = direccion;
+		this.Codigo = code;
 	}
 	
 	public String getNombre() {
@@ -60,6 +61,22 @@ public class Usuario {
 	}
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+
+	public String getCodigo() {
+		return Codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		Codigo = codigo;
+	}
+
+	public Date getFechaNaciento() {
+		return FechaNaciento;
+	}
+
+	public void setFechaNaciento(Date fechaNaciento) {
+		FechaNaciento = fechaNaciento;
 	}
 
 }

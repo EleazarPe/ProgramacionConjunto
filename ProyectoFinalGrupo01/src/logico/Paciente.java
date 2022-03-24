@@ -8,8 +8,8 @@ public class Paciente extends Usuario {
 	private String tipoSangre;
 	
 	public Paciente(String nombre, String apellido, String cedula, Date fechaNaciento, String ocupacion,
-			String telefono, String direccion,ArrayList<Consulta>misConsultas, String tipoSangre) {
-		super(nombre, apellido, cedula, fechaNaciento, ocupacion, telefono, direccion);
+			String telefono, String direccion,String codigo,ArrayList<Consulta>misConsultas, String tipoSangre) {
+		super(nombre, apellido, cedula, fechaNaciento, ocupacion, telefono, direccion,codigo);
 		this.misConsultas = new ArrayList<>();
 		this.tipoSangre = tipoSangre;
 	}

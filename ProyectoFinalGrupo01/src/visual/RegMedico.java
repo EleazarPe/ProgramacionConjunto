@@ -204,8 +204,7 @@ public class RegMedico extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						Usuario nuevoMedico = null;
-						
-						nuevoMedico = new Medico(txtNombre.getText(), txtApellido.getText(), txtCedula.getText(), (Date) spinner.getValue(), txtOcupacion.getText(), txtTelefono.getText(), txtDireccion.getText(), txtUser.getText(), txtpassword.getText(),cmbConsultorio.getSelectedItem().toString() , txtEspecialidad.getText());
+						nuevoMedico = new Medico(txtNombre.getText(), txtApellido.getText(), txtCedula.getText(), (Date) spinner.getValue(), txtOcupacion.getText(), txtTelefono.getText(), txtDireccion.getText(), txtUser.getText(), txtpassword.getText(),cmbConsultorio.getSelectedItem().toString(),txtId.getText() , txtEspecialidad.getText());
 						Clinica.getInstance().insertarUsuario(nuevoMedico);
 						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
 						clean();

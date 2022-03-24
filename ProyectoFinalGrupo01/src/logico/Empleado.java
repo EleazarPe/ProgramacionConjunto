@@ -8,8 +8,8 @@ public class Empleado extends Usuario {
 	private String password;
 	
 	public Empleado(String nombre, String apellido, String cedula, Date fechaNaciento, String ocupacion,
-			String telefono, String direccion, String login, String password ) {
-		super(nombre, apellido, cedula, fechaNaciento, ocupacion, telefono, direccion);
+			String telefono, String direccion, String login,String codigo, String password ) {
+		super(nombre, apellido, cedula, fechaNaciento, ocupacion, telefono, direccion, codigo);
 		this.login = login;
 		this.password = password;
 	}

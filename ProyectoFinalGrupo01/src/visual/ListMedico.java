@@ -68,7 +68,7 @@ public class ListMedico extends JDialog {
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 					table = new JTable();
-					String headers[] = {"Cedula","Nombre","Apellido","Ocupacion","Especialidad","Direccion","Telefono"};
+					String headers[] = {"Cedula","ID","Nombre","Apellido","Ocupacion","Especialidad","Consultorio","Direccion","Telefono"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
@@ -119,6 +119,7 @@ public class ListMedico extends JDialog {
 				getRootPane().setDefaultButton(btnAceptar);
 			}
 		}
+		loadTable();
 	}
 	private void loadTable() {
 		model.setRowCount(0);
@@ -126,7 +127,15 @@ public class ListMedico extends JDialog {
 		for (Usuario object : Clinica.getInstance().getUsuarios()) {
 			if(object instanceof Medico) {
 				row[0] = object.getCedula();
-				row[1] = object.getNombre();
+				row[1] = object.getCodigo();
+				row[2] =object.getNombre();
+				row[3] = object.getApellido();
+				row[4] = object.getOcupacion();
+				row[5] = ((Medico) object).getEspecialidad();
+				row[6] = ((Medico) object).getConsultorioString();
+				row[7] =object.getDireccion();
+				row[8] = object.getTelefono();
+				model.addRow(row);	
 			}
 		}
 	}

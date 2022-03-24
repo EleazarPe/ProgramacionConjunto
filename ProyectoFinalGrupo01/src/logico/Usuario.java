@@ -13,14 +13,14 @@ public class Usuario {
 	protected String telefono;
 	protected String direccion;
 	
-	public Usuario(String nombre, String apellido, String cedula, Date fechaNaciento, String ocupacion, String telefono,
+	public Usuario(String nombre, String apellido, String cedula, Date FechaNaciento, String ocupacion, String telefono,
 			String direccion, String code) {
 		super();
-		Nombre = nombre;
-		Apellido = apellido;
-		Cedula = cedula;
-		FechaNaciento = new Date();
-		Ocupacion = ocupacion;
+		this.Nombre = nombre;
+		this.Apellido = apellido;
+		this.Cedula = cedula;
+		this.FechaNaciento = FechaNaciento;
+		this.Ocupacion = ocupacion;
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.Codigo = code;

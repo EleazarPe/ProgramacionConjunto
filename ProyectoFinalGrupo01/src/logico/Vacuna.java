@@ -1,52 +1,61 @@
 package logico;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Vacuna {
-	private Date fecha;
+	private String cedulaString;
+	private String nombreString;
+	private String ocupacionString;
+	private String direccionString;
 	private Date fechanacimientoDate;
-	private String lugarString;
-	private String vacunaString;
-	
-	public Vacuna(Date fecha, String lugarString, String vacunaString,Date fechanacimiento) {
+	private ArrayList<Dosis> dosisArrayList;
+	public Vacuna(String cedulaString, String nombreString, String ocupacionString, String direccionString,
+			Date fechanacimientoDate) {
 		super();
-		this.fecha = new Date();
-		this.fecha = fechanacimiento;
-		this.lugarString = lugarString;
-		this.vacunaString = vacunaString;
+		this.cedulaString = cedulaString;
+		this.nombreString = nombreString;
+		this.ocupacionString = ocupacionString;
+		this.direccionString = direccionString;
+		this.fechanacimientoDate = fechanacimientoDate;
+		this.setDosisArrayList(new ArrayList<>());
 	}
-
-	public Date getFecha() {
-		return fecha;
+	public String getCedulaString() {
+		return cedulaString;
 	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setCedulaString(String cedulaString) {
+		this.cedulaString = cedulaString;
 	}
-
-	public String getLugarString() {
-		return lugarString;
+	public String getNombreString() {
+		return nombreString;
 	}
-
-	public void setLugarString(String lugarString) {
-		this.lugarString = lugarString;
+	public void setNombreString(String nombreString) {
+		this.nombreString = nombreString;
 	}
-
-	public String getVacunaString() {
-		return vacunaString;
+	public String getOcupacionString() {
+		return ocupacionString;
 	}
-
-	public void setVacunaString(String vacunaString) {
-		this.vacunaString = vacunaString;
+	public void setOcupacionString(String ocupacionString) {
+		this.ocupacionString = ocupacionString;
 	}
-
+	public String getDireccionString() {
+		return direccionString;
+	}
+	public void setDireccionString(String direccionString) {
+		this.direccionString = direccionString;
+	}
 	public Date getFechanacimientoDate() {
 		return fechanacimientoDate;
 	}
-
 	public void setFechanacimientoDate(Date fechanacimientoDate) {
 		this.fechanacimientoDate = fechanacimientoDate;
 	}
-	
+	public ArrayList<Dosis> getDosisArrayList() {
+		return dosisArrayList;
+	}
+	public void setDosisArrayList(ArrayList<Dosis> dosisArrayList) {
+		this.dosisArrayList = dosisArrayList;
+	}
+
 
 }

@@ -75,4 +75,14 @@ public class Clinica {
 		usuarios.remove(user);
 	}
 	
+	public Vacuna buscarVacunabyCedula(String cedula) {
+		Vacuna auxvacuna = null;
+		for (Vacuna vc : vacunas) {
+			if(vc.getCedulaString().equalsIgnoreCase(cedula)) {
+				auxvacuna = vc;
+			}
+		}
+		return auxvacuna;
+	}
+	
 }

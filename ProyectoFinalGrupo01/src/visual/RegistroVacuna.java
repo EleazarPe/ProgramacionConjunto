@@ -51,7 +51,7 @@ public class RegistroVacuna extends JDialog {
 	private JSpinner spinner;
 	private JComboBox<Object> cbxOcupacion;
 	private JComboBox<Object> cbxVacuna;
-	private Vacuna auxiliarVacuna;
+	private Vacuna auxiliarVacuna = null;
 	private Date date;
 	private DateFormat formatter;
 	private Object row[];
@@ -174,6 +174,12 @@ public class RegistroVacuna extends JDialog {
 					}
 				}
 			});
+			okButton = new JButton("");
+			if(auxiliarVacuna != null) {
+				okButton.setText("Registrar");
+			}else {
+				okButton.setText("Actualizar");
+			}
 			btnNewButton.setIcon(new ImageIcon(RegistroVacuna.class.getResource("/img/lupa.png")));
 			btnNewButton.setBounds(278, 247, 119, 31);
 			panel.add(btnNewButton);
@@ -244,12 +250,7 @@ public class RegistroVacuna extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 			{
-				okButton = new JButton("");
-				if(auxiliarVacuna == null) {
-					okButton.setText("Registrar");
-				}else {
-					okButton.setText("Actualizar");
-				}
+
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						Vacuna auxVacuna = null;
@@ -279,7 +280,7 @@ public class RegistroVacuna extends JDialog {
 	private void loadTable() {
 		model.setRowCount(0);
 		row = new Object[model.getColumnCount()];
-		for ( Dosis object : Clinica.getInstance().getVacunas().get(0).getDosisArrayList()) { //Clinica.getInstance().buscarVacunabyCedula(txtCedula.getText()).getDosisArrayList()/*auxiliarVacuna.getDosisArrayList()*/
+		for ( Dosis object :auxiliarVacuna.getDosisArrayList()) { //Clinica.getInstance().buscarVacunabyCedula(txtCedula.getText()).getDosisArrayList()/*auxiliarVacuna.getDosisArrayList()*/
 			row[0] = object.getNombre();
 			row[1] = formatter.format(object.getFecha()).toString();
 			row[2] = object.getDoctor();
@@ -300,6 +301,7 @@ public class RegistroVacuna extends JDialog {
 		txtTelefono.setEditable(false);
 		spinner.setEnabled(false);
 		cbxOcupacion.setEnabled(false);
+		model.setRowCount(0);
 	}
 
 	public void cargarVacunas(boolean control) {

@@ -8,16 +8,18 @@ public class Vacuna {
 	private String nombreString;
 	private String ocupacionString;
 	private String direccionString;
+	private String telefonoString;
 	private Date fechanacimientoDate;
 	private ArrayList<Dosis> dosisArrayList;
 	public Vacuna(String cedulaString, String nombreString, String ocupacionString, String direccionString,
-			Date fechanacimientoDate) {
+			Date fechanacimientoDate,String telefono) {
 		super();
 		this.cedulaString = cedulaString;
 		this.nombreString = nombreString;
 		this.ocupacionString = ocupacionString;
 		this.direccionString = direccionString;
 		this.fechanacimientoDate = fechanacimientoDate;
+		this.setTelefonoString(telefono);
 		this.setDosisArrayList(new ArrayList<>());
 	}
 	public String getCedulaString() {
@@ -67,6 +69,12 @@ public class Vacuna {
 	}
 	public void insertarDosis(Dosis dos) {
 		dosisArrayList.add(dos);
+	}
+	public String getTelefonoString() {
+		return telefonoString;
+	}
+	public void setTelefonoString(String telefonoString) {
+		this.telefonoString = telefonoString;
 	}
 
 }

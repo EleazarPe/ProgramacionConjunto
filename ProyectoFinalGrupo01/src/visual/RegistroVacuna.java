@@ -12,6 +12,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 
 import logico.Clinica;
 import logico.Dosis;
@@ -30,6 +31,7 @@ import java.util.Date;
 import java.util.Calendar;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ScrollPaneConstants;
 
 public class RegistroVacuna extends JDialog {
 
@@ -52,6 +54,9 @@ public class RegistroVacuna extends JDialog {
 	private Vacuna auxiliarVacuna;
 	private Date date;
 	private DateFormat formatter;
+	private Object row[];
+	private DefaultTableModel model;
+	private JButton okButton;
 
 	/**
 	 * Launch the application.
@@ -87,12 +92,18 @@ public class RegistroVacuna extends JDialog {
 			panel_1.setBounds(0, 0, 838, 233);
 			panel.add(panel_1);
 			panel_1.setLayout(new BorderLayout(0, 0));
-
 			JScrollPane scrollPane = new JScrollPane();
-			panel_1.add(scrollPane, BorderLayout.CENTER);
-
 			table = new JTable();
 			scrollPane.setViewportView(table);
+			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+			panel_1.add(scrollPane, BorderLayout.CENTER);{
+				String headers[] = {"Vacuna","Fecha de Vacunacion","Doctor"};
+				model = new DefaultTableModel();
+				model.setColumnIdentifiers(headers);
+				
+				table.setModel(model);
+				scrollPane.setViewportView(table);
+			}
 
 			JPanel panel_2 = new JPanel();
 			panel_2.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -153,7 +164,13 @@ public class RegistroVacuna extends JDialog {
 						cargarVacunas(false);
 
 					}else {
+						txtNombre.setText(auxiliarVacuna.getNombreString());
+						txtDireccion.setText(auxiliarVacuna.getDireccionString());
+						txtTelefono.setText(auxiliarVacuna.getTelefonoString());
+						cbxOcupacion.setSelectedItem(auxiliarVacuna.getOcupacionString());
+						spinner.setValue(auxiliarVacuna.getFechanacimientoDate());
 						cargarVacunas(true);
+						loadTable();
 					}
 				}
 			});
@@ -227,15 +244,27 @@ public class RegistroVacuna extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 			{
-				JButton okButton = new JButton("Registrar");
+				okButton = new JButton("");
+				if(auxiliarVacuna == null) {
+					okButton.setText("Registrar");
+				}else {
+					okButton.setText("Actualizar");
+				}
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						Vacuna auxVacuna = null;
-						auxVacuna = new Vacuna(txtCedula.getText(), txtNombre.getText(), cbxOcupacion.getSelectedItem().toString(), txtDireccion.getText(), (Date) spinner.getValue());
+						if(auxiliarVacuna == null) {
+						auxVacuna = new Vacuna(txtCedula.getText(), txtNombre.getText(), cbxOcupacion.getSelectedItem().toString(), txtDireccion.getText(), (Date) spinner.getValue(),txtTelefono.getText());
 						Dosis auxDosis = null;
 						auxDosis = new Dosis(cbxVacuna.getSelectedItem().toString(), txtPerosnal.getText(),true);
 						auxVacuna.insertarDosis(auxDosis);
 						Clinica.getInstance().insertarVacuna(auxVacuna);
+						}else {
+							Dosis auxDosis = null;
+							auxDosis = new Dosis(cbxVacuna.getSelectedItem().toString(), txtPerosnal.getText(),true);
+							auxiliarVacuna.insertarDosis(auxDosis);
+							
+						}
 						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}
@@ -244,14 +273,25 @@ public class RegistroVacuna extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 		}
+		
 	}
 
-
+	private void loadTable() {
+		model.setRowCount(0);
+		row = new Object[model.getColumnCount()];
+		for ( Dosis object : Clinica.getInstance().getVacunas().get(0).getDosisArrayList()) { //Clinica.getInstance().buscarVacunabyCedula(txtCedula.getText()).getDosisArrayList()/*auxiliarVacuna.getDosisArrayList()*/
+			row[0] = object.getNombre();
+			row[1] = formatter.format(object.getFecha()).toString();
+			row[2] = object.getDoctor();
+			model.addRow(row);	
+		}
+	}
 	private void clean() {
 		txtCedula.setText("");
 		txtNombre.setText("");
 		txtDireccion.setText("");
 		txtTelefono.setText("");
+		txtPerosnal.setText("");
 		cbxOcupacion.setSelectedIndex(0);
 		cbxVacuna.removeAllItems();
 		spinner.setValue(new Date());
@@ -263,7 +303,7 @@ public class RegistroVacuna extends JDialog {
 	}
 
 	public void cargarVacunas(boolean control) {
-		String[] vacunaStrings = {"<seleccionar>","Tetano","Sarampion","HepatitisA","HepapitisB","Tuberculosis","Rabia","Colera","Fiebre tifoidea","Grie"};
+		String[] vacunaStrings = {"<seleccionar>","Tetano","Sarampion","HepatitisA","HepapitisB","Tuberculosis","Rabia","Colera","Fiebre tifoidea","Gripe"};
 		if(control == false) {
 			for (String string : vacunaStrings) {
 				cbxVacuna.addItem(string);

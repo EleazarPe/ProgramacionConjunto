@@ -19,6 +19,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
 import java.util.Calendar;
+import java.awt.Font;
 
 public class CrearCita extends JFrame {
 
@@ -35,6 +36,7 @@ public class CrearCita extends JFrame {
 	private JTextField txtNid;
 	private JRadioButton rdbtnNo;
 	private JRadioButton rdbtnNewRadioButton;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -58,7 +60,7 @@ public class CrearCita extends JFrame {
 	public CrearCita() {
 		setTitle("Registro De Citas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 752, 391);
+		setBounds(100, 100, 745, 625);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -66,7 +68,7 @@ public class CrearCita extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(12, 13, 710, 304);
+		panel.setBounds(12, 13, 707, 297);
 		panel.setBorder(new TitledBorder(null, "Datos del Paciente:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -86,16 +88,16 @@ public class CrearCita extends JFrame {
 		panel.add(button);
 		
 		JLabel lblNewLabel_2 = new JLabel("Menor de Edad:");
-		lblNewLabel_2.setBounds(21, 177, 104, 25);
+		lblNewLabel_2.setBounds(33, 175, 104, 25);
 		panel.add(lblNewLabel_2);
 		
 		rdbtnNewRadioButton = new JRadioButton("SI");
-		rdbtnNewRadioButton.setBounds(124, 177, 48, 25);
+		rdbtnNewRadioButton.setBounds(138, 175, 48, 25);
 		panel.add(rdbtnNewRadioButton);
 		
 		rdbtnNo = new JRadioButton("NO");
 		rdbtnNo.setSelected(true);
-		rdbtnNo.setBounds(176, 177, 48, 25);
+		rdbtnNo.setBounds(187, 175, 48, 25);
 		panel.add(rdbtnNo);
 		
 		txtNombre = new JTextField();
@@ -182,11 +184,11 @@ public class CrearCita extends JFrame {
 		label_3.setBounds(12, 255, 16, 25);
 		panel.add(label_3);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerDateModel(new Date(1648008000000L), new Date(1648008000000L), null, Calendar.DAY_OF_YEAR));
-		spinner.setEditor(new JSpinner.DateEditor(spinner,"dd/MM/yyyy"));
-		spinner.setBounds(167, 103, 137, 25);
-		panel.add(spinner);
+		JSpinner spnFechaNacimiento = new JSpinner();
+		spnFechaNacimiento.setModel(new SpinnerDateModel(new Date(1648008000000L), new Date(1648008000000L), null, Calendar.DAY_OF_YEAR));
+		spnFechaNacimiento.setEditor(new JSpinner.DateEditor(spnFechaNacimiento,"dd/MM/yyyy"));
+		spnFechaNacimiento.setBounds(167, 103, 137, 25);
+		panel.add(spnFechaNacimiento);
 		
 		JLabel label_4 = new JLabel("");
 		label_4.setIcon(new ImageIcon(CrearCita.class.getResource("/img/5097348 (2).png")));
@@ -195,7 +197,7 @@ public class CrearCita extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(0, 318, 736, 38);
+		panel_1.setBounds(0, 548, 729, 38);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -208,5 +210,49 @@ public class CrearCita extends JFrame {
 		button_2.setBounds(633, 7, 96, 23);
 		button_2.setActionCommand("OK");
 		panel_1.add(button_2);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new TitledBorder(null, "Datos de la Cita", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_2.setBounds(12, 353, 707, 184);
+		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblNewLabel_5 = new JLabel("Especialidad:");
+		lblNewLabel_5.setBounds(10, 54, 70, 25);
+		panel_2.add(lblNewLabel_5);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"<<SELECCIONE>>", "Ginecologo", "Cardiologo", "Gastroenterologo", "Oculista"}));
+		comboBox_1.setBounds(90, 54, 147, 25);
+		panel_2.add(comboBox_1);
+		
+		JSpinner spnFechaCita = new JSpinner();
+		spnFechaCita.setModel(new SpinnerDateModel(new Date(1648267200000L), new Date(1648267200000L), null, Calendar.DAY_OF_YEAR));
+		spnFechaCita.setEditor(new JSpinner.DateEditor(spnFechaCita,"dd/MM/yyyy"));
+		spnFechaCita.setBounds(104, 118, 137, 25);
+		panel_2.add(spnFechaCita);
+		
+		JLabel lblNewLabel_7 = new JLabel("Fecha Deseada:");
+		lblNewLabel_7.setBounds(10, 118, 84, 25);
+		panel_2.add(lblNewLabel_7);
+		
+		textField = new JTextField();
+		textField.setBounds(363, 54, 283, 108);
+		panel_2.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_8 = new JLabel("Notas:");
+		lblNewLabel_8.setBounds(363, 23, 70, 25);
+		panel_2.add(lblNewLabel_8);
+		
+		JLabel lblNewLabel_9 = new JLabel("IMPORTANTE: LOS CAMPOS MARCADOS      SON NECESARIOS PARA PROCESAR CORRETACTAMENTE SU SOLICITUD");
+		lblNewLabel_9.setBounds(44, 321, 630, 25);
+		contentPane.add(lblNewLabel_9);
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel label_5 = new JLabel("");
+		label_5.setBounds(264, 321, 16, 25);
+		contentPane.add(label_5);
+		label_5.setIcon(new ImageIcon(CrearCita.class.getResource("/img/5097348 (2).png")));
 	}
 }

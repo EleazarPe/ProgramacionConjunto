@@ -56,6 +56,17 @@ public class Vacuna {
 	public void setDosisArrayList(ArrayList<Dosis> dosisArrayList) {
 		this.dosisArrayList = dosisArrayList;
 	}
-
+	public boolean encontrarDosis(String nombre) {
+		boolean aux = false;
+		for (Dosis dosis : dosisArrayList) {
+			if(dosis.getNombre().equalsIgnoreCase(nombre)) {
+				aux = true;
+			}	
+		}
+		return aux;
+	}
+	public void insertarDosis(Dosis dos) {
+		dosisArrayList.add(dos);
+	}
 
 }

@@ -60,6 +60,9 @@ public class Clinica {
 	public void insertarUsuario(Usuario us){
 		usuarios.add(us);
 	}
+	public void insertarVacuna(Vacuna vac) {
+		vacunas.add(vac);
+	}
 	
 	public Usuario buscarUsuarioByCedula(String cedula) {
 		Usuario user = null;

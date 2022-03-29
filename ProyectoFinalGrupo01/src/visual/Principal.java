@@ -90,6 +90,19 @@ public class Principal extends JFrame {
 			}
 		});
 		mnNewMenu_1.add(mntmNewMenuItem_2);
+		
+		JMenu mnNewMenu_2 = new JMenu("Vacuna");
+		menuBar.add(mnNewMenu_2);
+		
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("RegistroVacuna");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				RegistroVacuna vacuna = new RegistroVacuna();
+				vacuna.setModal(true);
+				vacuna.setVisible(true);
+			}
+		});
+		mnNewMenu_2.add(mntmNewMenuItem_3);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

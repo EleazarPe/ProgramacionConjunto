@@ -78,6 +78,7 @@ public class RegistroVacuna extends JDialog {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegistroVacuna.class.getResource("/img/cruz-roja.png")));
 		setTitle("Registro de vacunacion");
 		setBounds(100, 100, 864, 656);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

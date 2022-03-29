@@ -103,6 +103,18 @@ public class Principal extends JFrame {
 			}
 		});
 		mnNewMenu_2.add(mntmNewMenuItem_3);
+		
+		JMenu mnNewMenu_3 = new JMenu("Cita");
+		menuBar.add(mnNewMenu_3);
+		
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Crear Citas");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				
+			}
+		});
+		mnNewMenu_3.add(mntmNewMenuItem_4);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

@@ -33,7 +33,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ScrollPaneConstants;
 
-public class RegistroVacuna extends JDialog {
+public class Vacunacion extends JDialog {
 
 	/**
 	 * 
@@ -63,7 +63,7 @@ public class RegistroVacuna extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			RegistroVacuna dialog = new RegistroVacuna();
+			Vacunacion dialog = new Vacunacion();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -74,8 +74,8 @@ public class RegistroVacuna extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public RegistroVacuna() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(RegistroVacuna.class.getResource("/img/cruz-roja.png")));
+	public Vacunacion() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Vacunacion.class.getResource("/img/cruz-roja.png")));
 		setTitle("Registro de vacunacion");
 		setBounds(100, 100, 864, 656);
 		setLocationRelativeTo(null);
@@ -181,7 +181,7 @@ public class RegistroVacuna extends JDialog {
 			}else {
 				okButton.setText("Actualizar");
 			}
-			btnNewButton.setIcon(new ImageIcon(RegistroVacuna.class.getResource("/img/lupa.png")));
+			btnNewButton.setIcon(new ImageIcon(Vacunacion.class.getResource("/img/lupa.png")));
 			btnNewButton.setBounds(278, 247, 119, 31);
 			panel.add(btnNewButton);
 

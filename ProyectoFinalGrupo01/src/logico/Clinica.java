@@ -67,7 +67,7 @@ public class Clinica {
 	public Usuario buscarUsuarioByCedula(String cedula) {
 		Usuario user = null;
 		for (Usuario findUs : usuarios) {
-			if(findUs.getCedula().equalsIgnoreCase(cedula)) {
+			if(findUs.getID().equalsIgnoreCase(cedula)) {
 				user = findUs;
 			}
 		}

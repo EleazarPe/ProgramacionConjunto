@@ -6,19 +6,20 @@ public class Usuario {
 	
 	protected String Nombre;
 	protected String Apellido;
-	protected String Cedula;
+	protected String tipoDocumento;
+	protected String ID;
 	protected String Codigo;
 	protected Date FechaNaciento;
 	protected String Ocupacion;
 	protected String telefono;
 	protected String direccion;
 	
-	public Usuario(String nombre, String apellido, String cedula, Date FechaNaciento, String ocupacion, String telefono,
+	public Usuario(String nombre, String apellido, String ID, Date FechaNaciento, String ocupacion, String telefono,
 			String direccion, String code) {
 		super();
 		this.Nombre = nombre;
 		this.Apellido = apellido;
-		this.Cedula = cedula;
+		this.ID = ID;
 		this.FechaNaciento = FechaNaciento;
 		this.Ocupacion = ocupacion;
 		this.telefono = telefono;
@@ -38,12 +39,22 @@ public class Usuario {
 	public void setApellido(String apellido) {
 		Apellido = apellido;
 	}
-	public String getCedula() {
-		return Cedula;
+	public String getTipoDocumento() {
+		return tipoDocumento;
 	}
-	public void setCedula(String cedula) {
-		Cedula = cedula;
+
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
 	}
+
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
+	}
+
 	public String getOcupacion() {
 		return Ocupacion;
 	}

@@ -27,6 +27,8 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class RegMedico extends JDialog {
 
@@ -66,7 +68,7 @@ public class RegMedico extends JDialog {
 			setTitle("Modificar Registro del Personal Medico");
 		}
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegMedico.class.getResource("/img/cruz-roja.png")));
-		setBounds(100, 100, 556, 474);
+		setBounds(100, 100, 556, 580);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -74,118 +76,129 @@ public class RegMedico extends JDialog {
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
+			panel.setBorder(new TitledBorder(null, "Datos del Doctor:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 			
 			JLabel lblNewLabel = new JLabel("ID:");
-			lblNewLabel.setBounds(281, 324, 46, 14);
+			lblNewLabel.setBounds(286, 391, 46, 14);
 			panel.add(lblNewLabel);
 			
 			txtId = new JTextField();
+			txtId.setBounds(286, 407, 193, 20);
 			txtId.setEditable(false);
-			txtId.setBounds(281, 340, 193, 20);
 			panel.add(txtId);
 			txtId.setColumns(10);
 			txtId.setText("Dr-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
 			JLabel lblNewLabel_1 = new JLabel("Nombre:");
-			lblNewLabel_1.setBounds(10, 39, 86, 14);
+			lblNewLabel_1.setBounds(10, 106, 86, 14);
 			panel.add(lblNewLabel_1);
 			
 			txtNombre = new JTextField();
-			txtNombre.setBounds(10, 64, 193, 20);
+			txtNombre.setBounds(10, 131, 193, 20);
 			panel.add(txtNombre);
 			txtNombre.setColumns(10);
 			
 			JLabel lblNewLabel_2 = new JLabel("Apellido:");
-			lblNewLabel_2.setBounds(10, 95, 94, 14);
+			lblNewLabel_2.setBounds(10, 162, 94, 14);
 			panel.add(lblNewLabel_2);
 			
 			txtApellido = new JTextField();
-			txtApellido.setBounds(10, 120, 193, 20);
+			txtApellido.setBounds(10, 187, 193, 20);
 			panel.add(txtApellido);
 			txtApellido.setColumns(10);
 			
 			JLabel lblNewLabel_3 = new JLabel("Cedula:");
-			lblNewLabel_3.setBounds(10, 156, 46, 14);
+			lblNewLabel_3.setBounds(10, 223, 46, 14);
 			panel.add(lblNewLabel_3);
 			
 			txtCedula = new JTextField();
-			txtCedula.setBounds(10, 181, 193, 20);
+			txtCedula.setBounds(10, 248, 193, 20);
 			panel.add(txtCedula);
 			txtCedula.setColumns(10);
 			
 			JLabel lblNewLabel_4 = new JLabel("Ocupacion:");
-			lblNewLabel_4.setBounds(10, 212, 69, 14);
+			lblNewLabel_4.setBounds(10, 279, 69, 14);
 			panel.add(lblNewLabel_4);
 			
 			txtOcupacion = new JTextField();
-			txtOcupacion.setBounds(10, 237, 193, 20);
+			txtOcupacion.setBounds(10, 304, 193, 20);
 			panel.add(txtOcupacion);
 			txtOcupacion.setColumns(10);
 			
 			JLabel lblNewLabel_5 = new JLabel("Telefono:");
-			lblNewLabel_5.setBounds(281, 95, 57, 14);
+			lblNewLabel_5.setBounds(286, 162, 57, 14);
 			panel.add(lblNewLabel_5);
 			
 			txtTelefono = new JTextField();
-			txtTelefono.setBounds(281, 120, 193, 20);
+			txtTelefono.setBounds(286, 187, 193, 20);
 			panel.add(txtTelefono);
 			txtTelefono.setColumns(10);
 			
 			JLabel lblNewLabel_6 = new JLabel("Direccion:");
-			lblNewLabel_6.setBounds(281, 156, 57, 14);
+			lblNewLabel_6.setBounds(286, 223, 57, 14);
 			panel.add(lblNewLabel_6);
 			
 			txtDireccion = new JTextField();
-			txtDireccion.setBounds(281, 181, 193, 20);
+			txtDireccion.setBounds(286, 248, 193, 20);
 			panel.add(txtDireccion);
 			txtDireccion.setColumns(10);
 			
 			JLabel lblNewLabel_7 = new JLabel("Nombre de Usuario:");
-			lblNewLabel_7.setBounds(281, 212, 128, 14);
+			lblNewLabel_7.setBounds(286, 279, 128, 14);
 			panel.add(lblNewLabel_7);
 			
 			txtUser = new JTextField();
-			txtUser.setBounds(281, 237, 193, 20);
+			txtUser.setBounds(286, 304, 193, 20);
 			panel.add(txtUser);
 			txtUser.setColumns(10);
 			
 			JLabel lblNewLabel_8 = new JLabel("Contrase\u00F1a:");
-			lblNewLabel_8.setBounds(281, 268, 94, 14);
+			lblNewLabel_8.setBounds(286, 335, 94, 14);
 			panel.add(lblNewLabel_8);
 			
 			txtpassword = new JTextField();
-			txtpassword.setBounds(281, 293, 193, 20);
+			txtpassword.setBounds(286, 360, 193, 20);
 			panel.add(txtpassword);
 			txtpassword.setColumns(10);
 			
 			JLabel lblNewLabel_9 = new JLabel("Especialidad:");
-			lblNewLabel_9.setBounds(10, 268, 94, 14);
+			lblNewLabel_9.setBounds(10, 335, 94, 14);
 			panel.add(lblNewLabel_9);
 			
 			txtEspecialidad = new JTextField();
-			txtEspecialidad.setBounds(10, 293, 193, 20);
+			txtEspecialidad.setBounds(10, 360, 193, 20);
 			panel.add(txtEspecialidad);
 			txtEspecialidad.setColumns(10);
 			
 			JLabel lblNewLabel_10 = new JLabel("Consultorio:");
-			lblNewLabel_10.setBounds(281, 39, 77, 14);
+			lblNewLabel_10.setBounds(286, 106, 77, 14);
 			panel.add(lblNewLabel_10);
 			
 			JLabel lblNewLabel_11 = new JLabel("Fecha de Nacimiento:");
-			lblNewLabel_11.setBounds(10, 324, 136, 14);
+			lblNewLabel_11.setBounds(10, 391, 136, 14);
 			panel.add(lblNewLabel_11);
 			
 			spinner = new JSpinner();
+			spinner.setBounds(10, 407, 162, 20);
 			spinner.setModel(new SpinnerDateModel(new Date(1647921600000L), null, null, Calendar.YEAR));
 			spinner.setEditor(new JSpinner.DateEditor(spinner,"dd/MM/yyyy"));
-			spinner.setBounds(10, 340, 162, 20);
 			panel.add(spinner);
 			
 			cmbConsultorio = new JComboBox<Object>();
+			cmbConsultorio.setBounds(286, 131, 193, 20);
 			cmbConsultorio.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "A1-101", "A2-102", "A3-103", "B1-201", "B2-202", "B3-203", "C1-301", "C2-302", "C3-303"}));
-			cmbConsultorio.setBounds(281, 64, 193, 20);
 			panel.add(cmbConsultorio);
+			
+			JLabel lblImportanteTodosLos = new JLabel("IMPORTANTE: TODOS LOS CAMPOS  DEBEN ESTAR COMPLETOS ");
+			lblImportanteTodosLos.setBounds(87, 457, 358, 25);
+			lblImportanteTodosLos.setFont(new Font("Tahoma", Font.BOLD, 11));
+			panel.add(lblImportanteTodosLos);
+			
+			JLabel lblNewLabel_12 = new JLabel("");
+			lblNewLabel_12.setIcon(new ImageIcon(RegMedico.class.getResource("/img/medico.png")));
+			lblNewLabel_12.setBounds(10, 23, 86, 72);
+			panel.add(lblNewLabel_12);
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -216,12 +229,12 @@ public class RegMedico extends JDialog {
 						nuevoMedico = new Medico(txtNombre.getText(), txtApellido.getText(), txtCedula.getText(), (Date) spinner.getValue(), txtOcupacion.getText(), txtTelefono.getText(), txtDireccion.getText(), txtUser.getText(), txtpassword.getText(),cmbConsultorio.getSelectedItem().toString(),txtId.getText() , txtEspecialidad.getText());
 						Clinica.getInstance().insertarUsuario(nuevoMedico);
 						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
-						System.out.println("-------El resultado del spinner es: "+ Clinica.getInstance().buscarUsuarioByCedula(nuevoMedico.getCedula()).getFechaNaciento());
+						System.out.println("-------El resultado del spinner es: "+ Clinica.getInstance().buscarUsuarioByCedula(nuevoMedico.getID()).getFechaNaciento());
 						clean();
 						}else {
 							mimedico.setNombre(txtNombre.getText());
 							mimedico.setApellido(txtApellido.getText());
-							mimedico.setCedula(txtCedula.getText());
+							mimedico.setID(txtCedula.getText());
 							mimedico.setFechaNaciento( (Date) spinner.getValue());
 							mimedico.setOcupacion(txtOcupacion.getText());
 							mimedico.setTelefono(txtTelefono.getText());
@@ -246,7 +259,7 @@ public class RegMedico extends JDialog {
 		if(us != null) {
 			txtNombre.setText(us.getNombre());
 			txtApellido.setText(us.getApellido());
-			txtCedula.setText(us.getCedula());
+			txtCedula.setText(us.getID());
 			txtDireccion.setText(us.getDireccion());
 			txtTelefono.setText(us.getTelefono());
 			txtEspecialidad.setText(us.getEspecialidad());

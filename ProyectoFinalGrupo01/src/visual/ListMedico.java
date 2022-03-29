@@ -114,7 +114,7 @@ public class ListMedico extends JDialog {
 					btnEliminar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
 							if(medicoselect !=null) {
-								int option = JOptionPane.showConfirmDialog(null, "Está seguro de eliminar el medico: "+ medicoselect.getCedula(), "Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+								int option = JOptionPane.showConfirmDialog(null, "Está seguro de eliminar el medico: "+ medicoselect.getID(), "Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 								if(option == JOptionPane.YES_OPTION){
 									Clinica.getInstance().eliminarUsuario(medicoselect);
 									loadTable();
@@ -147,7 +147,7 @@ public class ListMedico extends JDialog {
 		row = new Object[model.getColumnCount()];
 		for (Usuario object : Clinica.getInstance().getUsuarios()) {
 			if(object instanceof Medico) {
-				row[0] = object.getCedula();
+				row[0] = object.getID();
 				row[1] = object.getCodigo();
 				row[2] =object.getNombre();
 				row[3] = object.getApellido();

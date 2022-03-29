@@ -10,7 +10,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.border.TitledBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -19,12 +18,12 @@ import java.awt.event.MouseEvent;
 
 public class Login extends JDialog {
 
+	
+	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JPasswordField passwordField;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		try {
 			Login dialog = new Login();
@@ -35,9 +34,7 @@ public class Login extends JDialog {
 		}
 	}
 
-	/**
-	 * Create the dialog.
-	 */
+
 	public Login() {
 		setBounds(100, 100, 450, 450);
 		getContentPane().setLayout(new BorderLayout());

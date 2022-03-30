@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Clinica {
 	private ArrayList<Usuario> usuarios;
-	private ArrayList<VacunaEliminada> vacunas;
+	private ArrayList<Vacuna> vacunas;
 	private ArrayList<Consulta> consultas;
-	private ArrayList<Vigilancia> vigilancias;
+	private ArrayList<Enfermedad> vigilancias;
 	private ArrayList<Historial> historiales;
 	private static Clinica miclinica= null;
 	
@@ -32,10 +32,10 @@ public class Clinica {
 	public void setUsuarios(ArrayList<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
-	public ArrayList<VacunaEliminada> getVacunas() {
+	public ArrayList<Vacuna> getVacunas() {
 		return vacunas;
 	}
-	public void setVacunas(ArrayList<VacunaEliminada> vacunas) {
+	public void setVacunas(ArrayList<Vacuna> vacunas) {
 		this.vacunas = vacunas;
 	}
 	public ArrayList<Consulta> getConsultas() {
@@ -44,10 +44,10 @@ public class Clinica {
 	public void setConsultas(ArrayList<Consulta> consultas) {
 		this.consultas = consultas;
 	}
-	public ArrayList<Vigilancia> getVigilancias() {
+	public ArrayList<Enfermedad> getVigilancias() {
 		return vigilancias;
 	}
-	public void setVigilancias(ArrayList<Vigilancia> vigilancias) {
+	public void setVigilancias(ArrayList<Enfermedad> vigilancias) {
 		this.vigilancias = vigilancias;
 	}
 	public ArrayList<Historial> getHistoriales() {
@@ -60,7 +60,7 @@ public class Clinica {
 	public void insertarUsuario(Usuario us){
 		usuarios.add(us);
 	}
-	public void insertarVacuna(VacunaEliminada vac) {
+	public void insertarVacuna(Vacuna vac) {
 		vacunas.add(vac);
 	}
 	
@@ -78,12 +78,12 @@ public class Clinica {
 		usuarios.remove(user);
 	}
 	
-	public VacunaEliminada buscarVacunabyCedula(String cedula) {
-		VacunaEliminada auxvacuna = null;
-		for (VacunaEliminada vc : vacunas) {
-			if(vc.getCedulaString().equalsIgnoreCase(cedula)) {
-				auxvacuna = vc;
-			}
+	public Vacuna buscarVacunabyCedula(String cedula) {
+		Vacuna auxvacuna = null;
+		for (Vacuna vc : vacunas) {
+			//if(vc.getCedulaString().equalsIgnoreCase(cedula)) {
+				//auxvacuna = vc;
+			//}
 		}
 		return auxvacuna;
 	}

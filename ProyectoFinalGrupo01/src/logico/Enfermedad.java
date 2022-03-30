@@ -2,7 +2,7 @@ package logico;
 
 import java.util.Date;
 
-public class Vigilancia {
+public class Enfermedad {
 	private String nombreString;
 	private String tipoString;
 	private int transmisibilidad;
@@ -10,7 +10,7 @@ public class Vigilancia {
 	private Date primerbroteDate;
 	private Date fechaActual;
 	
-	public Vigilancia(String nombreString, String tipoString, int transmisibilidad, int poblacionAfectada,
+	public Enfermedad(String nombreString, String tipoString, int transmisibilidad, int poblacionAfectada,
 			Date primerbroteDate) {
 		super();
 		this.nombreString = nombreString;

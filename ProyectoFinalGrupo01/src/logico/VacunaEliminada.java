@@ -3,7 +3,7 @@ package logico;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Vacuna {
+public class VacunaEliminada {
 	private String cedulaString;
 	private String nombreString;
 	private String ocupacionString;
@@ -11,7 +11,7 @@ public class Vacuna {
 	private String telefonoString;
 	private Date fechanacimientoDate;
 	private ArrayList<Dosis> dosisArrayList;
-	public Vacuna(String cedulaString, String nombreString, String ocupacionString, String direccionString,
+	public VacunaEliminada(String cedulaString, String nombreString, String ocupacionString, String direccionString,
 			Date fechanacimientoDate,String telefono) {
 		super();
 		this.cedulaString = cedulaString;

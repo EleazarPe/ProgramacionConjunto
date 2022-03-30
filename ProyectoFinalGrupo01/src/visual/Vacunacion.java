@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 import logico.Clinica;
 import logico.Dosis;
-import logico.Vacuna;
+import logico.VacunaEliminada;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -51,7 +51,7 @@ public class Vacunacion extends JDialog {
 	private JSpinner spinner;
 	private JComboBox<Object> cbxOcupacion;
 	private JComboBox<Object> cbxVacuna;
-	private Vacuna auxiliarVacuna = null;
+	private VacunaEliminada auxiliarVacuna = null;
 	private Date date;
 	private DateFormat formatter;
 	private Object row[];
@@ -254,9 +254,9 @@ public class Vacunacion extends JDialog {
 
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						Vacuna auxVacuna = null;
+						VacunaEliminada auxVacuna = null;
 						if(auxiliarVacuna == null) {
-						auxVacuna = new Vacuna(txtCedula.getText(), txtNombre.getText(), cbxOcupacion.getSelectedItem().toString(), txtDireccion.getText(), (Date) spinner.getValue(),txtTelefono.getText());
+						auxVacuna = new VacunaEliminada(txtCedula.getText(), txtNombre.getText(), cbxOcupacion.getSelectedItem().toString(), txtDireccion.getText(), (Date) spinner.getValue(),txtTelefono.getText());
 						Dosis auxDosis = null;
 						auxDosis = new Dosis(cbxVacuna.getSelectedItem().toString(), txtPerosnal.getText(),true);
 						auxVacuna.insertarDosis(auxDosis);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Clinica {
 	private ArrayList<Usuario> usuarios;
-	private ArrayList<Vacuna> vacunas;
+	private ArrayList<VacunaEliminada> vacunas;
 	private ArrayList<Consulta> consultas;
 	private ArrayList<Vigilancia> vigilancias;
 	private ArrayList<Historial> historiales;
@@ -32,10 +32,10 @@ public class Clinica {
 	public void setUsuarios(ArrayList<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
-	public ArrayList<Vacuna> getVacunas() {
+	public ArrayList<VacunaEliminada> getVacunas() {
 		return vacunas;
 	}
-	public void setVacunas(ArrayList<Vacuna> vacunas) {
+	public void setVacunas(ArrayList<VacunaEliminada> vacunas) {
 		this.vacunas = vacunas;
 	}
 	public ArrayList<Consulta> getConsultas() {
@@ -60,7 +60,7 @@ public class Clinica {
 	public void insertarUsuario(Usuario us){
 		usuarios.add(us);
 	}
-	public void insertarVacuna(Vacuna vac) {
+	public void insertarVacuna(VacunaEliminada vac) {
 		vacunas.add(vac);
 	}
 	
@@ -78,9 +78,9 @@ public class Clinica {
 		usuarios.remove(user);
 	}
 	
-	public Vacuna buscarVacunabyCedula(String cedula) {
-		Vacuna auxvacuna = null;
-		for (Vacuna vc : vacunas) {
+	public VacunaEliminada buscarVacunabyCedula(String cedula) {
+		VacunaEliminada auxvacuna = null;
+		for (VacunaEliminada vc : vacunas) {
 			if(vc.getCedulaString().equalsIgnoreCase(cedula)) {
 				auxvacuna = vc;
 			}

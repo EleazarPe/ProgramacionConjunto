@@ -13,8 +13,6 @@ import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-
-import logico.Clinica;
 import logico.Dosis;
 import logico.VacunaEliminada;
 
@@ -155,7 +153,7 @@ public class Vacunacion extends JDialog {
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					////////////////////////////////////////////////////////------------------------------>>>>>>>>>>>>>>
-					auxiliarVacuna = Clinica.getInstance().buscarVacunabyCedula(txtCedula.getText());
+					//auxiliarVacuna = Clinica.getInstance().buscarVacunabyCedula(txtCedula.getText());
 					if(auxiliarVacuna == null) {
 						txtNombre.setEditable(true);
 						txtDireccion.setEditable(true);
@@ -260,7 +258,7 @@ public class Vacunacion extends JDialog {
 						Dosis auxDosis = null;
 						auxDosis = new Dosis(cbxVacuna.getSelectedItem().toString(), txtPerosnal.getText(),true);
 						auxVacuna.insertarDosis(auxDosis);
-						Clinica.getInstance().insertarVacuna(auxVacuna);
+						//Clinica.getInstance().insertarVacuna(auxVacuna);
 						}else {
 							Dosis auxDosis = null;
 							auxDosis = new Dosis(cbxVacuna.getSelectedItem().toString(), txtPerosnal.getText(),true);

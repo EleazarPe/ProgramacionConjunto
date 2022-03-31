@@ -6,8 +6,9 @@ public class Clinica {
 	private ArrayList<Usuario> usuarios;
 	private ArrayList<Vacuna> vacunas;
 	private ArrayList<Consulta> consultas;
-	private ArrayList<Enfermedad> vigilancias;
+	private ArrayList<Enfermedad> enfermedadS;
 	private ArrayList<Historial> historiales;
+	private ArrayList<Vigilancia> vigilancias;
 	private static Clinica miclinica= null;
 	
 	public Clinica() {
@@ -15,8 +16,9 @@ public class Clinica {
 		this.usuarios = new ArrayList<>();
 		this.vacunas = new ArrayList<>();
 		this.consultas = new ArrayList<>();
-		this.vigilancias = new ArrayList<>();
+		this.enfermedadS = new ArrayList<>();
 		this.historiales = new ArrayList<>();
+		this.setVigilancias(new ArrayList<>());
 	}
 	
 	public static Clinica getInstance() {
@@ -44,11 +46,11 @@ public class Clinica {
 	public void setConsultas(ArrayList<Consulta> consultas) {
 		this.consultas = consultas;
 	}
-	public ArrayList<Enfermedad> getVigilancias() {
-		return vigilancias;
+	public ArrayList<Enfermedad> getenfermedadS() {
+		return enfermedadS;
 	}
-	public void setVigilancias(ArrayList<Enfermedad> vigilancias) {
-		this.vigilancias = vigilancias;
+	public void setenfermedadS(ArrayList<Enfermedad> enfermedadS) {
+		this.enfermedadS = enfermedadS;
 	}
 	public ArrayList<Historial> getHistoriales() {
 		return historiales;
@@ -86,6 +88,14 @@ public class Clinica {
 			//}
 		}
 		return auxvacuna;
+	}
+
+	public ArrayList<Vigilancia> getVigilancias() {
+		return vigilancias;
+	}
+
+	public void setVigilancias(ArrayList<Vigilancia> vigilancias) {
+		this.vigilancias = vigilancias;
 	}
 	
 }

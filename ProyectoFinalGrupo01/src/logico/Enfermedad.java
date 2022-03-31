@@ -3,22 +3,24 @@ package logico;
 import java.util.Date;
 
 public class Enfermedad {
+	private String codigoString;
 	private String nombreString;
 	private String tipoString;
-	private int transmisibilidad;
+	private String informacionString;
+	private Date descubierta;
+	/*private int transmisibilidad;
 	private int poblacionAfectada;
 	private Date primerbroteDate;
-	private Date fechaActual;
+	private Date fechaActual;*/
 	
-	public Enfermedad(String nombreString, String tipoString, int transmisibilidad, int poblacionAfectada,
-			Date primerbroteDate) {
+	public Enfermedad(String codigo,String nombreString, String tipoString,String informacion,
+			Date descubrimiento) {
 		super();
+		this.codigoString = codigo;
 		this.nombreString = nombreString;
 		this.tipoString = tipoString;
-		this.transmisibilidad = transmisibilidad;
-		this.poblacionAfectada = poblacionAfectada;
-		this.primerbroteDate = primerbroteDate;
-		this.fechaActual = new Date();
+		this.informacionString = informacion;
+		this.descubierta = descubrimiento;
 	}
 	
 
@@ -38,36 +40,36 @@ public class Enfermedad {
 		this.tipoString = tipoString;
 	}
 
-	public int getTransmisibilidad() {
-		return transmisibilidad;
+
+	public String getCodigoString() {
+		return codigoString;
 	}
 
-	public void setTransmisibilidad(int transmisibilidad) {
-		this.transmisibilidad = transmisibilidad;
+
+	public void setCodigoString(String codigoString) {
+		this.codigoString = codigoString;
 	}
 
-	public int getPoblacionAfectada() {
-		return poblacionAfectada;
+
+	public String getInformacionString() {
+		return informacionString;
 	}
 
-	public void setPoblacionAfectada(int poblacionAfectada) {
-		this.poblacionAfectada = poblacionAfectada;
+
+	public void setInformacionString(String informacionString) {
+		this.informacionString = informacionString;
 	}
 
-	public Date getPrimerbroteDate() {
-		return primerbroteDate;
+
+	public Date getDescubierta() {
+		return descubierta;
 	}
 
-	public void setPrimerbroteDate(Date primerbroteDate) {
-		this.primerbroteDate = primerbroteDate;
+
+	public void setDescubierta(Date descubierta) {
+		this.descubierta = descubierta;
 	}
 
-	public Date getFechaActual() {
-		return fechaActual;
-	}
 
-	public void setFechaActual(Date fechaActual) {
-		this.fechaActual = fechaActual;
-	}
 	
 }

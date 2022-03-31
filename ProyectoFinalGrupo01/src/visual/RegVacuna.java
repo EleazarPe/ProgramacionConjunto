@@ -50,6 +50,7 @@ public class RegVacuna extends JDialog {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegVacuna.class.getResource("/img/cruz-roja.png")));
 		setTitle("Registrar Vacuna");
 		setBounds(100, 100, 427, 451);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

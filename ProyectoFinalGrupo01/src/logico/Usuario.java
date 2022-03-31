@@ -10,18 +10,16 @@ public class Usuario {
 	protected String ID;
 	protected String Codigo;
 	protected Date FechaNaciento;
-	protected String Ocupacion;
 	protected String telefono;
 	protected String direccion;
 	
-	public Usuario(String nombre, String apellido, String ID, Date FechaNaciento, String ocupacion, String telefono,
+	public Usuario(String nombre, String apellido, String ID, Date FechaNaciento, String telefono,
 			String direccion, String code) {
 		super();
 		this.Nombre = nombre;
 		this.Apellido = apellido;
 		this.ID = ID;
 		this.FechaNaciento = FechaNaciento;
-		this.Ocupacion = ocupacion;
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.Codigo = code;
@@ -55,12 +53,6 @@ public class Usuario {
 		ID = iD;
 	}
 
-	public String getOcupacion() {
-		return Ocupacion;
-	}
-	public void setOcupacion(String ocupacion) {
-		Ocupacion = ocupacion;
-	}
 	public String getTelefono() {
 		return telefono;
 	}

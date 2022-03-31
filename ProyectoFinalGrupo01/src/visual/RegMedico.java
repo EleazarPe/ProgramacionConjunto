@@ -53,6 +53,16 @@ public class RegMedico extends JDialog {
 	private JSpinner spinner;
 	private Medico mimedico = null;
 
+	
+	public static void main(String[] args) {
+		try {
+			RegMedico dialog = new RegMedico(null);
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public RegMedico(Medico us) {
 		mimedico = us;
@@ -238,6 +248,7 @@ public class RegMedico extends JDialog {
 							mimedico.setConsultorioString(cmbConsultorio.getSelectedItem().toString());
 							mimedico.setCodigo(txtId.getText());
 							mimedico.setEspecialidad( txtEspecialidad.getText());
+							JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
 							dispose();
 						}
 					}

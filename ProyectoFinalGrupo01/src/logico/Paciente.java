@@ -7,14 +7,16 @@ public class Paciente extends Usuario {
 	private ArrayList<Consulta> misConsultas;
 	private String tipoSangre;
 	private String CorreoElectronico;
+	private String Ocupacion;
 	
 	public Paciente(String nombre, String apellido, String cedula, Date fechaNaciento, String ocupacion,
 			String telefono, String direccion,String codigo,ArrayList<Consulta>misConsultas, String tipoSangre,
 			String correoElectronico) {
-		super(nombre, apellido, cedula, fechaNaciento, ocupacion, telefono, direccion,codigo);
+		super(nombre, apellido, cedula, fechaNaciento, telefono, direccion,codigo);
 		this.misConsultas = new ArrayList<>();
 		this.tipoSangre = tipoSangre;
 		this.CorreoElectronico = correoElectronico;
+		this.Ocupacion = ocupacion;
 	}
 
 	public ArrayList<Consulta> getMisConsultas() {
@@ -39,6 +41,14 @@ public class Paciente extends Usuario {
 
 	public void setCorreoElectronico(String correoElectronico) {
 		CorreoElectronico = correoElectronico;
+	}
+
+	public String getOcupacion() {
+		return Ocupacion;
+	}
+
+	public void setOcupacion(String ocupacion) {
+		Ocupacion = ocupacion;
 	}
 
 }

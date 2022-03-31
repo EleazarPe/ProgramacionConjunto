@@ -144,9 +144,9 @@ public class RegEnfermedad extends JDialog {
 						//////////////////////////////////////----------------------->>>>>>>>>
 						Enfermedad nuevaEnfermedad = null;
 						nuevaEnfermedad = new Enfermedad(txtCodigo.getText(), txtNombre.getText(), comboBox.getSelectedItem().toString(), textPane.getText(), (Date) spinner.getValue());
-						//Clinica.getInstance().se
+						Clinica.getInstance().insertarEnfermedad(nuevaEnfermedad);
 						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
-						
+						clean();
 					}
 				});
 				okButton.setActionCommand("OK");

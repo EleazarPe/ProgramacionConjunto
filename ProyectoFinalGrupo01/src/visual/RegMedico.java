@@ -53,13 +53,7 @@ public class RegMedico extends JDialog {
 	private JSpinner spinner;
 	private Medico mimedico = null;
 
-	/**
-	 * Launch the application.
-	 */
 
-	/**
-	 * Create the dialog.
-	 */
 	public RegMedico(Medico us) {
 		mimedico = us;
 		if(us == null) {

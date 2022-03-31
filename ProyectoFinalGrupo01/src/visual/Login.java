@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
 
 public class Login extends JDialog {
 
@@ -36,6 +37,7 @@ public class Login extends JDialog {
 
 
 	public Login() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/cruz-roja.png")));
 		setBounds(100, 100, 450, 450);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -6,12 +6,14 @@ public class Empleado extends Usuario {
 	
 	private String login;
 	private String password;
+	private String ocupacionString;
 	
 	public Empleado(String nombre, String apellido, String cedula, Date fechaNaciento, String ocupacion,
 			String telefono, String direccion, String login,String codigo, String password ) {
-		super(nombre, apellido, cedula, fechaNaciento, ocupacion, telefono, direccion, codigo);
+		super(nombre, apellido, cedula, fechaNaciento, telefono, direccion, codigo);
 		this.login = login;
 		this.password = password;
+		this.setOcupacionString(ocupacion);
 	}
 
 	public String getLogin() {
@@ -28,6 +30,14 @@ public class Empleado extends Usuario {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getOcupacionString() {
+		return ocupacionString;
+	}
+
+	public void setOcupacionString(String ocupacionString) {
+		this.ocupacionString = ocupacionString;
 	}
 
 }

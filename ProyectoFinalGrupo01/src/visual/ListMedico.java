@@ -72,7 +72,7 @@ public class ListMedico extends JDialog {
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 					table = new JTable();
-					String headers[] = {"Cedula","ID","Nombre","Apellido","Ocupacion","Especialidad","Consultorio","Direccion","Telefono"};
+					String headers[] = {"Cedula","ID","Nombre","Apellido","Especialidad","Consultorio","Direccion","Telefono"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
@@ -151,11 +151,10 @@ public class ListMedico extends JDialog {
 				row[1] = object.getCodigo();
 				row[2] =object.getNombre();
 				row[3] = object.getApellido();
-				row[4] = object.getOcupacion();
-				row[5] = ((Medico) object).getEspecialidad();
-				row[6] = ((Medico) object).getConsultorioString();
-				row[7] =object.getDireccion();
-				row[8] = object.getTelefono();
+				row[4] = ((Medico) object).getEspecialidad();
+				row[5] = ((Medico) object).getConsultorioString();
+				row[6] =object.getDireccion();
+				row[7] = object.getTelefono();
 				model.addRow(row);	
 			}
 		}

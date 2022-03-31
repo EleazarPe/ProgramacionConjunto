@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -115,6 +114,29 @@ public class Principal extends JFrame {
 			}
 		});
 		mnNewMenu_3.add(mntmNewMenuItem_4);
+		
+		JMenu mnNewMenu_4 = new JMenu("Enfermedad");
+		menuBar.add(mnNewMenu_4);
+		
+		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Listado");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ListEnfermedad list = new ListEnfermedad();
+				list.setModal(true);
+				list.setVisible(true);
+			}
+		});
+		mnNewMenu_4.add(mntmNewMenuItem_5);
+		
+		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Registrar");
+		mntmNewMenuItem_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegEnfermedad consulta = new RegEnfermedad();
+				consulta.setModal(true);
+				consulta.setVisible(true);
+			}
+		});
+		mnNewMenu_4.add(mntmNewMenuItem_6);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

@@ -16,6 +16,7 @@ import java.awt.Toolkit;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 
 public class ListEnfermedad extends JDialog {
@@ -108,7 +109,7 @@ public class ListEnfermedad extends JDialog {
 				row[1] = object.getNombreString();
 				row[2] = object.getTipoString();
 				row[3] = object.getInformacionString();
-				row[4] = object.getDescubierta();
+				row[4] = new SimpleDateFormat("dd/MM/yyyy").format(object.getDescubierta());
 				model.addRow(row);	
 		}
 	}

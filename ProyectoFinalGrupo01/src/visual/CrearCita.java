@@ -87,11 +87,13 @@ public class CrearCita extends JFrame {
 		panel.add(button);
 		
 		txtNombre = new JTextField();
+		txtNombre.setEditable(false);
 		txtNombre.setBounds(93, 190, 155, 25);
 		panel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtApellido = new JTextField();
+		txtApellido.setEditable(false);
 		txtApellido.setColumns(10);
 		txtApellido.setBounds(93, 227, 155, 25);
 		panel.add(txtApellido);
@@ -101,7 +103,7 @@ public class CrearCita extends JFrame {
 		panel.add(lblDocIdentidad);
 		
 		JComboBox<Object> cbxTipoDocumento = new JComboBox<Object>();
-		cbxTipoDocumento.setModel(new DefaultComboBoxModel<Object>(new String[] {"Cedula", "Pasaporte", "Licencia"}));
+		cbxTipoDocumento.setModel(new DefaultComboBoxModel(new String[] {"Cedula", "Pasaporte", "Licencia"}));
 		cbxTipoDocumento.setBounds(165, 117, 110, 25);
 		panel.add(cbxTipoDocumento);
 		
@@ -127,11 +129,13 @@ public class CrearCita extends JFrame {
 		panel.add(lblTelefonoOpcional);
 		
 		txtCelular = new JTextField();
+		txtCelular.setEditable(false);
 		txtCelular.setBounds(340, 191, 110, 25);
 		panel.add(txtCelular);
 		txtCelular.setColumns(10);
 		
 		txtTelefonoOpc = new JTextField();
+		txtTelefonoOpc.setEditable(false);
 		txtTelefonoOpc.setBounds(340, 228, 110, 25);
 		panel.add(txtTelefonoOpc);
 		txtTelefonoOpc.setColumns(10);
@@ -141,6 +145,7 @@ public class CrearCita extends JFrame {
 		panel.add(lblC);
 		
 		TxtCorreo = new JTextField();
+		TxtCorreo.setEditable(false);
 		TxtCorreo.setColumns(10);
 		TxtCorreo.setBounds(93, 265, 155, 22);
 		panel.add(TxtCorreo);
@@ -171,6 +176,7 @@ public class CrearCita extends JFrame {
 		panel.add(signoAviso4);
 		
 		JSpinner spnFechaNacimiento = new JSpinner();
+		spnFechaNacimiento.setEnabled(false);
 		spnFechaNacimiento.setModel(new SpinnerDateModel(new Date(1648008000000L), new Date(1648008000000L), null, Calendar.DAY_OF_YEAR));
 		spnFechaNacimiento.setEditor(new JSpinner.DateEditor(spnFechaNacimiento,"dd/MM/yyyy"));
 		spnFechaNacimiento.setBounds(165, 155, 110, 25);

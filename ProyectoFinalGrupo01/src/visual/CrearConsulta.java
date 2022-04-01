@@ -103,7 +103,7 @@ public class CrearConsulta extends JDialog {
 			panel.add(label_4);
 			
 			JComboBox<Object> comboBox = new JComboBox<Object>();
-			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Cedula", "Pasaporte", "Licencia"}));
+			comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"Cedula", "Pasaporte", "Licencia"}));
 			comboBox.setBounds(144, 73, 110, 25);
 			panel.add(comboBox);
 			

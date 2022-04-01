@@ -6,11 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+
+import logico.Clinica;
+import logico.Usuario;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -20,6 +24,8 @@ import java.util.Date;
 import java.util.Calendar;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CrearCita extends JFrame {
 
@@ -35,6 +41,7 @@ public class CrearCita extends JFrame {
 	private JTextField TxtCorreo;
 	private JTextField txtNid;
 	private JTextField txtNotas;
+	private JSpinner spnFechaNacimiento;
 
 	/**
 	 * Launch the application.
@@ -81,6 +88,24 @@ public class CrearCita extends JFrame {
 		panel.add(lblNewLabel_1);
 		
 		JButton button = new JButton("Buscar    ");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Usuario paciente;
+				paciente = Clinica.getInstance().buscarUsuarioByCedula(txtNid.getText());
+				
+				if(paciente == null) {
+					JOptionPane.showMessageDialog(null, "No Existen Pacientes Registrados Con Esta Identificacion",
+							"PACIENTE NO ENCONTRADO",JOptionPane.ERROR_MESSAGE);
+				
+					ActivationKey(true);
+				}else {
+					txtNid.setText(paciente.getID());
+					txtNombre.setText(paciente.getNombre());
+					txtCelular.setText(paciente.getTelefono());
+					txtTelefonoOpc.setText(paciente.getDireccion());
+				}
+			}
+		});
 		button.setIcon(new ImageIcon(CrearCita.class.getResource("/img/lupa.png")));
 		button.setHorizontalAlignment(SwingConstants.LEFT);
 		button.setBounds(471, 45, 132, 34);
@@ -103,7 +128,7 @@ public class CrearCita extends JFrame {
 		panel.add(lblDocIdentidad);
 		
 		JComboBox<Object> cbxTipoDocumento = new JComboBox<Object>();
-		cbxTipoDocumento.setModel(new DefaultComboBoxModel(new String[] {"Cedula", "Pasaporte", "Licencia"}));
+		cbxTipoDocumento.setModel(new DefaultComboBoxModel<Object>(new String[] {"Cedula", "Pasaporte", "Licencia"}));
 		cbxTipoDocumento.setBounds(165, 117, 110, 25);
 		panel.add(cbxTipoDocumento);
 		
@@ -175,7 +200,7 @@ public class CrearCita extends JFrame {
 		signoAviso4.setBounds(10, 265, 16, 25);
 		panel.add(signoAviso4);
 		
-		JSpinner spnFechaNacimiento = new JSpinner();
+		spnFechaNacimiento = new JSpinner();
 		spnFechaNacimiento.setEnabled(false);
 		spnFechaNacimiento.setModel(new SpinnerDateModel(new Date(1648008000000L), new Date(1648008000000L), null, Calendar.DAY_OF_YEAR));
 		spnFechaNacimiento.setEditor(new JSpinner.DateEditor(spnFechaNacimiento,"dd/MM/yyyy"));
@@ -247,7 +272,7 @@ public class CrearCita extends JFrame {
 		lblNewLabel_2.setBounds(10, 78, 46, 25);
 		panel_2.add(lblNewLabel_2);
 		
-		JComboBox cbxDoctor = new JComboBox();
+		JComboBox<Object> cbxDoctor = new JComboBox<Object>();
 		cbxDoctor.setEnabled(false);
 		cbxDoctor.setBounds(90, 78, 147, 25);
 		panel_2.add(cbxDoctor);
@@ -261,5 +286,14 @@ public class CrearCita extends JFrame {
 		signoAviso7.setBounds(214, 339, 16, 25);
 		contentPane.add(signoAviso7);
 		signoAviso7.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+	}
+	
+	public void ActivationKey(boolean value) {
+		txtNombre.setEditable(true);
+		txtApellido.setEditable(true);
+		spnFechaNacimiento.setEnabled(true);
+		txtCelular.setEditable(true);
+		txtTelefonoOpc.setEditable(true);
+		TxtCorreo.setEditable(true);
 	}
 }

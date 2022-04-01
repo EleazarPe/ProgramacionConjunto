@@ -10,10 +10,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextArea;
 import javax.swing.JMenuBar;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
@@ -151,7 +149,7 @@ public class CrearConsulta extends JDialog {
 			panel_1.add(lblNewLabel_1);
 			
 			JComboBox<Object> comboBox_1 = new JComboBox<Object>();
-			comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"A", "B", "AB", "O"}));
+			comboBox_1.setModel(new DefaultComboBoxModel<Object>(new String[] {"A", "B", "AB", "O"}));
 			comboBox_1.setBounds(108, 91, 55, 25);
 			panel_1.add(comboBox_1);
 			
@@ -160,7 +158,7 @@ public class CrearConsulta extends JDialog {
 			panel_1.add(lblRh);
 			
 			JComboBox<Object> comboBox_2 = new JComboBox<Object>();
-			comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Positivo", "Negativo"}));
+			comboBox_2.setModel(new DefaultComboBoxModel<Object>(new String[] {"Positivo", "Negativo"}));
 			comboBox_2.setBounds(240, 93, 77, 25);
 			panel_1.add(comboBox_2);
 		}

@@ -21,6 +21,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
+import java.util.Random;
 import java.util.Calendar;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -42,6 +43,9 @@ public class CrearCita extends JFrame {
 	private JTextField txtNid;
 	private JTextField txtNotas;
 	private JSpinner spnFechaNacimiento;
+	private Random rand = new Random();
+	private JComboBox<Object> cbxTipoDocumento;
+	private JTextField txtID;
 
 	/**
 	 * Launch the application.
@@ -127,7 +131,7 @@ public class CrearCita extends JFrame {
 		lblDocIdentidad.setBounds(31, 117, 130, 25);
 		panel.add(lblDocIdentidad);
 		
-		JComboBox<Object> cbxTipoDocumento = new JComboBox<Object>();
+		cbxTipoDocumento = new JComboBox<Object>();
 		cbxTipoDocumento.setModel(new DefaultComboBoxModel<Object>(new String[] {"Cedula", "Pasaporte", "Licencia"}));
 		cbxTipoDocumento.setBounds(165, 117, 110, 25);
 		panel.add(cbxTipoDocumento);
@@ -217,6 +221,17 @@ public class CrearCita extends JFrame {
 		signoAviso6.setBounds(27, 23, 86, 72);
 		panel.add(signoAviso6);
 		
+		JLabel lblNewLabel_6 = new JLabel("ID:");
+		lblNewLabel_6.setBounds(303, 263, 34, 25);
+		panel.add(lblNewLabel_6);
+		
+		txtID = new JTextField();
+		txtID.setEditable(false);
+		txtID.setColumns(10);
+		txtID.setText("Pac-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
+		txtID.setBounds(340, 266, 110, 25);
+		panel.add(txtID);
+		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_1.setBounds(0, 573, 650, 38);
@@ -295,5 +310,20 @@ public class CrearCita extends JFrame {
 		txtCelular.setEditable(true);
 		txtTelefonoOpc.setEditable(true);
 		TxtCorreo.setEditable(true);
+	}
+	
+	private void clean() {
+		txtNombre.setText("");
+		txtApellido.setText("");
+		txtNid.setText("");
+		txtCelular.setText("");
+		cbxTipoDocumento.setSelectedIndex(0);
+		txtTelefonoOpc.setText("");
+		spnFechaNacimiento.setValue(new Date());
+		TxtCorreo.setText("");
+		txtNotas.setText("");
+		txtID.setText("Pac-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
+		
+
 	}
 }

@@ -171,6 +171,7 @@ public class RegMedico extends JDialog {
 			spinner = new JSpinner();
 			spinner.setBounds(10, 360, 193, 20);
 			spinner.setModel(new SpinnerDateModel(new Date(1647921600000L), null, null, Calendar.YEAR));
+			spinner.setValue(new Date());
 			spinner.setEditor(new JSpinner.DateEditor(spinner,"dd/MM/yyyy"));
 			panel.add(spinner);
 

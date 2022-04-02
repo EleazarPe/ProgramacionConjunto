@@ -101,6 +101,16 @@ public class Principal extends JFrame {
 				vacuna.setVisible(true);
 			}
 		});
+		
+		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Listar");
+		mntmNewMenuItem_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListVacuna listVacuna = new ListVacuna();
+				listVacuna.setModal(true);
+				listVacuna.setVisible(true);
+			}
+		});
+		mnNewMenu_2.add(mntmNewMenuItem_7);
 		mnNewMenu_2.add(mntmNewMenuItem_3);
 		
 		JMenu mnNewMenu_3 = new JMenu("Cita");

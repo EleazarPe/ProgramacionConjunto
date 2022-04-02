@@ -18,6 +18,8 @@ import logico.Vacuna;
 
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Random;
@@ -199,12 +201,16 @@ public class RegVacuna extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						//////------------------------------------>>>>>>>>>>>>
+						//list_1.getModel().getElementAt(0).substring(0, 9)
+						
 						for(int i =0; i < list_1.getModel().getSize();i++) {
-							enfermedads.add(Clinica.getInstance().buscarEnfermedadByCodigo(list_1.getModel().getElementAt(0).substring(0, 9)));
+							System.out.println("Codigo: "+list_1.getModel().getElementAt(i).substring(0, 9));
+							enfermedads.add(Clinica.getInstance().buscarEnfermedadByCodigo(list_1.getModel().getElementAt(i).substring(0, 9)));
 						}
 						Vacuna auxVacuna = null;
-						auxVacuna = new Vacuna(txtCodigo.getText(), txtNombre.getText(), cbxLab.getSelectedItem().toString(), cbxAd.getSelectedItem().toString(),enfermedads);
-						Clinica.getInstance().insertarVacuna(auxVacuna);
+						//auxVacuna = new Vacuna(txtCodigo.getText(), txtNombre.getText(), cbxLab.getSelectedItem().toString(), cbxAd.getSelectedItem().toString(),enfermedads);
+						//Clinica.getInstance().insertarVacuna(auxVacuna);
+						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}
 				});

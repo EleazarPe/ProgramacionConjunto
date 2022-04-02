@@ -84,16 +84,16 @@ public class Clinica {
 		usuarios.remove(user);
 	}
 	
-	public Vacuna buscarVacunabyCedula(String cedula) {
-		Vacuna auxvacuna = null;
-		for (Vacuna vc : vacunas) {
-			//if(vc.getCedulaString().equalsIgnoreCase(cedula)) {
-				//auxvacuna = vc;
-			//}
-		}
-		return auxvacuna;
-	}
 
+	public Enfermedad buscarEnfermedadByCodigo(String codigo) {
+		Enfermedad auxEnfermedad = null;
+		for (Enfermedad ef : enfermedadS) {
+			if(ef.getCodigoString().equalsIgnoreCase(codigo)) {
+				auxEnfermedad = ef;
+			}
+		}
+		return auxEnfermedad;
+	}
 	public ArrayList<Vigilancia> getVigilancias() {
 		return vigilancias;
 	}

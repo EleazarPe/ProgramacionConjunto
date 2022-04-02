@@ -105,7 +105,8 @@ public class RegEnfermedad extends JDialog {
 			panel.add(lblNewLabel_3);
 			
 			spinner = new JSpinner();
-			spinner.setModel(new SpinnerDateModel(new Date(1648699200000L), null, new Date(1648699200000L), Calendar.YEAR));
+			spinner.setModel(new SpinnerDateModel(new Date(1648935236284L), null, null, Calendar.YEAR));
+			spinner.setValue(new Date());
 			spinner.setEditor(new JSpinner.DateEditor(spinner,"dd/MM/yyyy"));
 			spinner.setBounds(10, 204, 163, 20);
 			panel.add(spinner);

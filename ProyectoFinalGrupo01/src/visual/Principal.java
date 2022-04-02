@@ -93,10 +93,10 @@ public class Principal extends JFrame {
 		JMenu mnNewMenu_2 = new JMenu("Vacuna");
 		menuBar.add(mnNewMenu_2);
 		
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("RegistroVacuna");
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Registrar");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Vacunacion vacuna = new Vacunacion();
+				RegVacuna vacuna = new RegVacuna();
 				vacuna.setModal(true);
 				vacuna.setVisible(true);
 			}

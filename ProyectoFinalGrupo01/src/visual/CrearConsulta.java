@@ -35,7 +35,6 @@ public class CrearConsulta extends JDialog {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JTextField textField;
 	private JTextPane textPane;
 	private JTextPane textPane_1;
 
@@ -181,10 +180,9 @@ public class CrearConsulta extends JDialog {
 			PanelPacienteActual.add(PnlObservaciones);
 			PnlObservaciones.setLayout(null);
 			
-			textField = new JTextField();
-			textField.setBounds(10, 22, 740, 97);
-			PnlObservaciones.add(textField);
-			textField.setColumns(10);
+			JTextPane textPane_2 = new JTextPane();
+			textPane_2.setBounds(10, 22, 740, 97);
+			PnlObservaciones.add(textPane_2);
 			
 			JPanel pnlRecetas = new JPanel();
 			pnlRecetas.setBorder(new TitledBorder(null, "Receta", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -211,13 +209,13 @@ public class CrearConsulta extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				JButton okButton = new JButton("Guardar");
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

@@ -119,8 +119,8 @@ public class Principal extends JFrame {
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Crear Citas");
 		mntmNewMenuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				
+				CrearCita cita = new CrearCita();
+				cita.setVisible(true);
 			}
 		});
 		mnNewMenu_3.add(mntmNewMenuItem_4);

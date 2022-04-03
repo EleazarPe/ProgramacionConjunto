@@ -312,7 +312,7 @@ public class CrearCita extends JFrame {
 		TxtCorreo.setEditable(true);
 	}
 	
-	private void clean() {
+	/*private void clean() {
 		txtNombre.setText("");
 		txtApellido.setText("");
 		txtNid.setText("");
@@ -325,5 +325,5 @@ public class CrearCita extends JFrame {
 		txtID.setText("Pac-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
 		
 
-	}
+	}*/
 }

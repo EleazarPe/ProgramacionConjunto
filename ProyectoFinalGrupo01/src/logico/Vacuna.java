@@ -16,7 +16,7 @@ public class Vacuna {
 		this.nombreString = nombreString;
 		this.laboratorioString = laboratorioString;
 		this.administracionString = administracionString;
-		this.enfermedades = new ArrayList<Enfermedad>();
+		this.enfermedades = enfermedades;
 	}
 
 	public String getNombreString() {

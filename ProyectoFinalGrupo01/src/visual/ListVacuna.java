@@ -10,7 +10,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import logico.Clinica;
-import logico.Enfermedad;
 import logico.Vacuna;
 
 import javax.swing.JScrollPane;
@@ -96,7 +95,22 @@ public class ListVacuna extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 		}
+		//System.out.println("La enfermedad: "+Clinica.getInstance().getVacunas().get(0).getEnfermedades().get(0).getNombreString());
 		loadTable();
+	}
+	private String retornaString(Vacuna object) {
+		String listaefString = " ";
+		System.out.println("----------------<<<<<");
+		for (int i = 0; i<object.getEnfermedades().size(); i++) {
+			System.out.println("---------------->>>>");
+			if(i== 0) {
+				listaefString = listaefString.concat(object.getEnfermedades().get(i).getNombreString());
+			}else {
+				listaefString = listaefString.concat(", "+object.getEnfermedades().get(i).getNombreString());	
+			}
+			//System.out.println(object.getEnfermedades().get(i).getNombreString());
+		}
+		return listaefString;
 	}
 	private void loadTable() {
 		model.setRowCount(0);
@@ -106,11 +120,7 @@ public class ListVacuna extends JDialog {
 			row[1] = object.getNombreString();
 			row[2] = object.getLaboratorioString();
 			row[3] = object.getAdministracionString();
-			String listaefString = null;
-			for (Enfermedad ef : object.getEnfermedades()) {
-				listaefString += " "+ ef.getNombreString();
-			}
-			row[4] = listaefString;
+			row[4] = retornaString(object);
 			model.addRow(row);	
 		}
 	}

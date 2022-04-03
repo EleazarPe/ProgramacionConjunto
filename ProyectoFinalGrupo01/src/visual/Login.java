@@ -41,7 +41,7 @@ public class Login extends JDialog {
 
 	public Login() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/cruz-roja.png")));
-		setBounds(100, 100, 450, 450);
+		setBounds(100, 100, 600, 450);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLocationRelativeTo(null);
@@ -57,11 +57,40 @@ public class Login extends JDialog {
 			JPanel panel_1 = new JPanel();
 			panel_1.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(255, 255, 0)));
 			panel_1.setBackground(new Color(30, 144, 255));
-			panel_1.setBounds(10, 11, 420, 418);
+			panel_1.setBounds(10, 11, 570, 418);
 			panel.add(panel_1);
 			panel_1.setLayout(null);
 			
+			JLabel LblSalir = new JLabel("X");
+			LblSalir.setForeground(new Color(255, 255, 255));
+			LblSalir.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					if(JOptionPane.showConfirmDialog(null, "¿Esta seguro de que desea cerrar el programa?", "Confirmacion",
+							JOptionPane.YES_NO_OPTION)== 0);{
+						Login.this.dispose();
+					}
+				}
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					LblSalir.setForeground(Color.red);
+				}
+				public void mouseExited(MouseEvent e) {
+					LblSalir.setForeground(Color.white);
+				}
+			});
+			LblSalir.setFont(new Font("Tahoma", Font.BOLD, 20));
+			LblSalir.setBounds(535, 11, 25, 14);
+			panel_1.add(LblSalir);
+			
+			JPanel panel_2 = new JPanel();
+			panel_2.setBounds(175, 116, 200, 40);
+			panel_1.add(panel_2);
+			panel_2.setLayout(null);
+			
 			txtUsuario = new JTextField();
+			txtUsuario.setBounds(0, 0, 150, 40);
+			panel_2.add(txtUsuario);
 			txtUsuario.addFocusListener(new FocusAdapter() {
 				@Override
 				public void focusGained(FocusEvent arg0) {
@@ -85,11 +114,16 @@ public class Login extends JDialog {
 			
 
 			});
-			txtUsuario.setBounds(121, 133, 150, 34);
-			panel_1.add(txtUsuario);
 			txtUsuario.setColumns(10);
 			
+			JPanel panel_3 = new JPanel();
+			panel_3.setLayout(null);
+			panel_3.setBounds(175, 185, 200, 40);
+			panel_1.add(panel_3);
+			
 			pwdContrasea = new JPasswordField();
+			pwdContrasea.setBounds(0, 0, 150, 40);
+			panel_3.add(pwdContrasea);
 			pwdContrasea.addFocusListener(new FocusAdapter() {
 				@SuppressWarnings("deprecation")
 				@Override
@@ -113,38 +147,18 @@ public class Login extends JDialog {
 			pwdContrasea.setText("Contrase\u00F1a");
 			pwdContrasea.setToolTipText("");
 			pwdContrasea.setEchoChar((char)0);
+			
+			JPanel panel_4 = new JPanel();
+			panel_4.setBounds(196, 251, 159, 31);
+			panel_1.add(panel_4);
+			
+			JLabel lblNewLabel = new JLabel("Iniciar Sesion");
+			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			panel_4.add(lblNewLabel);
 			pwdContrasea.addMouseListener(new MouseAdapter() {
 				
 
 			});
-			pwdContrasea.setBounds(121, 181, 150, 34);
-			panel_1.add(pwdContrasea);
-			
-			JButton btnNewButton = new JButton("Login");
-			btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
-			btnNewButton.setBounds(142, 236, 113, 34);
-			panel_1.add(btnNewButton);
-			
-			JLabel LblSalir = new JLabel("X");
-			LblSalir.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					if(JOptionPane.showConfirmDialog(null, "¿Esta seguro de que desea cerrar el programa?", "Confirmacion",
-							JOptionPane.YES_NO_OPTION)== 0);{
-						Login.this.dispose();
-					}
-				}
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					LblSalir.setForeground(Color.red);
-				}
-				public void mouseExited(MouseEvent e) {
-					LblSalir.setForeground(Color.white);
-				}
-			});
-			LblSalir.setFont(new Font("Tahoma", Font.BOLD, 20));
-			LblSalir.setBounds(395, 11, 25, 14);
-			panel_1.add(LblSalir);
 		}
 	}
 }

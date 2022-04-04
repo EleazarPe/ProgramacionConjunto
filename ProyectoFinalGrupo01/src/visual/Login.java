@@ -1,7 +1,6 @@
 package visual;
 
 import java.awt.BorderLayout;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -149,7 +148,7 @@ public class Login extends JDialog {
 			pwdContrasea.setEchoChar((char)0);
 			
 			JPanel panel_4 = new JPanel();
-			panel_4.setBounds(196, 251, 159, 31);
+			panel_4.setBounds(196, 252, 159, 31);
 			panel_1.add(panel_4);
 			
 			JLabel lblNewLabel = new JLabel("Iniciar Sesion");

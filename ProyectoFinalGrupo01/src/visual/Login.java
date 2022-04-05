@@ -11,9 +11,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.Image;
-import java.awt.TextField;
 
 
 import javax.swing.border.MatteBorder;
@@ -23,8 +21,6 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowFocusListener;
 import java.awt.Toolkit;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -151,6 +147,7 @@ public class Login extends JDialog {
 			JPasswordField pwdContraseña = new JPasswordField();
 			pwdContraseña.setBounds(0, 0, 150, 40);
 			pwdContraseña.addFocusListener(new FocusAdapter() {
+				@SuppressWarnings("deprecation")
 				@Override
 				public void focusGained(FocusEvent e) {
 					if(pwdContraseña.getText().equals("Contraseña")) {
@@ -162,6 +159,7 @@ public class Login extends JDialog {
 					}
 					
 				}
+				@SuppressWarnings("deprecation")
 				@Override
 				public void focusLost(FocusEvent e) {
 					if(pwdContraseña.getText().equals("")) {

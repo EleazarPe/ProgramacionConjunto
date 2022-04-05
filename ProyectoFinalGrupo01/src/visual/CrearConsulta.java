@@ -55,6 +55,7 @@ public class CrearConsulta extends JDialog {
 	 * Create the dialog.
 	 */
 	public CrearConsulta() {
+		//Comentario de un comentario comentado en la comentacion 
 		setModal(true);
 		setResizable(false);
 		setTitle("Control de Consulta\r\ns");

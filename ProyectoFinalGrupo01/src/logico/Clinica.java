@@ -102,4 +102,19 @@ public class Clinica {
 		this.vigilancias = vigilancias;
 	}
 	
+	public Medico buscarMedicoByEspecialidadAndNombre(String especialidad, String nombre){
+		Medico auxMedico = null;
+		for (Usuario med : usuarios) {
+			if(med instanceof Medico) {
+				if(((Medico) med).getEspecialidad().equalsIgnoreCase(especialidad)) {
+					if(med.getNombre().equalsIgnoreCase(nombre)) {
+						auxMedico = (Medico) med;
+					}
+				}
+			}
+		}
+		return auxMedico;
+	}
+	
+	
 }

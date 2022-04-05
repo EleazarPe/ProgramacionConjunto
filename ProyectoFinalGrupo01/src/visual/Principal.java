@@ -33,6 +33,9 @@ public class Principal extends JFrame {
 				try {
 					Principal frame = new Principal();
 					frame.setVisible(true);
+					Login login = new Login();
+					login.setVisible(true);
+					login.setModal(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -50,6 +53,9 @@ public class Principal extends JFrame {
 		setBounds(100, 100, 450, 300);
 		setSize(dim.width, dim.height-25);
 		setLocationRelativeTo(null);
+		
+		
+			
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -151,6 +157,8 @@ public class Principal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		
 	}
 
 }

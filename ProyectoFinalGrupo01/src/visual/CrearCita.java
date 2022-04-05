@@ -380,6 +380,11 @@ public class CrearCita extends JFrame {
 		panel_1.setLayout(null);
 		
 		JButton button_1 = new JButton("Cancelar");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		button_1.setBounds(442, 7, 85, 23);
 		button_1.setActionCommand("Cancel");
 		panel_1.add(button_1);

@@ -176,7 +176,7 @@ public class CrearConsulta extends JDialog {
 			pnlDatosClinicos.add(cbxRhSangre);
 			
 			JLabel Hola = new JLabel("New label");
-			Hola.setBounds(411, 60, 46, 14);
+			Hola.setBounds(411, 46, 46, 14);
 			pnlDatosClinicos.add(Hola);
 			
 			JPanel PnlObservaciones = new JPanel();

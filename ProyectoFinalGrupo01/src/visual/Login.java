@@ -144,36 +144,36 @@ public class Login extends JDialog {
 			panel_3.setBounds(185, 248, 200, 40);
 			panel_1.add(panel_3);
 			
-			JPasswordField pwdContraseña = new JPasswordField();
-			pwdContraseña.setBounds(0, 0, 150, 40);
-			pwdContraseña.addFocusListener(new FocusAdapter() {
+			JPasswordField pwdPassword = new JPasswordField();
+			pwdPassword.setBounds(0, 0, 150, 40);
+			pwdPassword.addFocusListener(new FocusAdapter() {
 				@SuppressWarnings("deprecation")
 				@Override
 				public void focusGained(FocusEvent e) {
-					if(pwdContraseña.getText().equals("Contraseña")) {
-						pwdContraseña.setEchoChar('●');
-						pwdContraseña.setText("");
+					if(pwdPassword.getText().equals("Contraseña")) {
+						pwdPassword.setEchoChar('●');
+						pwdPassword.setText("");
 					}
 					else {
-						pwdContraseña.selectAll();
+						pwdPassword.selectAll();
 					}
 					
 				}
 				@SuppressWarnings("deprecation")
 				@Override
 				public void focusLost(FocusEvent e) {
-					if(pwdContraseña.getText().equals("")) {
-						pwdContraseña.setText("Contraseña");
-						pwdContraseña.setEchoChar((char)0);
+					if(pwdPassword.getText().equals("")) {
+						pwdPassword.setText("Contraseña");
+						pwdPassword.setEchoChar((char)0);
 					}
 				}
 			});
 			panel_3.setLayout(null);
-			pwdContraseña.setBorder(null);
-			pwdContraseña.setEchoChar((char)0);
-			panel_3.add(pwdContraseña);
-			pwdContraseña.setText("Contraseña");
-			pwdContraseña.setToolTipText("");
+			pwdPassword.setBorder(null);
+			pwdPassword.setEchoChar((char)0);
+			panel_3.add(pwdPassword);
+			pwdPassword.setText("Contraseña");
+			pwdPassword.setToolTipText("");
 			
 			JLabel lblPassLogo = new JLabel("");
 			lblPassLogo.setBounds(151, -12, 49, 64);

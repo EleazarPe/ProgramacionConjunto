@@ -187,6 +187,8 @@ public class Login extends JDialog {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					 if (txtUsuario.getText().equalsIgnoreCase("Admin") && pwdPassword.getText().equals("1234")) {
+						 lblLoginMsj.setText("");
+						 JOptionPane.showMessageDialog(null, "Inicio de sesion completado");
 						 dispose();
 					}
 					 else if (txtUsuario.getText().equalsIgnoreCase("") || txtUsuario.getText().equalsIgnoreCase("Usuario") || 

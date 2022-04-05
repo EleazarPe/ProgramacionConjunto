@@ -1,41 +1,43 @@
 package visual;
 
-import java.awt.EventQueue;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
 
-import javax.swing.JFrame;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.SpinnerDateModel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+
 import logico.Cita;
 import logico.Clinica;
 import logico.Paciente;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
-import java.util.Date;
-import java.util.Random;
-import java.util.Calendar;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextPane;
-import java.awt.event.KeyAdapter;
 
-public class CrearCita extends JFrame {
 
-	/**
-	 * 
-	 */
+public class CrearCitas extends JDialog {
+
+	private final JPanel contentPanel = new JPanel();
+	private JButton btnCancelar;
+	private JButton btnRegistrar;
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtCelular;
@@ -56,36 +58,33 @@ public class CrearCita extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CrearCita frame = new CrearCita();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		try {
+			CrearCitas dialog = new CrearCitas();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the dialog.
 	 */
-	public CrearCita() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(CrearCita.class.getResource("/img/cruz-roja.png")));
+	public CrearCitas() {
+		setModal(true);		
+		setIconImage(Toolkit.getDefaultToolkit().getImage(CrearCitas.class.getResource("/img/cruz-roja.png")));
 		setTitle("Registro De Citas");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 666, 730);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLocationRelativeTo(null);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(12, 12, 630, 370);
 		panel.setBorder(new TitledBorder(null, "Datos del Paciente:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		contentPane.add(panel);
+		contentPanel.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblNombre = new JLabel("Nombres:");
@@ -117,7 +116,7 @@ public class CrearCita extends JFrame {
 				}
 			}
 		});
-		button.setIcon(new ImageIcon(CrearCita.class.getResource("/img/lupa.png")));
+		button.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/lupa.png")));
 		button.setHorizontalAlignment(SwingConstants.LEFT);
 		button.setBounds(488, 112, 132, 34);
 		panel.add(button);
@@ -258,27 +257,27 @@ public class CrearCita extends JFrame {
 		txtTelefonoOpc.setColumns(10);
 		
 		JLabel signoAviso = new JLabel("");
-		signoAviso.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		signoAviso.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
 		signoAviso.setBounds(10, 117, 16, 25);
 		panel.add(signoAviso);
 		
 		JLabel signoAviso1 = new JLabel("");
-		signoAviso1.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		signoAviso1.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
 		signoAviso1.setBounds(271, 190, 16, 25);
 		panel.add(signoAviso1);
 		
 		JLabel signoAviso2 = new JLabel("");
-		signoAviso2.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		signoAviso2.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
 		signoAviso2.setBounds(10, 191, 16, 25);
 		panel.add(signoAviso2);
 		
 		JLabel signoAviso3 = new JLabel("");
-		signoAviso3.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		signoAviso3.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
 		signoAviso3.setBounds(10, 227, 16, 25);
 		panel.add(signoAviso3);
 		
 		JLabel signoAviso4 = new JLabel("");
-		signoAviso4.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		signoAviso4.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
 		signoAviso4.setBounds(271, 227, 16, 25);
 		panel.add(signoAviso4);
 		
@@ -291,12 +290,12 @@ public class CrearCita extends JFrame {
 		panel.add(spnFechaNacimiento);
 		
 		JLabel signoAviso5 = new JLabel("");
-		signoAviso5.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		signoAviso5.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
 		signoAviso5.setBounds(10, 153, 16, 25);
 		panel.add(signoAviso5);
 		
 		JLabel signoAviso6 = new JLabel("");
-		signoAviso6.setIcon(new ImageIcon(CrearCita.class.getResource("/img/prescripcion-medica.png")));
+		signoAviso6.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/prescripcion-medica.png")));
 		signoAviso6.setBounds(27, 23, 86, 72);
 		panel.add(signoAviso6);
 		
@@ -318,7 +317,7 @@ public class CrearCita extends JFrame {
 		panel.add(lblOcupacion);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		label.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
 		label.setBounds(10, 263, 16, 25);
 		panel.add(label);
 		
@@ -333,7 +332,7 @@ public class CrearCita extends JFrame {
 		panel.add(lblDireccion);
 		
 		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		label_1.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
 		label_1.setBounds(271, 263, 16, 25);
 		panel.add(label_1);
 		
@@ -364,57 +363,58 @@ public class CrearCita extends JFrame {
 		panel.add(cbxRh);
 		
 		JLabel label_4 = new JLabel("");
-		label_4.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		label_4.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
 		label_4.setBounds(271, 310, 16, 25);
 		panel.add(label_4);
 		
 		JLabel label_5 = new JLabel("");
-		label_5.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		label_5.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
 		label_5.setBounds(76, 310, 16, 25);
 		panel.add(label_5);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(0, 653, 650, 38);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
-		
-		JButton button_1 = new JButton("Cancelar");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
+		{
+			JPanel buttonPane = new JPanel();
+			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			{
+				btnRegistrar = new JButton("Registrar");
+				btnRegistrar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if(paciente == null) {
+							Paciente auxPaciente = null;
+							Cita auxCita = null;
+							auxPaciente = new Paciente(txtNombre.getText(), txtApellido.getText(), txtNid.getText(), (Date)spnFechaNacimiento.getValue(), cbxOcupacion.getSelectedItem().toString(), txtCelular.getText(), txtDireccion.getText(), txtIDPaciente.getText(), cbxTipoBlood.getSelectedItem().toString(), txtTelefonoOpc.getText());
+							auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText()," ", " ");
+							Clinica.getInstance().insertarUsuario(auxPaciente);
+							auxPaciente.insertarCita(auxCita);
+						}else {
+							Cita auxCita = null;
+							auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText()," ", " ");
+							paciente.insertarCita(auxCita);
+						}
+					}
+				});
+				btnRegistrar.setActionCommand("Cancel");
+				buttonPane.add(btnRegistrar);
 			}
-		});
-		button_1.setBounds(442, 7, 85, 23);
-		button_1.setActionCommand("Cancel");
-		panel_1.add(button_1);
-		
-		JButton button_2 = new JButton("Registrar");
-		button_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(paciente == null) {
-					Paciente auxPaciente = null;
-					Cita auxCita = null;
-					auxPaciente = new Paciente(txtNombre.getText(), txtApellido.getText(), txtNid.getText(), (Date)spnFechaNacimiento.getValue(), cbxOcupacion.getSelectedItem().toString(), txtCelular.getText(), txtDireccion.getText(), txtIDPaciente.getText(), cbxTipoBlood.getSelectedItem().toString(), txtTelefonoOpc.getText());
-					auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText()," ", " ");
-					Clinica.getInstance().insertarUsuario(auxPaciente);
-					auxPaciente.insertarCita(auxCita);
-				}else {
-					Cita auxCita = null;
-					auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText()," ", " ");
-					paciente.insertarCita(auxCita);
-				}
-				
+			{
+				btnCancelar = new JButton("Cancelar");
+				btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
+				btnCancelar.setActionCommand("OK");
+				buttonPane.add(btnCancelar);
+				getRootPane().setDefaultButton(btnCancelar);
 			}
-		});
-		button_2.setBounds(537, 7, 96, 23);
-		button_2.setActionCommand("OK");
-		panel_1.add(button_2);
+		}
 		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(null, "Datos de la Cita", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_2.setBounds(12, 458, 630, 184);
-		contentPane.add(panel_2);
+		contentPanel.add(panel_2);
 		panel_2.setLayout(null);
 		
 		JLabel lblNewLabel_5 = new JLabel("Especialista:");
@@ -457,13 +457,13 @@ public class CrearCita extends JFrame {
 		
 		JLabel lblNewLabel_9 = new JLabel("AVISO: LOS CAMPOS MARCADOS      SON NECESARIOS PARA PROCESAR CORRETACTAMENTE SU SOLICITUD");
 		lblNewLabel_9.setBounds(32, 422, 598, 25);
-		contentPane.add(lblNewLabel_9);
+		contentPanel.add(lblNewLabel_9);
 		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel signoAviso7 = new JLabel("");
 		signoAviso7.setBounds(216, 422, 16, 25);
-		contentPane.add(signoAviso7);
-		signoAviso7.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		contentPanel.add(signoAviso7);
+		signoAviso7.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
 	}
 	
 	public void ActivationKey(boolean value) {
@@ -477,4 +477,5 @@ public class CrearCita extends JFrame {
 		cbxTipoBlood.setEnabled(true);
 		cbxRh.setEnabled(true);
 	}
-}
+	}
+

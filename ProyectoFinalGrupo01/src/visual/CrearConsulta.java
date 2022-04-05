@@ -59,7 +59,7 @@ public class CrearConsulta extends JDialog {
 		setModal(true);
 		setResizable(false);
 		setTitle("Control de Consulta\r\ns");
-		setBounds(100, 100, 807, 694);
+		setBounds(100, 100, 807, 812);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -174,10 +174,6 @@ public class CrearConsulta extends JDialog {
 			cbxRhSangre.setModel(new DefaultComboBoxModel<Object>(new String[] {"Positivo", "Negativo"}));
 			cbxRhSangre.setBounds(240, 93, 77, 25);
 			pnlDatosClinicos.add(cbxRhSangre);
-			
-			JLabel Hola = new JLabel("Hola");
-			Hola.setBounds(411, 46, 46, 14);
-			pnlDatosClinicos.add(Hola);
 			
 			JPanel PnlObservaciones = new JPanel();
 			PnlObservaciones.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Obsevaciones", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));

@@ -26,6 +26,7 @@ import java.awt.Color;
 import javax.swing.JTextPane;
 import javax.swing.JRadioButton;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 public class CrearConsulta extends JDialog {
 
@@ -59,6 +60,7 @@ public class CrearConsulta extends JDialog {
 	 * Create the dialog.
 	 */
 	public CrearConsulta() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(CrearConsulta.class.getResource("/img/cruz-roja.png")));
 		//Comentario de un comentario comentado en la comentacion 
 		setModal(true);
 		setResizable(false);

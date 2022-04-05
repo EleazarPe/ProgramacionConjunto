@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class Cita {
 	
-	private Usuario[] user;
 	private Date fecha;
 	private String codigo;
 	private String notas;
@@ -13,9 +12,8 @@ public class Cita {
 	
 
 	
-	public Cita(Usuario[] user, Date fecha, String codigo, String notas, String especialidad, String doctor) {
+	public Cita( Date fecha, String codigo, String notas, String especialidad, String doctor) {
 		super();
-		this.user = user;
 		this.fecha = fecha;
 		this.codigo = codigo;
 		this.notas = notas;
@@ -23,12 +21,7 @@ public class Cita {
 		this.doctor = doctor;
 	}
 	
-	public Usuario[] getUser() {
-		return user;
-	}
-	public void setUser(Usuario[] user) {
-		this.user = user;
-	}
+
 	public Date getFecha() {
 		return fecha;
 	}

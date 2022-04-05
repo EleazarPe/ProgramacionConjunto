@@ -7,9 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import logico.Cita;
 import logico.Clinica;
-import logico.Usuario;
-
+import logico.Paciente;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -40,12 +40,13 @@ public class CrearCita extends JFrame {
 	private JTextField txtApellido;
 	private JTextField txtCelular;
 	private JTextField txtTelefonoOpc;
-	private JTextField TxtCorreo;
 	private JTextField txtNid;
 	private JSpinner spnFechaNacimiento;
 	private Random rand = new Random();
 	private JComboBox<Object> cbxTipoDocumento;
-	private JTextField txtID;
+	private JTextField txtIDPaciente;
+	private JTextPane TextNotas;
+	private Paciente paciente = null;
 
 	/**
 	 * Launch the application.
@@ -94,8 +95,10 @@ public class CrearCita extends JFrame {
 		JButton button = new JButton("Buscar    ");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Usuario paciente;
-				paciente = Clinica.getInstance().buscarUsuarioByCedula(txtNid.getText());
+				
+				paciente = Clinica.getInstance().buscarPacienteById(txtNid.getText());
+				
+				
 				
 				if(paciente == null) {
 					JOptionPane.showMessageDialog(null, "No Existen Pacientes Registrados Con Esta Identificacion",
@@ -169,16 +172,6 @@ public class CrearCita extends JFrame {
 		panel.add(txtTelefonoOpc);
 		txtTelefonoOpc.setColumns(10);
 		
-		JLabel lblC = new JLabel("E-mail:");
-		lblC.setBounds(31, 264, 70, 25);
-		panel.add(lblC);
-		
-		TxtCorreo = new JTextField();
-		TxtCorreo.setEditable(false);
-		TxtCorreo.setColumns(10);
-		TxtCorreo.setBounds(93, 265, 155, 22);
-		panel.add(TxtCorreo);
-		
 		JLabel signoAviso = new JLabel("");
 		signoAviso.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
 		signoAviso.setBounds(10, 117, 16, 25);
@@ -201,13 +194,14 @@ public class CrearCita extends JFrame {
 		
 		JLabel signoAviso4 = new JLabel("");
 		signoAviso4.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
-		signoAviso4.setBounds(10, 265, 16, 25);
+		signoAviso4.setBounds(271, 227, 16, 25);
 		panel.add(signoAviso4);
 		
 		spnFechaNacimiento = new JSpinner();
 		spnFechaNacimiento.setEnabled(false);
 		spnFechaNacimiento.setModel(new SpinnerDateModel(new Date(1648008000000L), new Date(1648008000000L), null, Calendar.DAY_OF_YEAR));
 		spnFechaNacimiento.setEditor(new JSpinner.DateEditor(spnFechaNacimiento,"dd/MM/yyyy"));
+		spnFechaNacimiento.setValue(new Date());
 		spnFechaNacimiento.setBounds(165, 155, 110, 25);
 		panel.add(spnFechaNacimiento);
 		
@@ -225,12 +219,12 @@ public class CrearCita extends JFrame {
 		lblNewLabel_6.setBounds(303, 263, 34, 25);
 		panel.add(lblNewLabel_6);
 		
-		txtID = new JTextField();
-		txtID.setEditable(false);
-		txtID.setColumns(10);
-		txtID.setText("Pac-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
-		txtID.setBounds(340, 266, 110, 25);
-		panel.add(txtID);
+		txtIDPaciente = new JTextField();
+		txtIDPaciente.setEditable(false);
+		txtIDPaciente.setColumns(10);
+		txtIDPaciente.setText("Pac-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
+		txtIDPaciente.setBounds(340, 266, 110, 25);
+		panel.add(txtIDPaciente);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -244,6 +238,23 @@ public class CrearCita extends JFrame {
 		panel_1.add(button_1);
 		
 		JButton button_2 = new JButton("Registrar");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(paciente == null) {
+					Paciente auxPaciente = null;
+					Cita auxCita = null;
+					//auxPaciente = new Paciente(nombre, apellido, cedula, (Date)spnFechaNacimiento.getValue(), ocupacion, telefono, direccion, codigo, misConsultas, tipoSangre, correoElectronico);
+					auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText()," ", " ");
+					Clinica.getInstance().insertarUsuario(auxPaciente);
+					auxPaciente.insertarCita(auxCita);
+				}else {
+					Cita auxCita = null;
+					auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText()," ", " ");
+					paciente.insertarCita(auxCita);
+				}
+				
+			}
+		});
 		button_2.setBounds(537, 7, 96, 23);
 		button_2.setActionCommand("OK");
 		panel_1.add(button_2);
@@ -254,18 +265,19 @@ public class CrearCita extends JFrame {
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
-		JLabel lblNewLabel_5 = new JLabel("Especialidad:");
+		JLabel lblNewLabel_5 = new JLabel("Especialista:");
 		lblNewLabel_5.setBounds(10, 42, 84, 25);
 		panel_2.add(lblNewLabel_5);
 		
 		JComboBox<Object> cbxEspecialidad = new JComboBox<Object>();
-		cbxEspecialidad.setModel(new DefaultComboBoxModel<Object>(new String[] {"<<SELECCIONE>>", "Ginecologo", "Cardiologo", "Gastroenterologo", "Oculista"}));
+		cbxEspecialidad.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccionar>", "Cirug\u00EDa", "Pediatr\u00EDa", "M\u00E9dicina Interna", "Psiquiatr\u00EDa", "Oftalmolog\u00EDa", "Cardiolog\u00EDa", "Neumolog\u00EDa", "Dermatolog\u00EDa", "Nefrolog\u00EDa", "Neurolog\u00EDa", "Radiolog\u00EDa", "Anestesiolog\u00EDa", "Urolog\u00EDa", "Gastroenterolog\u00EDa", "Gineco obstetricia"}));
 		cbxEspecialidad.setBounds(90, 42, 147, 25);
 		panel_2.add(cbxEspecialidad);
 		
 		JSpinner spnFechaCita = new JSpinner();
 		spnFechaCita.setModel(new SpinnerDateModel(new Date(1648267200000L), new Date(1648267200000L), null, Calendar.DAY_OF_YEAR));
 		spnFechaCita.setEditor(new JSpinner.DateEditor(spnFechaCita,"dd/MM/yyyy"));
+		spnFechaCita.setValue(new Date());
 		spnFechaCita.setBounds(90, 118, 110, 25);
 		panel_2.add(spnFechaCita);
 		
@@ -287,7 +299,7 @@ public class CrearCita extends JFrame {
 		cbxDoctor.setBounds(90, 78, 147, 25);
 		panel_2.add(cbxDoctor);
 		
-		JTextPane TextNotas = new JTextPane();
+		TextNotas = new JTextPane();
 		TextNotas.setBounds(324, 42, 283, 108);
 		panel_2.add(TextNotas);
 		
@@ -308,6 +320,5 @@ public class CrearCita extends JFrame {
 		spnFechaNacimiento.setEnabled(true);
 		txtCelular.setEditable(true);
 		txtTelefonoOpc.setEditable(true);
-		TxtCorreo.setEditable(true);
 	}
 }

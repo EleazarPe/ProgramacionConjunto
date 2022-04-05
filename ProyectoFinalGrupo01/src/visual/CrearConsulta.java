@@ -24,6 +24,9 @@ import javax.swing.JToggleButton;
 import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.JTextPane;
+import javax.swing.JRadioButton;
+import java.awt.Font;
+import java.awt.Toolkit;
 
 public class CrearConsulta extends JDialog {
 
@@ -32,11 +35,13 @@ public class CrearConsulta extends JDialog {
 	 */
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextPane textPane;
-	private JTextPane textPane_1;
+	private JTextField TxtApellido;
+	private JTextField TxtNombres;
+	private JTextField txtNoId;
+	private JTextPane TextReceta;
+	private JTextPane textDiagnostico;
+	private JRadioButton rdbtSi;
+	private JRadioButton rdbtnNo;
 
 	/**
 	 * Launch the application.
@@ -55,10 +60,12 @@ public class CrearConsulta extends JDialog {
 	 * Create the dialog.
 	 */
 	public CrearConsulta() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(CrearConsulta.class.getResource("/img/cruz-roja.png")));
+		//Comentario de un comentario comentado en la comentacion 
 		setModal(true);
 		setResizable(false);
 		setTitle("Control de Consulta\r\ns");
-		setBounds(100, 100, 807, 694);
+		setBounds(100, 100, 807, 756);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -71,7 +78,7 @@ public class CrearConsulta extends JDialog {
 			
 			JPanel PanelPacienteActual = new JPanel();
 			PanelPacienteActual.setLayout(null);
-			PanelPacienteActual.setBounds(0, 0, 780, 597);
+			PanelPacienteActual.setBounds(0, 0, 781, 685);
 			PanelListadoPaciente.add(PanelPacienteActual);
 			
 			JPanel pnlDatosPaciente = new JPanel();
@@ -84,21 +91,21 @@ public class CrearConsulta extends JDialog {
 			label_1.setBounds(10, 183, 70, 25);
 			pnlDatosPaciente.add(label_1);
 			
-			textField_1 = new JTextField();
-			textField_1.setEditable(false);
-			textField_1.setColumns(10);
-			textField_1.setBounds(72, 183, 155, 25);
-			pnlDatosPaciente.add(textField_1);
+			TxtApellido = new JTextField();
+			TxtApellido.setEditable(false);
+			TxtApellido.setColumns(10);
+			TxtApellido.setBounds(99, 183, 155, 25);
+			pnlDatosPaciente.add(TxtApellido);
 			
 			JLabel label_2 = new JLabel("Nombres:");
 			label_2.setBounds(10, 147, 70, 25);
 			pnlDatosPaciente.add(label_2);
 			
-			textField_2 = new JTextField();
-			textField_2.setEditable(false);
-			textField_2.setColumns(10);
-			textField_2.setBounds(72, 146, 155, 25);
-			pnlDatosPaciente.add(textField_2);
+			TxtNombres = new JTextField();
+			TxtNombres.setEditable(false);
+			TxtNombres.setColumns(10);
+			TxtNombres.setBounds(99, 146, 155, 25);
+			pnlDatosPaciente.add(TxtNombres);
 			
 			JLabel label_3 = new JLabel("Fecha de Nacimiento:");
 			label_3.setBounds(10, 109, 130, 25);
@@ -108,12 +115,12 @@ public class CrearConsulta extends JDialog {
 			label_4.setBounds(10, 73, 130, 25);
 			pnlDatosPaciente.add(label_4);
 			
-			JComboBox<Object> comboBox = new JComboBox<Object>();
-			comboBox.setEnabled(false);
-			comboBox.setEditable(true);
-			comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"Cedula", "Pasaporte", "Licencia"}));
-			comboBox.setBounds(144, 73, 110, 25);
-			pnlDatosPaciente.add(comboBox);
+			JComboBox<Object> cbxId = new JComboBox<Object>();
+			cbxId.setEnabled(false);
+			cbxId.setEditable(true);
+			cbxId.setModel(new DefaultComboBoxModel<Object>(new String[] {"Cedula", "Pasaporte", "Licencia"}));
+			cbxId.setBounds(144, 73, 110, 25);
+			pnlDatosPaciente.add(cbxId);
 			
 			JSpinner spnFechaNacimiento = new JSpinner();
 			spnFechaNacimiento.setEnabled(false);
@@ -126,11 +133,11 @@ public class CrearConsulta extends JDialog {
 			label_5.setBounds(282, 73, 34, 25);
 			pnlDatosPaciente.add(label_5);
 			
-			textField_3 = new JTextField();
-			textField_3.setEditable(false);
-			textField_3.setColumns(10);
-			textField_3.setBounds(319, 73, 110, 25);
-			pnlDatosPaciente.add(textField_3);
+			txtNoId = new JTextField();
+			txtNoId.setEditable(false);
+			txtNoId.setColumns(10);
+			txtNoId.setBounds(319, 73, 110, 25);
+			pnlDatosPaciente.add(txtNoId);
 			
 			JPanel pnlDatosClinicos = new JPanel();
 			pnlDatosClinicos.setBorder(new TitledBorder(null, "Datos Clinicos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -138,41 +145,41 @@ public class CrearConsulta extends JDialog {
 			PanelPacienteActual.add(pnlDatosClinicos);
 			pnlDatosClinicos.setLayout(null);
 			
-			JSpinner spinner = new JSpinner();
-			spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinner.setBounds(108, 41, 55, 25);
-			pnlDatosClinicos.add(spinner);
+			JSpinner spnEstatura = new JSpinner();
+			spnEstatura.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+			spnEstatura.setBounds(108, 39, 55, 25);
+			pnlDatosClinicos.add(spnEstatura);
 			
 			JLabel lblNewLabel = new JLabel("Estatura:");
 			lblNewLabel.setBounds(10, 39, 55, 25);
 			pnlDatosClinicos.add(lblNewLabel);
 			
-			JSpinner spinner_1 = new JSpinner();
-			spinner_1.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinner_1.setBounds(240, 41, 55, 25);
-			pnlDatosClinicos.add(spinner_1);
+			JSpinner spnPeso = new JSpinner();
+			spnPeso.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+			spnPeso.setBounds(240, 39, 55, 25);
+			pnlDatosClinicos.add(spnPeso);
 			
 			JLabel lblPeso = new JLabel("Peso:");
-			lblPeso.setBounds(185, 41, 55, 25);
+			lblPeso.setBounds(185, 39, 55, 25);
 			pnlDatosClinicos.add(lblPeso);
 			
 			JLabel lblNewLabel_1 = new JLabel("Tipo de Sangre:");
 			lblNewLabel_1.setBounds(10, 91, 94, 25);
 			pnlDatosClinicos.add(lblNewLabel_1);
 			
-			JComboBox<Object> comboBox_1 = new JComboBox<Object>();
-			comboBox_1.setModel(new DefaultComboBoxModel<Object>(new String[] {"A", "B", "AB", "O"}));
-			comboBox_1.setBounds(108, 91, 55, 25);
-			pnlDatosClinicos.add(comboBox_1);
+			JComboBox<Object> cbxTipoSangre = new JComboBox<Object>();
+			cbxTipoSangre.setModel(new DefaultComboBoxModel<Object>(new String[] {"A", "B", "AB", "O"}));
+			cbxTipoSangre.setBounds(108, 91, 55, 25);
+			pnlDatosClinicos.add(cbxTipoSangre);
 			
 			JLabel lblRh = new JLabel("RH:");
-			lblRh.setBounds(185, 96, 33, 25);
+			lblRh.setBounds(185, 91, 33, 25);
 			pnlDatosClinicos.add(lblRh);
 			
-			JComboBox<Object> comboBox_2 = new JComboBox<Object>();
-			comboBox_2.setModel(new DefaultComboBoxModel<Object>(new String[] {"Positivo", "Negativo"}));
-			comboBox_2.setBounds(240, 93, 77, 25);
-			pnlDatosClinicos.add(comboBox_2);
+			JComboBox<Object> cbxRhSangre = new JComboBox<Object>();
+			cbxRhSangre.setModel(new DefaultComboBoxModel<Object>(new String[] {"Positivo", "Negativo", "Nulo"}));
+			cbxRhSangre.setBounds(240, 91, 77, 25);
+			pnlDatosClinicos.add(cbxRhSangre);
 			
 			JPanel PnlObservaciones = new JPanel();
 			PnlObservaciones.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Obsevaciones", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -180,9 +187,9 @@ public class CrearConsulta extends JDialog {
 			PanelPacienteActual.add(PnlObservaciones);
 			PnlObservaciones.setLayout(null);
 			
-			JTextPane textPane_2 = new JTextPane();
-			textPane_2.setBounds(10, 22, 740, 97);
-			PnlObservaciones.add(textPane_2);
+			JTextPane TetxObservaciones = new JTextPane();
+			TetxObservaciones.setBounds(10, 22, 740, 97);
+			PnlObservaciones.add(TetxObservaciones);
 			
 			JPanel pnlRecetas = new JPanel();
 			pnlRecetas.setBorder(new TitledBorder(null, "Receta", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -190,9 +197,9 @@ public class CrearConsulta extends JDialog {
 			PanelPacienteActual.add(pnlRecetas);
 			pnlRecetas.setLayout(null);
 			
-			textPane = new JTextPane();
-			textPane.setBounds(10, 21, 213, 190);
-			pnlRecetas.add(textPane);
+			TextReceta = new JTextPane();
+			TextReceta.setBounds(10, 21, 213, 190);
+			pnlRecetas.add(TextReceta);
 			
 			JPanel pnlDiagnstico = new JPanel();
 			pnlDiagnstico.setBorder(new TitledBorder(null, "Dignostico", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -200,12 +207,39 @@ public class CrearConsulta extends JDialog {
 			PanelPacienteActual.add(pnlDiagnstico);
 			pnlDiagnstico.setLayout(null);
 			
-			textPane_1 = new JTextPane();
-			textPane_1.setBounds(10, 21, 214, 139);
-			pnlDiagnstico.add(textPane_1);
+			textDiagnostico = new JTextPane();
+			textDiagnostico.setBounds(10, 21, 214, 139);
+			pnlDiagnstico.add(textDiagnostico);
+			
+			rdbtnNo = new JRadioButton("No");
+			rdbtnNo.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					rdbtSi.setSelected(false);
+				}
+			});
+			rdbtnNo.setBounds(115, 606, 45, 23);
+			PanelPacienteActual.add(rdbtnNo);
+			rdbtnNo.setSelected(true);
+			rdbtnNo.setFont(new Font("Tahoma", Font.BOLD, 11));
+			
+			rdbtSi = new JRadioButton("Si");
+			rdbtSi.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					rdbtnNo.setSelected(false);
+				}
+			});
+			rdbtSi.setBounds(42, 606, 45, 23);
+			PanelPacienteActual.add(rdbtSi);
+			rdbtSi.setFont(new Font("Tahoma", Font.BOLD, 11));
+			
+			JLabel lblNewLabel_2 = new JLabel("\u00BFAgregar a Historial Medico?");
+			lblNewLabel_2.setBounds(20, 574, 177, 25);
+			PanelPacienteActual.add(lblNewLabel_2);
+			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{

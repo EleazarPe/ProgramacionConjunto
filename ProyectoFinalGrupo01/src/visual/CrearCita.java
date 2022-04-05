@@ -27,6 +27,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
 
 public class CrearCita extends JFrame {
 
@@ -41,7 +42,6 @@ public class CrearCita extends JFrame {
 	private JTextField txtTelefonoOpc;
 	private JTextField TxtCorreo;
 	private JTextField txtNid;
-	private JTextField txtNotas;
 	private JSpinner spnFechaNacimiento;
 	private Random rand = new Random();
 	private JComboBox<Object> cbxTipoDocumento;
@@ -273,11 +273,6 @@ public class CrearCita extends JFrame {
 		lblNewLabel_7.setBounds(10, 118, 84, 25);
 		panel_2.add(lblNewLabel_7);
 		
-		txtNotas = new JTextField();
-		txtNotas.setBounds(324, 54, 283, 108);
-		panel_2.add(txtNotas);
-		txtNotas.setColumns(10);
-		
 		JLabel lblNewLabel_8 = new JLabel("Notas:");
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel_8.setBounds(324, 18, 70, 25);
@@ -291,6 +286,10 @@ public class CrearCita extends JFrame {
 		cbxDoctor.setEnabled(false);
 		cbxDoctor.setBounds(90, 78, 147, 25);
 		panel_2.add(cbxDoctor);
+		
+		JTextPane TextNotas = new JTextPane();
+		TextNotas.setBounds(324, 42, 283, 108);
+		panel_2.add(TextNotas);
 		
 		JLabel lblNewLabel_9 = new JLabel("AVISO: LOS CAMPOS MARCADOS      SON NECESARIOS PARA PROCESAR CORRETACTAMENTE SU SOLICITUD");
 		lblNewLabel_9.setBounds(30, 339, 598, 25);
@@ -311,19 +310,4 @@ public class CrearCita extends JFrame {
 		txtTelefonoOpc.setEditable(true);
 		TxtCorreo.setEditable(true);
 	}
-	
-	/*private void clean() {
-		txtNombre.setText("");
-		txtApellido.setText("");
-		txtNid.setText("");
-		txtCelular.setText("");
-		cbxTipoDocumento.setSelectedIndex(0);
-		txtTelefonoOpc.setText("");
-		spnFechaNacimiento.setValue(new Date());
-		TxtCorreo.setText("");
-		txtNotas.setText("");
-		txtID.setText("Pac-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
-		
-
-	}*/
 }

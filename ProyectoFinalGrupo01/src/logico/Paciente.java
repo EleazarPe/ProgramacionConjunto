@@ -8,6 +8,7 @@ public class Paciente extends Usuario {
 	private String tipoSangre;
 	private String CorreoElectronico;
 	private String Ocupacion;
+	private ArrayList<Vacuna> misVacunas;
 	
 	public Paciente(String nombre, String apellido, String cedula, Date fechaNaciento, String ocupacion,
 			String telefono, String direccion,String codigo,ArrayList<Consulta>misConsultas, String tipoSangre,
@@ -17,6 +18,7 @@ public class Paciente extends Usuario {
 		this.tipoSangre = tipoSangre;
 		this.CorreoElectronico = correoElectronico;
 		this.Ocupacion = ocupacion;
+		this.misVacunas = new ArrayList<>();
 	}
 
 	public ArrayList<Consulta> getMisConsultas() {
@@ -49,6 +51,18 @@ public class Paciente extends Usuario {
 
 	public void setOcupacion(String ocupacion) {
 		Ocupacion = ocupacion;
+	}
+
+	public ArrayList<Vacuna> getMisVacunas() {
+		return misVacunas;
+	}
+
+	public void setMisVacunas(ArrayList<Vacuna> misVacunas) {
+		this.misVacunas = misVacunas;
+	}
+	
+	public void ingresarVacuna(Vacuna vaccine) {
+		misVacunas.add(vaccine);
 	}
 
 }

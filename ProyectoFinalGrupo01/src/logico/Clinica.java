@@ -115,6 +115,16 @@ public class Clinica {
 		}
 		return auxMedico;
 	}
-	
+	public Paciente buscarPacienteById(String id) {
+		Paciente auxPaciente = null;
+		for (Usuario consulta : usuarios) {
+			if(consulta instanceof Paciente) {
+				if(consulta.getID().equalsIgnoreCase(id)) {
+					auxPaciente = (Paciente) consulta;
+				}
+			}
+		}
+		return auxPaciente;
+	}
 	
 }

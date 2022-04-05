@@ -174,6 +174,10 @@ public class CrearConsulta extends JDialog {
 			cbxRhSangre.setBounds(240, 93, 77, 25);
 			pnlDatosClinicos.add(cbxRhSangre);
 			
+			JLabel Hola = new JLabel("New label");
+			Hola.setBounds(399, 96, 46, 14);
+			pnlDatosClinicos.add(Hola);
+			
 			JPanel PnlObservaciones = new JPanel();
 			PnlObservaciones.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Obsevaciones", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 			PnlObservaciones.setBounds(10, 437, 760, 130);

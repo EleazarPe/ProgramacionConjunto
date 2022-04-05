@@ -24,6 +24,8 @@ import javax.swing.JToggleButton;
 import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.JTextPane;
+import javax.swing.JRadioButton;
+import java.awt.Font;
 
 public class CrearConsulta extends JDialog {
 
@@ -37,6 +39,8 @@ public class CrearConsulta extends JDialog {
 	private JTextField txtNoId;
 	private JTextPane TextReceta;
 	private JTextPane textDiagnostico;
+	private JRadioButton rdbtSi;
+	private JRadioButton rdbtnNo;
 
 	/**
 	 * Launch the application.
@@ -72,7 +76,7 @@ public class CrearConsulta extends JDialog {
 			
 			JPanel PanelPacienteActual = new JPanel();
 			PanelPacienteActual.setLayout(null);
-			PanelPacienteActual.setBounds(0, 0, 780, 597);
+			PanelPacienteActual.setBounds(0, 0, 781, 685);
 			PanelListadoPaciente.add(PanelPacienteActual);
 			
 			JPanel pnlDatosPaciente = new JPanel();
@@ -204,6 +208,32 @@ public class CrearConsulta extends JDialog {
 			textDiagnostico = new JTextPane();
 			textDiagnostico.setBounds(10, 21, 214, 139);
 			pnlDiagnstico.add(textDiagnostico);
+			
+			rdbtnNo = new JRadioButton("No");
+			rdbtnNo.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					rdbtSi.setSelected(false);
+				}
+			});
+			rdbtnNo.setBounds(115, 606, 45, 23);
+			PanelPacienteActual.add(rdbtnNo);
+			rdbtnNo.setSelected(true);
+			rdbtnNo.setFont(new Font("Tahoma", Font.BOLD, 11));
+			
+			rdbtSi = new JRadioButton("Si");
+			rdbtSi.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					rdbtnNo.setSelected(false);
+				}
+			});
+			rdbtSi.setBounds(42, 606, 45, 23);
+			PanelPacienteActual.add(rdbtSi);
+			rdbtSi.setFont(new Font("Tahoma", Font.BOLD, 11));
+			
+			JLabel lblNewLabel_2 = new JLabel("\u00BFAgregar a Historial Medico?");
+			lblNewLabel_2.setBounds(20, 574, 177, 25);
+			PanelPacienteActual.add(lblNewLabel_2);
+			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		}
 		{
 			JPanel buttonPane = new JPanel();

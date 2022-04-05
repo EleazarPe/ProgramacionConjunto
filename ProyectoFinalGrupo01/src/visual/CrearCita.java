@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-
 import logico.Cita;
 import logico.Clinica;
 import logico.Paciente;
@@ -28,6 +27,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
+import java.awt.event.KeyAdapter;
 
 public class CrearCita extends JFrame {
 
@@ -49,6 +49,8 @@ public class CrearCita extends JFrame {
 	private Paciente paciente = null;
 	private JTextField txtDireccion;
 	private JComboBox<Object> cbxTipoBlood;
+	private JComboBox<Object> cbxOcupacion;
+	private JComboBox<Object> cbxRh;
 
 	/**
 	 * Launch the application.
@@ -121,12 +123,42 @@ public class CrearCita extends JFrame {
 		panel.add(button);
 		
 		txtNombre = new JTextField();
+		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(java.awt.event.KeyEvent evt) {                                    
+			    int key = evt.getKeyChar();
+
+			    boolean mayusculas = key >= 65 && key <= 90;
+			    boolean minusculas = key >= 97 && key <= 122;
+			    boolean espacio = key == 32;
+			            
+			     if (!(minusculas || mayusculas || espacio))
+			    {
+			        evt.consume();
+			    }
+			}     
+		});
 		txtNombre.setEditable(false);
 		txtNombre.setBounds(98, 191, 155, 25);
 		panel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtApellido = new JTextField();
+		txtApellido.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(java.awt.event.KeyEvent evt) {                                    
+			    int key = evt.getKeyChar();
+
+			    boolean mayusculas = key >= 65 && key <= 90;
+			    boolean minusculas = key >= 97 && key <= 122;
+			    boolean espacio = key == 32;
+			            
+			     if (!(minusculas || mayusculas || espacio))
+			    {
+			        evt.consume();
+			    }
+			}     
+		});
 		txtApellido.setEditable(false);
 		txtApellido.setColumns(10);
 		txtApellido.setBounds(98, 227, 155, 25);
@@ -146,6 +178,23 @@ public class CrearCita extends JFrame {
 		panel.add(lblNoIdenticacion);
 		
 		txtNid = new JTextField();
+		txtNid.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(java.awt.event.KeyEvent evt) {
+				int key = evt.getKeyChar();
+
+			    boolean numeros = key >= 48 && key <= 57;
+			        
+			    if (!numeros)
+			    {
+			        evt.consume();
+			    }
+
+			    if (txtNid.getText().trim().length() == 10) {
+			        evt.consume();
+			    }
+			}
+		});
 		txtNid.setBounds(340, 117, 110, 25);
 		panel.add(txtNid);
 		txtNid.setColumns(10);
@@ -163,12 +212,46 @@ public class CrearCita extends JFrame {
 		panel.add(lblTelefonoOpcional);
 		
 		txtCelular = new JTextField();
+		txtCelular.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(java.awt.event.KeyEvent evt) {
+				int key = evt.getKeyChar();
+
+			    boolean numeros = key >= 48 && key <= 57;
+			        
+			    if (!numeros)
+			    {
+			        evt.consume();
+			    }
+
+			    if (txtCelular.getText().trim().length() == 10) {
+			        evt.consume();
+			    }
+			}
+		});
 		txtCelular.setEditable(false);
 		txtCelular.setBounds(347, 191, 110, 25);
 		panel.add(txtCelular);
 		txtCelular.setColumns(10);
 		
 		txtTelefonoOpc = new JTextField();
+		txtTelefonoOpc.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(java.awt.event.KeyEvent evt) {
+				int key = evt.getKeyChar();
+
+			    boolean numeros = key >= 48 && key <= 57;
+			        
+			    if (!numeros)
+			    {
+			        evt.consume();
+			    }
+
+			    if (txtNid.getText().trim().length() == 10) {
+			        evt.consume();
+			    }
+			}
+		});
 		txtTelefonoOpc.setEditable(false);
 		txtTelefonoOpc.setBounds(347, 228, 110, 25);
 		panel.add(txtTelefonoOpc);
@@ -254,17 +337,19 @@ public class CrearCita extends JFrame {
 		label_1.setBounds(271, 263, 16, 25);
 		panel.add(label_1);
 		
-		JComboBox<Object> comboBox = new JComboBox<Object>();
-		comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccionar>", "Profesor", "Abogado", "Ingeniero", "Medico", "Empleado Privado", "Empleado Publico", "Independiente"}));
-		comboBox.setBounds(98, 263, 155, 25);
-		panel.add(comboBox);
+		cbxOcupacion = new JComboBox<Object>();
+		cbxOcupacion.setEnabled(false);
+		cbxOcupacion.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccionar>", "Profesor", "Abogado", "Ingeniero", "Medico", "Empleado Privado", "Empleado Publico", "Independiente"}));
+		cbxOcupacion.setBounds(98, 263, 155, 25);
+		panel.add(cbxOcupacion);
 		
 		JLabel label_2 = new JLabel("Tipo de Sangre:");
 		label_2.setBounds(93, 310, 94, 25);
 		panel.add(label_2);
 		
 		cbxTipoBlood = new JComboBox<Object>();
-		cbxTipoBlood.setModel(new DefaultComboBoxModel(new String[] {"A", "B", "AB", "O"}));
+		cbxTipoBlood.setEnabled(false);
+		cbxTipoBlood.setModel(new DefaultComboBoxModel<Object>(new String[] {"A", "B", "AB", "O"}));
 		cbxTipoBlood.setBounds(198, 310, 55, 25);
 		panel.add(cbxTipoBlood);
 		
@@ -272,10 +357,11 @@ public class CrearCita extends JFrame {
 		label_3.setBounds(284, 310, 33, 25);
 		panel.add(label_3);
 		
-		JComboBox<Object> comboBox_2 = new JComboBox<Object>();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Positivo", "Negativo", "Nulo"}));
-		comboBox_2.setBounds(347, 310, 77, 25);
-		panel.add(comboBox_2);
+		cbxRh = new JComboBox<Object>();
+		cbxRh.setEnabled(false);
+		cbxRh.setModel(new DefaultComboBoxModel<Object>(new String[] {"Positivo", "Negativo", "Nulo"}));
+		cbxRh.setBounds(347, 310, 77, 25);
+		panel.add(cbxRh);
 		
 		JLabel label_4 = new JLabel("");
 		label_4.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
@@ -304,7 +390,7 @@ public class CrearCita extends JFrame {
 				if(paciente == null) {
 					Paciente auxPaciente = null;
 					Cita auxCita = null;
-					auxPaciente = new Paciente(txtNombre.getText(), txtApellido.getText(), txtNid.getText(), (Date)spnFechaNacimiento.getValue(), txtOcupation.getText(), txtCelular.getText(), txtDireccion.getText(), txtDireccion.getText(), misConsultas, cbxTipoBlood.getSelectedIndex());
+					auxPaciente = new Paciente(txtNombre.getText(), txtApellido.getText(), txtNid.getText(), (Date)spnFechaNacimiento.getValue(), cbxOcupacion.getSelectedItem().toString(), txtCelular.getText(), txtDireccion.getText(), txtIDPaciente.getText(), cbxTipoBlood.getSelectedItem().toString(), txtTelefonoOpc.getText());
 					auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText()," ", " ");
 					Clinica.getInstance().insertarUsuario(auxPaciente);
 					auxPaciente.insertarCita(auxCita);
@@ -381,5 +467,9 @@ public class CrearCita extends JFrame {
 		spnFechaNacimiento.setEnabled(true);
 		txtCelular.setEditable(true);
 		txtTelefonoOpc.setEditable(true);
+		txtDireccion.setEditable(true);
+		cbxOcupacion.setEnabled(true);
+		cbxTipoBlood.setEnabled(true);
+		cbxRh.setEnabled(true);
 	}
 }

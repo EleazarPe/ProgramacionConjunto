@@ -29,6 +29,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import java.awt.event.KeyAdapter;
 
 public class RegMedico extends JDialog {
 
@@ -98,6 +99,21 @@ public class RegMedico extends JDialog {
 			panel.add(lblNewLabel_1);
 
 			txtNombre = new JTextField();
+			txtNombre.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(java.awt.event.KeyEvent evt) {                                    
+				    int key = evt.getKeyChar();
+
+				    boolean mayusculas = key >= 65 && key <= 90;
+				    boolean minusculas = key >= 97 && key <= 122;
+				    boolean espacio = key == 32;
+				            
+				     if (!(minusculas || mayusculas || espacio))
+				    {
+				        evt.consume();
+				    }
+				}     
+			});
 			txtNombre.setBounds(10, 187, 193, 20);
 			panel.add(txtNombre);
 			txtNombre.setColumns(10);
@@ -107,6 +123,21 @@ public class RegMedico extends JDialog {
 			panel.add(lblNewLabel_2);
 
 			txtApellido = new JTextField();
+			txtApellido.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(java.awt.event.KeyEvent evt) {                                    
+				    int key = evt.getKeyChar();
+
+				    boolean mayusculas = key >= 65 && key <= 90;
+				    boolean minusculas = key >= 97 && key <= 122;
+				    boolean espacio = key == 32;
+				            
+				     if (!(minusculas || mayusculas || espacio))
+				    {
+				        evt.consume();
+				    }
+				}     
+			});
 			txtApellido.setBounds(10, 248, 193, 20);
 			panel.add(txtApellido);
 			txtApellido.setColumns(10);
@@ -116,6 +147,23 @@ public class RegMedico extends JDialog {
 			panel.add(lblNewLabel_3);
 
 			txtCedula = new JTextField();
+			txtCedula.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(java.awt.event.KeyEvent evt) {                                    
+				    int key = evt.getKeyChar();
+
+				    boolean numeros = key >= 48 && key <= 57;
+				        
+				    if (!numeros)
+				    {
+				        evt.consume();
+				    }
+
+				    if (txtCedula.getText().trim().length() == 10) {
+				        evt.consume();
+				    }
+				}     
+			});
 			txtCedula.setBounds(10, 131, 193, 20);
 			panel.add(txtCedula);
 			txtCedula.setColumns(10);
@@ -125,6 +173,23 @@ public class RegMedico extends JDialog {
 			panel.add(lblNewLabel_5);
 
 			txtTelefono = new JTextField();
+			txtTelefono.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyTyped(java.awt.event.KeyEvent evt) {                                    
+				    int key = evt.getKeyChar();
+
+				    boolean numeros = key >= 48 && key <= 57;
+				        
+				    if (!numeros)
+				    {
+				        evt.consume();
+				    }
+
+				    if (txtTelefono.getText().trim().length() == 10) {
+				        evt.consume();
+				    }
+				}     
+			});
 			txtTelefono.setBounds(286, 187, 193, 20);
 			panel.add(txtTelefono);
 			txtTelefono.setColumns(10);

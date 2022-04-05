@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Paciente extends Usuario {
 
-	private ArrayList<Consulta> misConsultas;
+	//private ArrayList<Consulta> misConsultas;
 	private String tipoSangre;
 	private String Ocupacion;
 	private String TelefonoOpc;
@@ -12,28 +12,28 @@ public class Paciente extends Usuario {
 	private ArrayList<Cita> misCitas;
 	
 	public Paciente(String nombre, String apellido, String cedula, Date fechaNaciento, String ocupacion,
-			String telefono, String direccion,String codigo,ArrayList<Consulta>misConsultas, String tipoSangre,
+			String telefono, String direccion,String codigo, String tipoSangre,
 			String TelefonoOpc) {
 		super(nombre, apellido, cedula, fechaNaciento, telefono, direccion,codigo);
 		this.tipoSangre = tipoSangre;
 		this.Ocupacion = ocupacion;
-		this.misConsultas = new ArrayList<>();
+		//this.misConsultas = new ArrayList<>();
 		this.misVacunas = new ArrayList<>();
 		this.misCitas = new ArrayList<>();
 		this.TelefonoOpc = TelefonoOpc;
 	}
 
-	public ArrayList<Consulta> getMisConsultas() {
+	/*public ArrayList<Consulta> getMisConsultas() {
 		return misConsultas;
-	}
+	}*/
 
 	public String getTipoSangre() {
 		return tipoSangre;
 	}
 
-	public void setMisConsultas(ArrayList<Consulta> misConsultas) {
+	/*public void setMisConsultas(ArrayList<Consulta> misConsultas) {
 		this.misConsultas = misConsultas;
-	}
+	}*/
 
 	public void setTipoSangre(String tipoSangre) {
 		this.tipoSangre = tipoSangre;

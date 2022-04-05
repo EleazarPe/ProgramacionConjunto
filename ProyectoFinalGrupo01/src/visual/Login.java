@@ -36,6 +36,7 @@ public class Login extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtUsuario;
+	private JLabel lblLoginMsj;
 	
 	
 	public static void main(String[] args) {
@@ -182,6 +183,21 @@ public class Login extends JDialog {
 			lblPassLogo.setIcon(new ImageIcon(img_pass));
 			
 			JPanel panel_4 = new JPanel();
+			panel_4.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					 if (txtUsuario.getText().equalsIgnoreCase("Admin") && pwdPassword.getText().equals("1234")) {
+						 dispose();
+					}
+					 else if (txtUsuario.getText().equalsIgnoreCase("") || txtUsuario.getText().equalsIgnoreCase("Usuario") || 
+							 pwdPassword.getText().equals("") || pwdPassword.getText().equals("Contraseña")){
+						lblLoginMsj.setText("¡Favor llenar los dos campos!");
+					}
+					 else {
+						lblLoginMsj.setText("¡Usuario o Contraseña incorrecta!");
+					}
+				}
+			});
 			panel_4.setBounds(212, 324, 145, 47);
 			panel_1.add(panel_4);
 			panel_4.setLayout(null);
@@ -201,6 +217,11 @@ public class Login extends JDialog {
 			lblLogo.setBounds(196, 61, 177, 108);
 			panel_1.add(lblLogo);
 			lblLogo.setIcon(new ImageIcon(img_logo));
+			
+			lblLoginMsj = new JLabel("");
+			lblLoginMsj.setHorizontalAlignment(SwingConstants.CENTER);
+			lblLoginMsj.setBounds(185, 295, 200, 16);
+			panel_1.add(lblLoginMsj);
 			
 		}
 		

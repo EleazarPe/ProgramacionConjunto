@@ -63,7 +63,7 @@ public class CrearConsulta extends JDialog {
 		setModal(true);
 		setResizable(false);
 		setTitle("Control de Consulta\r\ns");
-		setBounds(100, 100, 807, 812);
+		setBounds(100, 100, 807, 756);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -237,6 +237,7 @@ public class CrearConsulta extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{

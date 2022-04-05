@@ -94,7 +94,7 @@ public class CrearConsulta extends JDialog {
 			TxtApellido = new JTextField();
 			TxtApellido.setEditable(false);
 			TxtApellido.setColumns(10);
-			TxtApellido.setBounds(72, 183, 155, 25);
+			TxtApellido.setBounds(99, 183, 155, 25);
 			pnlDatosPaciente.add(TxtApellido);
 			
 			JLabel label_2 = new JLabel("Nombres:");
@@ -104,7 +104,7 @@ public class CrearConsulta extends JDialog {
 			TxtNombres = new JTextField();
 			TxtNombres.setEditable(false);
 			TxtNombres.setColumns(10);
-			TxtNombres.setBounds(72, 146, 155, 25);
+			TxtNombres.setBounds(99, 146, 155, 25);
 			pnlDatosPaciente.add(TxtNombres);
 			
 			JLabel label_3 = new JLabel("Fecha de Nacimiento:");
@@ -147,7 +147,7 @@ public class CrearConsulta extends JDialog {
 			
 			JSpinner spnEstatura = new JSpinner();
 			spnEstatura.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spnEstatura.setBounds(108, 41, 55, 25);
+			spnEstatura.setBounds(108, 39, 55, 25);
 			pnlDatosClinicos.add(spnEstatura);
 			
 			JLabel lblNewLabel = new JLabel("Estatura:");
@@ -156,11 +156,11 @@ public class CrearConsulta extends JDialog {
 			
 			JSpinner spnPeso = new JSpinner();
 			spnPeso.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spnPeso.setBounds(240, 41, 55, 25);
+			spnPeso.setBounds(240, 39, 55, 25);
 			pnlDatosClinicos.add(spnPeso);
 			
 			JLabel lblPeso = new JLabel("Peso:");
-			lblPeso.setBounds(185, 41, 55, 25);
+			lblPeso.setBounds(185, 39, 55, 25);
 			pnlDatosClinicos.add(lblPeso);
 			
 			JLabel lblNewLabel_1 = new JLabel("Tipo de Sangre:");
@@ -173,12 +173,12 @@ public class CrearConsulta extends JDialog {
 			pnlDatosClinicos.add(cbxTipoSangre);
 			
 			JLabel lblRh = new JLabel("RH:");
-			lblRh.setBounds(185, 96, 33, 25);
+			lblRh.setBounds(185, 91, 33, 25);
 			pnlDatosClinicos.add(lblRh);
 			
 			JComboBox<Object> cbxRhSangre = new JComboBox<Object>();
-			cbxRhSangre.setModel(new DefaultComboBoxModel<Object>(new String[] {"Positivo", "Negativo"}));
-			cbxRhSangre.setBounds(240, 93, 77, 25);
+			cbxRhSangre.setModel(new DefaultComboBoxModel<Object>(new String[] {"Positivo", "Negativo", "Nulo"}));
+			cbxRhSangre.setBounds(240, 91, 77, 25);
 			pnlDatosClinicos.add(cbxRhSangre);
 			
 			JPanel PnlObservaciones = new JPanel();

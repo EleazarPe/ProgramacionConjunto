@@ -47,6 +47,8 @@ public class CrearCita extends JFrame {
 	private JTextField txtIDPaciente;
 	private JTextPane TextNotas;
 	private Paciente paciente = null;
+	private JTextField txtDireccion;
+	private JComboBox<Object> cbxTipoBlood;
 
 	/**
 	 * Launch the application.
@@ -71,7 +73,7 @@ public class CrearCita extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(CrearCita.class.getResource("/img/cruz-roja.png")));
 		setTitle("Registro De Citas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 666, 650);
+		setBounds(100, 100, 666, 730);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -79,18 +81,18 @@ public class CrearCita extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(12, 12, 630, 301);
+		panel.setBounds(12, 12, 630, 370);
 		panel.setBorder(new TitledBorder(null, "Datos del Paciente:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Nombres:");
-		lblNewLabel.setBounds(31, 191, 70, 25);
-		panel.add(lblNewLabel);
+		JLabel lblNombre = new JLabel("Nombres:");
+		lblNombre.setBounds(31, 191, 70, 25);
+		panel.add(lblNombre);
 		
-		JLabel lblNewLabel_1 = new JLabel("Apellidos:");
-		lblNewLabel_1.setBounds(31, 227, 70, 25);
-		panel.add(lblNewLabel_1);
+		JLabel lblApellido = new JLabel("Apellidos:");
+		lblApellido.setBounds(31, 227, 70, 25);
+		panel.add(lblApellido);
 		
 		JButton button = new JButton("Buscar    ");
 		button.addActionListener(new ActionListener() {
@@ -115,19 +117,19 @@ public class CrearCita extends JFrame {
 		});
 		button.setIcon(new ImageIcon(CrearCita.class.getResource("/img/lupa.png")));
 		button.setHorizontalAlignment(SwingConstants.LEFT);
-		button.setBounds(471, 45, 132, 34);
+		button.setBounds(488, 112, 132, 34);
 		panel.add(button);
 		
 		txtNombre = new JTextField();
 		txtNombre.setEditable(false);
-		txtNombre.setBounds(93, 190, 155, 25);
+		txtNombre.setBounds(98, 191, 155, 25);
 		panel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtApellido = new JTextField();
 		txtApellido.setEditable(false);
 		txtApellido.setColumns(10);
-		txtApellido.setBounds(93, 227, 155, 25);
+		txtApellido.setBounds(98, 227, 155, 25);
 		panel.add(txtApellido);
 		
 		JLabel lblDocIdentidad = new JLabel(" Documento Identidad:");
@@ -139,18 +141,18 @@ public class CrearCita extends JFrame {
 		cbxTipoDocumento.setBounds(165, 117, 110, 25);
 		panel.add(cbxTipoDocumento);
 		
-		JLabel lblNewLabel_3 = new JLabel("NO.");
-		lblNewLabel_3.setBounds(303, 117, 34, 25);
-		panel.add(lblNewLabel_3);
+		JLabel lblNoIdenticacion = new JLabel("NO.");
+		lblNoIdenticacion.setBounds(303, 117, 34, 25);
+		panel.add(lblNoIdenticacion);
 		
 		txtNid = new JTextField();
 		txtNid.setBounds(340, 117, 110, 25);
 		panel.add(txtNid);
 		txtNid.setColumns(10);
 		
-		JLabel lblNewLabel_4 = new JLabel("Fecha de Nacimiento:");
-		lblNewLabel_4.setBounds(31, 153, 130, 25);
-		panel.add(lblNewLabel_4);
+		JLabel LblFechaNacimiento = new JLabel("Fecha de Nacimiento:");
+		LblFechaNacimiento.setBounds(31, 153, 130, 25);
+		panel.add(LblFechaNacimiento);
 		
 		JLabel lblCelular = new JLabel("Celular:");
 		lblCelular.setBounds(291, 190, 46, 25);
@@ -162,13 +164,13 @@ public class CrearCita extends JFrame {
 		
 		txtCelular = new JTextField();
 		txtCelular.setEditable(false);
-		txtCelular.setBounds(340, 191, 110, 25);
+		txtCelular.setBounds(347, 191, 110, 25);
 		panel.add(txtCelular);
 		txtCelular.setColumns(10);
 		
 		txtTelefonoOpc = new JTextField();
 		txtTelefonoOpc.setEditable(false);
-		txtTelefonoOpc.setBounds(340, 228, 110, 25);
+		txtTelefonoOpc.setBounds(347, 228, 110, 25);
 		panel.add(txtTelefonoOpc);
 		txtTelefonoOpc.setColumns(10);
 		
@@ -215,20 +217,79 @@ public class CrearCita extends JFrame {
 		signoAviso6.setBounds(27, 23, 86, 72);
 		panel.add(signoAviso6);
 		
-		JLabel lblNewLabel_6 = new JLabel("ID:");
-		lblNewLabel_6.setBounds(303, 263, 34, 25);
-		panel.add(lblNewLabel_6);
+		JLabel lblIdPaciente = new JLabel("ID:");
+		lblIdPaciente.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblIdPaciente.setBounds(488, 30, 23, 25);
+		panel.add(lblIdPaciente);
 		
 		txtIDPaciente = new JTextField();
+		txtIDPaciente.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtIDPaciente.setEditable(false);
 		txtIDPaciente.setColumns(10);
 		txtIDPaciente.setText("Pac-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
-		txtIDPaciente.setBounds(340, 266, 110, 25);
+		txtIDPaciente.setBounds(510, 30, 93, 25);
 		panel.add(txtIDPaciente);
+		
+		JLabel lblOcupacion = new JLabel("Ocupacion:");
+		lblOcupacion.setBounds(31, 263, 70, 25);
+		panel.add(lblOcupacion);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		label.setBounds(10, 263, 16, 25);
+		panel.add(label);
+		
+		txtDireccion = new JTextField();
+		txtDireccion.setEditable(false);
+		txtDireccion.setColumns(10);
+		txtDireccion.setBounds(347, 262, 110, 25);
+		panel.add(txtDireccion);
+		
+		JLabel lblDireccion = new JLabel("Direccion:");
+		lblDireccion.setBounds(284, 263, 70, 25);
+		panel.add(lblDireccion);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		label_1.setBounds(271, 263, 16, 25);
+		panel.add(label_1);
+		
+		JComboBox<Object> comboBox = new JComboBox<Object>();
+		comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccionar>", "Profesor", "Abogado", "Ingeniero", "Medico", "Empleado Privado", "Empleado Publico", "Independiente"}));
+		comboBox.setBounds(98, 263, 155, 25);
+		panel.add(comboBox);
+		
+		JLabel label_2 = new JLabel("Tipo de Sangre:");
+		label_2.setBounds(93, 310, 94, 25);
+		panel.add(label_2);
+		
+		cbxTipoBlood = new JComboBox<Object>();
+		cbxTipoBlood.setModel(new DefaultComboBoxModel(new String[] {"A", "B", "AB", "O"}));
+		cbxTipoBlood.setBounds(198, 310, 55, 25);
+		panel.add(cbxTipoBlood);
+		
+		JLabel label_3 = new JLabel("RH:");
+		label_3.setBounds(284, 310, 33, 25);
+		panel.add(label_3);
+		
+		JComboBox<Object> comboBox_2 = new JComboBox<Object>();
+		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Positivo", "Negativo", "Nulo"}));
+		comboBox_2.setBounds(347, 310, 77, 25);
+		panel.add(comboBox_2);
+		
+		JLabel label_4 = new JLabel("");
+		label_4.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		label_4.setBounds(271, 310, 16, 25);
+		panel.add(label_4);
+		
+		JLabel label_5 = new JLabel("");
+		label_5.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
+		label_5.setBounds(76, 310, 16, 25);
+		panel.add(label_5);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(0, 573, 650, 38);
+		panel_1.setBounds(0, 653, 650, 38);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -243,7 +304,7 @@ public class CrearCita extends JFrame {
 				if(paciente == null) {
 					Paciente auxPaciente = null;
 					Cita auxCita = null;
-					//auxPaciente = new Paciente(nombre, apellido, cedula, (Date)spnFechaNacimiento.getValue(), ocupacion, telefono, direccion, codigo, misConsultas, tipoSangre, correoElectronico);
+					auxPaciente = new Paciente(txtNombre.getText(), txtApellido.getText(), txtNid.getText(), (Date)spnFechaNacimiento.getValue(), txtOcupation.getText(), txtCelular.getText(), txtDireccion.getText(), txtDireccion.getText(), misConsultas, cbxTipoBlood.getSelectedIndex());
 					auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText()," ", " ");
 					Clinica.getInstance().insertarUsuario(auxPaciente);
 					auxPaciente.insertarCita(auxCita);
@@ -261,7 +322,7 @@ public class CrearCita extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(null, "Datos de la Cita", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_2.setBounds(12, 375, 630, 184);
+		panel_2.setBounds(12, 458, 630, 184);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -304,12 +365,12 @@ public class CrearCita extends JFrame {
 		panel_2.add(TextNotas);
 		
 		JLabel lblNewLabel_9 = new JLabel("AVISO: LOS CAMPOS MARCADOS      SON NECESARIOS PARA PROCESAR CORRETACTAMENTE SU SOLICITUD");
-		lblNewLabel_9.setBounds(30, 339, 598, 25);
+		lblNewLabel_9.setBounds(32, 422, 598, 25);
 		contentPane.add(lblNewLabel_9);
 		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel signoAviso7 = new JLabel("");
-		signoAviso7.setBounds(214, 339, 16, 25);
+		signoAviso7.setBounds(216, 422, 16, 25);
 		contentPane.add(signoAviso7);
 		signoAviso7.setIcon(new ImageIcon(CrearCita.class.getResource("/img/signo-advertencia.png")));
 	}

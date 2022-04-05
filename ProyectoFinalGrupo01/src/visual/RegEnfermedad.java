@@ -26,6 +26,7 @@ import java.util.Calendar;
 import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Font;
 
 public class RegEnfermedad extends JDialog {
 
@@ -60,7 +61,7 @@ public class RegEnfermedad extends JDialog {
 	public RegEnfermedad() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegEnfermedad.class.getResource("/img/cruz-roja.png")));
 		setTitle("Registro de Enfermedad");
-		setBounds(100, 100, 568, 622);
+		setBounds(100, 100, 653, 534);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -72,56 +73,58 @@ public class RegEnfermedad extends JDialog {
 			panel.setLayout(null);
 			
 			JLabel lblNewLabel = new JLabel("Codigo:");
-			lblNewLabel.setBounds(10, 46, 59, 50);
+			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+			lblNewLabel.setBounds(458, 11, 59, 50);
 			panel.add(lblNewLabel);
 			
 			txtCodigo = new JTextField();
+			txtCodigo.setFont(new Font("Tahoma", Font.BOLD, 14));
 			txtCodigo.setEditable(false);
-			txtCodigo.setBounds(10, 93, 199, 21);
+			txtCodigo.setBounds(521, 26, 96, 21);
 			panel.add(txtCodigo);
 			txtCodigo.setColumns(10);
 			txtCodigo.setText("EF-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
 			
 			JLabel lblNewLabel_1 = new JLabel("Nombre:");
-			lblNewLabel_1.setBounds(10, 141, 59, 14);
+			lblNewLabel_1.setBounds(10, 92, 59, 14);
 			panel.add(lblNewLabel_1);
 			
 			txtNombre = new JTextField();
-			txtNombre.setBounds(10, 166, 199, 21);
+			txtNombre.setBounds(10, 117, 199, 21);
 			panel.add(txtNombre);
 			txtNombre.setColumns(10);
 			
 			JLabel lblNewLabel_2 = new JLabel("Tipo:");
-			lblNewLabel_2.setBounds(10, 208, 59, 14);
+			lblNewLabel_2.setBounds(10, 159, 59, 14);
 			panel.add(lblNewLabel_2);
 			
 			comboBox = new JComboBox<Object>();
-			comboBox.setBounds(10, 233, 199, 21);
+			comboBox.setBounds(10, 184, 199, 21);
 			comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "Virus", "Bacteriana", "Hongos", "Nutricional", "Traumatica", "Genetica", "Congenita", "Mental", "Degenerativa", "Autoinmune", "Cardiovascular", "Alergica"}));
 			panel.add(comboBox);
 			
 			JLabel lblNewLabel_3 = new JLabel("Descubierta en:");
-			lblNewLabel_3.setBounds(10, 277, 91, 14);
+			lblNewLabel_3.setBounds(10, 228, 91, 14);
 			panel.add(lblNewLabel_3);
 			
 			spinner = new JSpinner();
 			spinner.setModel(new SpinnerDateModel(new Date(1648935236284L), null, null, Calendar.YEAR));
 			spinner.setValue(new Date());
 			spinner.setEditor(new JSpinner.DateEditor(spinner,"dd/MM/yyyy"));
-			spinner.setBounds(10, 310, 199, 21);
+			spinner.setBounds(10, 261, 199, 21);
 			panel.add(spinner);
 			
 			JLabel lblNewLabel_4 = new JLabel("Descripci\u00F3n:");
-			lblNewLabel_4.setBounds(267, 159, 71, 14);
+			lblNewLabel_4.setBounds(10, 317, 71, 14);
 			panel.add(lblNewLabel_4);
 			
 			textPane = new JTextPane();
-			textPane.setBounds(267, 184, 227, 269);
+			textPane.setBounds(10, 342, 607, 97);
 			panel.add(textPane);
 			
 			JLabel lblNewLabel_5 = new JLabel("");
 			lblNewLabel_5.setIcon(new ImageIcon(RegEnfermedad.class.getResource("/img/traje-de-seguridad (4).png")));
-			lblNewLabel_5.setBounds(261, 11, 117, 163);
+			lblNewLabel_5.setBounds(400, 117, 140, 165);
 			panel.add(lblNewLabel_5);
 		}
 		{
@@ -136,7 +139,7 @@ public class RegEnfermedad extends JDialog {
 						Enfermedad nuevaEnfermedad = null;
 						nuevaEnfermedad = new Enfermedad(txtCodigo.getText(), txtNombre.getText(), comboBox.getSelectedItem().toString(), textPane.getText(), (Date) spinner.getValue());
 						Clinica.getInstance().insertarEnfermedad(nuevaEnfermedad);
-						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Operaciï¿½n exitosa", "Informaciï¿½n", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}
 				});

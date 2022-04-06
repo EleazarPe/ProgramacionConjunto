@@ -481,6 +481,8 @@ public class CrearCitas extends JDialog {
 	private void listarmedicosByEspecialidad(String strespecialidad) {
 		cbxDoctor.removeAllItems();
 		cbxDoctor.setEnabled(true);
+		cbxDoctor.addItem("<Seleccionar>");
+		int doctores = 0;
 		for (Usuario medico : Clinica.getInstance().buscarmedicosByEspecialiad(strespecialidad)) {
 			cbxDoctor.addItem(medico.getNombre());
 		}

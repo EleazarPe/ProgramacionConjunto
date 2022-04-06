@@ -1,6 +1,7 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -56,6 +57,7 @@ public class CrearCitas extends JDialog {
 	private JComboBox<Object> cbxRh;
 	private JComboBox<Object> cbxDoctor;
 	private JComboBox<Object> cbxEspecialidad;
+	private JLabel LblAdvertencia;
 
 	/**
 	 * Launch the application.
@@ -303,12 +305,12 @@ public class CrearCitas extends JDialog {
 		panel.add(signoAviso6);
 		
 		JLabel lblIdPaciente = new JLabel("ID:");
-		lblIdPaciente.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblIdPaciente.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblIdPaciente.setBounds(488, 30, 23, 25);
 		panel.add(lblIdPaciente);
 		
 		txtIDPaciente = new JTextField();
-		txtIDPaciente.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtIDPaciente.setFont(new Font("Tahoma", Font.BOLD, 14));
 		txtIDPaciente.setEditable(false);
 		txtIDPaciente.setColumns(10);
 		txtIDPaciente.setText("Pac-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
@@ -466,10 +468,17 @@ public class CrearCitas extends JDialog {
 		TextNotas.setBounds(324, 42, 283, 108);
 		panel_2.add(TextNotas);
 		
+		LblAdvertencia = new JLabel("No hay  Doctores Registrados ");
+		LblAdvertencia.setForeground(Color.RED);
+		LblAdvertencia.setBounds(90, 78, 172, 25);
+		LblAdvertencia.setVisible(false);
+		panel_2.add(LblAdvertencia);
+		
 		JLabel lblNewLabel_9 = new JLabel("AVISO: LOS CAMPOS MARCADOS      SON NECESARIOS PARA PROCESAR CORRETACTAMENTE SU SOLICITUD");
 		lblNewLabel_9.setBounds(32, 422, 598, 25);
 		contentPanel.add(lblNewLabel_9);
 		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
 		
 		JLabel signoAviso7 = new JLabel("");
 		signoAviso7.setBounds(216, 422, 16, 25);
@@ -485,6 +494,15 @@ public class CrearCitas extends JDialog {
 		int doctores = 0;
 		for (Usuario medico : Clinica.getInstance().buscarmedicosByEspecialiad(strespecialidad)) {
 			cbxDoctor.addItem(medico.getNombre());
+			doctores++;
+		}
+		if(doctores==0) {
+			cbxDoctor.removeAllItems();
+			cbxDoctor.setVisible(false);
+			LblAdvertencia.setVisible(true);
+		}else {
+			LblAdvertencia.setVisible(false);
+			cbxDoctor.setVisible(true);
 		}
 	}
 

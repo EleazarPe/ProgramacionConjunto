@@ -27,6 +27,7 @@ import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
+import javax.swing.*;
 
 public class RegEnfermedad extends JDialog {
 
@@ -124,8 +125,19 @@ public class RegEnfermedad extends JDialog {
 			
 			JLabel lblNewLabel_5 = new JLabel("");
 			lblNewLabel_5.setIcon(new ImageIcon(RegEnfermedad.class.getResource("/img/traje-de-seguridad (4).png")));
-			lblNewLabel_5.setBounds(400, 117, 140, 165);
+			lblNewLabel_5.setBounds(258, 8, 140, 165);
 			panel.add(lblNewLabel_5);
+			
+			JSlider slider = new JSlider();
+			slider.setPaintTicks(true);
+			slider.setPaintLabels(true);
+			slider.setValue(0);
+			slider.setOrientation(SwingConstants.VERTICAL);
+			slider.setToolTipText("\r\n");
+			slider.setMajorTickSpacing (25);
+			slider.setMinorTickSpacing(25);
+			slider.setBounds(287, 157, 200, 156);
+			panel.add(slider);
 		}
 		{
 			JPanel buttonPane = new JPanel();

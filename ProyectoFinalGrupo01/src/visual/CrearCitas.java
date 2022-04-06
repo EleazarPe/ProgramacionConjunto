@@ -30,6 +30,7 @@ import javax.swing.border.TitledBorder;
 import logico.Cita;
 import logico.Clinica;
 import logico.Paciente;
+import logico.Usuario;
 
 
 public class CrearCitas extends JDialog {
@@ -53,6 +54,7 @@ public class CrearCitas extends JDialog {
 	private JComboBox<Object> cbxTipoBlood;
 	private JComboBox<Object> cbxOcupacion;
 	private JComboBox<Object> cbxRh;
+	private JComboBox<Object> cbxDoctor;
 
 	/**
 	 * Launch the application.
@@ -446,7 +448,8 @@ public class CrearCitas extends JDialog {
 		lblNewLabel_2.setBounds(10, 78, 46, 25);
 		panel_2.add(lblNewLabel_2);
 		
-		JComboBox<Object> cbxDoctor = new JComboBox<Object>();
+		cbxDoctor = new JComboBox<Object>();
+		listarmedicosByEspecialidad(cbxEspecialidad.getSelectedItem().toString());
 		cbxDoctor.setEnabled(false);
 		cbxDoctor.setBounds(90, 78, 147, 25);
 		panel_2.add(cbxDoctor);
@@ -466,6 +469,14 @@ public class CrearCitas extends JDialog {
 		signoAviso7.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
 	}
 	
+	private void listarmedicosByEspecialidad(String strespecialidad) {
+		cbxDoctor.setEnabled(true);
+		for (Usuario medico : Clinica.getInstance().buscarmedicosByEspecialiad(strespecialidad)) {
+			cbxDoctor.addItem(medico.getNombre());
+		}
+		
+	}
+
 	public void ActivationKey(boolean value) {
 		txtNombre.setEditable(true);
 		txtApellido.setEditable(true);

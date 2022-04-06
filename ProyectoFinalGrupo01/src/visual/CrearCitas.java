@@ -55,6 +55,7 @@ public class CrearCitas extends JDialog {
 	private JComboBox<Object> cbxOcupacion;
 	private JComboBox<Object> cbxRh;
 	private JComboBox<Object> cbxDoctor;
+	private JComboBox<Object> cbxEspecialidad;
 
 	/**
 	 * Launch the application.
@@ -343,7 +344,7 @@ public class CrearCitas extends JDialog {
 		cbxOcupacion.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccionar>", "Profesor", "Abogado", "Ingeniero", "Medico", "Empleado Privado", "Empleado Publico", "Independiente"}));
 		cbxOcupacion.setBounds(98, 263, 155, 25);
 		panel.add(cbxOcupacion);
-		
+
 		JLabel label_2 = new JLabel("Tipo de Sangre:");
 		label_2.setBounds(31, 310, 94, 25);
 		panel.add(label_2);
@@ -423,10 +424,18 @@ public class CrearCitas extends JDialog {
 		lblNewLabel_5.setBounds(10, 42, 84, 25);
 		panel_2.add(lblNewLabel_5);
 		
-		JComboBox<Object> cbxEspecialidad = new JComboBox<Object>();
+		cbxEspecialidad = new JComboBox<Object>();
+		cbxEspecialidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(cbxEspecialidad.getSelectedIndex() > 0) {
+					listarmedicosByEspecialidad(cbxEspecialidad.getSelectedItem().toString());
+				}
+			}
+		});
 		cbxEspecialidad.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccionar>", "Cirug\u00EDa", "Pediatr\u00EDa", "M\u00E9dicina Interna", "Psiquiatr\u00EDa", "Oftalmolog\u00EDa", "Cardiolog\u00EDa", "Neumolog\u00EDa", "Dermatolog\u00EDa", "Nefrolog\u00EDa", "Neurolog\u00EDa", "Radiolog\u00EDa", "Anestesiolog\u00EDa", "Urolog\u00EDa", "Gastroenterolog\u00EDa", "Gineco obstetricia"}));
 		cbxEspecialidad.setBounds(90, 42, 147, 25);
 		panel_2.add(cbxEspecialidad);
+
 		
 		JSpinner spnFechaCita = new JSpinner();
 		spnFechaCita.setModel(new SpinnerDateModel(new Date(1648267200000L), new Date(1648267200000L), null, Calendar.DAY_OF_YEAR));
@@ -449,7 +458,6 @@ public class CrearCitas extends JDialog {
 		panel_2.add(lblNewLabel_2);
 		
 		cbxDoctor = new JComboBox<Object>();
-		listarmedicosByEspecialidad(cbxEspecialidad.getSelectedItem().toString());
 		cbxDoctor.setEnabled(false);
 		cbxDoctor.setBounds(90, 78, 147, 25);
 		panel_2.add(cbxDoctor);
@@ -467,14 +475,15 @@ public class CrearCitas extends JDialog {
 		signoAviso7.setBounds(216, 422, 16, 25);
 		contentPanel.add(signoAviso7);
 		signoAviso7.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
+
 	}
 	
 	private void listarmedicosByEspecialidad(String strespecialidad) {
+		cbxDoctor.removeAllItems();
 		cbxDoctor.setEnabled(true);
 		for (Usuario medico : Clinica.getInstance().buscarmedicosByEspecialiad(strespecialidad)) {
 			cbxDoctor.addItem(medico.getNombre());
 		}
-		//esto funciona
 	}
 
 	public void ActivationKey(boolean value) {

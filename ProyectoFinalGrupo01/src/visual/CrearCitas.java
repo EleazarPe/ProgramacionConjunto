@@ -474,7 +474,7 @@ public class CrearCitas extends JDialog {
 		for (Usuario medico : Clinica.getInstance().buscarmedicosByEspecialiad(strespecialidad)) {
 			cbxDoctor.addItem(medico.getNombre());
 		}
-		
+		//esto funciona
 	}
 
 	public void ActivationKey(boolean value) {

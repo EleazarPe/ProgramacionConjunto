@@ -115,6 +115,18 @@ public class Clinica {
 		}
 		return auxMedico;
 	}
+	public ArrayList<Medico> buscarmedicosByEspecialiad(String especialidad) {
+		ArrayList<Medico> auxMedico = new ArrayList<>();
+		for (Usuario med : usuarios) {
+			if(med instanceof Medico) {
+				if(((Medico) med).getEspecialidad().equalsIgnoreCase(especialidad)) {
+					auxMedico.add((Medico) med);
+				}
+			}
+		}
+		return auxMedico;
+	}
+	
 	public Paciente buscarPacienteById(String id) {
 		Paciente auxPaciente = null;
 		for (Usuario consulta : usuarios) {

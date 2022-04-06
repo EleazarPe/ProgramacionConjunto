@@ -62,7 +62,7 @@ public class RegEnfermedad extends JDialog {
 	public RegEnfermedad() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegEnfermedad.class.getResource("/img/cruz-roja.png")));
 		setTitle("Registro de Enfermedad");
-		setBounds(100, 100, 653, 534);
+		setBounds(100, 100, 768, 615);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -75,13 +75,13 @@ public class RegEnfermedad extends JDialog {
 			
 			JLabel lblNewLabel = new JLabel("Codigo:");
 			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-			lblNewLabel.setBounds(458, 11, 59, 50);
+			lblNewLabel.setBounds(10, 32, 59, 50);
 			panel.add(lblNewLabel);
 			
 			txtCodigo = new JTextField();
 			txtCodigo.setFont(new Font("Tahoma", Font.BOLD, 14));
 			txtCodigo.setEditable(false);
-			txtCodigo.setBounds(521, 26, 96, 21);
+			txtCodigo.setBounds(73, 47, 96, 21);
 			panel.add(txtCodigo);
 			txtCodigo.setColumns(10);
 			txtCodigo.setText("EF-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
@@ -91,7 +91,7 @@ public class RegEnfermedad extends JDialog {
 			panel.add(lblNewLabel_1);
 			
 			txtNombre = new JTextField();
-			txtNombre.setBounds(10, 117, 199, 21);
+			txtNombre.setBounds(10, 117, 238, 21);
 			panel.add(txtNombre);
 			txtNombre.setColumns(10);
 			
@@ -100,7 +100,7 @@ public class RegEnfermedad extends JDialog {
 			panel.add(lblNewLabel_2);
 			
 			comboBox = new JComboBox<Object>();
-			comboBox.setBounds(10, 184, 199, 21);
+			comboBox.setBounds(10, 184, 238, 21);
 			comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "Virus", "Bacteriana", "Hongos", "Nutricional", "Traumatica", "Genetica", "Congenita", "Mental", "Degenerativa", "Autoinmune", "Cardiovascular", "Alergica"}));
 			panel.add(comboBox);
 			
@@ -112,7 +112,7 @@ public class RegEnfermedad extends JDialog {
 			spinner.setModel(new SpinnerDateModel(new Date(1648935236284L), null, null, Calendar.YEAR));
 			spinner.setValue(new Date());
 			spinner.setEditor(new JSpinner.DateEditor(spinner,"dd/MM/yyyy"));
-			spinner.setBounds(10, 261, 199, 21);
+			spinner.setBounds(10, 261, 238, 21);
 			panel.add(spinner);
 			
 			JLabel lblNewLabel_4 = new JLabel("Descripci\u00F3n:");
@@ -120,13 +120,8 @@ public class RegEnfermedad extends JDialog {
 			panel.add(lblNewLabel_4);
 			
 			textPane = new JTextPane();
-			textPane.setBounds(10, 342, 607, 97);
+			textPane.setBounds(0, 426, 607, 97);
 			panel.add(textPane);
-			
-			JLabel lblNewLabel_5 = new JLabel("");
-			lblNewLabel_5.setIcon(new ImageIcon(RegEnfermedad.class.getResource("/img/traje-de-seguridad (4).png")));
-			lblNewLabel_5.setBounds(258, 8, 140, 165);
-			panel.add(lblNewLabel_5);
 			
 			JSlider slider = new JSlider();
 			slider.setPaintTicks(true);
@@ -136,8 +131,12 @@ public class RegEnfermedad extends JDialog {
 			slider.setToolTipText("\r\n");
 			slider.setMajorTickSpacing (25);
 			slider.setMinorTickSpacing(25);
-			slider.setBounds(287, 157, 200, 156);
+			slider.setBounds(497, 225, 200, 156);
 			panel.add(slider);
+			
+			JLabel lblNewLabel_5 = new JLabel("Tasa de Transmisibilidad:");
+			lblNewLabel_5.setBounds(532, 187, 165, 14);
+			panel.add(lblNewLabel_5);
 		}
 		{
 			JPanel buttonPane = new JPanel();

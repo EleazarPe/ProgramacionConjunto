@@ -343,13 +343,13 @@ public class CrearCitas extends JDialog {
 		panel.add(cbxOcupacion);
 		
 		JLabel label_2 = new JLabel("Tipo de Sangre:");
-		label_2.setBounds(93, 310, 94, 25);
+		label_2.setBounds(31, 310, 94, 25);
 		panel.add(label_2);
 		
 		cbxTipoBlood = new JComboBox<Object>();
 		cbxTipoBlood.setEnabled(false);
 		cbxTipoBlood.setModel(new DefaultComboBoxModel<Object>(new String[] {"A", "B", "AB", "O"}));
-		cbxTipoBlood.setBounds(198, 310, 55, 25);
+		cbxTipoBlood.setBounds(126, 310, 55, 25);
 		panel.add(cbxTipoBlood);
 		
 		JLabel label_3 = new JLabel("RH:");
@@ -369,7 +369,7 @@ public class CrearCitas extends JDialog {
 		
 		JLabel label_5 = new JLabel("");
 		label_5.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
-		label_5.setBounds(76, 310, 16, 25);
+		label_5.setBounds(10, 310, 16, 25);
 		panel.add(label_5);
 		
 		{

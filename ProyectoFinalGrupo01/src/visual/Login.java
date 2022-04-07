@@ -201,8 +201,8 @@ public class Login extends JDialog {
 				@SuppressWarnings("deprecation")
 				@Override
 				public void focusGained(FocusEvent e) {
-					if(pwdPassword.getText().equals("ContraseÃ±a")) {
-						pwdPassword.setEchoChar('â—�');
+					if(pwdPassword.getText().equals("Contraseña")) {
+						pwdPassword.setEchoChar('■');
 						pwdPassword.setText("");
 					}
 					else {
@@ -214,7 +214,7 @@ public class Login extends JDialog {
 				@Override
 				public void focusLost(FocusEvent e) {
 					if(pwdPassword.getText().equals("")) {
-						pwdPassword.setText("ContraseÃ±a");
+						pwdPassword.setText("Contraseña");
 						pwdPassword.setEchoChar((char)0);
 					}
 				}
@@ -223,7 +223,7 @@ public class Login extends JDialog {
 			pwdPassword.setBorder(null);
 			pwdPassword.setEchoChar((char)0);
 			panel_3.add(pwdPassword);
-			pwdPassword.setText("ContraseÃ±a");
+			pwdPassword.setText("Contraseña");
 			pwdPassword.setToolTipText("");
 			
 			JLabel lblPassLogo = new JLabel("");
@@ -242,11 +242,11 @@ public class Login extends JDialog {
 						 dispose();
 					}
 					 else if (txtUsuario.getText().equalsIgnoreCase("") || txtUsuario.getText().equalsIgnoreCase("Usuario") || 
-							 pwdPassword.getText().equals("") || pwdPassword.getText().equals("ContraseÃ±a")){
+							 pwdPassword.getText().equals("") || pwdPassword.getText().equals("Contraseña")){
 						lblLoginMsj.setText("Â¡Favor llenar los dos campos!");
 					}
 					 else {
-						lblLoginMsj.setText("Â¡Usuario o ContraseÃ±a incorrecta!");
+						lblLoginMsj.setText("¡Usuario o Contraseña incorrecta!");
 					}
 				}
 			});

@@ -1,9 +1,14 @@
 package logico;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Consulta {
+public class Consulta implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String apellido;
 	private String cedula;

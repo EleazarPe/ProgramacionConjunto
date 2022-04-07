@@ -288,7 +288,7 @@ public class RegMedico extends JDialog {
 							Usuario nuevoMedico = null;
 							nuevoMedico = new Medico(txtNombre.getText(), txtApellido.getText(), txtCedula.getText(), (Date) spinner.getValue(), txtTelefono.getText(), txtDireccion.getText(), txtUser.getText(), txtpassword.getText(),cmbConsultorio.getSelectedItem().toString(),txtId.getText() , cmbEspecialidad.getSelectedItem().toString());
 							Clinica.getInstance().insertarUsuario(nuevoMedico);
-							JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "OperaciÃ³n exitosa", "InformaciÃ³n", JOptionPane.INFORMATION_MESSAGE);
 							System.out.println("-------El resultado del spinner es: "+ Clinica.getInstance().buscarUsuarioByCedula(nuevoMedico.getID()).getFechaNaciento());
 							clean();
 						}else {
@@ -303,7 +303,7 @@ public class RegMedico extends JDialog {
 							mimedico.setConsultorioString(cmbConsultorio.getSelectedItem().toString());
 							mimedico.setCodigo(txtId.getText());
 							mimedico.setEspecialidad( cmbEspecialidad.getSelectedItem().toString());
-							JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Operaciï¿½n exitosa", "Informaciï¿½n", JOptionPane.INFORMATION_MESSAGE);
 							dispose();
 						}
 					}

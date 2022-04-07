@@ -3,7 +3,7 @@ package logico;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class VacunaEliminada {
+public class VacunaEliminada  {
 	private String cedulaString;
 	private String nombreString;
 	private String ocupacionString;

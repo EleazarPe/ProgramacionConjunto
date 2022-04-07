@@ -15,7 +15,7 @@ public class Clinica implements Serializable {
 	private ArrayList<Historial> historiales;
 	private ArrayList<Vigilancia> vigilancias;
 	private static Clinica miclinica= null;
-	private static Clinica miClinica2;
+	private static Usuario registroUsuario;
 	
 	public Clinica() {
 		super();
@@ -33,10 +33,13 @@ public class Clinica implements Serializable {
 		}
 		return miclinica;
 	}
-	
-	public static void SetClinica(Clinica clin) {
-		Clinica.miClinica2 = clin;
+	public static Clinica GetClinica() {
+		return miclinica;
 	}
+	public static void SetClinica(Clinica clin) {
+		Clinica.miclinica = clin;
+	}
+	
 	public ArrayList<Usuario> getUsuarios() {
 		return usuarios;
 	}
@@ -147,5 +150,29 @@ public class Clinica implements Serializable {
 		}
 		return auxPaciente;
 	}
+
+	public static Usuario getRegistroUsuario() {
+		return registroUsuario;
+	}
+
+	public static void setRegistroUsuario(Usuario registroUsuario) {
+		Clinica.registroUsuario = registroUsuario;
+	}
+	
+	public boolean confirmLogin(String txt, String txt2) {
+		boolean login = false;
+		for (Usuario med : usuarios) {
+			if(med instanceof Medico) {
+				if(((Medico) med).getLoginString().equals(txt) && ((Medico) med).getPassowrdString().equals(txt2)) {
+					registroUsuario = med;
+					login = true;
+				}
+			}
+			
+		}
+		return login;
+	}
+	
+	
 	
 }

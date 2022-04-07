@@ -18,6 +18,7 @@ import java.awt.Image;
 import javax.swing.border.MatteBorder;
 
 import logico.Clinica;
+import logico.Medico;
 import logico.Usuario;
 
 import javax.swing.JTextField;
@@ -47,6 +48,7 @@ public class Login extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtUsuario;
 	private JLabel lblLoginMsj;
+	private JPasswordField pwdPassword;
 	
 	
 	public static void main(String[] args) {
@@ -69,8 +71,10 @@ public class Login extends JDialog {
 					try {
 						clinica2 = new  FileOutputStream("Clinica.dat");
 						clinicaWrite = new ObjectOutputStream(clinica2);
-						Usuario aux = new Usuario("Admin", "Admin", "01", new Date(), "000001", "NaN", "00001");
-						Clinica.getInstance().insertarUsuario(aux);;
+						Usuario aux = new Medico("Admin", "Admin", "01", new Date(), "000001", "NaN", "Admin", "Admin", "Admin", "000001", "NaN"); //Usuario("Admin", "Admin", "01", new Date(), "000001", "NaN", "00001");
+						//Usuario usuar = new Medico(1.nombre, 2.apellido, 3.cedula, 4.fechaNaciento, 5.telefono, 6.direccion, 7.login, 8.passowrd, 9.consultorio, 10.codigo, 11.especialidad)
+						Clinica.getInstance().insertarUsuario(aux);
+						System.out.println("Se crea el medico");
 						clinicaWrite.writeObject(Clinica.getInstance());
 						clinica2.close();
 						clinicaWrite.close();
@@ -195,7 +199,7 @@ public class Login extends JDialog {
 			panel_3.setBounds(185, 248, 200, 40);
 			panel_1.add(panel_3);
 			
-			JPasswordField pwdPassword = new JPasswordField();
+			pwdPassword = new JPasswordField();
 			pwdPassword.setBounds(0, 0, 150, 40);
 			pwdPassword.addFocusListener(new FocusAdapter() {
 				@SuppressWarnings("deprecation")
@@ -234,18 +238,16 @@ public class Login extends JDialog {
 			
 			JPanel panel_4 = new JPanel();
 			panel_4.addMouseListener(new MouseAdapter() {
+				@SuppressWarnings("deprecation")
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					 if (txtUsuario.getText().equalsIgnoreCase("Admin") && pwdPassword.getText().equals("1234")) {
-						 lblLoginMsj.setText("");
-						 JOptionPane.showMessageDialog(null, "Inicio de sesion completado");
-						 dispose();
-					}
-					 else if (txtUsuario.getText().equalsIgnoreCase("") || txtUsuario.getText().equalsIgnoreCase("Usuario") || 
-							 pwdPassword.getText().equals("") || pwdPassword.getText().equals("Contraseña")){
-						lblLoginMsj.setText("Â¡Favor llenar los dos campos!");
-					}
-					 else {
+					System.out.println("Usuario: "+txtUsuario.getText());
+					System.out.println("Password: "+ pwdPassword.getText());
+					if(Clinica.getInstance().confirmLogin(txtUsuario.getText(), pwdPassword.getText()) == true) {
+						Principal frame = new Principal();
+						dispose();
+						frame.setVisible(true);
+					}else {
 						lblLoginMsj.setText("¡Usuario o Contraseña incorrecta!");
 					}
 				}

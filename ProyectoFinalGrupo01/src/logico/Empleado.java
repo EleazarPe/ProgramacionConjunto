@@ -1,9 +1,14 @@
 package logico;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Empleado extends Usuario {
+public class Empleado extends Usuario implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String login;
 	private String password;
 	private String ocupacionString;

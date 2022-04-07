@@ -1,8 +1,13 @@
 package logico;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Vigilancia {
+public class Vigilancia implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Enfermedad enfermedadEnfermedad;
 	private int transmisibilidad;
 	private int poblacionAfectada;

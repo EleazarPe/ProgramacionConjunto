@@ -389,12 +389,12 @@ public class CrearCitas extends JDialog {
 							Paciente auxPaciente = null;
 							Cita auxCita = null;
 							auxPaciente = new Paciente(txtNombre.getText(), txtApellido.getText(), txtNid.getText(), (Date)spnFechaNacimiento.getValue(), cbxOcupacion.getSelectedItem().toString(), txtCelular.getText(), txtDireccion.getText(), txtIDPaciente.getText(), cbxTipoBlood.getSelectedItem().toString(), txtTelefonoOpc.getText());
-							auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText()," ", " ");
+							auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText(),cbxEspecialidad.getSelectedItem().toString(), cbxDoctor.getSelectedItem().toString());
 							Clinica.getInstance().insertarUsuario(auxPaciente);
 							auxPaciente.insertarCita(auxCita);
 						}else {
 							Cita auxCita = null;
-							auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText()," ", " ");
+							auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText(),cbxEspecialidad.getSelectedItem().toString(), cbxDoctor.getSelectedItem().toString());
 							paciente.insertarCita(auxCita);
 						}
 					}

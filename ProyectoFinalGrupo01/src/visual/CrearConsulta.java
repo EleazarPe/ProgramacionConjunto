@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
@@ -27,6 +28,8 @@ import javax.swing.JTextPane;
 import javax.swing.JRadioButton;
 import java.awt.Font;
 import java.awt.Toolkit;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class CrearConsulta extends JDialog {
 
@@ -42,6 +45,12 @@ public class CrearConsulta extends JDialog {
 	private JTextPane textDiagnostico;
 	private JRadioButton rdbtSi;
 	private JRadioButton rdbtnNo;
+	private JTable table;
+	private JPanel PanelConsulta;
+	private JPanel panelCita;
+	private DefaultTableModel model;
+	private Object row[];
+	private JPanel panel_1;
 
 	/**
 	 * Launch the application.
@@ -66,25 +75,59 @@ public class CrearConsulta extends JDialog {
 		setResizable(false);
 		setTitle("Control de Consulta\r\ns");
 		setBounds(100, 100, 807, 756);
-		getContentPane().setLayout(new BorderLayout());
+		getContentPane().setLayout(null);
+		contentPanel.setBounds(0, 0, 801, 664);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(new BorderLayout(0, 0));
+		getContentPane().add(contentPanel);
 		setLocationRelativeTo(null);
+		contentPanel.setLayout(null);
 		{
 			JPanel PanelListadoPaciente = new JPanel();
-			contentPanel.add(PanelListadoPaciente, BorderLayout.CENTER);
+			PanelListadoPaciente.setBounds(5, 15, 791, 644);
+			contentPanel.add(PanelListadoPaciente);
 			PanelListadoPaciente.setLayout(null);
 			
-			JPanel PanelPacienteActual = new JPanel();
-			PanelPacienteActual.setLayout(null);
-			PanelPacienteActual.setBounds(0, 0, 781, 685);
-			PanelListadoPaciente.add(PanelPacienteActual);
+			PanelConsulta = new JPanel();
+			PanelConsulta.setLayout(null);
+			PanelConsulta.setBounds(0, 0, 781, 685);
+			PanelListadoPaciente.add(PanelConsulta);
+			
+			panelCita = new JPanel();
+			panelCita.setBounds(0, 0, 781, 685);
+			PanelListadoPaciente.add(panelCita);
+			panelCita.setLayout(null);
+			
+			JPanel panel = new JPanel();
+			panel.setBounds(0, 0, 791, 643);
+			panelCita.add(panel);
+			panel.setLayout(null);
+			panel_1 = new JPanel();
+			panel_1.setBounds(0, 0, 791, 593);
+			panel.add(panel_1);
+			panel_1.setLayout(new BorderLayout(0, 0));
+			{
+				JScrollPane scrollPane = new JScrollPane();
+				panel_1.add(scrollPane, BorderLayout.CENTER);
+				{
+					String headers[] = {"Cedula","Nombre","Direccion","Telefono"};
+					model = new DefaultTableModel();
+					model.setColumnIdentifiers(headers);
+					table = new JTable();
+				}
+				scrollPane.setViewportView(table);
+				table.setModel(model);
+				scrollPane.setViewportView(table);
+			}
+			
+			JButton btnConsultar = new JButton("Consultar");
+			btnConsultar.setBounds(625, 600, 89, 23);
+			panel.add(btnConsultar);
+			
 			
 			JPanel pnlDatosPaciente = new JPanel();
 			pnlDatosPaciente.setBorder(new TitledBorder(null, "Datos del Paciente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			pnlDatosPaciente.setBounds(10, 11, 517, 233);
-			PanelPacienteActual.add(pnlDatosPaciente);
+			PanelConsulta.add(pnlDatosPaciente);
 			pnlDatosPaciente.setLayout(null);
 			
 			JLabel label_1 = new JLabel("Apellidos:");
@@ -142,7 +185,7 @@ public class CrearConsulta extends JDialog {
 			JPanel pnlDatosClinicos = new JPanel();
 			pnlDatosClinicos.setBorder(new TitledBorder(null, "Datos Clinicos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			pnlDatosClinicos.setBounds(10, 255, 517, 171);
-			PanelPacienteActual.add(pnlDatosClinicos);
+			PanelConsulta.add(pnlDatosClinicos);
 			pnlDatosClinicos.setLayout(null);
 			
 			JSpinner spnEstatura = new JSpinner();
@@ -184,7 +227,7 @@ public class CrearConsulta extends JDialog {
 			JPanel PnlObservaciones = new JPanel();
 			PnlObservaciones.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Obsevaciones", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 			PnlObservaciones.setBounds(10, 437, 760, 130);
-			PanelPacienteActual.add(PnlObservaciones);
+			PanelConsulta.add(PnlObservaciones);
 			PnlObservaciones.setLayout(null);
 			
 			JTextPane TetxObservaciones = new JTextPane();
@@ -194,7 +237,7 @@ public class CrearConsulta extends JDialog {
 			JPanel pnlRecetas = new JPanel();
 			pnlRecetas.setBorder(new TitledBorder(null, "Receta", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			pnlRecetas.setBounds(537, 11, 233, 233);
-			PanelPacienteActual.add(pnlRecetas);
+			PanelConsulta.add(pnlRecetas);
 			pnlRecetas.setLayout(null);
 			
 			TextReceta = new JTextPane();
@@ -204,7 +247,7 @@ public class CrearConsulta extends JDialog {
 			JPanel pnlDiagnstico = new JPanel();
 			pnlDiagnstico.setBorder(new TitledBorder(null, "Dignostico", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			pnlDiagnstico.setBounds(537, 255, 234, 171);
-			PanelPacienteActual.add(pnlDiagnstico);
+			PanelConsulta.add(pnlDiagnstico);
 			pnlDiagnstico.setLayout(null);
 			
 			textDiagnostico = new JTextPane();
@@ -218,7 +261,7 @@ public class CrearConsulta extends JDialog {
 				}
 			});
 			rdbtnNo.setBounds(115, 606, 45, 23);
-			PanelPacienteActual.add(rdbtnNo);
+			PanelConsulta.add(rdbtnNo);
 			rdbtnNo.setSelected(true);
 			rdbtnNo.setFont(new Font("Tahoma", Font.BOLD, 11));
 			
@@ -229,19 +272,23 @@ public class CrearConsulta extends JDialog {
 				}
 			});
 			rdbtSi.setBounds(42, 606, 45, 23);
-			PanelPacienteActual.add(rdbtSi);
+			PanelConsulta.add(rdbtSi);
 			rdbtSi.setFont(new Font("Tahoma", Font.BOLD, 11));
 			
 			JLabel lblNewLabel_2 = new JLabel("\u00BFAgregar a Historial Medico?");
 			lblNewLabel_2.setBounds(20, 574, 177, 25);
-			PanelPacienteActual.add(lblNewLabel_2);
+			PanelConsulta.add(lblNewLabel_2);
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+			
+
+			
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBounds(0, 664, 801, 38);
 			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			getContentPane().add(buttonPane);
 			{
 				JButton okButton = new JButton("Guardar");
 				okButton.setActionCommand("OK");
@@ -263,7 +310,24 @@ public class CrearConsulta extends JDialog {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
+		JToggleButton tglbtnNewToggleButton_4 = new JToggleButton("Citas");
+		tglbtnNewToggleButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//////////////////////---------------------------------->
+				PanelConsulta.setVisible(false);
+				panelCita.setVisible(true);
+				
+			}
+		});
+		menuBar.add(tglbtnNewToggleButton_4);
+		
 		JToggleButton tglbtnNewToggleButton = new JToggleButton("Consulta");
+		tglbtnNewToggleButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				panelCita.setVisible(false);
+				PanelConsulta.setVisible(true);
+			}
+		});
 		menuBar.add(tglbtnNewToggleButton);
 		
 		JToggleButton tglbtnNewToggleButton_1 = new JToggleButton("Historial De Consultas");

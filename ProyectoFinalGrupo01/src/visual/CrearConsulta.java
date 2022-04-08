@@ -49,8 +49,9 @@ public class CrearConsulta extends JDialog {
 	private JPanel PanelConsulta;
 	private JPanel panelCita;
 	private DefaultTableModel model;
-	private Object row[];
+	//private Object row[];
 	private JPanel panel_1;
+	private JPanel buttonPane;
 
 	/**
 	 * Launch the application.
@@ -70,11 +71,10 @@ public class CrearConsulta extends JDialog {
 	 */
 	public CrearConsulta() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(CrearConsulta.class.getResource("/img/cruz-roja.png")));
-		//Comentario de un comentario comentado en la comentacion 
 		setModal(true);
 		setResizable(false);
 		setTitle("Control de Consulta\r\ns");
-		setBounds(100, 100, 807, 756);
+		setBounds(100, 100, 807, 769);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 801, 664);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -93,7 +93,7 @@ public class CrearConsulta extends JDialog {
 			PanelListadoPaciente.add(PanelConsulta);
 			
 			panelCita = new JPanel();
-			panelCita.setBounds(0, 0, 781, 685);
+			panelCita.setBounds(0, 0, 791, 644);
 			PanelListadoPaciente.add(panelCita);
 			panelCita.setLayout(null);
 			
@@ -120,7 +120,7 @@ public class CrearConsulta extends JDialog {
 			}
 			
 			JButton btnConsultar = new JButton("Consultar");
-			btnConsultar.setBounds(625, 600, 89, 23);
+			btnConsultar.setBounds(660, 600, 89, 23);
 			panel.add(btnConsultar);
 			
 			
@@ -284,8 +284,8 @@ public class CrearConsulta extends JDialog {
 			
 		}
 		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setBounds(0, 664, 801, 38);
+			buttonPane = new JPanel();
+			buttonPane.setBounds(0, 663, 791, 52);
 			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane);
@@ -316,6 +316,8 @@ public class CrearConsulta extends JDialog {
 				//////////////////////---------------------------------->
 				PanelConsulta.setVisible(false);
 				panelCita.setVisible(true);
+				buttonPane.setVisible(false);
+				
 				
 			}
 		});
@@ -326,6 +328,7 @@ public class CrearConsulta extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				panelCita.setVisible(false);
 				PanelConsulta.setVisible(true);
+				buttonPane.setVisible(true);
 			}
 		});
 		menuBar.add(tglbtnNewToggleButton);

@@ -134,7 +134,7 @@ public class Login extends JDialog {
 			LblSalir.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					if(JOptionPane.showConfirmDialog(null, "Â¿Esta seguro de que desea cerrar el programa?", "Confirmacion",
+					if(JOptionPane.showConfirmDialog(null, "¿Esta seguro de que desea cerrar el programa?", "Confirmacion",
 							JOptionPane.YES_NO_OPTION)== 0);{
 						Login.this.dispose();
 					}
@@ -237,6 +237,7 @@ public class Login extends JDialog {
 			lblPassLogo.setIcon(new ImageIcon(img_pass));
 			
 			JPanel panel_4 = new JPanel();
+			panel_4.setBackground(Color.WHITE);
 			panel_4.addMouseListener(new MouseAdapter() {
 				@SuppressWarnings("deprecation")
 				@Override
@@ -247,9 +248,20 @@ public class Login extends JDialog {
 						Principal frame = new Principal();
 						dispose();
 						frame.setVisible(true);
-					}else {
+					}else if(txtUsuario.getText().equals("") || txtUsuario.getText().equals("Usuario")|| pwdPassword.getText().equals("") || pwdPassword.getText().equals("Contraseña")){
+						lblLoginMsj.setText("¡Favor llenar los campos!");
+					}
+					else {
 						lblLoginMsj.setText("¡Usuario o Contraseña incorrecta!");
 					}
+				}
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					panel_4.setBackground(Color.lightGray);
+				}
+				@Override
+				public void mouseExited(MouseEvent e) {
+					panel_4.setBackground(Color.white);
 				}
 			});
 			panel_4.setBounds(212, 324, 145, 47);

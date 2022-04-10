@@ -9,6 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+
+import logico.Cita;
+import logico.Clinica;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
@@ -55,6 +59,7 @@ public class CrearConsulta extends JDialog {
 	private JPanel panelHistorialC;
 	private JPanel panelHistorialM;
 	private JPanel panelVacuna;
+	private JButton okButton;
 
 	/**
 	 * Launch the application.
@@ -109,7 +114,7 @@ public class CrearConsulta extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String headers[] = {"Fecha","Cedula","Nombre","Sintomas"};
+					String headers[] = {"ID","Cedula","Nombre","Telefono","Sintomas","fecha"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
@@ -356,7 +361,7 @@ public class CrearConsulta extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane);
 			{
-				JButton okButton = new JButton("Guardar");
+				okButton = new JButton("Guardar");
 				/*if (panelCita.isEnabled()) {      La idea es que cuando se abra la ventana de citas cambie el boton guardar y asi se haria con cada ventana.
 					okButton.setText("Consultar");
 				}
@@ -390,7 +395,8 @@ public class CrearConsulta extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				panelConsulta.setVisible(false);
 				panelCita.setVisible(true);
-				
+				okButton.setText("Consultar");
+				loadTable();
 				
 			}
 		});
@@ -401,6 +407,7 @@ public class CrearConsulta extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {	
 				panelCita.setVisible(false);
 				panelConsulta.setVisible(true);
+				okButton.setText("Guardar");
 				
 			}
 		});
@@ -442,5 +449,19 @@ public class CrearConsulta extends JDialog {
 			}
 		});
 		menuBar.add(tglbtnNewToggleButton_2);
+	}
+	private void loadTable() {
+		Object row[];
+		model.setRowCount(0);
+		row = new Object[model.getColumnCount()];
+		for (Cita ct : Clinica.getInstance().compararCitaYDoctor()) {
+			row[0] =ct.getCodigo();
+			row[1] = ct.getUserUsuario().getID();
+			row[2] = ct.getUserUsuario().getNombre() + ct.getUserUsuario().getApellido();
+			row[3] = ct.getUserUsuario().getTelefono();
+			row[4] = ct.getNotas();
+			row[5] = ct.getFecha();
+
+		}
 	}
 }

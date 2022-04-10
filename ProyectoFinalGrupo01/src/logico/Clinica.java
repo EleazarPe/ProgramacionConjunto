@@ -14,6 +14,7 @@ public class Clinica implements Serializable {
 	private ArrayList<Enfermedad> enfermedadS;
 	private ArrayList<Historial> historiales;
 	private ArrayList<Vigilancia> vigilancias;
+	private ArrayList<Cita> misCitas;
 	private static Clinica miclinica= null;
 	private static Usuario registroUsuario;
 	
@@ -24,6 +25,7 @@ public class Clinica implements Serializable {
 		this.consultas = new ArrayList<>();
 		this.enfermedadS = new ArrayList<>();
 		this.historiales = new ArrayList<>();
+		this.misCitas = new ArrayList<>();
 		this.setVigilancias(new ArrayList<>());
 	}
 	
@@ -171,6 +173,24 @@ public class Clinica implements Serializable {
 			
 		}
 		return login;
+	}
+	
+	public ArrayList<Cita> compararCitaYDoctor() {
+		ArrayList<Cita> lasCitas = new ArrayList<>();
+		for (Cita cit : misCitas) {
+			if( cit.getEspecialidad().equalsIgnoreCase(((Medico) registroUsuario).getEspecialidad())&&cit.getDoctor().equalsIgnoreCase(((Medico) registroUsuario).Nombre)) {
+				lasCitas.add(cit);
+			}
+		}
+		return lasCitas;
+	}
+
+	public ArrayList<Cita> getMisCitas() {
+		return misCitas;
+	}
+
+	public void setMisCitas(ArrayList<Cita> misCitas) {
+		this.misCitas = misCitas;
 	}
 	
 	

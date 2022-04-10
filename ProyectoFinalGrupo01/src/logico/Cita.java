@@ -14,16 +14,17 @@ public class Cita implements Serializable {
 	private String notas;
 	private String especialidad;
 	private String doctor;
-	
+	private Usuario userUsuario;
 
 	
-	public Cita( Date fecha, String codigo, String notas, String especialidad, String doctor) {
+	public Cita( Date fecha, String codigo, String notas, String especialidad, String doctor, Usuario usuario) {
 		super();
 		this.fecha = fecha;
 		this.codigo = codigo;
 		this.notas = notas;
 		this.especialidad = especialidad;
 		this.doctor = doctor;
+		this.userUsuario = usuario;
 	}
 	
 
@@ -62,6 +63,16 @@ public class Cita implements Serializable {
 
 	public void setDoctor(String doctor) {
 		this.doctor = doctor;
+	}
+
+
+	public Usuario getUserUsuario() {
+		return userUsuario;
+	}
+
+
+	public void setUserUsuario(Usuario userUsuario) {
+		this.userUsuario = userUsuario;
 	}
 	
 	

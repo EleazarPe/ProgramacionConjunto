@@ -16,6 +16,8 @@ import logico.Clinica;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JComboBox;
@@ -53,6 +55,7 @@ public class CrearConsulta extends JDialog {
 	private JPanel panelConsulta;
 	private JPanel panelCita;
 	private DefaultTableModel model;
+	private DefaultTableModel model2;
 	private JPanel buttonPane;
 	private JToggleButton tglbtnNewToggleButton_4;
 	private JTable table;
@@ -60,6 +63,7 @@ public class CrearConsulta extends JDialog {
 	private JPanel panelHistorialM;
 	private JPanel panelVacuna;
 	private JButton okButton;
+	private DateFormat formatter;
 	private Object row[];
 
 	/**
@@ -116,12 +120,12 @@ public class CrearConsulta extends JDialog {
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 					String headers[] = {"ID","Cedula","Nombre","Telefono","Sintomas","fecha"};
-					model = new DefaultTableModel();
-					model.setColumnIdentifiers(headers);
+					model2 = new DefaultTableModel();
+					model2.setColumnIdentifiers(headers);
 					table = new JTable();
 				}
 				scrollPane.setViewportView(table);
-				table.setModel(model);
+				table.setModel(model2);
 				scrollPane.setViewportView(table);
 			}
 			
@@ -453,18 +457,18 @@ public class CrearConsulta extends JDialog {
 	}
 	private void loadTable() {
 		
-		model.setRowCount(0);
-		row = new Object[model.getColumnCount()];
-		if(Clinica.getInstance().getMisCitas().size() >0) {
-		for (Cita ct : Clinica.getInstance().getMisCitas()) {
+		model2.setRowCount(0);
+		row = new Object[model2.getColumnCount()];
+		for (Cita ct : Clinica.getInstance().compararCitaYDoctor()) {
 			row[0] = ct.getCodigo();
 			row[1] = ct.getUserUsuario().getID();
-			row[2] = ct.getUserUsuario().getNombre(); //+ ct.getUserUsuario().getApellido();
+			row[2] = ct.getUserUsuario().getNombre() + ct.getUserUsuario().getApellido();
 			row[3] = ct.getUserUsuario().getTelefono();
 			row[4] = ct.getNotas();
-			row[5] = ct.getFecha();
-			model.addRow(row);	
+			formatter = new SimpleDateFormat("dd/MM/yyyy");
+			row[5] = formatter.format(ct.getFecha()).toString();
+			model2.addRow(row);	
 		}
-		}
+
 	}
 }

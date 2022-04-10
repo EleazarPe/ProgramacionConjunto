@@ -178,7 +178,7 @@ public class Clinica implements Serializable {
 	public ArrayList<Cita> compararCitaYDoctor() {
 		ArrayList<Cita> lasCitas = new ArrayList<>();
 		for (Cita cit : misCitas) {
-			if( cit.getEspecialidad().equalsIgnoreCase(((Medico) registroUsuario).getEspecialidad())&&cit.getDoctor().equalsIgnoreCase(((Medico) registroUsuario).Nombre)) {
+			if( cit.getEspecialidad().equalsIgnoreCase(((Medico) registroUsuario).getEspecialidad()) && cit.getDoctor().equalsIgnoreCase(((Medico) registroUsuario).getNombre()+" "+((Medico) registroUsuario).getApellido())) {
 				lasCitas.add(cit);
 			}
 		}

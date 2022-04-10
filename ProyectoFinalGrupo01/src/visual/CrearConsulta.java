@@ -454,7 +454,7 @@ public class CrearConsulta extends JDialog {
 		Object row[];
 		model.setRowCount(0);
 		row = new Object[model.getColumnCount()];
-		for (Cita ct : Clinica.getInstance().compararCitaYDoctor()) {
+		for (Cita ct : Clinica.getInstance().getMisCitas()) {
 			row[0] = ct.getCodigo();
 			row[1] = ct.getUserUsuario().getID();
 			row[2] = ct.getUserUsuario().getNombre() + ct.getUserUsuario().getApellido();

@@ -36,6 +36,8 @@ import java.awt.Toolkit;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.SwingConstants;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Login extends JDialog {
 	
@@ -225,6 +227,7 @@ public class Login extends JDialog {
 			});
 			panel_3.setLayout(null);
 			pwdPassword.setBorder(null);
+			pwdPassword.setEchoChar((char)0);
 			panel_3.add(pwdPassword);
 			pwdPassword.setText("Contraseña");
 			pwdPassword.setToolTipText("");
@@ -250,11 +253,11 @@ public class Login extends JDialog {
 						frame.setVisible(true);
 					}else if(txtUsuario.getText().equals("") || txtUsuario.getText().equals("Usuario")|| pwdPassword.getText().equals("") || pwdPassword.getText().equals("Contraseña")){
 						lblLoginMsj.setText("¡Favor llenar los campos!");
-						tk.beep ();
+						tk.beep();
 					}
 					else {
 						lblLoginMsj.setText("¡Usuario o Contraseña incorrecta!");
-						tk.beep ();
+						tk.beep();
 					}
 				}
 				@Override
@@ -291,7 +294,6 @@ public class Login extends JDialog {
 			lblLoginMsj.setBounds(185, 295, 200, 16);
 			panel_1.add(lblLoginMsj);
 			
-		}
-		
-	}
+		}		
+	}	
 }

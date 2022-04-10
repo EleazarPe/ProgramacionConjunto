@@ -206,7 +206,7 @@ public class Login extends JDialog {
 				@Override
 				public void focusGained(FocusEvent e) {
 					if(pwdPassword.getText().equals("Contraseña")) {
-						pwdPassword.setEchoChar('■');
+						pwdPassword.setEchoChar('●');
 						pwdPassword.setText("");
 					}
 					else {
@@ -225,7 +225,6 @@ public class Login extends JDialog {
 			});
 			panel_3.setLayout(null);
 			pwdPassword.setBorder(null);
-			pwdPassword.setEchoChar((char)0);
 			panel_3.add(pwdPassword);
 			pwdPassword.setText("Contraseña");
 			pwdPassword.setToolTipText("");
@@ -242,6 +241,7 @@ public class Login extends JDialog {
 				@SuppressWarnings("deprecation")
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					Toolkit tk = Toolkit.getDefaultToolkit ();
 					System.out.println("Usuario: "+txtUsuario.getText());
 					System.out.println("Password: "+ pwdPassword.getText());
 					if(Clinica.getInstance().confirmLogin(txtUsuario.getText(), pwdPassword.getText()) == true) {
@@ -250,9 +250,11 @@ public class Login extends JDialog {
 						frame.setVisible(true);
 					}else if(txtUsuario.getText().equals("") || txtUsuario.getText().equals("Usuario")|| pwdPassword.getText().equals("") || pwdPassword.getText().equals("Contraseña")){
 						lblLoginMsj.setText("¡Favor llenar los campos!");
+						tk.beep ();
 					}
 					else {
 						lblLoginMsj.setText("¡Usuario o Contraseña incorrecta!");
+						tk.beep ();
 					}
 				}
 				@Override

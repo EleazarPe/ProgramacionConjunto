@@ -17,8 +17,6 @@ import java.util.Date;
 import java.util.Random;
 import java.util.Calendar;
 import javax.swing.border.TitledBorder;
-
-
 import logico.Clinica;
 import logico.Medico;
 import logico.Usuario;
@@ -52,6 +50,16 @@ public class RegMedico extends JDialog {
 	private JSpinner spinner;
 	private Medico mimedico = null;
 	private JComboBox<Object> cmbEspecialidad;
+	private JLabel advertenciaCedula;
+	private JLabel advertenciaNombre;
+	private JLabel advertenciaApellido;
+	private JLabel advertenciaTel;
+	private JLabel advertenciaUser;
+	private JLabel advertenciaContraseña;
+	private JLabel lblImportante;
+	private JLabel advertenciaConsultorio;
+	private JLabel AdvertenciaDireccion;
+	private JLabel advertenciaEspecialidad;
 
 
 	public static void main(String[] args) {
@@ -95,76 +103,76 @@ public class RegMedico extends JDialog {
 			txtId.setColumns(10);
 			txtId.setText("Dr-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
 			JLabel lblNewLabel_1 = new JLabel("Nombre:");
-			lblNewLabel_1.setBounds(10, 162, 86, 14);
+			lblNewLabel_1.setBounds(31, 164, 86, 14);
 			panel.add(lblNewLabel_1);
 
 			txtNombre = new JTextField();
 			txtNombre.addKeyListener(new KeyAdapter() {
 				@Override
 				public void keyTyped(java.awt.event.KeyEvent evt) {                                    
-				    int key = evt.getKeyChar();
+					int key = evt.getKeyChar();
 
-				    boolean mayusculas = key >= 65 && key <= 90;
-				    boolean minusculas = key >= 97 && key <= 122;
-				    boolean espacio = key == 32;
-				            
-				     if (!(minusculas || mayusculas || espacio))
-				    {
-				        evt.consume();
-				    }
+					boolean mayusculas = key >= 65 && key <= 90;
+					boolean minusculas = key >= 97 && key <= 122;
+					boolean espacio = key == 32;
+
+					if (!(minusculas || mayusculas || espacio))
+					{
+						evt.consume();
+					}
 				}     
 			});
-			txtNombre.setBounds(10, 187, 193, 20);
+			txtNombre.setBounds(31, 189, 193, 20);
 			panel.add(txtNombre);
 			txtNombre.setColumns(10);
 
 			JLabel lblNewLabel_2 = new JLabel("Apellido:");
-			lblNewLabel_2.setBounds(10, 223, 94, 14);
+			lblNewLabel_2.setBounds(31, 225, 94, 14);
 			panel.add(lblNewLabel_2);
 
 			txtApellido = new JTextField();
 			txtApellido.addKeyListener(new KeyAdapter() {
 				@Override
 				public void keyTyped(java.awt.event.KeyEvent evt) {                                    
-				    int key = evt.getKeyChar();
+					int key = evt.getKeyChar();
 
-				    boolean mayusculas = key >= 65 && key <= 90;
-				    boolean minusculas = key >= 97 && key <= 122;
-				    boolean espacio = key == 32;
-				            
-				     if (!(minusculas || mayusculas || espacio))
-				    {
-				        evt.consume();
-				    }
+					boolean mayusculas = key >= 65 && key <= 90;
+					boolean minusculas = key >= 97 && key <= 122;
+					boolean espacio = key == 32;
+
+					if (!(minusculas || mayusculas || espacio))
+					{
+						evt.consume();
+					}
 				}     
 			});
-			txtApellido.setBounds(10, 248, 193, 20);
+			txtApellido.setBounds(31, 250, 193, 20);
 			panel.add(txtApellido);
 			txtApellido.setColumns(10);
 
 			JLabel lblNewLabel_3 = new JLabel("Cedula:");
-			lblNewLabel_3.setBounds(10, 106, 46, 14);
+			lblNewLabel_3.setBounds(31, 106, 46, 14);
 			panel.add(lblNewLabel_3);
 
 			txtCedula = new JTextField();
 			txtCedula.addKeyListener(new KeyAdapter() {
 				@Override
 				public void keyTyped(java.awt.event.KeyEvent evt) {                                    
-				    int key = evt.getKeyChar();
+					int key = evt.getKeyChar();
 
-				    boolean numeros = key >= 48 && key <= 57;
-				        
-				    if (!numeros)
-				    {
-				        evt.consume();
-				    }
+					boolean numeros = key >= 48 && key <= 57;
 
-				    if (txtCedula.getText().trim().length() == 10) {
-				        evt.consume();
-				    }
+					if (!numeros)
+					{
+						evt.consume();
+					}
+
+					if (txtCedula.getText().trim().length() == 10) {
+						evt.consume();
+					}
 				}     
 			});
-			txtCedula.setBounds(10, 131, 193, 20);
+			txtCedula.setBounds(31, 133, 193, 20);
 			panel.add(txtCedula);
 			txtCedula.setColumns(10);
 
@@ -176,18 +184,18 @@ public class RegMedico extends JDialog {
 			txtTelefono.addKeyListener(new KeyAdapter() {
 				@Override
 				public void keyTyped(java.awt.event.KeyEvent evt) {                                    
-				    int key = evt.getKeyChar();
+					int key = evt.getKeyChar();
 
-				    boolean numeros = key >= 48 && key <= 57;
-				        
-				    if (!numeros)
-				    {
-				        evt.consume();
-				    }
+					boolean numeros = key >= 48 && key <= 57;
 
-				    if (txtTelefono.getText().trim().length() == 10) {
-				        evt.consume();
-				    }
+					if (!numeros)
+					{
+						evt.consume();
+					}
+
+					if (txtTelefono.getText().trim().length() == 10) {
+						evt.consume();
+					}
 				}     
 			});
 			txtTelefono.setBounds(286, 187, 193, 20);
@@ -222,7 +230,7 @@ public class RegMedico extends JDialog {
 			txtpassword.setColumns(10);
 
 			JLabel lblNewLabel_9 = new JLabel("Especialidad:");
-			lblNewLabel_9.setBounds(10, 279, 94, 14);
+			lblNewLabel_9.setBounds(31, 281, 94, 14);
 			panel.add(lblNewLabel_9);
 
 			JLabel lblNewLabel_10 = new JLabel("Consultorio:");
@@ -230,25 +238,26 @@ public class RegMedico extends JDialog {
 			panel.add(lblNewLabel_10);
 
 			JLabel lblNewLabel_11 = new JLabel("Fecha de Nacimiento:");
-			lblNewLabel_11.setBounds(10, 335, 136, 14);
+			lblNewLabel_11.setBounds(31, 337, 136, 14);
 			panel.add(lblNewLabel_11);
 
 			spinner = new JSpinner();
-			spinner.setBounds(10, 360, 193, 20);
+			spinner.setBounds(31, 362, 193, 20);
 			spinner.setModel(new SpinnerDateModel(new Date(1647921600000L), null, null, Calendar.YEAR));
 			spinner.setValue(new Date());
 			spinner.setEditor(new JSpinner.DateEditor(spinner,"dd/MM/yyyy"));
 			panel.add(spinner);
 
 			cmbConsultorio = new JComboBox<Object>();
+			cargarConsultorios(true);
 			cmbConsultorio.setBounds(286, 131, 193, 20);
-			cmbConsultorio.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "A1-101", "A2-102", "A3-103", "B1-201", "B2-202", "B3-203", "C1-301", "C2-302", "C3-303"}));
 			panel.add(cmbConsultorio);
 
-			JLabel lblImportanteTodosLos = new JLabel("IMPORTANTE: TODOS LOS CAMPOS  DEBEN ESTAR COMPLETOS ");
-			lblImportanteTodosLos.setBounds(87, 457, 358, 25);
-			lblImportanteTodosLos.setFont(new Font("Tahoma", Font.BOLD, 11));
-			panel.add(lblImportanteTodosLos);
+			lblImportante = new JLabel("IMPORTANTE: TODOS LOS CAMPOS  DEBEN ESTAR COMPLETOS ");
+			lblImportante.setBounds(87, 457, 358, 25);
+			lblImportante.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lblImportante.setVisible(false);
+			panel.add(lblImportante);
 
 			JLabel lblNewLabel_12 = new JLabel("");
 			lblNewLabel_12.setIcon(new ImageIcon(RegMedico.class.getResource("/img/medico.png")));
@@ -256,9 +265,64 @@ public class RegMedico extends JDialog {
 			panel.add(lblNewLabel_12);
 
 			cmbEspecialidad = new JComboBox<Object>();
-			cmbEspecialidad.setBounds(10, 304, 193, 20);
-			cmbEspecialidad.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccionar>", "Cirug\u00EDa", "Pediatr\u00EDa", "M\u00E9dicina Interna", "Psiquiatr\u00EDa", "Oftalmolog\u00EDa", "Cardiolog\u00EDa", "Neumolog\u00EDa", "Dermatolog\u00EDa", "Nefrolog\u00EDa", "Neurolog\u00EDa", "Radiolog\u00EDa", "Anestesiolog\u00EDa", "Urolog\u00EDa", "Gastroenterolog\u00EDa", "Gineco obstetricia"}));
+			cmbEspecialidad.setBounds(31, 306, 193, 20);
+			cmbEspecialidad.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccionar>", "Cirugía", "Pediatría", "Médicina Interna", "Psiquiatría", "Oftalmología", "Cardiología", "Neumología", "Dermatología", "Nefrología", "Neurología", "Radiología", "Anestesiología", "Urología", "Gastroenterología", "Gineco obstetricia"}));
 			panel.add(cmbEspecialidad);
+
+			advertenciaCedula = new JLabel("");
+			advertenciaCedula.setIcon(new ImageIcon(RegMedico.class.getResource("/img/signo-advertencia.png")));
+			advertenciaCedula.setBounds(10, 133, 16, 25);
+			advertenciaCedula.setVisible(false);
+			panel.add(advertenciaCedula);
+
+
+			advertenciaNombre = new JLabel("");
+			advertenciaNombre.setIcon(new ImageIcon(RegMedico.class.getResource("/img/signo-advertencia.png")));
+			advertenciaNombre.setBounds(10, 189, 16, 25);
+			advertenciaNombre.setVisible(false);
+			panel.add(advertenciaNombre);
+
+			advertenciaApellido = new JLabel("");
+			advertenciaApellido.setIcon(new ImageIcon(RegMedico.class.getResource("/img/signo-advertencia.png")));
+			advertenciaApellido.setBounds(10, 252, 16, 25);
+			advertenciaApellido.setVisible(false);
+			panel.add(advertenciaApellido);
+
+			advertenciaTel = new JLabel("");
+			advertenciaTel.setIcon(new ImageIcon(RegMedico.class.getResource("/img/signo-advertencia.png")));
+			advertenciaTel.setBounds(265, 187, 16, 25);
+			advertenciaTel.setVisible(false);
+			panel.add(advertenciaTel);
+
+			advertenciaUser = new JLabel("");
+			advertenciaUser.setIcon(new ImageIcon(RegMedico.class.getResource("/img/signo-advertencia.png")));
+			advertenciaUser.setBounds(265, 306, 16, 25);
+			advertenciaUser.setVisible(false);
+			panel.add(advertenciaUser);
+
+			advertenciaContraseña = new JLabel("");
+			advertenciaContraseña.setIcon(new ImageIcon(RegMedico.class.getResource("/img/signo-advertencia.png")));
+			advertenciaContraseña.setBounds(265, 362, 16, 25);
+			advertenciaContraseña.setVisible(false);
+			panel.add(advertenciaContraseña);
+
+			advertenciaConsultorio = new JLabel("");
+			advertenciaConsultorio.setIcon(new ImageIcon(RegMedico.class.getResource("/img/signo-advertencia.png")));
+			advertenciaConsultorio.setBounds(265, 135, 16, 25);
+			advertenciaConsultorio.setVisible(false);
+			panel.add(advertenciaConsultorio);
+
+			AdvertenciaDireccion = new JLabel("");
+			AdvertenciaDireccion.setIcon(new ImageIcon(RegMedico.class.getResource("/img/signo-advertencia.png")));
+			AdvertenciaDireccion.setBounds(265, 245, 16, 25);
+			AdvertenciaDireccion.setVisible(false);
+			panel.add(AdvertenciaDireccion);
+
+			advertenciaEspecialidad = new JLabel("");
+			advertenciaEspecialidad.setIcon(new ImageIcon(RegMedico.class.getResource("/img/signo-advertencia.png")));
+			advertenciaEspecialidad.setBounds(10, 306, 16, 25);
+			advertenciaEspecialidad.setVisible(false);
+			panel.add(advertenciaEspecialidad);
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -285,12 +349,21 @@ public class RegMedico extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						if(mimedico == null) {
-							Usuario nuevoMedico = null;
-							nuevoMedico = new Medico(txtNombre.getText(), txtApellido.getText(), txtCedula.getText(), (Date) spinner.getValue(), txtTelefono.getText(), txtDireccion.getText(), txtUser.getText(), txtpassword.getText(),cmbConsultorio.getSelectedItem().toString(),txtId.getText() , cmbEspecialidad.getSelectedItem().toString());
-							Clinica.getInstance().insertarUsuario(nuevoMedico);
-							JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
-							System.out.println("-------El resultado del spinner es: "+ Clinica.getInstance().buscarUsuarioByCedula(nuevoMedico.getID()).getFechaNaciento());
-							clean();
+
+							if(txtCedula.getText().equals("") || txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtTelefono.getText().equals("") || txtDireccion.getText().equals("") || 
+									txtUser.getText().equals("") || txtpassword.getText().equals("") || cmbConsultorio.getSelectedItem().equals("<Seleccione>") || cmbEspecialidad.getSelectedItem().equals("<Seleccionar>")) {
+								Advertencia();
+
+							}else {
+
+								Usuario nuevoMedico = null;
+								nuevoMedico = new Medico(txtNombre.getText(), txtApellido.getText(), txtCedula.getText(), (Date) spinner.getValue(), txtTelefono.getText(), txtDireccion.getText(), txtUser.getText(),
+										txtpassword.getText(),cmbConsultorio.getSelectedItem().toString(),txtId.getText() , cmbEspecialidad.getSelectedItem().toString());
+								Clinica.getInstance().insertarUsuario(nuevoMedico);
+								JOptionPane.showMessageDialog(null, "Se a Registrado el doctor/a Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+								System.out.println("-------El resultado del spinner es: "+ Clinica.getInstance().buscarUsuarioByCedula(nuevoMedico.getID()).getFechaNaciento());
+								clean();
+							}
 						}else {
 							mimedico.setNombre(txtNombre.getText());
 							mimedico.setApellido(txtApellido.getText());
@@ -303,7 +376,7 @@ public class RegMedico extends JDialog {
 							mimedico.setConsultorioString(cmbConsultorio.getSelectedItem().toString());
 							mimedico.setCodigo(txtId.getText());
 							mimedico.setEspecialidad( cmbEspecialidad.getSelectedItem().toString());
-							JOptionPane.showMessageDialog(null, "Operaci�n exitosa", "Informaci�n", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Operacion exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 							dispose();
 						}
 					}
@@ -340,7 +413,33 @@ public class RegMedico extends JDialog {
 		txtTelefono.setText("");
 		txtId.setText("Dr-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
 		spinner.setValue(new Date());
+		/*cmbConsultorio.remove(cmbConsultorio.getSelectedIndex());
+		cargarConsultorios(true);*/
 		cmbConsultorio.setSelectedIndex(0);
 
+	}
+
+	private void Advertencia() {
+		Toolkit tk = Toolkit.getDefaultToolkit ();
+		advertenciaNombre.setVisible(true);
+		advertenciaApellido.setVisible(true);
+		advertenciaCedula.setVisible(true);
+		advertenciaUser.setVisible(true);
+		advertenciaContraseña.setVisible(true);
+		advertenciaTel.setVisible(true);
+		AdvertenciaDireccion.setVisible(true);
+		advertenciaConsultorio.setVisible(true);
+		advertenciaEspecialidad.setVisible(true);
+		lblImportante.setVisible(true);
+		tk.beep ();
+	}
+
+	public void cargarConsultorios(boolean control) {
+		String[] consultorioString = {"<Seleccione>","A1-101","A2-102","A3-103","B1-201","B2-202","B3-203","C1-301","C2-302","C3-303"};
+		if(control == true) {
+			for (String string : consultorioString) {
+				cmbConsultorio.addItem(string);
+			}
+		}
 	}
 }

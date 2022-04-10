@@ -393,11 +393,13 @@ public class CrearCitas extends JDialog {
 							auxPaciente.insertarCita(auxCita);
 							Clinica.getInstance().insertarCita(auxCita);
 							Clinica.getInstance().insertarUsuario(auxPaciente);
+							JOptionPane.showMessageDialog(null, "Operaci�n exitosa", "Informaci�n", JOptionPane.INFORMATION_MESSAGE);
 						}else {
 							Cita auxCita = null;
 							auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText(),cbxEspecialidad.getSelectedItem().toString(), cbxDoctor.getSelectedItem().toString(),paciente);
 							paciente.insertarCita(auxCita);
 							Clinica.getInstance().insertarCita(auxCita);
+							JOptionPane.showMessageDialog(null, "Operaci�n exitosa", "Informaci�n", JOptionPane.INFORMATION_MESSAGE);
 						}
 					}
 				});

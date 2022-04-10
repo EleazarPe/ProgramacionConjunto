@@ -60,6 +60,7 @@ public class CrearConsulta extends JDialog {
 	private JPanel panelHistorialM;
 	private JPanel panelVacuna;
 	private JButton okButton;
+	private Object row[];
 
 	/**
 	 * Launch the application.
@@ -451,17 +452,19 @@ public class CrearConsulta extends JDialog {
 		loadTable();
 	}
 	private void loadTable() {
-		Object row[];
+		
 		model.setRowCount(0);
 		row = new Object[model.getColumnCount()];
+		if(Clinica.getInstance().getMisCitas().size() >0) {
 		for (Cita ct : Clinica.getInstance().getMisCitas()) {
 			row[0] = ct.getCodigo();
 			row[1] = ct.getUserUsuario().getID();
-			row[2] = ct.getUserUsuario().getNombre() + ct.getUserUsuario().getApellido();
+			row[2] = ct.getUserUsuario().getNombre(); //+ ct.getUserUsuario().getApellido();
 			row[3] = ct.getUserUsuario().getTelefono();
 			row[4] = ct.getNotas();
 			row[5] = ct.getFecha();
 			model.addRow(row);	
+		}
 		}
 	}
 }

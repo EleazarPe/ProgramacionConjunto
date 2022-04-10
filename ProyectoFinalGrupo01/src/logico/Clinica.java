@@ -184,6 +184,9 @@ public class Clinica implements Serializable {
 		}
 		return lasCitas;
 	}
+	public void insertarCita(Cita cit) {
+		misCitas.add(cit);
+	}
 
 	public ArrayList<Cita> getMisCitas() {
 		return misCitas;

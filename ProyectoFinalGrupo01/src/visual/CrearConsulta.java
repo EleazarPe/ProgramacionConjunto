@@ -396,7 +396,6 @@ public class CrearConsulta extends JDialog {
 				panelConsulta.setVisible(false);
 				panelCita.setVisible(true);
 				okButton.setText("Consultar");
-				loadTable();
 				
 			}
 		});
@@ -449,19 +448,20 @@ public class CrearConsulta extends JDialog {
 			}
 		});
 		menuBar.add(tglbtnNewToggleButton_2);
+		loadTable();
 	}
 	private void loadTable() {
 		Object row[];
 		model.setRowCount(0);
 		row = new Object[model.getColumnCount()];
 		for (Cita ct : Clinica.getInstance().compararCitaYDoctor()) {
-			row[0] =ct.getCodigo();
+			row[0] = ct.getCodigo();
 			row[1] = ct.getUserUsuario().getID();
 			row[2] = ct.getUserUsuario().getNombre() + ct.getUserUsuario().getApellido();
 			row[3] = ct.getUserUsuario().getTelefono();
 			row[4] = ct.getNotas();
 			row[5] = ct.getFecha();
-
+			model.addRow(row);	
 		}
 	}
 }

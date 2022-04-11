@@ -196,6 +196,19 @@ public class Clinica implements Serializable {
 		this.misCitas = misCitas;
 	}
 	
+	public boolean encontrarConsultorio(String str) {
+		boolean control = false;
+		for (Usuario consulta : usuarios) {
+			if(consulta instanceof Medico) {
+				if(((Medico) consulta).getConsultorioString().equalsIgnoreCase(str)) {
+					control = true;
+				}
+			}
+		}
+		return control;
+	}
+	
+	
 	
 	
 }

@@ -265,7 +265,7 @@ public class Vacunacion extends JDialog {
 							auxiliarVacuna.insertarDosis(auxDosis);
 							
 						}
-						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Operaciï¿½n exitosa", "Informaciï¿½n", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}
 				});
@@ -283,7 +283,7 @@ public class Vacunacion extends JDialog {
 			row[0] = object.getNombre();
 			row[1] = formatter.format(object.getFecha()).toString();
 			row[2] = object.getDoctor();
-			model.addRow(row);	
+			model.addRow(row);
 		}
 	}
 	private void clean() {

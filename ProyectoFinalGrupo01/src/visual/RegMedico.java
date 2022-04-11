@@ -387,6 +387,7 @@ public class RegMedico extends JDialog {
 			}
 		}
 		loadMedico(mimedico);
+		cargarConsultorios(true);
 	}
 	private void loadMedico(Medico us) {
 		if(us != null) {
@@ -436,9 +437,12 @@ public class RegMedico extends JDialog {
 
 	public void cargarConsultorios(boolean control) {
 		String[] consultorioString = {"<Seleccione>","A1-101","A2-102","A3-103","B1-201","B2-202","B3-203","C1-301","C2-302","C3-303"};
+		cmbConsultorio.removeAllItems();
 		if(control == true) {
 			for (String string : consultorioString) {
-				cmbConsultorio.addItem(string);
+				if(Clinica.getInstance().encontrarConsultorio(string) == false) {
+					cmbConsultorio.addItem(string);
+				}
 			}
 		}
 	}

@@ -401,7 +401,7 @@ public class CrearCitas extends JDialog {
 				btnRegistrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(paciente == null) {
-							
+
 							if(txtNid.getText().equals("") || txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtTelefonoOpc.getText().equals("") || txtDireccion.getText().equals("") || 
 									txtCelular.getText().equals("") || cbxOcupacion.getSelectedItem().equals("") || cbxTipoBlood.getSelectedItem().equals("") || cbxRh.getSelectedItem().equals("")
 									|| cbxEspecialidad.getSelectedItem().equals("<Seleccionar>") || cbxDoctor.getSelectedItem().equals("")) {
@@ -498,19 +498,19 @@ public class CrearCitas extends JDialog {
 		LblAdvertencia.setBounds(90, 78, 172, 25);
 		LblAdvertencia.setVisible(false);
 		panel_2.add(LblAdvertencia);
-						
-								Mensaje = new JLabel("AVISO: LOS CAMPOS MARCADOS      SON NECESARIOS PARA PROCESAR CORRETACTAMENTE SU SOLICITUD");
-								Mensaje.setBounds(22, 599, 598, 25);
-								contentPanel.add(Mensaje);
-								Mensaje.setVisible(false);
-								Mensaje.setFont(new Font("Tahoma", Font.BOLD, 11));
-								
-								
-										signoAviso7 = new JLabel("");
-										signoAviso7.setBounds(204, 599, 16, 25);
-										contentPanel.add(signoAviso7);
-										signoAviso7.setVisible(false);
-										signoAviso7.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
+
+		Mensaje = new JLabel("AVISO: LOS CAMPOS MARCADOS      SON NECESARIOS PARA PROCESAR CORRETACTAMENTE SU SOLICITUD");
+		Mensaje.setBounds(22, 599, 598, 25);
+		contentPanel.add(Mensaje);
+		Mensaje.setVisible(false);
+		Mensaje.setFont(new Font("Tahoma", Font.BOLD, 11));
+
+
+		signoAviso7 = new JLabel("");
+		signoAviso7.setBounds(204, 599, 16, 25);
+		contentPanel.add(signoAviso7);
+		signoAviso7.setVisible(false);
+		signoAviso7.setIcon(new ImageIcon(CrearCitas.class.getResource("/img/signo-advertencia.png")));
 
 	}
 
@@ -544,7 +544,7 @@ public class CrearCitas extends JDialog {
 		cbxTipoBlood.setEnabled(true);
 		cbxRh.setEnabled(true);
 	}
-	
+
 	private void Advertencia() {
 		Toolkit tk = Toolkit.getDefaultToolkit ();
 		signoAvisoNombre.setVisible(true);

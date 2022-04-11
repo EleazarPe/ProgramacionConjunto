@@ -2,6 +2,7 @@ package visual;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,6 +13,8 @@ import logico.Clinica;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -21,11 +24,17 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Principal extends JFrame {
 	/**
 	 * 
 	 */
+	private Image img_login = new ImageIcon(Login.class.getResource("/img/cerrar-sesion.png")).getImage().getScaledInstance(30,30,Image.SCALE_SMOOTH);
 	private static final long serialVersionUID = 1L;
 	
 	private Dimension dim;
@@ -170,7 +179,24 @@ public class Principal extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+		
+		JButton btnNewButton = new JButton("Cerrar Sesión");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int respuesta = JOptionPane.showConfirmDialog(null, "¿Esta seguro/a que desea cerrar sesion?","Confirmacion",JOptionPane.YES_NO_OPTION);
+				if (respuesta==JOptionPane.YES_OPTION) {
+					dispose(); //Aca se debe poner el metodo que cierre sesion correctamente.
+				}
+			}
+		});
+		btnNewButton.setIcon(new ImageIcon(img_login));
+		btnNewButton.setBounds(1728, 13, 152, 62);
+		panel.add(btnNewButton);
+		
 		
 	}
-
 }

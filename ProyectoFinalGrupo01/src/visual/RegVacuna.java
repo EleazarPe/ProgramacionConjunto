@@ -28,6 +28,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class RegVacuna extends JDialog {
 
@@ -46,6 +48,11 @@ public class RegVacuna extends JDialog {
 	private JComboBox<Object> cbxAd;
 	private JComboBox<Object> cbxLab;
 	private ArrayList<Enfermedad> enfermedads;
+	private JLabel advertenciaNombre;
+	private JLabel advertenciaLab;
+	private JLabel advertenciaAdmin;
+	private JLabel Mensaje;
+	private JLabel advertencia;
 
 	/**
 	 * Launch the application.
@@ -67,7 +74,7 @@ public class RegVacuna extends JDialog {
 	public RegVacuna() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegVacuna.class.getResource("/img/cruz-roja.png")));
 		setTitle("Registrar Vacuna");
-		setBounds(100, 100, 427, 451);
+		setBounds(100, 100, 456, 493);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -79,46 +86,46 @@ public class RegVacuna extends JDialog {
 			panel.setLayout(null);
 			
 			JLabel lblNewLabel = new JLabel("Código:");
-			lblNewLabel.setBounds(10, 11, 62, 14);
+			lblNewLabel.setBounds(26, 11, 62, 14);
 			panel.add(lblNewLabel);
 			
 			txtCodigo = new JTextField();
 			txtCodigo.setEditable(false);
-			txtCodigo.setBounds(10, 26, 157, 20);
+			txtCodigo.setBounds(26, 26, 157, 20);
 			panel.add(txtCodigo);
 			txtCodigo.setColumns(10);
 			txtCodigo.setText("VC-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
 			
 			JLabel lblNewLabel_1 = new JLabel("Nombre:");
-			lblNewLabel_1.setBounds(10, 57, 62, 14);
+			lblNewLabel_1.setBounds(26, 57, 62, 14);
 			panel.add(lblNewLabel_1);
 			
 			txtNombre = new JTextField();
-			txtNombre.setBounds(10, 71, 157, 20);
+			txtNombre.setBounds(26, 71, 157, 20);
 			panel.add(txtNombre);
 			txtNombre.setColumns(10);
 			
 			JLabel lblNewLabel_2 = new JLabel("Laboratorio:");
-			lblNewLabel_2.setBounds(212, 11, 91, 14);
+			lblNewLabel_2.setBounds(238, 11, 91, 14);
 			panel.add(lblNewLabel_2);
 			
 			cbxLab = new JComboBox<Object>();
-			cbxLab.setBounds(210, 26, 157, 20);
+			cbxLab.setBounds(236, 26, 157, 20);
 			cbxLab.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "Johnson & johnson", "Roche", "AbbVie", "Bayer", "Pfizer", "Bristol-Myers Squibb", "Merck & Co", "Novartis", "Sanofi"}));
 			panel.add(cbxLab);
 			
 			JLabel lblNewLabel_3 = new JLabel("Administración:");
-			lblNewLabel_3.setBounds(212, 57, 115, 14);
+			lblNewLabel_3.setBounds(238, 57, 115, 14);
 			panel.add(lblNewLabel_3);
 			
 			cbxAd = new JComboBox<Object>();
-			cbxAd.setBounds(210, 71, 157, 20);
+			cbxAd.setBounds(236, 71, 157, 20);
 			cbxAd.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "Intravenosa", "Intramuscular", "Subcutanea"}));
 			panel.add(cbxAd);
 			
 			JPanel panel_3 = new JPanel();
 			panel_3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			panel_3.setBounds(0, 127, 401, 233);
+			panel_3.setBounds(12, 121, 401, 233);
 			panel.add(panel_3);
 			panel_3.setLayout(null);
 			
@@ -180,6 +187,36 @@ public class RegVacuna extends JDialog {
 			});
 			button.setBounds(175, 86, 49, 23);
 			panel_3.add(button);
+			
+			advertenciaNombre = new JLabel("");
+			advertenciaNombre.setIcon(new ImageIcon(RegVacuna.class.getResource("/img/signo-advertencia.png")));
+			advertenciaNombre.setBounds(12, 71, 18, 20);
+			advertenciaNombre.setVisible(false);
+			panel.add(advertenciaNombre);
+			
+			advertenciaLab = new JLabel("");
+			advertenciaLab.setIcon(new ImageIcon(RegVacuna.class.getResource("/img/signo-advertencia.png")));
+			advertenciaLab.setBounds(218, 28, 18, 20);
+			advertenciaLab.setVisible(false);
+			panel.add(advertenciaLab);
+			
+			advertenciaAdmin = new JLabel("");
+			advertenciaAdmin.setIcon(new ImageIcon(RegVacuna.class.getResource("/img/signo-advertencia.png")));
+			advertenciaAdmin.setBounds(218, 73, 18, 20);
+			advertenciaAdmin.setVisible(false);
+			panel.add(advertenciaAdmin);
+			
+			Mensaje = new JLabel("Los Campos con     son Obligatorios");
+			Mensaje.setFont(new Font("Tahoma", Font.BOLD, 14));
+			Mensaje.setBounds(94, 367, 250, 14);
+			Mensaje.setVisible(false);
+			panel.add(Mensaje);
+			
+			advertencia = new JLabel("");
+			advertencia.setIcon(new ImageIcon(RegVacuna.class.getResource("/img/signo-advertencia.png")));
+			advertencia.setBounds(212, 367, 18, 16);
+			advertencia.setVisible(false);
+			panel.add(advertencia);
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -208,10 +245,14 @@ public class RegVacuna extends JDialog {
 							enfermedads.add(Clinica.getInstance().buscarEnfermedadByCodigo(list_1.getModel().getElementAt(i).substring(0, 9)));
 						}
 						Vacuna auxVacuna = null;
+						if (txtNombre.getText().equals("") || cbxLab.getSelectedItem().equals("<Seleccione>") || cbxAd.getSelectedItem().equals("<Seleccione>") ) {
+							Advertencia();
+						}else {
 						auxVacuna = new Vacuna(txtCodigo.getText(), txtNombre.getText(), cbxLab.getSelectedItem().toString(), cbxAd.getSelectedItem().toString(),enfermedads);
 						Clinica.getInstance().insertarVacuna(auxVacuna);
-						JOptionPane.showMessageDialog(null, "Operaci�n exitosa", "Informaci�n", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
 						clean();
+						}
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -237,5 +278,15 @@ public class RegVacuna extends JDialog {
 		lista1.removeAllElements();
 		generarList();
 		
+	}
+	
+	private void Advertencia() {
+		Toolkit tk = Toolkit.getDefaultToolkit ();
+		advertenciaAdmin.setVisible(true);
+		advertenciaLab.setVisible(true);
+		advertenciaNombre.setVisible(true);
+		advertencia.setVisible(true);
+		Mensaje.setVisible(true);
+		tk.beep();
 	}
 }

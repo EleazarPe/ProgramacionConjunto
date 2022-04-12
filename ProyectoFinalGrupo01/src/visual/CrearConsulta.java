@@ -57,7 +57,7 @@ public class CrearConsulta extends JDialog {
 	private DefaultTableModel model;
 	private DefaultTableModel model2;
 	private JPanel buttonPane;
-	private JToggleButton tglbtnNewToggleButton_4;
+	private JToggleButton tglbtntCitas;
 	private JTable table;
 	private JPanel panelHistorialC;
 	private JPanel panelHistorialM;
@@ -65,6 +65,10 @@ public class CrearConsulta extends JDialog {
 	private JButton okButton;
 	private DateFormat formatter;
 	private Object row[];
+	private JToggleButton tglbtntConsulta;
+	private JToggleButton tglbtntHistorialConsultas;
+	private JToggleButton tglbtntHistorialMedico;
+	private JToggleButton tglbtntVacuna;
 
 	/**
 	 * Launch the application.
@@ -395,31 +399,43 @@ public class CrearConsulta extends JDialog {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		tglbtnNewToggleButton_4 = new JToggleButton("Citas");
-		tglbtnNewToggleButton_4.addActionListener(new ActionListener() {
+		tglbtntCitas = new JToggleButton("Citas");
+		tglbtntCitas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				tglbtntConsulta.setSelected(false);
+				tglbtntHistorialConsultas.setSelected(false);
+				tglbtntHistorialMedico.setSelected(false);
+				tglbtntVacuna.setSelected(false);
 				panelConsulta.setVisible(false);
 				panelCita.setVisible(true);
 				okButton.setText("Consultar");
 				
 			}
 		});
-		menuBar.add(tglbtnNewToggleButton_4);
+		menuBar.add(tglbtntCitas);
 		
-		JToggleButton tglbtnNewToggleButton = new JToggleButton("Consulta");
-		tglbtnNewToggleButton.addActionListener(new ActionListener() {
+		tglbtntConsulta = new JToggleButton("Consulta");
+		tglbtntConsulta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {	
+				tglbtntHistorialConsultas.setSelected(false);
+				tglbtntHistorialMedico.setSelected(false);
+				tglbtntVacuna.setSelected(false);
+				tglbtntCitas.setSelected(false);
 				panelCita.setVisible(false);
 				panelConsulta.setVisible(true);
 				okButton.setText("Guardar");
 				
 			}
 		});
-		menuBar.add(tglbtnNewToggleButton);
+		menuBar.add(tglbtntConsulta);
 		
-		JToggleButton tglbtnNewToggleButton_1 = new JToggleButton("Historial De Consultas");
-		tglbtnNewToggleButton_1.addActionListener(new ActionListener() {
+		tglbtntHistorialConsultas = new JToggleButton("Historial De Consultas");
+		tglbtntHistorialConsultas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				tglbtntHistorialMedico.setSelected(false);
+				tglbtntVacuna.setSelected(false);
+				tglbtntCitas.setSelected(false);
+				tglbtntConsulta.setSelected(false);
 				panelCita.setVisible(false);
 				panelConsulta.setVisible(false);
 				panelHistorialM.setVisible(false);
@@ -427,11 +443,15 @@ public class CrearConsulta extends JDialog {
 				panelHistorialC.setVisible(true);
 			}
 		});
-		menuBar.add(tglbtnNewToggleButton_1);
+		menuBar.add(tglbtntHistorialConsultas);
 		
-		JToggleButton tglbtnNewToggleButton_3 = new JToggleButton("Historial Médico");
-		tglbtnNewToggleButton_3.addActionListener(new ActionListener() {
+		tglbtntHistorialMedico = new JToggleButton("Historial Médico");
+		tglbtntHistorialMedico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				tglbtntVacuna.setSelected(false);
+				tglbtntCitas.setSelected(false);
+				tglbtntConsulta.setSelected(false);
+				tglbtntHistorialConsultas.setSelected(false);
 				panelCita.setVisible(false);
 				panelConsulta.setVisible(false);
 				panelVacuna.setVisible(false);
@@ -440,11 +460,15 @@ public class CrearConsulta extends JDialog {
 
 			}
 		});
-		menuBar.add(tglbtnNewToggleButton_3);
+		menuBar.add(tglbtntHistorialMedico);
 		
-		JToggleButton tglbtnNewToggleButton_2 = new JToggleButton("Vacuna");
-		tglbtnNewToggleButton_2.addActionListener(new ActionListener() {
+		tglbtntVacuna = new JToggleButton("Vacuna");
+		tglbtntVacuna.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				tglbtntCitas.setSelected(false);
+				tglbtntConsulta.setSelected(false);
+				tglbtntHistorialConsultas.setSelected(false);
+				tglbtntHistorialMedico.setSelected(false);
 				panelCita.setVisible(false);
 				panelConsulta.setVisible(false);
 				panelHistorialM.setVisible(false);
@@ -452,7 +476,7 @@ public class CrearConsulta extends JDialog {
 				panelVacuna.setVisible(true);
 			}
 		});
-		menuBar.add(tglbtnNewToggleButton_2);
+		menuBar.add(tglbtntVacuna);
 		loadTable();
 	}
 	private void loadTable() {

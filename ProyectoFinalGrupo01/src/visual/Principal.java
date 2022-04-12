@@ -26,7 +26,6 @@ import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 

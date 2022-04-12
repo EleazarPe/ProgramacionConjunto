@@ -27,13 +27,19 @@ import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class RegEnfermedad extends JDialog {
 
-	/**
-	 * 
-	 */
+	
+	private Image img_logo = new ImageIcon(RegEnfermedad.class.getResource("/img/TablaEnfermedades.jpg")).getImage().getScaledInstance(200,200,Image.SCALE_SMOOTH);
+
+	
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtCodigo;
@@ -42,6 +48,8 @@ public class RegEnfermedad extends JDialog {
 	private JSpinner spinner;
 	private JTextPane textPane;
 	private Random rand = new Random();
+	private JSlider sliderPorcentaje;
+	private JTextField TxtValor;
 
 	/**
 	 * Launch the application.
@@ -62,7 +70,7 @@ public class RegEnfermedad extends JDialog {
 	public RegEnfermedad() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegEnfermedad.class.getResource("/img/cruz-roja.png")));
 		setTitle("Registro de Enfermedad");
-		setBounds(100, 100, 768, 615);
+		setBounds(100, 100, 681, 616);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -70,6 +78,7 @@ public class RegEnfermedad extends JDialog {
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
+			panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 			
@@ -120,23 +129,40 @@ public class RegEnfermedad extends JDialog {
 			panel.add(lblNewLabel_4);
 			
 			textPane = new JTextPane();
-			textPane.setBounds(0, 426, 607, 97);
+			textPane.setBounds(10, 344, 325, 148);
 			panel.add(textPane);
 			
-			JSlider slider = new JSlider();
-			slider.setPaintTicks(true);
-			slider.setPaintLabels(true);
-			slider.setValue(0);
-			slider.setOrientation(SwingConstants.VERTICAL);
-			slider.setToolTipText("\r\n");
-			slider.setMajorTickSpacing (25);
-			slider.setMinorTickSpacing(25);
-			slider.setBounds(497, 225, 200, 156);
-			panel.add(slider);
+			JPanel panel_1 = new JPanel();
+			panel_1.setBorder(new TitledBorder(null, "Tasa de Transmisibilidad:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panel_1.setBounds(391, 244, 250, 248);
+			panel.add(panel_1);
 			
-			JLabel lblNewLabel_5 = new JLabel("Tasa de Transmisibilidad:");
-			lblNewLabel_5.setBounds(532, 187, 165, 14);
-			panel.add(lblNewLabel_5);
+			sliderPorcentaje = new JSlider();
+			sliderPorcentaje.addChangeListener(new ChangeListener() {
+				public void stateChanged(ChangeEvent evt) {
+					//int valor = sliderPorcentaje.getValue();
+					//TxtValor.setText("El valor del deslizador es: " + sliderPorcentaje.getValue());
+					System.out.println("El valor del deslizador es: " + sliderPorcentaje.getValue());
+				}
+			});
+			panel_1.add(sliderPorcentaje);
+			sliderPorcentaje.setPaintTicks(true);
+			sliderPorcentaje.setPaintLabels(true);
+			sliderPorcentaje.setValue(0);
+			sliderPorcentaje.setOrientation(SwingConstants.VERTICAL);
+			sliderPorcentaje.setToolTipText("");
+			sliderPorcentaje.setMajorTickSpacing (25);
+			sliderPorcentaje.setMinorTickSpacing(25);
+			JLabel LblLogo = new JLabel("");
+			LblLogo.setBounds(405, 31, 222, 200);
+			panel.add(LblLogo);
+			LblLogo.setIcon(new ImageIcon(img_logo));
+			
+			TxtValor = new JTextField();
+			TxtValor.setEditable(false);
+			TxtValor.setBounds(403, 495, 226, 22);
+			panel.add(TxtValor);
+			TxtValor.setColumns(10);
 		}
 		{
 			JPanel buttonPane = new JPanel();

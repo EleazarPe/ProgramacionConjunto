@@ -54,7 +54,7 @@ public class ListMedico extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListMedico() {
-		setTitle("Listado Personal Medico");
+		setTitle("Listado Personal Médico");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ListMedico.class.getResource("/img/cruz-roja.png")));
 		setBounds(100, 100, 863, 300);
 		setLocationRelativeTo(null);
@@ -72,7 +72,7 @@ public class ListMedico extends JDialog {
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 					table = new JTable();
-					String headers[] = {"Cedula","ID","Nombre","Apellido","Especialidad","Consultorio","Direccion","Telefono"};
+					String headers[] = {"Cédula","ID","Nombre","Apellido","Especialidad","Consultorio","Dirección","Teléfono"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
@@ -114,7 +114,7 @@ public class ListMedico extends JDialog {
 					btnEliminar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
 							if(medicoselect !=null) {
-								int option = JOptionPane.showConfirmDialog(null, "Est� seguro de eliminar el medico: "+ medicoselect.getID(), "Confirmaci�n",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+								int option = JOptionPane.showConfirmDialog(null, "Está seguro de eliminar el médico: "+ medicoselect.getID(), "Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 								if(option == JOptionPane.YES_OPTION){
 									Clinica.getInstance().eliminarUsuario(medicoselect);
 									loadTable();

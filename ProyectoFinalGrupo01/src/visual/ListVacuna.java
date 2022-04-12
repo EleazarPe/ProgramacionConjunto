@@ -64,7 +64,7 @@ public class ListVacuna extends JDialog {
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 					table = new JTable();
-					String headers[] = {"Codigo","Nombre","Laboratorio","Administracion","Enfermedades"};
+					String headers[] = {"Código","Nombre","Laboratorio","Administracion","Enfermedades"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					scrollPane.setViewportView(table);

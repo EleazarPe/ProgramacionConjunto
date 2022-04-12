@@ -62,7 +62,7 @@ public class ListEnfermedad extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String headers[] = {"Codigo","Nombre","Tipo","Informacion","Fecha de Aparicion"};
+					String headers[] = {"Código","Nombre","Tipo","Informacion","Fecha de Aparición"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();

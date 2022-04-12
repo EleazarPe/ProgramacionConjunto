@@ -150,7 +150,7 @@ public class RegMedico extends JDialog {
 			panel.add(txtApellido);
 			txtApellido.setColumns(10);
 
-			JLabel lblNewLabel_3 = new JLabel("Cedula:");
+			JLabel lblNewLabel_3 = new JLabel("Cédula:");
 			lblNewLabel_3.setBounds(31, 106, 46, 14);
 			panel.add(lblNewLabel_3);
 
@@ -176,7 +176,7 @@ public class RegMedico extends JDialog {
 			panel.add(txtCedula);
 			txtCedula.setColumns(10);
 
-			JLabel lblNewLabel_5 = new JLabel("Telefono:");
+			JLabel lblNewLabel_5 = new JLabel("Teléfono:");
 			lblNewLabel_5.setBounds(286, 162, 57, 14);
 			panel.add(lblNewLabel_5);
 
@@ -202,7 +202,7 @@ public class RegMedico extends JDialog {
 			panel.add(txtTelefono);
 			txtTelefono.setColumns(10);
 
-			JLabel lblNewLabel_6 = new JLabel("Direccion:");
+			JLabel lblNewLabel_6 = new JLabel("Dirección:");
 			lblNewLabel_6.setBounds(286, 223, 57, 14);
 			panel.add(lblNewLabel_6);
 

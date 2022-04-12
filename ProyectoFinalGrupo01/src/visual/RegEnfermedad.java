@@ -73,7 +73,7 @@ public class RegEnfermedad extends JDialog {
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 			
-			JLabel lblNewLabel = new JLabel("Codigo:");
+			JLabel lblNewLabel = new JLabel("Código:");
 			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 			lblNewLabel.setBounds(10, 32, 59, 50);
 			panel.add(lblNewLabel);
@@ -101,7 +101,7 @@ public class RegEnfermedad extends JDialog {
 			
 			comboBox = new JComboBox<Object>();
 			comboBox.setBounds(10, 184, 238, 21);
-			comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "Virus", "Bacteriana", "Hongos", "Nutricional", "Traumatica", "Genetica", "Congenita", "Mental", "Degenerativa", "Autoinmune", "Cardiovascular", "Alergica"}));
+			comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "Virus", "Bacteriana", "Hongos", "Nutricional", "Traumatica", "Genética", "Congenita", "Mental", "Degenerativa", "Autoinmune", "Cardiovascular", "Alérgica"}));
 			panel.add(comboBox);
 			
 			JLabel lblNewLabel_3 = new JLabel("Descubierta en:");
@@ -115,7 +115,7 @@ public class RegEnfermedad extends JDialog {
 			spinner.setBounds(10, 261, 238, 21);
 			panel.add(spinner);
 			
-			JLabel lblNewLabel_4 = new JLabel("Descripci\u00F3n:");
+			JLabel lblNewLabel_4 = new JLabel("Descripción:");
 			lblNewLabel_4.setBounds(10, 317, 71, 14);
 			panel.add(lblNewLabel_4);
 			
@@ -150,7 +150,7 @@ public class RegEnfermedad extends JDialog {
 						Enfermedad nuevaEnfermedad = null;
 						nuevaEnfermedad = new Enfermedad(txtCodigo.getText(), txtNombre.getText(), comboBox.getSelectedItem().toString(), textPane.getText(), (Date) spinner.getValue());
 						Clinica.getInstance().insertarEnfermedad(nuevaEnfermedad);
-						JOptionPane.showMessageDialog(null, "Operaci�n exitosa", "Informaci�n", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}
 				});

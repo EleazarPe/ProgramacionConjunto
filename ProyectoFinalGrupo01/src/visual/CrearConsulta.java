@@ -119,7 +119,7 @@ public class CrearConsulta extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String headers[] = {"ID","Cedula","Nombre","Telefono","Sintomas","fecha"};
+					String headers[] = {"ID","Cédula","Nombre","Teléfono","Síntomas","fecha"};
 					model2 = new DefaultTableModel();
 					model2.setColumnIdentifiers(headers);
 					table = new JTable();
@@ -167,7 +167,7 @@ public class CrearConsulta extends JDialog {
 			JComboBox<Object> cbxId = new JComboBox<Object>();
 			cbxId.setEnabled(false);
 			cbxId.setEditable(true);
-			cbxId.setModel(new DefaultComboBoxModel<Object>(new String[] {"Cedula", "Pasaporte", "Licencia"}));
+			cbxId.setModel(new DefaultComboBoxModel<Object>(new String[] {"Cédula", "Pasaporte", "Licencia"}));
 			cbxId.setBounds(144, 73, 110, 25);
 			pnlDatosPaciente.add(cbxId);
 			
@@ -429,7 +429,7 @@ public class CrearConsulta extends JDialog {
 		});
 		menuBar.add(tglbtnNewToggleButton_1);
 		
-		JToggleButton tglbtnNewToggleButton_3 = new JToggleButton("Historial Medico");
+		JToggleButton tglbtnNewToggleButton_3 = new JToggleButton("Historial Médico");
 		tglbtnNewToggleButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelCita.setVisible(false);

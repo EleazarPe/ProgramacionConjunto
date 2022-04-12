@@ -78,7 +78,7 @@ public class RegVacuna extends JDialog {
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 			
-			JLabel lblNewLabel = new JLabel("Codigo:");
+			JLabel lblNewLabel = new JLabel("CÃ³digo:");
 			lblNewLabel.setBounds(10, 11, 62, 14);
 			panel.add(lblNewLabel);
 			
@@ -107,7 +107,7 @@ public class RegVacuna extends JDialog {
 			cbxLab.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "Johnson & johnson", "Roche", "AbbVie", "Bayer", "Pfizer", "Bristol-Myers Squibb", "Merck & Co", "Novartis", "Sanofi"}));
 			panel.add(cbxLab);
 			
-			JLabel lblNewLabel_3 = new JLabel("Administracion:");
+			JLabel lblNewLabel_3 = new JLabel("AdministraciÃ³n:");
 			lblNewLabel_3.setBounds(212, 57, 115, 14);
 			panel.add(lblNewLabel_3);
 			
@@ -210,7 +210,7 @@ public class RegVacuna extends JDialog {
 						Vacuna auxVacuna = null;
 						auxVacuna = new Vacuna(txtCodigo.getText(), txtNombre.getText(), cbxLab.getSelectedItem().toString(), cbxAd.getSelectedItem().toString(),enfermedads);
 						Clinica.getInstance().insertarVacuna(auxVacuna);
-						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Operaciï¿½n exitosa", "Informaciï¿½n", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}
 				});

@@ -222,7 +222,7 @@ public class CrearCitas extends JDialog {
 		lblCelular.setBounds(291, 190, 46, 25);
 		panel.add(lblCelular);
 
-		JLabel lblTelefonoOpcional = new JLabel("Telefono:");
+		JLabel lblTelefonoOpcional = new JLabel("Teléfono:");
 		lblTelefonoOpcional.setBounds(284, 227, 53, 25);
 		panel.add(lblTelefonoOpcional);
 
@@ -328,7 +328,7 @@ public class CrearCitas extends JDialog {
 		txtIDPaciente.setBounds(513, 30, 93, 25);
 		panel.add(txtIDPaciente);
 
-		JLabel lblOcupacion = new JLabel("Ocupacion:");
+		JLabel lblOcupacion = new JLabel("Ocupación:");
 		lblOcupacion.setBounds(31, 263, 70, 25);
 		panel.add(lblOcupacion);
 
@@ -344,7 +344,7 @@ public class CrearCitas extends JDialog {
 		txtDireccion.setBounds(347, 262, 110, 25);
 		panel.add(txtDireccion);
 
-		JLabel lblDireccion = new JLabel("Direccion:");
+		JLabel lblDireccion = new JLabel("Dirección:");
 		lblDireccion.setBounds(284, 263, 70, 25);
 		panel.add(lblDireccion);
 

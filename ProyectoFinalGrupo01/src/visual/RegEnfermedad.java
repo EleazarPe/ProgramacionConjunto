@@ -138,11 +138,19 @@ public class RegEnfermedad extends JDialog {
 			panel.add(panel_1);
 			
 			sliderPorcentaje = new JSlider();
+			
+			TxtValor = new JTextField();
+			TxtValor.setEditable(false);
+			TxtValor.setBounds(403, 495, 226, 22);
+			
+			panel.add(TxtValor);
+			TxtValor.setColumns(10);
+			
 			sliderPorcentaje.addChangeListener(new ChangeListener() {
 				public void stateChanged(ChangeEvent evt) {
 					//int valor = sliderPorcentaje.getValue();
-					//TxtValor.setText("El valor del deslizador es: " + sliderPorcentaje.getValue());
-					System.out.println("El valor del deslizador es: " + sliderPorcentaje.getValue());
+					TxtValor.setText("El valor del deslizador es: " + String.valueOf(sliderPorcentaje.getValue()));
+					//System.out.println("El valor del deslizador es: " + sliderPorcentaje.getValue());
 				}
 			});
 			panel_1.add(sliderPorcentaje);
@@ -158,11 +166,6 @@ public class RegEnfermedad extends JDialog {
 			panel.add(LblLogo);
 			LblLogo.setIcon(new ImageIcon(img_logo));
 			
-			TxtValor = new JTextField();
-			TxtValor.setEditable(false);
-			TxtValor.setBounds(403, 495, 226, 22);
-			panel.add(TxtValor);
-			TxtValor.setColumns(10);
 		}
 		{
 			JPanel buttonPane = new JPanel();

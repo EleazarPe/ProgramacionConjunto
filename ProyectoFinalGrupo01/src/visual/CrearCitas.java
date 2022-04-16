@@ -425,7 +425,7 @@ public class CrearCitas extends JDialog {
 							auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText(),cbxEspecialidad.getSelectedItem().toString(), cbxDoctor.getSelectedItem().toString(),paciente);
 							paciente.insertarCita(auxCita);
 							Clinica.getInstance().insertarCita(auxCita);
-							JOptionPane.showMessageDialog(null, "Su Cita se a Agendado Correctamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Su Cita se a Agendado Correctamente..", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 						}
 					}
 				});

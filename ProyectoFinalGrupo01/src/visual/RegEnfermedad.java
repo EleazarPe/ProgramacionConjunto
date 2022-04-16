@@ -156,7 +156,6 @@ public class RegEnfermedad extends JDialog {
 
 
 			sliderPorcentaje = new JSlider();
-			sliderPorcentaje.setSnapToTicks(true);
 
 			sliderPorcentaje.addChangeListener(new ChangeListener() {
 				public void stateChanged(ChangeEvent evt) {

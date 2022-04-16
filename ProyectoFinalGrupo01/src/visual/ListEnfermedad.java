@@ -53,7 +53,7 @@ public class ListEnfermedad extends JDialog {
 	public ListEnfermedad() {
 		setTitle("Listado de Enfermedades");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ListEnfermedad.class.getResource("/img/senal-de-peligro-biologico (1).png")));
-		setBounds(100, 100, 759, 300);
+		setBounds(100, 100, 950, 300);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -68,7 +68,7 @@ public class ListEnfermedad extends JDialog {
 
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String headers[] = {"Código","Nombre","Tipo","Informacion","Fecha de Aparición"};
+					String headers[] = {"Código","Nombre","Tipo","Informacion","Fecha de Aparición","Tasa de Transmisibilidad"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
@@ -147,6 +147,7 @@ public class ListEnfermedad extends JDialog {
 				row[2] = object.getTipoString();
 				row[3] = object.getInformacionString();
 				row[4] = new SimpleDateFormat("dd/MM/yyyy").format(object.getDescubierta());
+				row[5] = object.getTransmisibilidad();
 				model.addRow(row);	
 		}
 	}

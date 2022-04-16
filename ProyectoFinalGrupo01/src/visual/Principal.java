@@ -183,6 +183,7 @@ public class Principal extends JFrame {
 		panel.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Cerrar Sesión");
+		btnNewButton.setVisible(false);
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

@@ -5,19 +5,21 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import logico.Clinica;
 import logico.Enfermedad;
-
 import java.awt.Toolkit;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ListEnfermedad extends JDialog {
 
@@ -29,6 +31,9 @@ public class ListEnfermedad extends JDialog {
 	private DefaultTableModel model;
 	private Object row[];
 	private JTable table;
+	private Enfermedad enfermedaSelect = null;
+	private JButton btnMod;
+	private JButton btnDelete;
 	/**
 	 * Launch the application.
 	 */
@@ -60,12 +65,25 @@ public class ListEnfermedad extends JDialog {
 			panel.setLayout(new BorderLayout(0, 0));
 			{
 				JScrollPane scrollPane = new JScrollPane();
+
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 					String headers[] = {"Código","Nombre","Tipo","Informacion","Fecha de Aparición"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
+					table.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							int row = 0;
+							row = table.getSelectedRow();
+							if(row > -1) {
+								btnDelete.setEnabled(true);
+								btnMod.setEnabled(true);
+								enfermedaSelect = (Enfermedad) Clinica.getInstance().buscarEnfermedadByCodigo(table.getValueAt(row, 0).toString());
+							}
+						}
+					});
 					scrollPane.setViewportView(table);
 				}
 				table.setModel(model);
@@ -77,12 +95,31 @@ public class ListEnfermedad extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnMod = new JButton("Modificar");
+				btnMod = new JButton("Modificar");
+				btnMod.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						dispose();
+						RegEnfermedad ef = new RegEnfermedad(enfermedaSelect);
+						ef.setModal(true);
+						ef.setVisible(true);
+					}
+				});
 				btnMod.setEnabled(false);
 				buttonPane.add(btnMod);
 			}
 			{
-				JButton btnDelete = new JButton("Eliminar");
+				btnDelete = new JButton("Eliminar");
+				btnDelete.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if(enfermedaSelect !=null) {
+							int option = JOptionPane.showConfirmDialog(null, "Está seguro de eliminar el médico: "+ enfermedaSelect.getCodigoString(), "Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+							if(option == JOptionPane.YES_OPTION){
+								Clinica.getInstance().eliminarEnfermedad(enfermedaSelect);
+								loadTable();
+							}
+						}
+					}
+				});
 				btnDelete.setEnabled(false);
 				btnDelete.setActionCommand("Cancel");
 				buttonPane.add(btnDelete);

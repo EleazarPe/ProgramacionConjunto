@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -18,6 +19,8 @@ import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ListVacuna extends JDialog {
 
@@ -29,6 +32,8 @@ public class ListVacuna extends JDialog {
 	private JTable table;
 	private DefaultTableModel model;
 	private Object row[];
+	private JButton ButtonDelete;
+	private Vacuna vacunaselect = null;
 
 	/**
 	 * Launch the application.
@@ -64,6 +69,18 @@ public class ListVacuna extends JDialog {
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 					table = new JTable();
+					table.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							int row = 0;
+							row = table.getSelectedRow();
+							if(row > -1) {
+								ButtonDelete.setEnabled(true);
+								vacunaselect = (Vacuna) Clinica.getInstance().buscarVacunaByCodigo(table.getValueAt(row, 0).toString());
+								
+							}
+						}
+					});
 					String headers[] = {"Código","Nombre","Laboratorio","Administracion","Enfermedades"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
@@ -78,10 +95,21 @@ public class ListVacuna extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton cancelButton = new JButton("Eliminar");
-				cancelButton.setEnabled(false);
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
+				ButtonDelete = new JButton("Eliminar");
+				ButtonDelete.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if(vacunaselect !=null) {
+							int option = JOptionPane.showConfirmDialog(null, "Está seguro de eliminar el médico: "+ vacunaselect.getCodigo(), "Confirmación",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+							if(option == JOptionPane.YES_OPTION){
+								Clinica.getInstance().eliminarVacuna(vacunaselect);
+								loadTable();
+							}
+						}
+					}
+				});
+				ButtonDelete.setEnabled(false);
+				ButtonDelete.setActionCommand("Cancel");
+				buttonPane.add(ButtonDelete);
 			}
 			{
 				JButton okButton = new JButton("Aceptar");

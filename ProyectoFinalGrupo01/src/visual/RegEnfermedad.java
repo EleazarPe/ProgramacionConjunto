@@ -44,9 +44,10 @@ public class RegEnfermedad extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtCodigo;
 	private JTextField txtNombre;
-	private JComboBox<Object> comboBox;
-	private JSpinner spinner;
+	private JComboBox<Object> cbxTipo;
+	private JSpinner spnFecha;
 	private JTextPane textPane;
+	private Enfermedad miEnfermedad = null;
 	private Random rand = new Random();
 	private JSlider sliderPorcentaje;
 	private JLabel TxtValor;
@@ -55,13 +56,15 @@ public class RegEnfermedad extends JDialog {
 	private JLabel advertencia3;
 	private JLabel MensajeAdvertencia;
 	private JLabel advertencia4;
+	private JButton okButton;
+	private JButton cancelButton;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			RegEnfermedad dialog = new RegEnfermedad();
+			RegEnfermedad dialog = new RegEnfermedad(null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -72,9 +75,14 @@ public class RegEnfermedad extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public RegEnfermedad() {
+	public RegEnfermedad(Enfermedad ef) {
+		miEnfermedad = ef ;
+		if(ef == null) {
+			setTitle("Registro de Enfermedad");
+		}else {
+			setTitle("Modificar Registro de Enfermedad");
+		}
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegEnfermedad.class.getResource("/img/cruz-roja.png")));
-		setTitle("Registro de Enfermedad");
 		setBounds(100, 100, 681, 616);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
@@ -113,21 +121,21 @@ public class RegEnfermedad extends JDialog {
 			lblNewLabel_2.setBounds(20, 161, 59, 14);
 			panel.add(lblNewLabel_2);
 
-			comboBox = new JComboBox<Object>();
-			comboBox.setBounds(20, 184, 238, 21);
-			comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "Virus", "Bacteriana", "Hongos", "Nutricional", "Traumatica", "Genética", "Congenita", "Mental", "Degenerativa", "Autoinmune", "Cardiovascular", "Alérgica"}));
-			panel.add(comboBox);
+			cbxTipo = new JComboBox<Object>();
+			cbxTipo.setBounds(20, 184, 238, 21);
+			cbxTipo.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "Virus", "Bacteriana", "Hongos", "Nutricional", "Traumatica", "Genética", "Congenita", "Mental", "Degenerativa", "Autoinmune", "Cardiovascular", "Alérgica"}));
+			panel.add(cbxTipo);
 
 			JLabel lblNewLabel_3 = new JLabel("Descubierta en:");
 			lblNewLabel_3.setBounds(20, 236, 91, 14);
 			panel.add(lblNewLabel_3);
 
-			spinner = new JSpinner();
-			spinner.setModel(new SpinnerDateModel(new Date(1648935236284L), null, null, Calendar.YEAR));
-			spinner.setValue(new Date());
-			spinner.setEditor(new JSpinner.DateEditor(spinner,"dd/MM/yyyy"));
-			spinner.setBounds(20, 261, 238, 21);
-			panel.add(spinner);
+			spnFecha = new JSpinner();
+			spnFecha.setModel(new SpinnerDateModel(new Date(1648935236284L), null, null, Calendar.YEAR));
+			spnFecha.setValue(new Date());
+			spnFecha.setEditor(new JSpinner.DateEditor(spnFecha,"dd/MM/yyyy"));
+			spnFecha.setBounds(20, 261, 238, 21);
+			panel.add(spnFecha);
 
 			JLabel lblNewLabel_4 = new JLabel("Descripción:");
 			lblNewLabel_4.setBounds(20, 319, 71, 14);
@@ -208,22 +216,34 @@ public class RegEnfermedad extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Registrar");
+				okButton = new JButton("");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
+						
+						if (miEnfermedad == null) {
 
-						if (txtNombre.getText().equals("") || comboBox.getSelectedItem().equals("<Seleccione>") || textPane.getText().equals(""))
-						{
-							advertecnia();
-							
+							if (txtNombre.getText().equals("") || cbxTipo.getSelectedItem().equals("<Seleccione>") || textPane.getText().equals(""))
+							{
+								advertecnia();
+
+							}else {
+
+								Enfermedad nuevaEnfermedad = null;
+								nuevaEnfermedad = new Enfermedad(txtCodigo.getText(), txtNombre.getText(), cbxTipo.getSelectedItem().toString(), textPane.getText(),
+										(Date) spnFecha.getValue(),sliderPorcentaje.getValue());
+								Clinica.getInstance().insertarEnfermedad(nuevaEnfermedad);
+								JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
+								clean();
+							}
 						}else {
-
-							Enfermedad nuevaEnfermedad = null;
-							nuevaEnfermedad = new Enfermedad(txtCodigo.getText(), txtNombre.getText(), comboBox.getSelectedItem().toString(), textPane.getText(),
-									(Date) spinner.getValue(),sliderPorcentaje.getValue());
-							Clinica.getInstance().insertarEnfermedad(nuevaEnfermedad);
-							JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
-							clean();
+							miEnfermedad.setCodigoString(txtCodigo.getText());
+							miEnfermedad.setNombreString(txtNombre.getText());
+							miEnfermedad.setTipoString(cbxTipo.getSelectedItem().toString());
+							miEnfermedad.setInformacionString(textPane.getText());
+							miEnfermedad.setDescubierta((Date) spnFecha.getValue());
+							miEnfermedad.setTransmisibilidad(sliderPorcentaje.getValue());
+							JOptionPane.showMessageDialog(null, "Operacion exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+							dispose();
 						}
 					}
 				});
@@ -232,7 +252,7 @@ public class RegEnfermedad extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancelar");
+				cancelButton = new JButton("Cancelar");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						int respuesta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de que desea cancelar?", "Confirmación",JOptionPane.YES_NO_OPTION);
@@ -244,13 +264,34 @@ public class RegEnfermedad extends JDialog {
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
+			{
+				if(miEnfermedad ==null) {
+					okButton.setText("Registrar");
+				}else {
+					okButton.setText("Modificar");
+				}
+			}
+		}
+		loadEnfermedad(miEnfermedad);
+	}
+	
+	private void loadEnfermedad(Enfermedad ef) {
+		if(ef != null) {
+			txtCodigo.setText(ef.getCodigoString());
+			txtNombre.setText(ef.getNombreString());
+			cbxTipo.setSelectedItem(ef.getTipoString());
+			textPane.setText(ef.getInformacionString());
+			spnFecha.setValue((Date) ef.getDescubierta());
+			sliderPorcentaje.setValue(ef.getTransmisibilidad());
 		}
 	}
+	
+	
 	private void clean() {
 		txtNombre.setText("");
 		textPane.setText("");
-		comboBox.setSelectedIndex(0);
-		spinner.setValue(new Date());
+		cbxTipo.setSelectedIndex(0);
+		spnFecha.setValue(new Date());
 		txtCodigo.setText("EF-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
 
 	}

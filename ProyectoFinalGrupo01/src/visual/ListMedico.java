@@ -99,16 +99,6 @@ public class ListMedico extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				btnmodificar = new JButton("Modificar");
-				btnmodificar.setEnabled(false);
-				btnmodificar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						dispose();
-						RegMedico reg = new RegMedico(medicoselect);
-						reg.setModal(true);
-						reg.setVisible(true);
-					}
-				});
 				{
 					btnEliminar = new JButton("Eliminar");
 					btnEliminar.addActionListener(new ActionListener() {
@@ -122,11 +112,21 @@ public class ListMedico extends JDialog {
 							}
 						}
 					});
+					btnmodificar = new JButton("Modificar");
+					btnmodificar.setEnabled(false);
+					btnmodificar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							dispose();
+							RegMedico reg = new RegMedico(medicoselect);
+							reg.setModal(true);
+							reg.setVisible(true);
+						}
+					});
+					btnmodificar.setActionCommand("");
+					buttonPane.add(btnmodificar);
 					btnEliminar.setEnabled(false);
 					buttonPane.add(btnEliminar);
 				}
-				btnmodificar.setActionCommand("");
-				buttonPane.add(btnmodificar);
 			}
 			{
 				JButton btnAceptar = new JButton("Aceptar");

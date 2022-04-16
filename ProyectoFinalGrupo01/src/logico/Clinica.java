@@ -98,7 +98,24 @@ public class Clinica implements Serializable {
 		usuarios.remove(user);
 	}
 	
-
+	public void eliminarEnfermedad(Enfermedad ef) {
+		enfermedadS.remove(ef);
+	}
+	
+	public void eliminarVacuna(Vacuna vc) {
+		vacunas.remove(vc);
+	}
+	
+	public Vacuna buscarVacunaByCodigo(String codigo) {
+		Vacuna auxvaVacuna = null;
+		for (Vacuna vc : vacunas) {
+			if(vc.getCodigo().equalsIgnoreCase(codigo)) {
+				auxvaVacuna = vc;
+			}
+		}
+		return auxvaVacuna;
+	}
+	
 	public Enfermedad buscarEnfermedadByCodigo(String codigo) {
 		Enfermedad auxEnfermedad = null;
 		for (Enfermedad ef : enfermedadS) {

@@ -227,37 +227,40 @@ public class RegVacuna extends JDialog {
 				JButton cancelButton = new JButton("Cancelar");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						dispose();
+						int respuesta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de que desea cancelar?", "Confirmación",JOptionPane.YES_NO_OPTION);
+						if(respuesta==JOptionPane.YES_OPTION) {
+							dispose();
+						}
 					}
 				});
+				{
+					JButton okButton = new JButton("Registrar");
+					okButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							//////------------------------------------>>>>>>>>>>>>
+							//list_1.getModel().getElementAt(0).substring(0, 9)
+							enfermedads = new ArrayList<>();
+							for(int i =0; i < list_1.getModel().getSize();i++) {
+								System.out.println("Codigo: "+list_1.getModel().getElementAt(i).substring(0, 9));
+								enfermedads.add(Clinica.getInstance().buscarEnfermedadByCodigo(list_1.getModel().getElementAt(i).substring(0, 9)));
+							}
+							Vacuna auxVacuna = null;
+							if (txtNombre.getText().equals("") || cbxLab.getSelectedItem().equals("<Seleccione>") || cbxAd.getSelectedItem().equals("<Seleccione>") ) {
+								Advertencia();
+							}else {
+							auxVacuna = new Vacuna(txtCodigo.getText(), txtNombre.getText(), cbxLab.getSelectedItem().toString(), cbxAd.getSelectedItem().toString(),enfermedads);
+							Clinica.getInstance().insertarVacuna(auxVacuna);
+							JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
+							clean();
+							}
+						}
+					});
+					okButton.setActionCommand("OK");
+					buttonPane.add(okButton);
+					getRootPane().setDefaultButton(okButton);
+				}
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
-			}
-			{
-				JButton okButton = new JButton("Registrar");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						//////------------------------------------>>>>>>>>>>>>
-						//list_1.getModel().getElementAt(0).substring(0, 9)
-						enfermedads = new ArrayList<>();
-						for(int i =0; i < list_1.getModel().getSize();i++) {
-							System.out.println("Codigo: "+list_1.getModel().getElementAt(i).substring(0, 9));
-							enfermedads.add(Clinica.getInstance().buscarEnfermedadByCodigo(list_1.getModel().getElementAt(i).substring(0, 9)));
-						}
-						Vacuna auxVacuna = null;
-						if (txtNombre.getText().equals("") || cbxLab.getSelectedItem().equals("<Seleccione>") || cbxAd.getSelectedItem().equals("<Seleccione>") ) {
-							Advertencia();
-						}else {
-						auxVacuna = new Vacuna(txtCodigo.getText(), txtNombre.getText(), cbxLab.getSelectedItem().toString(), cbxAd.getSelectedItem().toString(),enfermedads);
-						Clinica.getInstance().insertarVacuna(auxVacuna);
-						JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
-						clean();
-						}
-					}
-				});
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
 			}
 		}
 		generarList();

@@ -60,6 +60,8 @@ public class RegMedico extends JDialog {
 	private JLabel advertenciaConsultorio;
 	private JLabel AdvertenciaDireccion;
 	private JLabel advertenciaEspecialidad;
+	private JButton cancelButton;
+	private JButton okButton;
 
 
 	public static void main(String[] args) {
@@ -330,22 +332,16 @@ public class RegMedico extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton cancelButton = new JButton("Cancelar");
+				cancelButton = new JButton("Cancelar");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						dispose();
+						int respuesta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de que desea cancelar?", "Confirmación",JOptionPane.YES_NO_OPTION);
+						if(respuesta==JOptionPane.YES_OPTION) {
+							dispose();
+						}
 					}
 				});
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
-			{
-				JButton okButton = new JButton("");
-				if(mimedico ==null) {
-					okButton.setText("Registrar");
-				}else {
-					okButton.setText("Modificar");
-				}
+				okButton = new JButton("");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						if(mimedico == null) {
@@ -384,6 +380,15 @@ public class RegMedico extends JDialog {
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
+				cancelButton.setActionCommand("Cancel");
+				buttonPane.add(cancelButton);
+			}
+			{
+				if(mimedico ==null) {
+					okButton.setText("Registrar");
+				}else {
+					okButton.setText("Modificar");
+				}
 			}
 		}
 		loadMedico(mimedico);

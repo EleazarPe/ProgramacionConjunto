@@ -8,6 +8,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
+/*import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;*/
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
@@ -17,6 +19,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+/*import javax.swing.JFrame;
+import javax.swing.WindowConstants;*/
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -96,6 +100,7 @@ public class CrearCitas extends JDialog {
 		setLocationRelativeTo(null);
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		
 
 		JPanel panel = new JPanel();
 		panel.setBounds(12, 12, 630, 370);
@@ -431,7 +436,10 @@ public class CrearCitas extends JDialog {
 				btnCancelar = new JButton("Cancelar");
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						dispose();
+						int respuesta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de que desea cancelar?", "Confirmación",JOptionPane.YES_NO_OPTION);
+						if(respuesta==JOptionPane.YES_OPTION) {
+							dispose();
+						}
 					}
 				});
 				btnCancelar.setActionCommand("OK");
@@ -560,5 +568,29 @@ public class CrearCitas extends JDialog {
 		Mensaje.setVisible(true);
 		tk.beep ();
 	}
+	
+	/*public void cerrar ()
+	{
+		try {
+			this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
+			addWindowListener (new WindowAdapter() {
+				public void windowsClosing(WindowEvent e) {
+					confirmarSalida();
+				}
+
+			});
+			this.setVisible(true);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void confirmarSalida () {
+	  int valor = JOptionPane.showConfirmDialog (this, "Esta seguro de cerrar la aplicación?","Advertencia",JOptionPane.YES_NO_OPTION);
+	  if (valor==JOptionPane.YES_OPTION) {
+	      JOptionPane.showMessageDialog (null, "Gracias por au visita, Hasta Pronto", "Gracias",JOptionPane. INFORMATION_MESSAGE);
+	      System.exit (0);
+	  }
+	}*/
 }
 

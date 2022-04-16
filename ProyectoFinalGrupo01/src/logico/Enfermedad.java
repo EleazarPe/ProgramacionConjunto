@@ -13,19 +13,20 @@ public class Enfermedad implements Serializable{
 	private String tipoString;
 	private String informacionString;
 	private Date descubierta;
-	/*private int transmisibilidad;
-	private int poblacionAfectada;
+	private int transmisibilidad;
+	/*private int poblacionAfectada;
 	private Date primerbroteDate;
 	private Date fechaActual;*/
 	
 	public Enfermedad(String codigo,String nombreString, String tipoString,String informacion,
-			Date descubrimiento) {
+			Date descubrimiento, int transmisibilidad) {
 		super();
 		this.codigoString = codigo;
 		this.nombreString = nombreString;
 		this.tipoString = tipoString;
 		this.informacionString = informacion;
 		this.descubierta = descubrimiento;
+		this.transmisibilidad = transmisibilidad;
 	}
 	
 
@@ -73,6 +74,16 @@ public class Enfermedad implements Serializable{
 
 	public void setDescubierta(Date descubierta) {
 		this.descubierta = descubierta;
+	}
+
+
+	public int getTransmisibilidad() {
+		return transmisibilidad;
+	}
+
+
+	public void setTransmisibilidad(int transmisibilidad) {
+		this.transmisibilidad = transmisibilidad;
 	}
 
 

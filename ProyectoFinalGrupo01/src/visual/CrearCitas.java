@@ -431,7 +431,10 @@ public class CrearCitas extends JDialog {
 				btnCancelar = new JButton("Cancelar");
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						dispose();
+						int respuesta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de que desea cancelar?", "Confirmación",JOptionPane.YES_NO_OPTION);
+						if(respuesta==JOptionPane.YES_OPTION) {
+							dispose();
+						}
 					}
 				});
 				btnCancelar.setActionCommand("OK");

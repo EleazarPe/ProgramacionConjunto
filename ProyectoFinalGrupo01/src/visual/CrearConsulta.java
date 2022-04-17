@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 import logico.Cita;
 import logico.Clinica;
+import logico.Paciente;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -37,6 +38,8 @@ import java.awt.Toolkit;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class CrearConsulta extends JDialog {
 
@@ -69,6 +72,7 @@ public class CrearConsulta extends JDialog {
 	private JToggleButton tglbtntHistorialConsultas;
 	private JToggleButton tglbtntHistorialMedico;
 	private JToggleButton tglbtntVacuna;
+	private Paciente pacienteS = null;
 
 	/**
 	 * Launch the application.
@@ -127,6 +131,17 @@ public class CrearConsulta extends JDialog {
 					model2 = new DefaultTableModel();
 					model2.setColumnIdentifiers(headers);
 					table = new JTable();
+					table.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							int select = 0;
+							select = table.getSelectedRow();
+							if(select > -1) {
+								pacienteS = (Paciente) Clinica.getInstance().buscarPacienteById(table.getValueAt(select, 0).toString());
+							}
+							//---------------------------------------------------------->>>>
+						}
+					});
 				}
 				scrollPane.setViewportView(table);
 				table.setModel(model2);
@@ -377,6 +392,12 @@ public class CrearConsulta extends JDialog {
 				*/
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						if(okButton.getText().equals("Consultar")) {
+							TxtNombres.setText(pacienteS.getNombre());
+							TxtApellido.setText(pacienteS.getApellido());
+							txtNoId.setText(pacienteS.getID());
+							
+						}
 					}
 				});
 				okButton.setActionCommand("OK");

@@ -363,16 +363,20 @@ public class CrearConsulta extends JDialog {
 			panelVacuna.setLayout(null);
 			
 			JPanel panel_3 = new JPanel();
-			panel_3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panel_3.setBounds(6, 0, 771, 633);
 			panelVacuna.add(panel_3);
 			panel_3.setLayout(null);
 			{
+				JLabel lblReporteVacunas = new JLabel("REPORTE VACUNAS");
+				lblReporteVacunas.setFont(new Font("Tahoma", Font.BOLD, 14));
+				lblReporteVacunas.setBounds(12, 179, 149, 22);
+				panel_3.add(lblReporteVacunas);
+				
 				JScrollPane scrollPane = new JScrollPane();
-				scrollPane.setBounds(0, 0, 771, 304);
+				scrollPane.setBounds(0, 201, 771, 432);
 				panel_3.add(scrollPane);
 				{
-					String headers[] = {"Vacuna","Fecha de Vacunacion","Doctor"};
+					String headers[] = {"Fecha de Vacunacion","Via de Administracion","Laboratorio","Enfermedad cubierta","Doctor"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
@@ -382,8 +386,78 @@ public class CrearConsulta extends JDialog {
 				scrollPane.setViewportView(table);
 			}
 			
-
+			JPanel panel_4 = new JPanel();
+			panel_4.setBounds(0, 0, 771, 182);
+			panel_4.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panel_3.add(panel_4);
+			panel_4.setLayout(null);
 			
+			JLabel lblVacuna_1 = new JLabel("Laboratorio vacuna:\r\n");
+			lblVacuna_1.setBounds(308, 127, 116, 16);
+			panel_4.add(lblVacuna_1);
+			
+			JLabel lblViaDeAdministracion = new JLabel("Via de administración:\r\n");
+			lblViaDeAdministracion.setBounds(308, 72, 129, 16);
+			panel_4.add(lblViaDeAdministracion);
+			
+			JComboBox cbxViaVacuna = new JComboBox();
+			cbxViaVacuna.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Intravenosa", "Intramuscular", "Subcutanea"}));
+			cbxViaVacuna.setBounds(308, 92, 144, 22);
+			panel_4.add(cbxViaVacuna);
+			
+			JLabel lblVacuna_2 = new JLabel("Filtrar resultados:");
+			lblVacuna_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+			lblVacuna_2.setBounds(12, 13, 129, 22);
+			panel_4.add(lblVacuna_2);
+			
+			JLabel lblVacuna_3 = new JLabel("Si desea filtrar la informacion, complete los campos requeridos.");
+			lblVacuna_3.setBounds(12, 36, 375, 16);
+			panel_4.add(lblVacuna_3);
+			
+			JSpinner spnFechaFiltroInicio = new JSpinner();
+			spnFechaFiltroInicio.setModel(new SpinnerDateModel(new Date(1650168000000L), null, null, Calendar.DAY_OF_YEAR));
+			spnFechaFiltroInicio.setEditor(new JSpinner.DateEditor(spnFechaFiltroInicio,"dd/MM/yyyy"));
+			spnFechaFiltroInicio.setValue(new Date());
+			spnFechaFiltroInicio.setBounds(86, 92, 136, 22);
+			panel_4.add(spnFechaFiltroInicio);
+			
+			JSpinner spnFechaFiltroFinal = new JSpinner();
+			spnFechaFiltroFinal.setModel(new SpinnerDateModel(new Date(1650168000000L), null, null, Calendar.DAY_OF_YEAR));
+			spnFechaFiltroFinal.setEditor(new JSpinner.DateEditor(spnFechaFiltroFinal,"dd/MM/yyyy"));
+			spnFechaFiltroFinal.setValue(new Date());
+			spnFechaFiltroFinal.setBounds(86, 144, 136, 22);
+			panel_4.add(spnFechaFiltroFinal);
+			
+			JLabel lblVacuna_4 = new JLabel("Fecha inicial:");
+			lblVacuna_4.setBounds(86, 72, 75, 16);
+			panel_4.add(lblVacuna_4);
+			
+			JLabel lblVacuna_5 = new JLabel("Fecha Final:");
+			lblVacuna_5.setBounds(86, 126, 75, 16);
+			panel_4.add(lblVacuna_5);
+			
+			JComboBox cbxLaboratorios = new JComboBox();
+			cbxLaboratorios .setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Johnson & johnson", "Roche", "AbbVie", "Bayer", "Pfizer", "Bristol-Myers Squibb", "Merck & Co", "Novartis", "Sanofi"}));
+			cbxLaboratorios .setBounds(308, 144, 144, 22);
+			panel_4.add(cbxLaboratorios);
+			
+			JLabel lblEnfermedadesCubiertas = new JLabel("Enfermedades:");
+			lblEnfermedadesCubiertas.setBounds(538, 72, 87, 16);
+			panel_4.add(lblEnfermedadesCubiertas);
+			
+			JComboBox cbxEnfermedades = new JComboBox();
+			cbxEnfermedades.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>"}));
+			cbxEnfermedades.setBounds(538, 92, 144, 22);
+			panel_4.add(cbxEnfermedades);
+			
+			JLabel lblDoctor = new JLabel("Doctor");
+			lblDoctor.setBounds(538, 127, 87, 16);
+			panel_4.add(lblDoctor);
+			
+			JComboBox cbxDoctorVacuno = new JComboBox();
+			cbxDoctorVacuno.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>"}));
+			cbxDoctorVacuno.setBounds(538, 147, 144, 22);
+			panel_4.add(cbxDoctorVacuno);			
 		}
 		{
 			buttonPane = new JPanel();

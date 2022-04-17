@@ -21,6 +21,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
@@ -62,6 +63,7 @@ public class CrearConsulta extends JDialog {
 	private JPanel buttonPane;
 	private JToggleButton tglbtntCitas;
 	private JTable table;
+	private JTable table1;
 	private JPanel panelHistorialC;
 	private JPanel panelHistorialM;
 	private JPanel panelVacuna;
@@ -73,6 +75,7 @@ public class CrearConsulta extends JDialog {
 	private JToggleButton tglbtntHistorialMedico;
 	private JToggleButton tglbtntVacuna;
 	private Paciente pacienteS = null;
+	private JSpinner spnFechaNacimiento;
 
 	/**
 	 * Launch the application.
@@ -130,22 +133,24 @@ public class CrearConsulta extends JDialog {
 					String headers[] = {"ID","Cédula","Nombre","Teléfono","Síntomas","fecha"};
 					model2 = new DefaultTableModel();
 					model2.setColumnIdentifiers(headers);
-					table = new JTable();
-					table.addMouseListener(new MouseAdapter() {
+					table1 = new JTable();
+					table1.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent arg0) {
 							int select = 0;
-							select = table.getSelectedRow();
+							select = table1.getSelectedRow();
+							System.out.println("======>"+select);
 							if(select > -1) {
-								pacienteS = (Paciente) Clinica.getInstance().buscarPacienteById(table.getValueAt(select, 0).toString());
+								System.out.println("--------->"+table1.getValueAt(select, 1).toString());
+								pacienteS =  Clinica.getInstance().buscarPacienteById(table1.getValueAt(select, 1).toString());
 							}
 							//---------------------------------------------------------->>>>
 						}
 					});
 				}
-				scrollPane.setViewportView(table);
-				table.setModel(model2);
-				scrollPane.setViewportView(table);
+				scrollPane.setViewportView(table1);
+				table1.setModel(model2);
+				scrollPane.setViewportView(table1);
 			}
 			
 			
@@ -190,7 +195,7 @@ public class CrearConsulta extends JDialog {
 			cbxId.setBounds(144, 73, 110, 25);
 			pnlDatosPaciente.add(cbxId);
 			
-			JSpinner spnFechaNacimiento = new JSpinner();
+			spnFechaNacimiento = new JSpinner();
 			spnFechaNacimiento.setEnabled(false);
 			spnFechaNacimiento.setModel(new SpinnerDateModel(new Date(1648699200000L), null, null, Calendar.DAY_OF_YEAR));
 			spnFechaNacimiento.setEditor(new JSpinner.DateEditor(spnFechaNacimiento,"dd/MM/yyyy"));
@@ -392,11 +397,14 @@ public class CrearConsulta extends JDialog {
 				*/
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(okButton.getText().equals("Consultar")) {
-							TxtNombres.setText(pacienteS.getNombre());
-							TxtApellido.setText(pacienteS.getApellido());
-							txtNoId.setText(pacienteS.getID());
-							
+						if(pacienteS != null) {
+							if(okButton.getText().equals("Consultar")) {
+								TxtNombres.setText(pacienteS.getNombre());
+								TxtApellido.setText(pacienteS.getApellido());
+								txtNoId.setText(pacienteS.getID());
+								spnFechaNacimiento.setValue((Date)pacienteS.getFechaNaciento());
+								JOptionPane.showMessageDialog(null, "Paciente procesado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+							}
 						}
 					}
 				});

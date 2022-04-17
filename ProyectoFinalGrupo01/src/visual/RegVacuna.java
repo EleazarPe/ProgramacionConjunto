@@ -114,8 +114,8 @@ public class RegVacuna extends JDialog {
 			cbxLab.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "Johnson & johnson", "Roche", "AbbVie", "Bayer", "Pfizer", "Bristol-Myers Squibb", "Merck & Co", "Novartis", "Sanofi"}));
 			panel.add(cbxLab);
 
-			JLabel lblNewLabel_3 = new JLabel("Administración:");
-			lblNewLabel_3.setBounds(238, 57, 115, 14);
+			JLabel lblNewLabel_3 = new JLabel("Via de Administración:");
+			lblNewLabel_3.setBounds(238, 57, 129, 16);
 			panel.add(lblNewLabel_3);
 
 			cbxAd = new JComboBox<Object>();

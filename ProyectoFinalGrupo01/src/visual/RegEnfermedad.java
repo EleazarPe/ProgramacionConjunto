@@ -223,7 +223,7 @@ public class RegEnfermedad extends JDialog {
 
 							if (txtNombre.getText().equals("") || cbxTipo.getSelectedItem().equals("<Seleccione>") || textPane.getText().equals(""))
 							{
-								advertecnia();
+								advertencia();
 
 							}else {
 
@@ -295,7 +295,7 @@ public class RegEnfermedad extends JDialog {
 
 	}
 
-	private void advertecnia() {
+	private void advertencia() {
 		Toolkit tk = Toolkit.getDefaultToolkit ();
 		advertencia1.setVisible(true);
 		advertencia2.setVisible(true);

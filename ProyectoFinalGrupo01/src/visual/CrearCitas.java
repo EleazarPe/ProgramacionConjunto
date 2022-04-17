@@ -73,6 +73,7 @@ public class CrearCitas extends JDialog {
 	private JLabel SignoAvisoDirreccion;
 	private JLabel SignoAvisoRH;
 	private JLabel signoAviso7;
+	private JSpinner spnFechaCita;
 
 	/**
 	 * Launch the application.
@@ -415,14 +416,14 @@ public class CrearCitas extends JDialog {
 							Paciente auxPaciente = null;
 							Cita auxCita = null;
 							auxPaciente = new Paciente(txtNombre.getText(), txtApellido.getText(), txtNid.getText(), (Date)spnFechaNacimiento.getValue(), cbxOcupacion.getSelectedItem().toString(), txtCelular.getText(), txtDireccion.getText(), txtIDPaciente.getText(), cbxTipoBlood.getSelectedItem().toString(), txtTelefonoOpc.getText());
-							auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText(),cbxEspecialidad.getSelectedItem().toString(), cbxDoctor.getSelectedItem().toString(),auxPaciente);
+							auxCita = new Cita((Date)spnFechaCita.getValue(), txtIDPaciente.getText(), TextNotas.getText(),cbxEspecialidad.getSelectedItem().toString(), cbxDoctor.getSelectedItem().toString(),auxPaciente);
 							auxPaciente.insertarCita(auxCita);
 							Clinica.getInstance().insertarCita(auxCita);
 							Clinica.getInstance().insertarUsuario(auxPaciente);
 							JOptionPane.showMessageDialog(null, "Operacion exitosa su Informacion a sido Procesada", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 						}else {
 							Cita auxCita = null;
-							auxCita = new Cita((Date)spnFechaNacimiento.getValue(), txtIDPaciente.getText(), TextNotas.getText(),cbxEspecialidad.getSelectedItem().toString(), cbxDoctor.getSelectedItem().toString(),paciente);
+							auxCita = new Cita((Date)spnFechaCita.getValue(), txtIDPaciente.getText(), TextNotas.getText(),cbxEspecialidad.getSelectedItem().toString(), cbxDoctor.getSelectedItem().toString(),paciente);
 							paciente.insertarCita(auxCita);
 							Clinica.getInstance().insertarCita(auxCita);
 							JOptionPane.showMessageDialog(null, "Su Cita se a Agendado Correctamente..", "Informacion", JOptionPane.INFORMATION_MESSAGE);
@@ -472,7 +473,7 @@ public class CrearCitas extends JDialog {
 		panel_2.add(cbxEspecialidad);
 
 
-		JSpinner spnFechaCita = new JSpinner();
+		spnFechaCita = new JSpinner();
 		spnFechaCita.setModel(new SpinnerDateModel(new Date(1650181583304L), null, null, Calendar.DAY_OF_YEAR));
 		spnFechaCita.setEditor(new JSpinner.DateEditor(spnFechaCita,"dd/MM/yyyy"));
 		spnFechaCita.setValue(new Date());

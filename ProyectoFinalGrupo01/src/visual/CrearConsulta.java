@@ -366,11 +366,13 @@ public class CrearConsulta extends JDialog {
 			panel_3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panel_3.setBounds(6, 0, 771, 633);
 			panelVacuna.add(panel_3);
+			panel_3.setLayout(null);
 			{
 				JScrollPane scrollPane = new JScrollPane();
-				panel_3.add(scrollPane, BorderLayout.CENTER);
+				scrollPane.setBounds(0, 0, 771, 304);
+				panel_3.add(scrollPane);
 				{
-					String headers[] = {"Hola","Como","Estas","?"};
+					String headers[] = {"Vacuna","Fecha de Vacunacion","Doctor"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();

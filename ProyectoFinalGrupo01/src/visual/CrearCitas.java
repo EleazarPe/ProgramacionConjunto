@@ -101,7 +101,7 @@ public class CrearCitas extends JDialog {
 		setLocationRelativeTo(null);
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		
+
 
 		JPanel panel = new JPanel();
 		panel.setBounds(12, 12, 630, 370);
@@ -569,7 +569,7 @@ public class CrearCitas extends JDialog {
 		Mensaje.setVisible(true);
 		tk.beep ();
 	}
-	
+
 	/*public void cerrar ()
 	{
 		try {

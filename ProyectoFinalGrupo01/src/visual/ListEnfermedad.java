@@ -142,13 +142,13 @@ public class ListEnfermedad extends JDialog {
 		model.setRowCount(0);
 		row = new Object[model.getColumnCount()];
 		for (Enfermedad object : Clinica.getInstance().getenfermedadS()) {
-				row[0] = object.getCodigoString();
-				row[1] = object.getNombreString();
-				row[2] = object.getTipoString();
-				row[3] = object.getInformacionString();
-				row[4] = new SimpleDateFormat("dd/MM/yyyy").format(object.getDescubierta());
-				row[5] = object.getTransmisibilidad();
-				model.addRow(row);	
+			row[0] = object.getCodigoString();
+			row[1] = object.getNombreString();
+			row[2] = object.getTipoString();
+			row[3] = object.getInformacionString();
+			row[4] = new SimpleDateFormat("dd/MM/yyyy").format(object.getDescubierta());
+			row[5] = object.getTransmisibilidad();
+			model.addRow(row);	
 		}
 	}
 }

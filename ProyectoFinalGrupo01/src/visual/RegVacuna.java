@@ -84,83 +84,83 @@ public class RegVacuna extends JDialog {
 			JPanel panel = new JPanel();
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
-			
+
 			JLabel lblNewLabel = new JLabel("Código:");
 			lblNewLabel.setBounds(26, 11, 62, 14);
 			panel.add(lblNewLabel);
-			
+
 			txtCodigo = new JTextField();
 			txtCodigo.setEditable(false);
 			txtCodigo.setBounds(26, 26, 157, 20);
 			panel.add(txtCodigo);
 			txtCodigo.setColumns(10);
 			txtCodigo.setText("VC-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
-			
+
 			JLabel lblNewLabel_1 = new JLabel("Nombre:");
 			lblNewLabel_1.setBounds(26, 57, 62, 14);
 			panel.add(lblNewLabel_1);
-			
+
 			txtNombre = new JTextField();
 			txtNombre.setBounds(26, 71, 157, 20);
 			panel.add(txtNombre);
 			txtNombre.setColumns(10);
-			
+
 			JLabel lblNewLabel_2 = new JLabel("Laboratorio:");
 			lblNewLabel_2.setBounds(238, 11, 91, 14);
 			panel.add(lblNewLabel_2);
-			
+
 			cbxLab = new JComboBox<Object>();
 			cbxLab.setBounds(236, 26, 157, 20);
 			cbxLab.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "Johnson & johnson", "Roche", "AbbVie", "Bayer", "Pfizer", "Bristol-Myers Squibb", "Merck & Co", "Novartis", "Sanofi"}));
 			panel.add(cbxLab);
-			
+
 			JLabel lblNewLabel_3 = new JLabel("Administración:");
 			lblNewLabel_3.setBounds(238, 57, 115, 14);
 			panel.add(lblNewLabel_3);
-			
+
 			cbxAd = new JComboBox<Object>();
 			cbxAd.setBounds(236, 71, 157, 20);
 			cbxAd.setModel(new DefaultComboBoxModel<Object>(new String[] {"<Seleccione>", "Intravenosa", "Intramuscular", "Subcutanea"}));
 			panel.add(cbxAd);
-			
+
 			JPanel panel_3 = new JPanel();
 			panel_3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panel_3.setBounds(12, 121, 401, 233);
 			panel.add(panel_3);
 			panel_3.setLayout(null);
-			
+
 			JPanel panel_1 = new JPanel();
 			panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panel_1.setBounds(10, 35, 157, 187);
 			panel_3.add(panel_1);
 			panel_1.setLayout(new BorderLayout(0, 0));
-			
+
 			JScrollPane scrollPane = new JScrollPane();
 			panel_1.add(scrollPane, BorderLayout.CENTER);
 			lista1 = new DefaultListModel<>(); 
 			list = new JList<>(lista1);
 			scrollPane.setViewportView(list);
-			
+
 			JPanel panel_2 = new JPanel();
 			panel_2.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panel_2.setBounds(234, 35, 157, 187);
 			panel_3.add(panel_2);
 			panel_2.setLayout(new BorderLayout(0, 0));
-			
+
 			JScrollPane scrollPane_1 = new JScrollPane();
 			panel_2.add(scrollPane_1, BorderLayout.CENTER);
 			lista2 = new DefaultListModel<>(); 
 			list_1 = new JList<>(lista2);
 			scrollPane_1.setViewportView(list_1);
-			
+
 			JLabel lblNewLabel_4 = new JLabel("Listado de enfermedades:");
 			lblNewLabel_4.setBounds(10, 10, 157, 14);
 			panel_3.add(lblNewLabel_4);
-			
+
 			JLabel lblNewLabel_5 = new JLabel("La vacuna protege contra:");
 			lblNewLabel_5.setBounds(234, 10, 157, 14);
 			panel_3.add(lblNewLabel_5);
-			
+
 			JButton btnNewButton = new JButton(">");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -173,7 +173,7 @@ public class RegVacuna extends JDialog {
 			});
 			btnNewButton.setBounds(176, 51, 48, 23);
 			panel_3.add(btnNewButton);
-			
+
 			JButton button = new JButton("<");
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -187,31 +187,31 @@ public class RegVacuna extends JDialog {
 			});
 			button.setBounds(175, 86, 49, 23);
 			panel_3.add(button);
-			
+
 			advertenciaNombre = new JLabel("");
 			advertenciaNombre.setIcon(new ImageIcon(RegVacuna.class.getResource("/img/signo-advertencia.png")));
 			advertenciaNombre.setBounds(12, 71, 18, 20);
 			advertenciaNombre.setVisible(false);
 			panel.add(advertenciaNombre);
-			
+
 			advertenciaLab = new JLabel("");
 			advertenciaLab.setIcon(new ImageIcon(RegVacuna.class.getResource("/img/signo-advertencia.png")));
 			advertenciaLab.setBounds(218, 28, 18, 20);
 			advertenciaLab.setVisible(false);
 			panel.add(advertenciaLab);
-			
+
 			advertenciaAdmin = new JLabel("");
 			advertenciaAdmin.setIcon(new ImageIcon(RegVacuna.class.getResource("/img/signo-advertencia.png")));
 			advertenciaAdmin.setBounds(218, 73, 18, 20);
 			advertenciaAdmin.setVisible(false);
 			panel.add(advertenciaAdmin);
-			
+
 			Mensaje = new JLabel("Los Campos con     son Obligatorios");
 			Mensaje.setFont(new Font("Tahoma", Font.BOLD, 14));
 			Mensaje.setBounds(94, 367, 250, 14);
 			Mensaje.setVisible(false);
 			panel.add(Mensaje);
-			
+
 			advertencia = new JLabel("");
 			advertencia.setIcon(new ImageIcon(RegVacuna.class.getResource("/img/signo-advertencia.png")));
 			advertencia.setBounds(212, 367, 18, 16);
@@ -248,10 +248,10 @@ public class RegVacuna extends JDialog {
 							if (txtNombre.getText().equals("") || cbxLab.getSelectedItem().equals("<Seleccione>") || cbxAd.getSelectedItem().equals("<Seleccione>") ) {
 								Advertencia();
 							}else {
-							auxVacuna = new Vacuna(txtCodigo.getText(), txtNombre.getText(), cbxLab.getSelectedItem().toString(), cbxAd.getSelectedItem().toString(),enfermedads);
-							Clinica.getInstance().insertarVacuna(auxVacuna);
-							JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
-							clean();
+								auxVacuna = new Vacuna(txtCodigo.getText(), txtNombre.getText(), cbxLab.getSelectedItem().toString(), cbxAd.getSelectedItem().toString(),enfermedads);
+								Clinica.getInstance().insertarVacuna(auxVacuna);
+								JOptionPane.showMessageDialog(null, "Operación exitosa", "Información", JOptionPane.INFORMATION_MESSAGE);
+								clean();
 							}
 						}
 					});
@@ -266,7 +266,7 @@ public class RegVacuna extends JDialog {
 		generarList();
 		//.substring(0, 9)
 	}
-	
+
 	private void generarList() {
 		for (Enfermedad ef : Clinica.getInstance().getenfermedadS()) {
 			lista1.addElement(ef.getCodigoString()+"-"+ef.getNombreString());
@@ -280,9 +280,9 @@ public class RegVacuna extends JDialog {
 		lista2.removeAllElements();
 		lista1.removeAllElements();
 		generarList();
-		
+
 	}
-	
+
 	private void Advertencia() {
 		Toolkit tk = Toolkit.getDefaultToolkit ();
 		advertenciaAdmin.setVisible(true);

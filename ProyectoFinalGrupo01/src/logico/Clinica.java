@@ -17,7 +17,7 @@ public class Clinica implements Serializable {
 	private ArrayList<Cita> misCitas;
 	private static Clinica miclinica= null;
 	private static Usuario registroUsuario;
-	
+
 	public Clinica() {
 		super();
 		this.usuarios = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Clinica implements Serializable {
 		this.misCitas = new ArrayList<>();
 		this.setVigilancias(new ArrayList<>());
 	}
-	
+
 	public static Clinica getInstance() {
 		if(miclinica==null) {
 			miclinica = new Clinica();
@@ -41,7 +41,7 @@ public class Clinica implements Serializable {
 	public static void SetClinica(Clinica clin) {
 		Clinica.miclinica = clin;
 	}
-	
+
 	public ArrayList<Usuario> getUsuarios() {
 		return usuarios;
 	}
@@ -72,15 +72,15 @@ public class Clinica implements Serializable {
 	public void setHistoriales(ArrayList<Historial> historiales) {
 		this.historiales = historiales;
 	}
-	
+
 	public void insertarUsuario(Usuario us){
 		usuarios.add(us);
 	}
-	
+
 	public void insertarVacuna(Vacuna vac) {
 		vacunas.add(vac);
 	}
-	
+
 	public void insertarEnfermedad(Enfermedad ef) {
 		enfermedadS.add(ef);
 	}
@@ -93,19 +93,19 @@ public class Clinica implements Serializable {
 		}
 		return user;
 	}
-	
+
 	public void eliminarUsuario(Usuario user) {
 		usuarios.remove(user);
 	}
-	
+
 	public void eliminarEnfermedad(Enfermedad ef) {
 		enfermedadS.remove(ef);
 	}
-	
+
 	public void eliminarVacuna(Vacuna vc) {
 		vacunas.remove(vc);
 	}
-	
+
 	public Vacuna buscarVacunaByCodigo(String codigo) {
 		Vacuna auxvaVacuna = null;
 		for (Vacuna vc : vacunas) {
@@ -115,7 +115,7 @@ public class Clinica implements Serializable {
 		}
 		return auxvaVacuna;
 	}
-	
+
 	public Enfermedad buscarEnfermedadByCodigo(String codigo) {
 		Enfermedad auxEnfermedad = null;
 		for (Enfermedad ef : enfermedadS) {
@@ -132,7 +132,7 @@ public class Clinica implements Serializable {
 	public void setVigilancias(ArrayList<Vigilancia> vigilancias) {
 		this.vigilancias = vigilancias;
 	}
-	
+
 	public Medico buscarMedicoByEspecialidadAndNombre(String especialidad, String nombre){
 		Medico auxMedico = null;
 		for (Usuario med : usuarios) {
@@ -157,7 +157,7 @@ public class Clinica implements Serializable {
 		}
 		return auxMedico;
 	}
-	
+
 	public Paciente buscarPacienteById(String id) {
 		Paciente auxPaciente = null;
 		for (Usuario consulta : usuarios) {
@@ -177,7 +177,7 @@ public class Clinica implements Serializable {
 	public static void setRegistroUsuario(Usuario registroUsuario) {
 		Clinica.registroUsuario = registroUsuario;
 	}
-	
+
 	public boolean confirmLogin(String txt, String txt2) {
 		boolean login = false;
 		for (Usuario med : usuarios) {
@@ -187,11 +187,11 @@ public class Clinica implements Serializable {
 					login = true;
 				}
 			}
-			
+
 		}
 		return login;
 	}
-	
+
 	public ArrayList<Cita> compararCitaYDoctor() {
 		ArrayList<Cita> lasCitas = new ArrayList<>();
 		for (Cita cit : misCitas) {
@@ -212,7 +212,7 @@ public class Clinica implements Serializable {
 	public void setMisCitas(ArrayList<Cita> misCitas) {
 		this.misCitas = misCitas;
 	}
-	
+
 	public boolean encontrarConsultorio(String str) {
 		boolean control = false;
 		for (Usuario consulta : usuarios) {
@@ -224,8 +224,8 @@ public class Clinica implements Serializable {
 		}
 		return control;
 	}
-	
-	
-	
-	
+
+
+
+
 }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Cita implements Serializable {
-	
+
 	/**
 	 * 
 	 */
@@ -16,7 +16,7 @@ public class Cita implements Serializable {
 	private String doctor;
 	private Usuario userUsuario;
 
-	
+
 	public Cita( Date fecha, String codigo, String notas, String especialidad, String doctor, Usuario usuario) {
 		super();
 		this.fecha = fecha;
@@ -26,7 +26,7 @@ public class Cita implements Serializable {
 		this.doctor = doctor;
 		this.userUsuario = usuario;
 	}
-	
+
 
 	public Date getFecha() {
 		return fecha;
@@ -74,9 +74,9 @@ public class Cita implements Serializable {
 	public void setUserUsuario(Usuario userUsuario) {
 		this.userUsuario = userUsuario;
 	}
-	
-	
-	
-	
+
+
+
+
 
 }

@@ -85,7 +85,7 @@ public class ListMedico extends JDialog {
 								btnEliminar.setEnabled(true);
 								btnmodificar.setEnabled(true);
 								medicoselect = (Medico) Clinica.getInstance().buscarUsuarioByCedula(table.getValueAt(row, 0).toString());
-								
+
 							}
 						}
 					});

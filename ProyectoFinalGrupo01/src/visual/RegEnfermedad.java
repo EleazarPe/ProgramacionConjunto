@@ -218,7 +218,7 @@ public class RegEnfermedad extends JDialog {
 				okButton = new JButton("");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						
+
 						if (miEnfermedad == null) {
 
 							if (txtNombre.getText().equals("") || cbxTipo.getSelectedItem().equals("<Seleccione>") || textPane.getText().equals(""))
@@ -273,7 +273,7 @@ public class RegEnfermedad extends JDialog {
 		}
 		loadEnfermedad(miEnfermedad);
 	}
-	
+
 	private void loadEnfermedad(Enfermedad ef) {
 		if(ef != null) {
 			txtCodigo.setText(ef.getCodigoString());
@@ -284,8 +284,8 @@ public class RegEnfermedad extends JDialog {
 			sliderPorcentaje.setValue(ef.getTransmisibilidad());
 		}
 	}
-	
-	
+
+
 	private void clean() {
 		txtNombre.setText("");
 		textPane.setText("");

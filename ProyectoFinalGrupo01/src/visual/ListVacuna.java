@@ -77,7 +77,7 @@ public class ListVacuna extends JDialog {
 							if(row > -1) {
 								ButtonDelete.setEnabled(true);
 								vacunaselect = (Vacuna) Clinica.getInstance().buscarVacunaByCodigo(table.getValueAt(row, 0).toString());
-								
+
 							}
 						}
 					});

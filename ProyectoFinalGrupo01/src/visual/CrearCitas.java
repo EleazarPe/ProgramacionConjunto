@@ -309,7 +309,7 @@ public class CrearCitas extends JDialog {
 
 		spnFechaNacimiento = new JSpinner();
 		spnFechaNacimiento.setEnabled(false);
-		spnFechaNacimiento.setModel(new SpinnerDateModel(new Date(1648008000000L), new Date(1648008000000L), null, Calendar.DAY_OF_YEAR));
+		spnFechaNacimiento.setModel(new SpinnerDateModel(new Date(1650181417873L), null, null, Calendar.YEAR));
 		spnFechaNacimiento.setEditor(new JSpinner.DateEditor(spnFechaNacimiento,"dd/MM/yyyy"));
 		spnFechaNacimiento.setValue(new Date());
 		spnFechaNacimiento.setBounds(165, 155, 110, 25);
@@ -473,7 +473,7 @@ public class CrearCitas extends JDialog {
 
 
 		JSpinner spnFechaCita = new JSpinner();
-		spnFechaCita.setModel(new SpinnerDateModel(new Date(1648267200000L), new Date(1648267200000L), null, Calendar.DAY_OF_YEAR));
+		spnFechaCita.setModel(new SpinnerDateModel(new Date(1650181583304L), null, null, Calendar.DAY_OF_YEAR));
 		spnFechaCita.setEditor(new JSpinner.DateEditor(spnFechaCita,"dd/MM/yyyy"));
 		spnFechaCita.setValue(new Date());
 		spnFechaCita.setBounds(90, 118, 110, 25);

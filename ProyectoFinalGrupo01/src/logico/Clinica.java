@@ -73,17 +73,45 @@ public class Clinica implements Serializable {
 		this.historiales = historiales;
 	}
 
-	public void insertarUsuario(Usuario us){
-		usuarios.add(us);
+	public ArrayList<Vigilancia> getVigilancias() {
+		return vigilancias;
 	}
 
-	public void insertarVacuna(Vacuna vac) {
-		vacunas.add(vac);
+	public void setVigilancias(ArrayList<Vigilancia> vigilancias) {
+		this.vigilancias = vigilancias;
 	}
 
-	public void insertarEnfermedad(Enfermedad ef) {
-		enfermedadS.add(ef);
+	public ArrayList<Cita> getMisCitas() {
+		return misCitas;
 	}
+
+	public void setMisCitas(ArrayList<Cita> misCitas) {
+		this.misCitas = misCitas;
+	}
+
+
+/////////////////////////////////////Paciente y Usuario/////////////////////////////////////////////////////////////////
+
+	public Paciente buscarPacienteById(String id) {
+		Paciente auxPaciente = null;
+		for (Usuario consulta : usuarios) {
+			if(consulta instanceof Paciente) {
+				if(consulta.getID().equalsIgnoreCase(id)) {
+					auxPaciente = (Paciente) consulta;
+				}
+			}
+		}
+		return auxPaciente;
+	}
+	
+	public static Usuario getRegistroUsuario() {
+		return registroUsuario;
+	}
+
+	public static void setRegistroUsuario(Usuario registroUsuario) {
+		Clinica.registroUsuario = registroUsuario;
+	}
+	
 	public Usuario buscarUsuarioByCedula(String cedula) {
 		Usuario user = null;
 		for (Usuario findUs : usuarios) {
@@ -93,11 +121,81 @@ public class Clinica implements Serializable {
 		}
 		return user;
 	}
-
+	
 	public void eliminarUsuario(Usuario user) {
 		usuarios.remove(user);
 	}
+	
+	public void insertarUsuario(Usuario us){
+		usuarios.add(us);
+	}
 
+	
+///////////////////////////////////// Doctores /////////////////////////////////////////////////////////////////
+
+	public Medico buscarMedicoByEspecialidadAndNombre(String especialidad, String nombre){
+		Medico auxMedico = null;
+		for (Usuario med : usuarios) {
+			if(med instanceof Medico) {
+				if(((Medico) med).getEspecialidad().equalsIgnoreCase(especialidad)) {
+					if(med.getNombre().equalsIgnoreCase(nombre)) {
+						auxMedico = (Medico) med;
+					}
+				}
+			}
+		}
+		return auxMedico;
+	}
+	public ArrayList<Medico> buscarmedicosByEspecialiad(String especialidad) {
+		ArrayList<Medico> auxMedico = new ArrayList<>();
+		for (Usuario med : usuarios) {
+			if(med instanceof Medico) {
+				if(((Medico) med).getEspecialidad().equalsIgnoreCase(especialidad)) {
+					auxMedico.add((Medico) med);
+				}
+			}
+		}
+		return auxMedico;
+	}
+	
+	public boolean encontrarConsultorio(String str) {
+		boolean control = false;
+		for (Usuario consulta : usuarios) {
+			if(consulta instanceof Medico) {
+				if(((Medico) consulta).getConsultorioString().equalsIgnoreCase(str)) {
+					control = true;
+				}
+			}
+		}
+		return control;
+	}
+	
+	public ArrayList<Cita> compararCitaYDoctor() {
+		ArrayList<Cita> lasCitas = new ArrayList<>();
+		for (Cita cit : misCitas) {
+			if( cit.getEspecialidad().equalsIgnoreCase(((Medico) registroUsuario).getEspecialidad()) && cit.getDoctor().equalsIgnoreCase(((Medico) registroUsuario).getNombre()+" "+((Medico) registroUsuario).getApellido())) {
+				lasCitas.add(cit);
+			}
+		}
+		return lasCitas;
+	}
+	
+///////////////////////////////////// Variadas /////////////////////////////////////////////////////////////////
+	
+	public boolean confirmLogin(String txt, String txt2) {
+		boolean login = false;
+		for (Usuario med : usuarios) {
+			if(med instanceof Medico) {
+				if(((Medico) med).getLoginString().equals(txt) && ((Medico) med).getPassowrdString().equals(txt2)) {
+					registroUsuario = med;
+					login = true;
+				}
+			}
+
+		}
+		return login;
+	}
+	
 	public void eliminarEnfermedad(Enfermedad ef) {
 		enfermedadS.remove(ef);
 	}
@@ -125,107 +223,16 @@ public class Clinica implements Serializable {
 		}
 		return auxEnfermedad;
 	}
-	public ArrayList<Vigilancia> getVigilancias() {
-		return vigilancias;
+	
+	public void insertarVacuna(Vacuna vac) {
+		vacunas.add(vac);
 	}
 
-	public void setVigilancias(ArrayList<Vigilancia> vigilancias) {
-		this.vigilancias = vigilancias;
+	public void insertarEnfermedad(Enfermedad ef) {
+		enfermedadS.add(ef);
 	}
-
-	public Medico buscarMedicoByEspecialidadAndNombre(String especialidad, String nombre){
-		Medico auxMedico = null;
-		for (Usuario med : usuarios) {
-			if(med instanceof Medico) {
-				if(((Medico) med).getEspecialidad().equalsIgnoreCase(especialidad)) {
-					if(med.getNombre().equalsIgnoreCase(nombre)) {
-						auxMedico = (Medico) med;
-					}
-				}
-			}
-		}
-		return auxMedico;
-	}
-	public ArrayList<Medico> buscarmedicosByEspecialiad(String especialidad) {
-		ArrayList<Medico> auxMedico = new ArrayList<>();
-		for (Usuario med : usuarios) {
-			if(med instanceof Medico) {
-				if(((Medico) med).getEspecialidad().equalsIgnoreCase(especialidad)) {
-					auxMedico.add((Medico) med);
-				}
-			}
-		}
-		return auxMedico;
-	}
-
-	public Paciente buscarPacienteById(String id) {
-		Paciente auxPaciente = null;
-		for (Usuario consulta : usuarios) {
-			if(consulta instanceof Paciente) {
-				if(consulta.getID().equalsIgnoreCase(id)) {
-					auxPaciente = (Paciente) consulta;
-				}
-			}
-		}
-		return auxPaciente;
-	}
-
-	public static Usuario getRegistroUsuario() {
-		return registroUsuario;
-	}
-
-	public static void setRegistroUsuario(Usuario registroUsuario) {
-		Clinica.registroUsuario = registroUsuario;
-	}
-
-	public boolean confirmLogin(String txt, String txt2) {
-		boolean login = false;
-		for (Usuario med : usuarios) {
-			if(med instanceof Medico) {
-				if(((Medico) med).getLoginString().equals(txt) && ((Medico) med).getPassowrdString().equals(txt2)) {
-					registroUsuario = med;
-					login = true;
-				}
-			}
-
-		}
-		return login;
-	}
-
-	public ArrayList<Cita> compararCitaYDoctor() {
-		ArrayList<Cita> lasCitas = new ArrayList<>();
-		for (Cita cit : misCitas) {
-			if( cit.getEspecialidad().equalsIgnoreCase(((Medico) registroUsuario).getEspecialidad()) && cit.getDoctor().equalsIgnoreCase(((Medico) registroUsuario).getNombre()+" "+((Medico) registroUsuario).getApellido())) {
-				lasCitas.add(cit);
-			}
-		}
-		return lasCitas;
-	}
+	
 	public void insertarCita(Cita cit) {
 		misCitas.add(cit);
 	}
-
-	public ArrayList<Cita> getMisCitas() {
-		return misCitas;
-	}
-
-	public void setMisCitas(ArrayList<Cita> misCitas) {
-		this.misCitas = misCitas;
-	}
-
-	public boolean encontrarConsultorio(String str) {
-		boolean control = false;
-		for (Usuario consulta : usuarios) {
-			if(consulta instanceof Medico) {
-				if(((Medico) consulta).getConsultorioString().equalsIgnoreCase(str)) {
-					control = true;
-				}
-			}
-		}
-		return control;
-	}
-
-
-
-
 }

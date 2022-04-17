@@ -123,6 +123,7 @@ public class ListEnfermedad extends JDialog {
 				btnDelete.setEnabled(false);
 				btnDelete.setActionCommand("Cancel");
 				buttonPane.add(btnDelete);
+				//s
 			}
 			{
 				JButton okButton = new JButton("Aceptar");

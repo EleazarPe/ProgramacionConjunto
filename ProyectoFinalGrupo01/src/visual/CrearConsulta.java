@@ -493,7 +493,7 @@ public class CrearConsulta extends JDialog {
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
-						
+						//s
 					}
 				});
 				cancelButton.setActionCommand("Cancel");

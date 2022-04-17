@@ -70,7 +70,7 @@ public class RegVacuna extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-
+//s
 	public RegVacuna() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegVacuna.class.getResource("/img/cruz-roja.png")));
 		setTitle("Registrar Vacuna");

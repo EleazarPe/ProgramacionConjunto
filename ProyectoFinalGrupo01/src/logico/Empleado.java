@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Empleado extends Usuario implements Serializable {
-	
+
 	/**
 	 * 
 	 */
@@ -12,7 +12,7 @@ public class Empleado extends Usuario implements Serializable {
 	private String login;
 	private String password;
 	private String ocupacionString;
-	
+
 	public Empleado(String nombre, String apellido, String cedula, Date fechaNaciento, String ocupacion,
 			String telefono, String direccion, String login,String codigo, String password ) {
 		super(nombre, apellido, cedula, fechaNaciento, telefono, direccion, codigo);

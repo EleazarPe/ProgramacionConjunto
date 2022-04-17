@@ -43,5 +43,5 @@ public class Dosis implements Serializable {
 	public void setAplicacion(boolean aplicacion) {
 		this.aplicacion = aplicacion;
 	}
-	
+
 }

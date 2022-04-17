@@ -14,8 +14,8 @@ public class Vigilancia implements Serializable {
 	private Date primerbroteDate;
 	private Date fechaActual;
 	private String anotacioneString;
-	
-	
+
+
 	public Vigilancia(Enfermedad enfermedadEnfermedad, int transmisibilidad, int poblacionAfectada,
 			Date primerbroteDate, Date fechaActual, String anotacioneString) {
 		super();
@@ -26,8 +26,8 @@ public class Vigilancia implements Serializable {
 		this.fechaActual = fechaActual;
 		this.anotacioneString = anotacioneString;
 	}
-	
-	
+
+
 	public Enfermedad getEnfermedadEnfermedad() {
 		return enfermedadEnfermedad;
 	}

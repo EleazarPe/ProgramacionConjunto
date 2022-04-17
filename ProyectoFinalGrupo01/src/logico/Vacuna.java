@@ -13,7 +13,7 @@ public class Vacuna implements Serializable {
 	private String laboratorioString;
 	private String administracionString;
 	private ArrayList<Enfermedad> enfermedades;
-	
+
 	public Vacuna(String codigo, String nombreString, String laboratorioString, String administracionString,
 			ArrayList<Enfermedad> enfermedades) {
 		super();
@@ -59,9 +59,9 @@ public class Vacuna implements Serializable {
 	public String getCodigo() {
 		return codigo;
 	}
-	
+
 	public void insertarEnfermedad(Enfermedad ef) {
 		enfermedades.add(ef);
 	}
-	
+
 }

@@ -14,7 +14,7 @@ public class Medico extends Usuario implements Serializable {
 	private String consultorioString;
 	private String especialidadString;
 	private ArrayList<Consulta> consultas;
-	
+
 	public Medico(String nombre, String apellido, String cedula, Date fechaNaciento, String telefono,
 			String direccion, String login,String passowrd,String consultorio,String codigo,String especialidad) {
 		super(nombre, apellido, cedula, fechaNaciento, telefono, direccion,codigo);
@@ -64,7 +64,7 @@ public class Medico extends Usuario implements Serializable {
 	public void setConsultas(ArrayList<Consulta> consultas) {
 		this.consultas = consultas;
 	}
-	
+
 	public void insertarConsulta(Consulta consulta) {
 		consultas.add(consulta);
 	}

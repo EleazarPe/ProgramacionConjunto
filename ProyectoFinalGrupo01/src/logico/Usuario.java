@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Usuario implements Serializable {
-	
+
 	/**
 	 * 
 	 */
@@ -17,7 +17,7 @@ public class Usuario implements Serializable {
 	protected Date FechaNaciento;
 	protected String telefono;
 	protected String direccion;
-	
+
 	public Usuario(String nombre, String apellido, String ID, Date FechaNaciento, String telefono,
 			String direccion, String code) {
 		super();
@@ -29,7 +29,7 @@ public class Usuario implements Serializable {
 		this.direccion = direccion;
 		this.Codigo = code;
 	}
-	
+
 	public String getNombre() {
 		return Nombre;
 	}

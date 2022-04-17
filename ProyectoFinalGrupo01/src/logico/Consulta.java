@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Consulta implements Serializable {
-	
+
 	/**
 	 * 
 	 */
@@ -16,7 +16,7 @@ public class Consulta implements Serializable {
 	private String telefono;
 	private String direccion;
 	private Date fecha;
-	
+
 	public Consulta(String nombre, String apellido, String cedula, String ocupacion, String telefono, String direccion,
 			Date fecha) {
 		super();
@@ -28,7 +28,7 @@ public class Consulta implements Serializable {
 		this.direccion = direccion;
 		this.fecha = new Date();
 	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}

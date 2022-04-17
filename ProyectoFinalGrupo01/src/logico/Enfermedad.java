@@ -17,7 +17,7 @@ public class Enfermedad implements Serializable{
 	/*private int poblacionAfectada;
 	private Date primerbroteDate;
 	private Date fechaActual;*/
-	
+
 	public Enfermedad(String codigo,String nombreString, String tipoString,String informacion,
 			Date descubrimiento, int transmisibilidad) {
 		super();
@@ -28,7 +28,7 @@ public class Enfermedad implements Serializable{
 		this.descubierta = descubrimiento;
 		this.transmisibilidad = transmisibilidad;
 	}
-	
+
 
 	public String getNombreString() {
 		return nombreString;
@@ -87,5 +87,5 @@ public class Enfermedad implements Serializable{
 	}
 
 
-	
+
 }

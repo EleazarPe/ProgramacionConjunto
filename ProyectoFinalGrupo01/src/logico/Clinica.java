@@ -90,7 +90,7 @@ public class Clinica implements Serializable {
 	}
 
 
-/////////////////////////////////////Paciente y Usuario/////////////////////////////////////////////////////////////////
+	/////////////////////////////////////Paciente y Usuario/////////////////////////////////////////////////////////////////
 
 	public Paciente buscarPacienteById(String id) {
 		Paciente auxPaciente = null;
@@ -103,7 +103,7 @@ public class Clinica implements Serializable {
 		}
 		return auxPaciente;
 	}
-	
+
 	public static Usuario getRegistroUsuario() {
 		return registroUsuario;
 	}
@@ -111,7 +111,7 @@ public class Clinica implements Serializable {
 	public static void setRegistroUsuario(Usuario registroUsuario) {
 		Clinica.registroUsuario = registroUsuario;
 	}
-	
+
 	public Usuario buscarUsuarioByCedula(String cedula) {
 		Usuario user = null;
 		for (Usuario findUs : usuarios) {
@@ -121,17 +121,17 @@ public class Clinica implements Serializable {
 		}
 		return user;
 	}
-	
+
 	public void eliminarUsuario(Usuario user) {
 		usuarios.remove(user);
 	}
-	
+
 	public void insertarUsuario(Usuario us){
 		usuarios.add(us);
 	}
 
-	
-///////////////////////////////////// Doctores /////////////////////////////////////////////////////////////////
+
+	///////////////////////////////////// Doctores /////////////////////////////////////////////////////////////////
 
 	public Medico buscarMedicoByEspecialidadAndNombre(String especialidad, String nombre){
 		Medico auxMedico = null;
@@ -157,7 +157,7 @@ public class Clinica implements Serializable {
 		}
 		return auxMedico;
 	}
-	
+
 	public boolean encontrarConsultorio(String str) {
 		boolean control = false;
 		for (Usuario consulta : usuarios) {
@@ -169,7 +169,7 @@ public class Clinica implements Serializable {
 		}
 		return control;
 	}
-	
+
 	public ArrayList<Cita> compararCitaYDoctor() {
 		ArrayList<Cita> lasCitas = new ArrayList<>();
 		for (Cita cit : misCitas) {
@@ -179,9 +179,9 @@ public class Clinica implements Serializable {
 		}
 		return lasCitas;
 	}
-	
-///////////////////////////////////// Variadas /////////////////////////////////////////////////////////////////
-	
+
+	///////////////////////////////////// Variadas /////////////////////////////////////////////////////////////////
+
 	public boolean confirmLogin(String txt, String txt2) {
 		boolean login = false;
 		for (Usuario med : usuarios) {
@@ -195,7 +195,7 @@ public class Clinica implements Serializable {
 		}
 		return login;
 	}
-	
+
 	public void eliminarEnfermedad(Enfermedad ef) {
 		enfermedadS.remove(ef);
 	}
@@ -223,7 +223,7 @@ public class Clinica implements Serializable {
 		}
 		return auxEnfermedad;
 	}
-	
+
 	public void insertarVacuna(Vacuna vac) {
 		vacunas.add(vac);
 	}
@@ -231,7 +231,7 @@ public class Clinica implements Serializable {
 	public void insertarEnfermedad(Enfermedad ef) {
 		enfermedadS.add(ef);
 	}
-	
+
 	public void insertarCita(Cita cit) {
 		misCitas.add(cit);
 	}

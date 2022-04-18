@@ -458,6 +458,11 @@ public class CrearConsulta extends JDialog {
 			cbxDoctorVacuno.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>"}));
 			cbxDoctorVacuno.setBounds(538, 147, 144, 22);
 			panel_4.add(cbxDoctorVacuno);			
+			
+			JPanel PanelEnfermedad = new JPanel();
+			PanelEnfermedad.setBounds(0, 0, 784, 646);
+			PanelListadoPaciente.add(PanelEnfermedad);
+			PanelEnfermedad.setLayout(new BorderLayout(0, 0));
 		}
 		{
 			buttonPane = new JPanel();

@@ -410,7 +410,7 @@ public class CrearCitas extends JDialog {
 
 							if(txtNid.getText().equals("") || txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtTelefonoOpc.getText().equals("") || txtDireccion.getText().equals("") || 
 									txtCelular.getText().equals("") || cbxOcupacion.getSelectedItem().equals("") || cbxTipoBlood.getSelectedItem().equals("") || cbxRh.getSelectedItem().equals("")
-									|| cbxEspecialidad.getSelectedItem().equals("<Seleccionar>") || cbxDoctor.getSelectedItem().equals("")) {
+									|| cbxEspecialidad.getSelectedItem().equals("<Seleccionar>") || cbxDoctor.getSelectedItem().equals("")|| TextNotas.getText().equals("")) {
 								Advertencia();
 							}
 							Paciente auxPaciente = null;

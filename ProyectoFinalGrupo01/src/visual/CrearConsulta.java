@@ -12,7 +12,11 @@ import javax.swing.table.DefaultTableModel;
 
 import logico.Cita;
 import logico.Clinica;
+import logico.Consulta;
+import logico.Historial;
 import logico.Paciente;
+import logico.Usuario;
+import logico.Vacuna;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -59,23 +63,33 @@ public class CrearConsulta extends JDialog {
 	private JPanel panelConsulta;
 	private JPanel panelCita;
 	private DefaultTableModel model;
+	private DefaultTableModel model3;
 	private DefaultTableModel model2;
+	private DefaultTableModel model4;
 	private JPanel buttonPane;
 	private JToggleButton tglbtntCitas;
 	private JTable table;
+	private JTable table4;
+	private JTable table2;
 	private JTable table1;
 	private JPanel panelHistorialC;
 	private JPanel panelHistorialM;
 	private JPanel panelVacuna;
 	private JButton okButton;
 	private DateFormat formatter;
-	private Object row[];
+	private Object row[], row2[];
 	private JToggleButton tglbtntConsulta;
 	private JToggleButton tglbtntHistorialConsultas;
 	private JToggleButton tglbtntHistorialMedico;
 	private JToggleButton tglbtntVacuna;
 	private Paciente pacienteS = null;
 	private JSpinner spnFechaNacimiento;
+	private JSpinner spnFechaInicial;
+	private JComboBox cbxLaboratorios;
+	private JSpinner spnFechaFinal;
+	private JComboBox cbxEnfermedades;
+	private JComboBox cbxDoctorVacuno;
+	private JComboBox cbxViaVacuna;
 
 	/**
 	 * Launch the application.
@@ -134,6 +148,7 @@ public class CrearConsulta extends JDialog {
 					model2 = new DefaultTableModel();
 					model2.setColumnIdentifiers(headers);
 					table1 = new JTable();
+					table1.setModel(model2);
 					table1.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent arg0) {
@@ -324,10 +339,11 @@ public class CrearConsulta extends JDialog {
 				scrollPane.setBounds(new Rectangle(0, 0, 771, 633));
 				panel_1.add(scrollPane, BorderLayout.CENTER);
 				{
-					String headers[] = {"Prueba","Prueba1","Prieba","probando"};
+					String headers[] = {"Nombre","Apellido","cedula","ocupacion","telefono","direccion","Fecha"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
+					table.setModel(model);
 				}
 				scrollPane.setViewportView(table);
 				table.setModel(model);
@@ -348,13 +364,13 @@ public class CrearConsulta extends JDialog {
 				panel_2.add(scrollPane, BorderLayout.CENTER);
 				{
 					String headers[] = {"Carlos","Ivan","Albert","Poo"};
-					model = new DefaultTableModel();
-					model.setColumnIdentifiers(headers);
-					table = new JTable();
+					model4 = new DefaultTableModel();
+					model4.setColumnIdentifiers(headers);
+					table4 = new JTable();
 				}
-				scrollPane.setViewportView(table);
-				table.setModel(model);
-				scrollPane.setViewportView(table);
+				scrollPane.setViewportView(table4);
+				table4.setModel(model4);
+				scrollPane.setViewportView(table4);
 			}
 			
 			panelVacuna = new JPanel();
@@ -377,13 +393,13 @@ public class CrearConsulta extends JDialog {
 				panel_3.add(scrollPane);
 				{
 					String headers[] = {"Fecha de Vacunacion","Via de Administracion","Laboratorio","Enfermedad cubierta","Doctor"};
-					model = new DefaultTableModel();
-					model.setColumnIdentifiers(headers);
-					table = new JTable();
+					model3 = new DefaultTableModel();
+					model3.setColumnIdentifiers(headers);
+					table2 = new JTable();
 				}
-				scrollPane.setViewportView(table);
-				table.setModel(model);
-				scrollPane.setViewportView(table);
+				scrollPane.setViewportView(table2);
+				table2.setModel(model3);
+				scrollPane.setViewportView(table2);
 			}
 			
 			JPanel panel_4 = new JPanel();
@@ -400,7 +416,7 @@ public class CrearConsulta extends JDialog {
 			lblViaDeAdministracion.setBounds(308, 72, 129, 16);
 			panel_4.add(lblViaDeAdministracion);
 			
-			JComboBox cbxViaVacuna = new JComboBox();
+			cbxViaVacuna = new JComboBox();
 			cbxViaVacuna.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Intravenosa", "Intramuscular", "Subcutanea"}));
 			cbxViaVacuna.setBounds(308, 92, 144, 22);
 			panel_4.add(cbxViaVacuna);
@@ -414,19 +430,19 @@ public class CrearConsulta extends JDialog {
 			lblVacuna_3.setBounds(12, 36, 375, 16);
 			panel_4.add(lblVacuna_3);
 			
-			JSpinner spnFechaFiltroInicio = new JSpinner();
-			spnFechaFiltroInicio.setModel(new SpinnerDateModel(new Date(1650168000000L), null, null, Calendar.DAY_OF_YEAR));
-			spnFechaFiltroInicio.setEditor(new JSpinner.DateEditor(spnFechaFiltroInicio,"dd/MM/yyyy"));
-			spnFechaFiltroInicio.setValue(new Date());
-			spnFechaFiltroInicio.setBounds(86, 92, 136, 22);
-			panel_4.add(spnFechaFiltroInicio);
+			spnFechaInicial = new JSpinner();
+			spnFechaInicial.setModel(new SpinnerDateModel(new Date(1650168000000L), null, null, Calendar.DAY_OF_YEAR));
+			spnFechaInicial.setEditor(new JSpinner.DateEditor(spnFechaInicial,"dd/MM/yyyy"));
+			spnFechaInicial.setValue(new Date());
+			spnFechaInicial.setBounds(86, 92, 136, 22);
+			panel_4.add(spnFechaInicial);
 			
-			JSpinner spnFechaFiltroFinal = new JSpinner();
-			spnFechaFiltroFinal.setModel(new SpinnerDateModel(new Date(1650168000000L), null, null, Calendar.DAY_OF_YEAR));
-			spnFechaFiltroFinal.setEditor(new JSpinner.DateEditor(spnFechaFiltroFinal,"dd/MM/yyyy"));
-			spnFechaFiltroFinal.setValue(new Date());
-			spnFechaFiltroFinal.setBounds(86, 144, 136, 22);
-			panel_4.add(spnFechaFiltroFinal);
+			spnFechaFinal = new JSpinner();
+			spnFechaFinal.setModel(new SpinnerDateModel(new Date(1650168000000L), null, null, Calendar.DAY_OF_YEAR));
+			spnFechaFinal.setEditor(new JSpinner.DateEditor(spnFechaFinal,"dd/MM/yyyy"));
+			spnFechaFinal.setValue(new Date());
+			spnFechaFinal.setBounds(86, 144, 136, 22);
+			panel_4.add(spnFechaFinal);
 			
 			JLabel lblVacuna_4 = new JLabel("Fecha inicial:");
 			lblVacuna_4.setBounds(86, 72, 75, 16);
@@ -436,7 +452,7 @@ public class CrearConsulta extends JDialog {
 			lblVacuna_5.setBounds(86, 126, 75, 16);
 			panel_4.add(lblVacuna_5);
 			
-			JComboBox cbxLaboratorios = new JComboBox();
+			cbxLaboratorios = new JComboBox();
 			cbxLaboratorios .setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Johnson & johnson", "Roche", "AbbVie", "Bayer", "Pfizer", "Bristol-Myers Squibb", "Merck & Co", "Novartis", "Sanofi"}));
 			cbxLaboratorios .setBounds(308, 144, 144, 22);
 			panel_4.add(cbxLaboratorios);
@@ -445,7 +461,7 @@ public class CrearConsulta extends JDialog {
 			lblEnfermedadesCubiertas.setBounds(538, 72, 87, 16);
 			panel_4.add(lblEnfermedadesCubiertas);
 			
-			JComboBox cbxEnfermedades = new JComboBox();
+			cbxEnfermedades = new JComboBox();
 			cbxEnfermedades.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>"}));
 			cbxEnfermedades.setBounds(538, 92, 144, 22);
 			panel_4.add(cbxEnfermedades);
@@ -454,7 +470,7 @@ public class CrearConsulta extends JDialog {
 			lblDoctor.setBounds(538, 127, 87, 16);
 			panel_4.add(lblDoctor);
 			
-			JComboBox cbxDoctorVacuno = new JComboBox();
+			cbxDoctorVacuno = new JComboBox();
 			cbxDoctorVacuno.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>"}));
 			cbxDoctorVacuno.setBounds(538, 147, 144, 22);
 			panel_4.add(cbxDoctorVacuno);			
@@ -587,13 +603,21 @@ public class CrearConsulta extends JDialog {
 			}
 		});
 		menuBar.add(tglbtntVacuna);
-		loadTable();
+		Date fecha = new Date();
+		Usuario usuario = new Usuario("Darvy", "Bsfg","sdfsdf",fecha, "234234234", "dasfsdfsd", "fsfdfd");
+		Cita cit = new Cita(fecha, "1234", "sdfsdfsdfsdf", "Abogado", "Pediatra", usuario);
+		Clinica.getInstance().insertarUsuario(usuario);
+		Clinica.getInstance().insertarCita(cit);
+		Consulta consulta = new Consulta("Alerr", "asdad", "123213", "Abogado", "123123", "asdasd", fecha);
+		Clinica.getInstance().insertarConsulta(consulta);
+		loadTableCitas();
+		loadTableHC();
 	}
-	private void loadTable() {
+	private void loadTableCitas() {
 		
 		model2.setRowCount(0);
 		row = new Object[model2.getColumnCount()];
-		for (Cita ct : Clinica.getInstance().compararCitaYDoctor()) {
+		for (Cita ct : Clinica.getInstance().getMisCitas()) {
 			row[0] = ct.getCodigo();
 			row[1] = ct.getUserUsuario().getID();
 			row[2] = ct.getUserUsuario().getNombre() + ct.getUserUsuario().getApellido();
@@ -603,6 +627,54 @@ public class CrearConsulta extends JDialog {
 			row[5] = formatter.format(ct.getFecha()).toString();
 			model2.addRow(row);	
 		}
+		System.out.println("Hola");
 
 	}
+	
+private void loadTableHC() {
+		model.setRowCount(0);
+		row = new Object[model.getColumnCount()];	
+		for (Consulta consultaHC : Clinica.getInstance().getConsultas()) {
+			row[0] = consultaHC.getNombre();
+			row[1] = consultaHC.getApellido();
+			row[2] = consultaHC.getCedula();
+			row[3] = consultaHC.getOcupacion();
+			row[4] = consultaHC.getTelefono();
+			row[5] = consultaHC.getDireccion();
+			formatter = new SimpleDateFormat("dd/MM/yyyy");
+			System.out.println(formatter.format(consultaHC.getFecha()).toString());
+			row[6] = formatter.format(consultaHC.getFecha()).toString();
+			model.addRow(row);	
+		}
+	}
+
+private void loadTableHM() {
+	
+	model2.setRowCount(0);
+	row = new Object[model2.getColumnCount()];
+	for (Cita ct : Clinica.getInstance().compararCitaYDoctor()) {
+		row[0] = ct.getCodigo();
+		row[1] = ct.getUserUsuario().getID();
+		row[2] = ct.getUserUsuario().getNombre() + ct.getUserUsuario().getApellido();
+		row[3] = ct.getUserUsuario().getTelefono();
+		row[4] = ct.getNotas();
+		formatter = new SimpleDateFormat("dd/MM/yyyy");
+		row[5] = formatter.format(ct.getFecha()).toString();
+		model2.addRow(row);	
+	}
+
 }
+
+/*private void loadTableVacunas() {
+	
+	model4.setRowCount(0);
+	row = new Object[model4.getColumnCount()];
+	for (Paciente paciente : Clinica.getInstance().get()) {
+		if(Integer.parseInt(vacuna.ge))
+	}
+
+}*/
+}
+
+
+

@@ -291,6 +291,8 @@ public class Login extends JDialog {
 			lblLoginMsj.setHorizontalAlignment(SwingConstants.CENTER);
 			lblLoginMsj.setBounds(185, 295, 200, 16);
 			panel_1.add(lblLoginMsj);
+			
+			
 
 		}		
 	}	

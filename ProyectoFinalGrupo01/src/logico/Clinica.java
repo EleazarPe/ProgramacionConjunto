@@ -235,4 +235,7 @@ public class Clinica implements Serializable {
 	public void insertarCita(Cita cit) {
 		misCitas.add(cit);
 	}
+	public void insertarConsulta(Consulta consul) {
+		consultas.add(consul);
+	}
 }

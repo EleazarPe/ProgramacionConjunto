@@ -204,7 +204,7 @@ public class Principal extends JFrame {
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBounds(0, 0, 1894, 985);
 		panel.add(lblLogo);
-		lblLogo.setIcon(new ImageIcon(img_logo));
+		lblLogo.setIcon(new ImageIcon(Principal.class.getResource("/img/LogoClinica (1).png")));
 
 
 	}

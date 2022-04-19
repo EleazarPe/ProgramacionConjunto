@@ -165,5 +165,6 @@ public class ReporteList extends JDialog {
     	g.drawString("Enfermos", 180, 225);
     	
     	//(32,178,170)
+    	//hola
     }
 }

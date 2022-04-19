@@ -20,8 +20,15 @@ import javax.swing.JLabel;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import logico.Clinica;
+import logico.Enfermedad;
+
 public class ReporteList extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTable table;
 	private JTable table1;
@@ -71,7 +78,7 @@ public class ReporteList extends JDialog {
 		pnlEnfermedades.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(5, 5, 574, 488);
+		scrollPane.setBounds(5, 5, 559, 488);
 		pnlEnfermedades.add(scrollPane);
 		{
 			String headers[] = {"Matricula","Eslora","Fabricacion"};
@@ -88,7 +95,7 @@ public class ReporteList extends JDialog {
 			pnlVacunas.setLayout(null);
 			{
 				JScrollPane scrollPane_1 = new JScrollPane();
-				scrollPane_1.setBounds(5, 5, 574, 488);
+				scrollPane_1.setBounds(5, 5, 559, 488);
 				pnlVacunas.add(scrollPane_1);
 				{
 					String headers[] = {"Matricula","Eslora","Fabricacion"};
@@ -102,7 +109,7 @@ public class ReporteList extends JDialog {
 		}
 		{
 			pnlGrafico = new JPanel();
-			pnlGrafico.setBounds(5, 5, 574, 488);
+			pnlGrafico.setBounds(5, 5, 569, 488);
 			contentPanel.add(pnlGrafico);
 			pnlGrafico.setLayout(null);
 			{
@@ -206,6 +213,16 @@ public class ReporteList extends JDialog {
 	    	g.drawString("Enfermdad", 325, 425);
 	    	//reporte de listas 
     	}
+    }
+    
+    private void loadTableEnfermedad(){
+		model2.setRowCount(0);
+		row1 = new Object[model2.getColumnCount()];
+		//for (Enfermedad object : Clinica.getInstance().getConsultas().) {
+			
+			model2.addRow(row1);	
+		//}
+    	
     }
     
 }

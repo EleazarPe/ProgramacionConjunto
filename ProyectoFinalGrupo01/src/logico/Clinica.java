@@ -256,7 +256,7 @@ public class Clinica implements Serializable {
 		return registroUsuario;
 	}
 	public void setLoginUserEmpleado(Usuario loginUserEmpleado) {
-		Clinica.registroUsuario = registroUsuario;
+		Clinica.registroUsuario = loginUserEmpleado;
 	}
 	
 	public Cita buscarCitaByCodigoPaciente(String codigo) {

@@ -34,6 +34,7 @@ public class Principal extends JFrame {
 	 * 
 	 */
 	private Image img_login = new ImageIcon(Login.class.getResource("/img/cerrar-sesion.png")).getImage().getScaledInstance(30,30,Image.SCALE_SMOOTH);
+	@SuppressWarnings("unused")
 	private Image img_logo = new ImageIcon(Principal.class.getResource("/img/LogoClinica.png")).getImage().getScaledInstance(1894, 985,Image.SCALE_SMOOTH);
 
 	private static final long serialVersionUID = 1L;
@@ -176,6 +177,19 @@ public class Principal extends JFrame {
 			}
 		});
 		mnNewMenu_4.add(mntmNewMenuItem_6);
+		
+		JMenu mnNewMenu_5 = new JMenu("Reporte");
+		menuBar.add(mnNewMenu_5);
+		
+		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Control");
+		mntmNewMenuItem_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ReporteList listrepList = new ReporteList();
+				listrepList.setModal(true);
+				listrepList.setVisible(true);
+			}
+		});
+		mnNewMenu_5.add(mntmNewMenuItem_8);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

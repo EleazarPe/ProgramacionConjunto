@@ -60,7 +60,7 @@ public class VacunaEliminada  {
 	}
 	public boolean encontrarDosis(String nombre) {
 		boolean aux = false;
-		for (Dosis dosis : dosisArrayList) {
+		for (@SuppressWarnings("unused") Dosis dosis : dosisArrayList) {
 			//if(dosis.getNombre().equalsIgnoreCase(nombre)) {
 				aux = true;
 			//}	

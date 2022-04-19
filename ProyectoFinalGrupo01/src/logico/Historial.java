@@ -1,7 +1,7 @@
 package logico;
 
 import java.io.Serializable;
-import java.util.Date;
+
 
 public class Historial implements Serializable{
 	

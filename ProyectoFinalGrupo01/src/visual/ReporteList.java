@@ -197,6 +197,7 @@ public class ReporteList extends JDialog {
 						vacunalbl.setVisible(true);
 						enfermoslbl.setVisible(true);
 						repaint();
+						loadValores();
 					}
 				});
 				menuBar.add(tglbtnGrafico);
@@ -223,6 +224,8 @@ public class ReporteList extends JDialog {
 	    	g.drawString("Enfermdad", 325, 425);
 	    	//reporte de listas 
     	}
+    	totalInfectados=0;
+    	totalVacunados=0;
     }
     
     private int retornaCantEnfermedad(String nombre) {
@@ -236,6 +239,17 @@ public class ReporteList extends JDialog {
 		}
     	totalInfectados += contador;
     	return contador;
+    }
+    private void loadValores() {
+    	totalInfectados=0;
+    	totalVacunados=0;
+    	for (Enfermedad ef : Clinica.getInstance().getenfermedadS()) {
+    		retornaCantEnfermedad(ef.getNombreString());
+    	}
+    	for (Vacuna vc : Clinica.getInstance().getVacunas()) {
+    		retornaCantidadVacunas(vc.getNombreString());
+    	}
+    	
     }
     
     private void loadTableEnfermedad(){

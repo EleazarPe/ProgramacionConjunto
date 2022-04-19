@@ -402,7 +402,7 @@ public class CrearConsulta extends JDialog {
 				scrollPane.setBounds(0, 0, 771, 633);
 				panel_2.add(scrollPane);
 				{
-					String headers4[] = {"Nombre","Diagnostico","Observacion","Receta","Fecha"};
+					String headers4[] = {"Nombre","Sintomas","Observacion","Receta","Fecha"};
 					model3 = new DefaultTableModel();
 					model3.setColumnIdentifiers(headers4);
 					table2 = new JTable();
@@ -535,13 +535,7 @@ public class CrearConsulta extends JDialog {
 							}
 							if(okButton.getText().equals("Aplicar")) {
 								////////////////////////////////////////////////----------------------->>>>>>>>>>>>>>>>>
-								ArrayList<String> vacunasArrayList = new ArrayList<>();
-								for (Vacuna vc : Clinica.getInstance().getVacunas()) {
-									vacunasArrayList.add(vc.getNombreString());
-								}
-								for (String str : vacunasArrayList) {
-									cbxVacuna.addItem(str);
-								}
+
 								Dosis nuevaDosis = new Dosis(Clinica.getInstance().buscarVacunaByNombre(cbxVacuna.getSelectedItem().toString()), Clinica.getInstance().getLoginUserEmpleado().getNombre()+" "+Clinica.getInstance().getLoginUserEmpleado().getApellido());
 								pacienteS.ingresarDosis(nuevaDosis);
 							}
@@ -552,6 +546,10 @@ public class CrearConsulta extends JDialog {
 								auxConsulta = new Consulta(citaS,TetxObservaciones.getText() , textSintomas.getText(), TextReceta.getText(),
 															confirmacion, Integer.parseInt(spnEstatura.getValue().toString()),Integer.parseInt(spnPeso.getValue().toString()), cbxTipoSangre.getSelectedItem().toString(),
 															cbxRhSangre.getSelectedItem().toString());
+								if(rdbtSi.isSelected()) {
+									Historial nuevoHistorial = new Historial(auxConsulta);
+									Clinica.getInstance().insertarHistorial(nuevoHistorial);
+								}
 								Clinica.getInstance().insertarConsulta(auxConsulta);
 								JOptionPane.showMessageDialog(null, "Consulta Guarda", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 
@@ -631,6 +629,7 @@ public class CrearConsulta extends JDialog {
 		tglbtntVacuna = new JToggleButton("Vacuna");
 		tglbtntVacuna.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cbxVacuna.removeAllItems();
 				tglbtntCitas.setSelected(false);
 				tglbtntConsulta.setSelected(false);
 				tglbtntHistorialMedico.setSelected(false);
@@ -644,6 +643,16 @@ public class CrearConsulta extends JDialog {
 				txtNombreV.setVisible(true);
 				TxtApellidoV.setVisible(true);
 				loadTableVacuna();
+				
+				ArrayList<String> vacunasArrayList = new ArrayList<>();
+				for (Vacuna vc : Clinica.getInstance().getVacunas()) {
+					vacunasArrayList.add(vc.getNombreString());
+				}
+				for (String str : vacunasArrayList) {
+					if(Clinica.getInstance().buscarVacunaByNombreBool(pacienteS,str) == false) {
+						cbxVacuna.addItem(str);		
+					}
+				}
 				
 				
 			}
@@ -694,7 +703,8 @@ public class CrearConsulta extends JDialog {
 			row[1]= hi.getConsultas().getDiagnosticoString();
 			row[2] = hi.getConsultas().getObservacioneString();
 			row[3] = hi.getConsultas().getRecetaString();
-			row[4] = hi.getConsultas().getFecha();
+			formatter = new SimpleDateFormat("dd/MM/yyyy");
+			row[4] = formatter.format(hi.getConsultas().getFecha());
 			model3.addRow(row);
 		}
 	}

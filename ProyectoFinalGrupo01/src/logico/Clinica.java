@@ -72,6 +72,9 @@ public class Clinica implements Serializable {
 	public void setHistoriales(ArrayList<Historial> historiales) {
 		this.historiales = historiales;
 	}
+	public void insertarHistorial(Historial his) {
+		historiales.add(his);
+	}
 
 	public ArrayList<Vigilancia> getVigilancias() {
 		return vigilancias;
@@ -264,5 +267,16 @@ public class Clinica implements Serializable {
 			}
 		}
 		return miCita;
+	}
+	public boolean buscarVacunaByNombreBool(Usuario us,String nombre) {
+		boolean control = false;
+		if(us instanceof Paciente) {
+			for (Dosis ds : ((Paciente) us).getMisDosis()) {
+				if(ds.getVacinneVacuna().getNombreString().equalsIgnoreCase(nombre)) {	
+					control = true;
+				}
+			}
+		}
+		return control;
 	}
 }

@@ -48,7 +48,7 @@ public class ControlGraficoBarra extends JDialog {
 	public ControlGraficoBarra() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ControlGraficoBarra.class.getResource("/img/cruz-roja.png")));
 		setTitle("Grafico del Control");
-		setBounds(100, 100, 341, 300);
+		setBounds(100, 100, 600, 600);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -521,6 +521,7 @@ public class CrearConsulta extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						if(pacienteS != null) {
 							if(okButton.getText().equals("Consultar")) {
+								Toolkit tk = Toolkit.getDefaultToolkit ();
 								TxtNombres.setText(pacienteS.getNombre());
 								TxtApellido.setText(pacienteS.getApellido());
 								txtNoId.setText(pacienteS.getID());
@@ -532,15 +533,19 @@ public class CrearConsulta extends JDialog {
 								textDoctor.setText(Clinica.getInstance().getLoginUserEmpleado().getNombre()+" "+Clinica.getInstance().getLoginUserEmpleado().getApellido());
 								
 								JOptionPane.showMessageDialog(null, "Paciente procesado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+								tk.beep();
 							}
 							if(okButton.getText().equals("Aplicar")) {
 								////////////////////////////////////////////////----------------------->>>>>>>>>>>>>>>>>
-
+								Toolkit tk = Toolkit.getDefaultToolkit ();
 								Dosis nuevaDosis = new Dosis(Clinica.getInstance().buscarVacunaByNombre(cbxVacuna.getSelectedItem().toString()), Clinica.getInstance().getLoginUserEmpleado().getNombre()+" "+Clinica.getInstance().getLoginUserEmpleado().getApellido());
 								pacienteS.ingresarDosis(nuevaDosis);
+								JOptionPane.showMessageDialog(null, "Aplicacion Registrada", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+								tk.beep();
 							}
 							
 							if(okButton.getText().equals("Guardar")) {
+								Toolkit tk = Toolkit.getDefaultToolkit ();
 								ArrayList<Enfermedad>enfermedads = new ArrayList<>();
 								for(int i =0; i < list_1.getModel().getSize();i++) {
 									System.out.println("<------------------Nombre: "+list_1.getModel().getElementAt(i));
@@ -558,7 +563,7 @@ public class CrearConsulta extends JDialog {
 								}
 								Clinica.getInstance().insertarConsulta(auxConsulta);
 								JOptionPane.showMessageDialog(null, "Consulta Guarda", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-
+								tk.beep();
 							}	
 							
 						}

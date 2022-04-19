@@ -138,13 +138,12 @@ public class ReporteList extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Aceptar");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
@@ -228,7 +227,7 @@ public class ReporteList extends JDialog {
     	totalVacunados=0;
     }
     
-    /*private int retornaCantEnfermedad(String nombre) {
+    private int retornaCantEnfermedad(String nombre) {
     	int contador =0;
     	for (Consulta cons : Clinica.getInstance().getConsultas()) {
 			for (Enfermedad ef : cons.getMisEnfermedads()) {
@@ -240,13 +239,13 @@ public class ReporteList extends JDialog {
 		}
     	totalInfectados += contador;
     	return contador;
-    }*/
+    }
     private void loadValores() {
     	totalInfectados=0;
     	totalVacunados=0;
-    	//for (Enfermedad ef : Clinica.getInstance().getenfermedadS()) {
-    		//retornaCantEnfermedad(ef.getNombreString());
-    	//}
+    	for (Enfermedad ef : Clinica.getInstance().getenfermedadS()) {
+    		retornaCantEnfermedad(ef.getNombreString());
+    	}
     	for (Vacuna vc : Clinica.getInstance().getVacunas()) {
     		retornaCantidadVacunas(vc.getNombreString());
     	}
@@ -260,7 +259,8 @@ public class ReporteList extends JDialog {
 			row1[0] = ef.getCodigoString();
 			row1[1] = ef.getNombreString();
 			row1[2] = ef.getInformacionString();
-			row1[3] = "1";//retornaCantEnfermedad(ef.getNombreString());
+			row1[3] = retornaCantEnfermedad(ef.getNombreString());
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>"+ef.getNombreString()+"<<<<<<<<<<<<<<<<<<<< ");
 			model2.addRow(row1);	
 		}
     }

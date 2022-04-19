@@ -54,18 +54,19 @@ public class Principal extends JFrame {
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				FileOutputStream clinica2;
-				ObjectOutputStream clinicaWrite;
-				try {
-					clinica2 = new  FileOutputStream("Clinica.dat");
-					clinicaWrite = new ObjectOutputStream(clinica2);
-					clinicaWrite.writeObject(Clinica.getInstance());
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				JOptionPane.showConfirmDialog(null, "El programa esta apunto de cerrarse, todos los cambios han sido guardados por seguridad", "Advertencia",JOptionPane.WARNING_MESSAGE);
+				
+					FileOutputStream clinica2;
+					ObjectOutputStream clinicaWrite;
+					try {
+						clinica2 = new FileOutputStream("Clinica.dat");
+						clinicaWrite = new ObjectOutputStream(clinica2);
+						clinicaWrite.writeObject(Clinica.getInstance());
+					} catch (FileNotFoundException e1) {
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+
 				}
 			}
 		});
@@ -191,12 +192,11 @@ public class Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int option = JOptionPane.showConfirmDialog(null, "¿Desea cerrar sesión?", "Cierre de sesión",JOptionPane.YES_NO_OPTION);
 				if (option == JOptionPane.YES_OPTION) {
-					FileOutputStream clinica;
+					FileOutputStream clinica2;
 					ObjectOutputStream clinicaWrite;
 					try {
-						clinica = new  FileOutputStream("Clinica.dat");
-						clinicaWrite = new ObjectOutputStream(clinica);
-						//Clinica.getInstance().actualizarVariablesStatic();
+						clinica2 = new FileOutputStream("Clinica.dat");
+						clinicaWrite = new ObjectOutputStream(clinica2);
 						clinicaWrite.writeObject(Clinica.getInstance());
 					} catch (FileNotFoundException e1) {
 						e1.printStackTrace();

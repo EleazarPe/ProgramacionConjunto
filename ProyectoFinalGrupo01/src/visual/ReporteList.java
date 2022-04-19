@@ -79,7 +79,6 @@ public class ReporteList extends JDialog {
 		table.setModel(model2);
 		scrollPane.setViewportView(table);
 		{
-			//probando
 			pnlVacunas = new JPanel();
 			contentPanel.add(pnlVacunas, BorderLayout.CENTER);
 			pnlVacunas.setLayout(new BorderLayout(0, 0));
@@ -200,7 +199,6 @@ public class ReporteList extends JDialog {
 			enfermoslbl.setBounds(325, (tama-alto2)-90 , 50, 20);
 	    	g.drawString("Enfermdad", 325, 425);
     	}
-    	//(32,178,170)
     }
     
 }

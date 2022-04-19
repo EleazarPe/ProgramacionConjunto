@@ -82,11 +82,9 @@ public class CrearConsulta extends JDialog {
 	private Cita citaS = null;
 	private JSpinner spnFechaNacimiento;
 	private JButton cancelButton;
-	private JTextField txtFechaV;
+	private JTextField txtCedula;
 	private JTextField txtNombreV;
 	private JTextField TxtApellidoV;
-	private JTextField TxtCedulaV;
-	private JTextField txtDoctorV;
 	private JList<String> list;
 	private DefaultListModel<String> lista1;
 	private JList<String> list_1;
@@ -97,6 +95,8 @@ public class CrearConsulta extends JDialog {
 	private JComboBox<Object> cbxTipoSangre;
 	private JComboBox<Object> cbxRhSangre;
 	private boolean confirmacion;
+	private JSpinner spnFecha;
+	private JComboBox cbxVacuna;
 
 	/**
 	 * Launch the application.
@@ -434,35 +434,32 @@ public class CrearConsulta extends JDialog {
 			}
 			
 			JLabel lblNewLabel_3 = new JLabel("Nombres:");
-			lblNewLabel_3.setBounds(10, 500, 70, 14);
+			lblNewLabel_3.setBounds(15, 400, 70, 14);
 			panel_3.add(lblNewLabel_3);
 			
 			JLabel lblNewLabel_4 = new JLabel("Apellidos:");
-			lblNewLabel_4.setBounds(10, 416, 70, 14);
+			lblNewLabel_4.setBounds(15, 450, 70, 14);
 			panel_3.add(lblNewLabel_4);
 			
-			JLabel lblNewLabel_5 = new JLabel("ID NO.");
-			lblNewLabel_5.setBounds(10, 450, 70, 14);
+			JLabel lblNewLabel_5 = new JLabel("ID NO :");
+			lblNewLabel_5.setBounds(15, 350, 70, 14);
 			panel_3.add(lblNewLabel_5);
 			
-			txtFechaV = new JTextField();
-			txtFechaV.setVisible(false);
-			txtFechaV.setEditable(false);
-			txtFechaV.setBounds(100, 400, 155, 25);
-			panel_3.add(txtFechaV);
-			txtFechaV.setColumns(10);
+			txtCedula = new JTextField();
+			txtCedula.setVisible(false);
+			txtCedula.setBounds(100, 345, 155, 25);
+			panel_3.add(txtCedula);
+			txtCedula.setColumns(10);
 			
 			txtNombreV = new JTextField();
 			txtNombreV.setVisible(false);
-			txtNombreV.setEditable(false);
-			txtNombreV.setBounds(100, 450, 155, 25);
+			txtNombreV.setBounds(100, 395, 155, 25);
 			panel_3.add(txtNombreV);
 			txtNombreV.setColumns(10);
 			
 			TxtApellidoV = new JTextField();
 			TxtApellidoV.setVisible(false);
-			TxtApellidoV.setEditable(false);
-			TxtApellidoV.setBounds(100, 500, 155, 25);
+			TxtApellidoV.setBounds(100, 445, 155, 25);
 			panel_3.add(TxtApellidoV);
 			TxtApellidoV.setColumns(10);
 			
@@ -470,22 +467,32 @@ public class CrearConsulta extends JDialog {
 			lblNewLabel_6.setBounds(0, 0, 46, 14);
 			panel_3.add(lblNewLabel_6);
 			
-			TxtCedulaV = new JTextField();
-			TxtCedulaV.setVisible(false);
-			TxtCedulaV.setEditable(false);
-			TxtCedulaV.setBounds(100, 550, 155, 25);
-			panel_3.add(TxtCedulaV);
-			TxtCedulaV.setColumns(10);
-			
 			JLabel lblNewLabel_7 = new JLabel("Doctor:");
-			lblNewLabel_7.setBounds(0, 0, 46, 14);
+			lblNewLabel_7.setBounds(300, 450, 46, 14);
 			panel_3.add(lblNewLabel_7);
 			
-			txtDoctorV = new JTextField();
-			txtDoctorV.setVisible(false);
-			txtDoctorV.setBounds(100, 600, 155, 25);
-			panel_3.add(txtDoctorV);
-			txtDoctorV.setColumns(10);
+			JComboBox cbxDoctor = new JComboBox();
+			cbxDoctor.setBounds(350, 445, 110, 25);
+			panel_3.add(cbxDoctor);
+			
+			JLabel lblNewLabel_8 = new JLabel("Fecha:");
+			lblNewLabel_8.setBounds(300, 350, 46, 14);
+			panel_3.add(lblNewLabel_8);
+			
+			spnFecha = new JSpinner();
+			spnFecha.setModel(new SpinnerDateModel(new Date(1650340800000L), new Date(1650340800000L), null, Calendar.DAY_OF_YEAR));
+			spnFecha.setEditor(new JSpinner.DateEditor(spnFechaNacimiento,"dd/MM/yyyy"));
+			spnFecha.setValue(new Date());
+			spnFecha.setBounds(350, 345, 110, 25);
+			panel_3.add(spnFecha);
+			
+			JLabel lblNewLabel_9 = new JLabel("Vacuna:");
+			lblNewLabel_9.setBounds(300, 400, 46, 14);
+			panel_3.add(lblNewLabel_9);
+			
+			cbxVacuna = new JComboBox();
+			cbxVacuna.setBounds(350, 400, 110, 25);
+			panel_3.add(cbxVacuna);
 			
 
 			
@@ -522,7 +529,7 @@ public class CrearConsulta extends JDialog {
 															confirmacion, Integer.parseInt(spnEstatura.getValue().toString()),Integer.parseInt(spnPeso.getValue().toString()), cbxTipoSangre.getSelectedItem().toString(),
 															cbxRhSangre.getSelectedItem().toString());
 								Clinica.getInstance().insertarConsulta(auxConsulta);
-								JOptionPane.showMessageDialog(null, "Consulta Guardada", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Consulta Guarda", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 
 							}	
 							
@@ -609,9 +616,7 @@ public class CrearConsulta extends JDialog {
 				panelVacuna.setVisible(true);
 				okButton.setText("Aplicar");
 				okButton.setVisible(true);
-				txtDoctorV.setVisible(true);
-				txtFechaV.setVisible(true);
-				TxtCedulaV.setVisible(true);
+				txtCedula.setVisible(true);
 				txtNombreV.setVisible(true);
 				TxtApellidoV.setVisible(true);
 				loadTableVacuna();

@@ -40,6 +40,8 @@ public class Principal extends JFrame {
 
 	private Dimension dim;
 	private JPanel contentPane;
+	private JMenuItem registrar;
+	private JMenu mnMedico;
 
 	/**
 	 * Launch the application.
@@ -79,23 +81,21 @@ public class Principal extends JFrame {
 		setLocationRelativeTo(null);
 
 
-
-
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		JMenu mnNewMenu = new JMenu("Medico");
-		menuBar.add(mnNewMenu);
+		mnMedico = new JMenu("Medico");
+		menuBar.add(mnMedico);
 
-		JMenuItem mntmNewMenuItem = new JMenuItem("Registrar");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
+		registrar = new JMenuItem("Registrar");
+		registrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				RegMedico reg = new RegMedico(null);
 				reg.setModal(true);
 				reg.setVisible(true);
 			}
 		});
-		mnNewMenu.add(mntmNewMenuItem);
+		mnMedico.add(registrar);
 
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Listado");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
@@ -105,7 +105,7 @@ public class Principal extends JFrame {
 				list.setVisible(true);
 			}
 		});
-		mnNewMenu.add(mntmNewMenuItem_1);
+		mnMedico.add(mntmNewMenuItem_1);
 
 		JMenu mnNewMenu_1 = new JMenu("Consulta");
 		menuBar.add(mnNewMenu_1);
@@ -186,6 +186,10 @@ public class Principal extends JFrame {
 		panel.setBounds(5, 5, 1894, 985);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		if (!Clinica.getInstance().getLoginUserEmpleado().getNombre().equalsIgnoreCase("Admin")){
+			mnMedico.setEnabled(false);
+		}
 		
 		JButton btnNewButton = new JButton("Cerrar Sesión");
 		btnNewButton.addActionListener(new ActionListener() {

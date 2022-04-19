@@ -238,4 +238,11 @@ public class Clinica implements Serializable {
 	public void insertarConsulta(Consulta consul) {
 		consultas.add(consul);
 	}
+
+	public Usuario getLoginUserEmpleado() {
+		return registroUsuario;
+	}
+	public void setLoginUserEmpleado(Usuario loginUserEmpleado) {
+		Clinica.registroUsuario = registroUsuario;
+	}
 }

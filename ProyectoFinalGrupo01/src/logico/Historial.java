@@ -1,28 +1,29 @@
 package logico;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Historial implements Serializable{
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
-	private Consulta[] consultas;
+	private Consulta consultas;
 
-
-	public Historial(Consulta[] consultas) {
+	public Historial(Consulta consultas) {
 		super();
 		this.consultas = consultas;
 	}
 
-	public Consulta[] getConsultas() {
+
+	public Consulta getConsultas() {
 		return consultas;
 	}
 
-	public void setConsultas(Consulta[] consultas) {
+
+	public void setConsultas(Consulta consultas) {
 		this.consultas = consultas;
 	}
+
+
 
 
 

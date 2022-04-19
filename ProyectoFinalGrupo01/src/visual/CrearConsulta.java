@@ -12,11 +12,8 @@ import javax.swing.table.DefaultTableModel;
 
 import logico.Cita;
 import logico.Clinica;
-import logico.Consulta;
 import logico.Historial;
 import logico.Paciente;
-import logico.Usuario;
-import logico.Vacuna;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -63,33 +60,24 @@ public class CrearConsulta extends JDialog {
 	private JPanel panelConsulta;
 	private JPanel panelCita;
 	private DefaultTableModel model;
-	private DefaultTableModel model3;
 	private DefaultTableModel model2;
-	private DefaultTableModel model4;
+	private  DefaultTableModel model3;
 	private JPanel buttonPane;
 	private JToggleButton tglbtntCitas;
 	private JTable table;
-	private JTable table4;
-	private JTable table2;
 	private JTable table1;
-	private JPanel panelHistorialC;
+	private JTable table2;
 	private JPanel panelHistorialM;
 	private JPanel panelVacuna;
 	private JButton okButton;
 	private DateFormat formatter;
-	private Object row[], row2[];
+	private Object row[];
 	private JToggleButton tglbtntConsulta;
-	private JToggleButton tglbtntHistorialConsultas;
 	private JToggleButton tglbtntHistorialMedico;
 	private JToggleButton tglbtntVacuna;
 	private Paciente pacienteS = null;
 	private JSpinner spnFechaNacimiento;
-	private JSpinner spnFechaInicial;
-	private JComboBox cbxLaboratorios;
-	private JSpinner spnFechaFinal;
-	private JComboBox cbxEnfermedades;
-	private JComboBox cbxDoctorVacuno;
-	private JComboBox cbxViaVacuna;
+	private JButton cancelButton;
 
 	/**
 	 * Launch the application.
@@ -148,7 +136,6 @@ public class CrearConsulta extends JDialog {
 					model2 = new DefaultTableModel();
 					model2.setColumnIdentifiers(headers);
 					table1 = new JTable();
-					table1.setModel(model2);
 					table1.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent arg0) {
@@ -324,30 +311,12 @@ public class CrearConsulta extends JDialog {
 			TextReceta = new JTextPane();
 			TextReceta.setBounds(10, 21, 213, 190);
 			pnlRecetas.add(TextReceta);
-			
-			panelHistorialC = new JPanel();
-			panelHistorialC.setBounds(-2, 0, 784, 646);
-			PanelListadoPaciente.add(panelHistorialC);
-			panelHistorialC.setLayout(null);
-			
-			JPanel panel_1 = new JPanel();
-			panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			panel_1.setBounds(6, 0, 771, 633);
-			panelHistorialC.add(panel_1);
 			{
-				JScrollPane scrollPane = new JScrollPane();
-				scrollPane.setBounds(new Rectangle(0, 0, 771, 633));
-				panel_1.add(scrollPane, BorderLayout.CENTER);
 				{
-					String headers[] = {"Nombre","Apellido","cedula","ocupacion","telefono","direccion","Fecha"};
+					String headers[] = {"Prueba","Prueba1","Prieba","probando"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
-					table = new JTable();
-					table.setModel(model);
 				}
-				scrollPane.setViewportView(table);
-				table.setModel(model);
-				scrollPane.setViewportView(table);
 			}
 			
 			panelHistorialM = new JPanel();
@@ -359,18 +328,20 @@ public class CrearConsulta extends JDialog {
 			panel_2.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panel_2.setBounds(6, 0, 771, 633);
 			panelHistorialM.add(panel_2);
+			panel_2.setLayout(null);
 			{
 				JScrollPane scrollPane = new JScrollPane();
-				panel_2.add(scrollPane, BorderLayout.CENTER);
+				scrollPane.setBounds(0, 0, 771, 633);
+				panel_2.add(scrollPane);
 				{
-					String headers[] = {"Carlos","Ivan","Albert","Poo"};
-					model4 = new DefaultTableModel();
-					model4.setColumnIdentifiers(headers);
-					table4 = new JTable();
+					String headers4[] = {"Carlos","Ivan","Albert","Poo"};
+					model3 = new DefaultTableModel();
+					model3.setColumnIdentifiers(headers4);
+					table2 = new JTable();
 				}
-				scrollPane.setViewportView(table4);
-				table4.setModel(model4);
-				scrollPane.setViewportView(table4);
+				scrollPane.setViewportView(table2);
+				table2.setModel(model3);
+				scrollPane.setViewportView(table2);
 			}
 			
 			panelVacuna = new JPanel();
@@ -379,106 +350,35 @@ public class CrearConsulta extends JDialog {
 			panelVacuna.setLayout(null);
 			
 			JPanel panel_3 = new JPanel();
+			panel_3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panel_3.setBounds(6, 0, 771, 633);
 			panelVacuna.add(panel_3);
 			panel_3.setLayout(null);
 			{
-				JLabel lblReporteVacunas = new JLabel("REPORTE VACUNAS");
-				lblReporteVacunas.setFont(new Font("Tahoma", Font.BOLD, 14));
-				lblReporteVacunas.setBounds(12, 179, 149, 22);
-				panel_3.add(lblReporteVacunas);
-				
 				JScrollPane scrollPane = new JScrollPane();
-				scrollPane.setBounds(0, 201, 771, 432);
+				scrollPane.setBounds(0, 0, 771, 304);
 				panel_3.add(scrollPane);
 				{
-					String headers[] = {"Fecha de Vacunacion","Via de Administracion","Laboratorio","Enfermedad cubierta","Doctor"};
-					model3 = new DefaultTableModel();
-					model3.setColumnIdentifiers(headers);
-					table2 = new JTable();
+					String headers[] = {"Vacuna","Fecha de Vacunacion","Doctor"};
+					model = new DefaultTableModel();
+					model.setColumnIdentifiers(headers);
+					table = new JTable();
 				}
-				scrollPane.setViewportView(table2);
-				table2.setModel(model3);
-				scrollPane.setViewportView(table2);
+				scrollPane.setViewportView(table);
+				table.setModel(model);
+				scrollPane.setViewportView(table);
 			}
 			
-			JPanel panel_4 = new JPanel();
-			panel_4.setBounds(0, 0, 771, 182);
-			panel_4.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			panel_3.add(panel_4);
-			panel_4.setLayout(null);
+			JLabel lblNewLabel_3 = new JLabel("Nombres:");
+			lblNewLabel_3.setBounds(10, 350, 70, 14);
+			panel_3.add(lblNewLabel_3);
 			
-			JLabel lblVacuna_1 = new JLabel("Laboratorio vacuna:\r\n");
-			lblVacuna_1.setBounds(308, 127, 116, 16);
-			panel_4.add(lblVacuna_1);
+			JLabel lblNewLabel_4 = new JLabel("Apellidos:");
+			lblNewLabel_4.setBounds(10, 400, 70, 14);
+			panel_3.add(lblNewLabel_4);
 			
-			JLabel lblViaDeAdministracion = new JLabel("Via de administración:\r\n");
-			lblViaDeAdministracion.setBounds(308, 72, 129, 16);
-			panel_4.add(lblViaDeAdministracion);
+
 			
-			cbxViaVacuna = new JComboBox();
-			cbxViaVacuna.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Intravenosa", "Intramuscular", "Subcutanea"}));
-			cbxViaVacuna.setBounds(308, 92, 144, 22);
-			panel_4.add(cbxViaVacuna);
-			
-			JLabel lblVacuna_2 = new JLabel("Filtrar resultados:");
-			lblVacuna_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-			lblVacuna_2.setBounds(12, 13, 129, 22);
-			panel_4.add(lblVacuna_2);
-			
-			JLabel lblVacuna_3 = new JLabel("Si desea filtrar la informacion, complete los campos requeridos.");
-			lblVacuna_3.setBounds(12, 36, 375, 16);
-			panel_4.add(lblVacuna_3);
-			
-			spnFechaInicial = new JSpinner();
-			spnFechaInicial.setModel(new SpinnerDateModel(new Date(1650168000000L), null, null, Calendar.DAY_OF_YEAR));
-			spnFechaInicial.setEditor(new JSpinner.DateEditor(spnFechaInicial,"dd/MM/yyyy"));
-			spnFechaInicial.setValue(new Date());
-			spnFechaInicial.setBounds(86, 92, 136, 22);
-			panel_4.add(spnFechaInicial);
-			
-			spnFechaFinal = new JSpinner();
-			spnFechaFinal.setModel(new SpinnerDateModel(new Date(1650168000000L), null, null, Calendar.DAY_OF_YEAR));
-			spnFechaFinal.setEditor(new JSpinner.DateEditor(spnFechaFinal,"dd/MM/yyyy"));
-			spnFechaFinal.setValue(new Date());
-			spnFechaFinal.setBounds(86, 144, 136, 22);
-			panel_4.add(spnFechaFinal);
-			
-			JLabel lblVacuna_4 = new JLabel("Fecha inicial:");
-			lblVacuna_4.setBounds(86, 72, 75, 16);
-			panel_4.add(lblVacuna_4);
-			
-			JLabel lblVacuna_5 = new JLabel("Fecha Final:");
-			lblVacuna_5.setBounds(86, 126, 75, 16);
-			panel_4.add(lblVacuna_5);
-			
-			cbxLaboratorios = new JComboBox();
-			cbxLaboratorios .setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Johnson & johnson", "Roche", "AbbVie", "Bayer", "Pfizer", "Bristol-Myers Squibb", "Merck & Co", "Novartis", "Sanofi"}));
-			cbxLaboratorios .setBounds(308, 144, 144, 22);
-			panel_4.add(cbxLaboratorios);
-			
-			JLabel lblEnfermedadesCubiertas = new JLabel("Enfermedades:");
-			lblEnfermedadesCubiertas.setBounds(538, 72, 87, 16);
-			panel_4.add(lblEnfermedadesCubiertas);
-			
-			cbxEnfermedades = new JComboBox();
-			cbxEnfermedades.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>"}));
-			cbxEnfermedades.setBounds(538, 92, 144, 22);
-			panel_4.add(cbxEnfermedades);
-			
-			JLabel lblDoctor = new JLabel("Doctor");
-			lblDoctor.setBounds(538, 127, 87, 16);
-			panel_4.add(lblDoctor);
-			
-			cbxDoctorVacuno = new JComboBox();
-			cbxDoctorVacuno.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>"}));
-			cbxDoctorVacuno.setBounds(538, 147, 144, 22);
-			panel_4.add(cbxDoctorVacuno);			
-			
-			JPanel PanelEnfermedad = new JPanel();
-			PanelEnfermedad.setBounds(0, 0, 784, 646);
-			PanelListadoPaciente.add(PanelEnfermedad);
-			PanelEnfermedad.setLayout(new BorderLayout(0, 0));
 		}
 		{
 			buttonPane = new JPanel();
@@ -510,11 +410,11 @@ public class CrearConsulta extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancelar");
+				cancelButton = new JButton("Cancelar");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
-						//s
+						
 					}
 				});
 				cancelButton.setActionCommand("Cancel");
@@ -529,12 +429,12 @@ public class CrearConsulta extends JDialog {
 		tglbtntCitas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				tglbtntConsulta.setSelected(false);
-				tglbtntHistorialConsultas.setSelected(false);
 				tglbtntHistorialMedico.setSelected(false);
 				tglbtntVacuna.setSelected(false);
 				panelConsulta.setVisible(false);
 				panelCita.setVisible(true);
 				okButton.setText("Consultar");
+				okButton.setVisible(true);
 				
 			}
 		});
@@ -543,33 +443,17 @@ public class CrearConsulta extends JDialog {
 		tglbtntConsulta = new JToggleButton("Consulta");
 		tglbtntConsulta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {	
-				tglbtntHistorialConsultas.setSelected(false);
 				tglbtntHistorialMedico.setSelected(false);
 				tglbtntVacuna.setSelected(false);
 				tglbtntCitas.setSelected(false);
 				panelCita.setVisible(false);
 				panelConsulta.setVisible(true);
 				okButton.setText("Guardar");
+				okButton.setVisible(true);
 				
 			}
 		});
 		menuBar.add(tglbtntConsulta);
-		
-		tglbtntHistorialConsultas = new JToggleButton("Historial De Consultas");
-		tglbtntHistorialConsultas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				tglbtntHistorialMedico.setSelected(false);
-				tglbtntVacuna.setSelected(false);
-				tglbtntCitas.setSelected(false);
-				tglbtntConsulta.setSelected(false);
-				panelCita.setVisible(false);
-				panelConsulta.setVisible(false);
-				panelHistorialM.setVisible(false);
-				panelVacuna.setVisible(false);
-				panelHistorialC.setVisible(true);
-			}
-		});
-		menuBar.add(tglbtntHistorialConsultas);
 		
 		tglbtntHistorialMedico = new JToggleButton("Historial Médico");
 		tglbtntHistorialMedico.addActionListener(new ActionListener() {
@@ -577,12 +461,11 @@ public class CrearConsulta extends JDialog {
 				tglbtntVacuna.setSelected(false);
 				tglbtntCitas.setSelected(false);
 				tglbtntConsulta.setSelected(false);
-				tglbtntHistorialConsultas.setSelected(false);
 				panelCita.setVisible(false);
 				panelConsulta.setVisible(false);
 				panelVacuna.setVisible(false);
-				panelHistorialC.setVisible(false);
 				panelHistorialM.setVisible(true);
+				okButton.setVisible(false);
 
 			}
 		});
@@ -593,31 +476,25 @@ public class CrearConsulta extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				tglbtntCitas.setSelected(false);
 				tglbtntConsulta.setSelected(false);
-				tglbtntHistorialConsultas.setSelected(false);
 				tglbtntHistorialMedico.setSelected(false);
 				panelCita.setVisible(false);
 				panelConsulta.setVisible(false);
 				panelHistorialM.setVisible(false);
-				panelHistorialC.setVisible(false);
 				panelVacuna.setVisible(true);
+				okButton.setText("Aplicar");
+				okButton.setVisible(true);
+				
+				
 			}
 		});
 		menuBar.add(tglbtntVacuna);
-		Date fecha = new Date();
-		Usuario usuario = new Usuario("Darvy", "Bsfg","sdfsdf",fecha, "234234234", "dasfsdfsd", "fsfdfd");
-		Cita cit = new Cita(fecha, "1234", "sdfsdfsdfsdf", "Abogado", "Pediatra", usuario);
-		Clinica.getInstance().insertarUsuario(usuario);
-		Clinica.getInstance().insertarCita(cit);
-		Consulta consulta = new Consulta("Alerr", "asdad", "123213", "Abogado", "123123", "asdasd", fecha);
-		Clinica.getInstance().insertarConsulta(consulta);
-		loadTableCitas();
-		loadTableHC();
+		loadTable();
 	}
-	private void loadTableCitas() {
+	private void loadTable() {
 		
 		model2.setRowCount(0);
 		row = new Object[model2.getColumnCount()];
-		for (Cita ct : Clinica.getInstance().getMisCitas()) {
+		for (Cita ct : Clinica.getInstance().compararCitaYDoctor()) {
 			row[0] = ct.getCodigo();
 			row[1] = ct.getUserUsuario().getID();
 			row[2] = ct.getUserUsuario().getNombre() + ct.getUserUsuario().getApellido();
@@ -627,54 +504,23 @@ public class CrearConsulta extends JDialog {
 			row[5] = formatter.format(ct.getFecha()).toString();
 			model2.addRow(row);	
 		}
-		System.out.println("Hola");
 
 	}
 	
-private void loadTableHC() {
-		model.setRowCount(0);
-		row = new Object[model.getColumnCount()];	
-		for (Consulta consultaHC : Clinica.getInstance().getConsultas()) {
-			row[0] = consultaHC.getNombre();
-			row[1] = consultaHC.getApellido();
-			row[2] = consultaHC.getCedula();
-			row[3] = consultaHC.getOcupacion();
-			row[4] = consultaHC.getTelefono();
-			row[5] = consultaHC.getDireccion();
-			formatter = new SimpleDateFormat("dd/MM/yyyy");
-			System.out.println(formatter.format(consultaHC.getFecha()).toString());
-			row[6] = formatter.format(consultaHC.getFecha()).toString();
-			model.addRow(row);	
+	
+	private void loadTbleHistorial() {
+		model3.setRowCount(0);
+		row = new Object[model3.getColumnCount()];
+		for (Historial hi : Clinica.getInstance().getHistoriales()) {
+			row[0] = "";
+			row[1]= "";
+			row[2] = "";
+			row[3] = "";
+			row[4] = "";
 		}
 	}
-
-private void loadTableHM() {
-	
-	model2.setRowCount(0);
-	row = new Object[model2.getColumnCount()];
-	for (Cita ct : Clinica.getInstance().compararCitaYDoctor()) {
-		row[0] = ct.getCodigo();
-		row[1] = ct.getUserUsuario().getID();
-		row[2] = ct.getUserUsuario().getNombre() + ct.getUserUsuario().getApellido();
-		row[3] = ct.getUserUsuario().getTelefono();
-		row[4] = ct.getNotas();
-		formatter = new SimpleDateFormat("dd/MM/yyyy");
-		row[5] = formatter.format(ct.getFecha()).toString();
-		model2.addRow(row);	
-	}
-
 }
 
-/*private void loadTableVacunas() {
-	
-	model4.setRowCount(0);
-	row = new Object[model4.getColumnCount()];
-	for (Paciente paciente : Clinica.getInstance().get()) {
-		if(Integer.parseInt(vacuna.ge))
-	}
-
-}*/
-}
 
 
 

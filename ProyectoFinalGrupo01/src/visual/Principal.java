@@ -123,8 +123,8 @@ public class Principal extends JFrame {
 		JMenu mnNewMenu_2 = new JMenu("Vacuna");
 		menuBar.add(mnNewMenu_2);
 
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Registrar");
-		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+		JMenuItem mnRegistrar = new JMenuItem("Registrar");
+		mnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				RegVacuna vacuna = new RegVacuna();
 				vacuna.setModal(true);
@@ -141,7 +141,7 @@ public class Principal extends JFrame {
 			}
 		});
 		mnNewMenu_2.add(mntmNewMenuItem_7);
-		mnNewMenu_2.add(mntmNewMenuItem_3);
+		mnNewMenu_2.add(mnRegistrar);
 
 		JMenu mnNewMenu_3 = new JMenu("Cita");
 		menuBar.add(mnNewMenu_3);
@@ -195,6 +195,7 @@ public class Principal extends JFrame {
 		
 		if (!Clinica.getInstance().getLoginUserEmpleado().getNombre().equalsIgnoreCase("Admin")){
 			mnMedico.setEnabled(false);
+			mnRegistrar.setEnabled(false);
 		}
 		
 		JButton btnNewButton = new JButton("Cerrar Sesión");

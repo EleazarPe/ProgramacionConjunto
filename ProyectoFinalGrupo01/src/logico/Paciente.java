@@ -11,16 +11,18 @@ public class Paciente extends Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	//private ArrayList<Consulta> misConsultas;
 	private String tipoSangre;
+	private String rh;
 	private String Ocupacion;
 	private String TelefonoOpc;
 	private ArrayList<Dosis> misDosis;
 	private ArrayList<Cita> misCitas;
 
 	public Paciente(String nombre, String apellido, String cedula, Date fechaNaciento, String ocupacion,
-			String telefono, String direccion,String codigo, String tipoSangre,
+			String telefono, String direccion,String codigo, String tipoSangre,String rh,
 			String TelefonoOpc) {
 		super(nombre, apellido, cedula, fechaNaciento, telefono, direccion,codigo);
 		this.tipoSangre = tipoSangre;
+		this.rh = rh;
 		this.Ocupacion = ocupacion;
 		//this.misConsultas = new ArrayList<>();
 		this.misDosis = new ArrayList<>();
@@ -82,6 +84,14 @@ public class Paciente extends Usuario implements Serializable {
 
 	public void setTelefonoOpc(String telefonoOpc) {
 		TelefonoOpc = telefonoOpc;
+	}
+
+	public String getRh() {
+		return rh;
+	}
+
+	public void setRh(String rh) {
+		this.rh = rh;
 	}
 
 }

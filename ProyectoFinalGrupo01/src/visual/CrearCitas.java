@@ -133,8 +133,14 @@ public class CrearCitas extends JDialog {
 				}else {
 					txtNid.setText(paciente.getID());
 					txtNombre.setText(paciente.getNombre());
+					txtApellido.setText(paciente.getApellido());
 					txtCelular.setText(paciente.getTelefono());
-					txtTelefonoOpc.setText(paciente.getDireccion());
+					txtTelefonoOpc.setText(paciente.getTelefonoOpc());
+					cbxOcupacion.setSelectedItem(paciente.getOcupacion());
+					txtDireccion.setText(paciente.getDireccion());
+					cbxTipoBlood.setSelectedItem(paciente.getTipoSangre());
+					cbxRh.setSelectedItem(paciente.getRh());
+					ActivationKey(true);
 				}
 			}
 		});
@@ -415,18 +421,21 @@ public class CrearCitas extends JDialog {
 							}
 							Paciente auxPaciente = null;
 							Cita auxCita = null;
-							auxPaciente = new Paciente(txtNombre.getText(), txtApellido.getText(), txtNid.getText(), (Date)spnFechaNacimiento.getValue(), cbxOcupacion.getSelectedItem().toString(), txtCelular.getText(), txtDireccion.getText(), txtIDPaciente.getText(), cbxTipoBlood.getSelectedItem().toString(), txtTelefonoOpc.getText());
+							auxPaciente = new Paciente(txtNombre.getText(), txtApellido.getText(), txtNid.getText(), (Date)spnFechaNacimiento.getValue(), cbxOcupacion.getSelectedItem().toString(), txtCelular.getText(), txtDireccion.getText(), txtIDPaciente.getText(), cbxTipoBlood.getSelectedItem().toString(),cbxRh.getSelectedItem().toString(), txtTelefonoOpc.getText());
 							auxCita = new Cita((Date)spnFechaCita.getValue(), txtIDPaciente.getText(), TextNotas.getText(),cbxEspecialidad.getSelectedItem().toString(), cbxDoctor.getSelectedItem().toString(),auxPaciente);
 							auxPaciente.insertarCita(auxCita);
 							Clinica.getInstance().insertarCita(auxCita);
 							Clinica.getInstance().insertarUsuario(auxPaciente);
 							JOptionPane.showMessageDialog(null, "Operacion exitosa su Informacion a sido Procesada", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+							DesactivationKey(true);
+							clean();
 						}else {
 							Cita auxCita = null;
 							auxCita = new Cita((Date)spnFechaCita.getValue(), txtIDPaciente.getText(), TextNotas.getText(),cbxEspecialidad.getSelectedItem().toString(), cbxDoctor.getSelectedItem().toString(),paciente);
 							paciente.insertarCita(auxCita);
 							Clinica.getInstance().insertarCita(auxCita);
 							JOptionPane.showMessageDialog(null, "Su Cita se a Agendado Correctamente..", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+							DesactivationKey(true);
 							clean();
 						}
 					}
@@ -554,7 +563,19 @@ public class CrearCitas extends JDialog {
 		cbxTipoBlood.setEnabled(true);
 		cbxRh.setEnabled(true);
 	}
-
+	
+	public void DesactivationKey(boolean value) {
+		txtNombre.setEditable(false);
+		txtApellido.setEditable(false);
+		spnFechaNacimiento.setEnabled(false);
+		txtCelular.setEditable(false);
+		txtTelefonoOpc.setEditable(false);
+		txtDireccion.setEditable(false);
+		cbxOcupacion.setEnabled(false);
+		cbxTipoBlood.setEnabled(false);
+		cbxRh.setEnabled(false);
+	}
+	
 	private void Advertencia() {
 		Toolkit tk = Toolkit.getDefaultToolkit ();
 		signoAvisoNombre.setVisible(true);

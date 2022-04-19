@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 import logico.Cita;
 import logico.Clinica;
+import logico.Consulta;
 import logico.Dosis;
 import logico.Enfermedad;
 import logico.Historial;
@@ -90,6 +91,12 @@ public class CrearConsulta extends JDialog {
 	private DefaultListModel<String> lista1;
 	private JList<String> list_1;
 	private DefaultListModel<String> lista2;
+	private JTextPane TetxObservaciones;
+	private JSpinner spnEstatura;
+	private JSpinner spnPeso;
+	private JComboBox<Object> cbxTipoSangre;
+	private JComboBox<Object> cbxRhSangre;
+	private boolean confirmacion;
 
 	/**
 	 * Launch the application.
@@ -157,7 +164,7 @@ public class CrearConsulta extends JDialog {
 							if(select > -1) {
 								System.out.println("--------->"+table1.getValueAt(select, 1).toString());
 								pacienteS =  Clinica.getInstance().buscarPacienteById(table1.getValueAt(select, 1).toString());
-								
+								citaS = Clinica.getInstance().buscarCitaByCodigoPaciente(table1.getValueAt(select, 1).toString());
 							}
 							//---------------------------------------------------------->>>>
 						}
@@ -233,7 +240,7 @@ public class CrearConsulta extends JDialog {
 			panelConsulta.add(pnlDatosClinicos);
 			pnlDatosClinicos.setLayout(null);
 			
-			JSpinner spnEstatura = new JSpinner();
+			spnEstatura = new JSpinner();
 			spnEstatura.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 			spnEstatura.setBounds(108, 39, 55, 25);
 			pnlDatosClinicos.add(spnEstatura);
@@ -242,7 +249,7 @@ public class CrearConsulta extends JDialog {
 			lblNewLabel.setBounds(10, 39, 55, 25);
 			pnlDatosClinicos.add(lblNewLabel);
 			
-			JSpinner spnPeso = new JSpinner();
+			spnPeso = new JSpinner();
 			spnPeso.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 			spnPeso.setBounds(240, 39, 55, 25);
 			pnlDatosClinicos.add(spnPeso);
@@ -255,7 +262,7 @@ public class CrearConsulta extends JDialog {
 			lblNewLabel_1.setBounds(10, 91, 94, 25);
 			pnlDatosClinicos.add(lblNewLabel_1);
 			
-			JComboBox<Object> cbxTipoSangre = new JComboBox<Object>();
+			cbxTipoSangre = new JComboBox<Object>();
 			cbxTipoSangre.setModel(new DefaultComboBoxModel<Object>(new String[] {"A", "B", "AB", "O"}));
 			cbxTipoSangre.setBounds(108, 91, 55, 25);
 			pnlDatosClinicos.add(cbxTipoSangre);
@@ -264,7 +271,7 @@ public class CrearConsulta extends JDialog {
 			lblRh.setBounds(185, 91, 33, 25);
 			pnlDatosClinicos.add(lblRh);
 			
-			JComboBox<Object> cbxRhSangre = new JComboBox<Object>();
+			cbxRhSangre = new JComboBox<Object>();
 			cbxRhSangre.setModel(new DefaultComboBoxModel<Object>(new String[] {"Positivo", "Negativo", "Nulo"}));
 			cbxRhSangre.setBounds(240, 91, 77, 25);
 			pnlDatosClinicos.add(cbxRhSangre);
@@ -275,7 +282,7 @@ public class CrearConsulta extends JDialog {
 			panelConsulta.add(PnlObservaciones);
 			PnlObservaciones.setLayout(null);
 			
-			JTextPane TetxObservaciones = new JTextPane();
+			TetxObservaciones = new JTextPane();
 			TetxObservaciones.setBounds(10, 22, 270, 97);
 			PnlObservaciones.add(TetxObservaciones);
 			
@@ -342,6 +349,7 @@ public class CrearConsulta extends JDialog {
 			rdbtnNo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					rdbtSi.setSelected(false);
+					confirmacion = false;
 				}
 			});
 			rdbtnNo.setBounds(115, 606, 45, 23);
@@ -353,6 +361,7 @@ public class CrearConsulta extends JDialog {
 			rdbtSi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					rdbtnNo.setSelected(false);
+					confirmacion = true;
 				}
 			});
 			rdbtSi.setBounds(42, 606, 45, 23);
@@ -489,10 +498,8 @@ public class CrearConsulta extends JDialog {
 			getContentPane().add(buttonPane);
 			{
 				okButton = new JButton("Guardar");
-				/*if (panelCita.isEnabled()) {      La idea es que cuando se abra la ventana de citas cambie el boton guardar y asi se haria con cada ventana.
-					okButton.setText("Consultar");
-				}
-				*/
+				
+				
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(pacienteS != null) {
@@ -507,6 +514,18 @@ public class CrearConsulta extends JDialog {
 							if(okButton.getText().equals("Aplicar")) {
 								////////////////////////////////////////////////----------------------->>>>>>>>>>>>>>>>>
 							}
+							
+							if(okButton.getText().equals("Guardar")) {
+
+								Consulta auxConsulta = null;
+								auxConsulta = new Consulta(citaS,TetxObservaciones.getText() , textSintomas.getText(), TextReceta.getText(),
+															confirmacion, Integer.parseInt(spnEstatura.getValue().toString()),Integer.parseInt(spnPeso.getValue().toString()), cbxTipoSangre.getSelectedItem().toString(),
+															cbxRhSangre.getSelectedItem().toString());
+								Clinica.getInstance().insertarConsulta(auxConsulta);
+								JOptionPane.showMessageDialog(null, "Consulta Guardada", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+
+							}	
+							
 						}
 					}
 				});

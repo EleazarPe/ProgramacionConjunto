@@ -213,6 +213,16 @@ public class Clinica implements Serializable {
 		}
 		return auxvaVacuna;
 	}
+	
+	public Vacuna buscarVacunaByNombre(String nombre) {
+		Vacuna auxvaVacuna = null;
+		for (Vacuna vc : vacunas) {
+			if(vc.getNombreString().equalsIgnoreCase(nombre)) {
+				auxvaVacuna = vc;
+			}
+		}
+		return auxvaVacuna;
+	}
 
 	public Enfermedad buscarEnfermedadByCodigo(String codigo) {
 		Enfermedad auxEnfermedad = null;

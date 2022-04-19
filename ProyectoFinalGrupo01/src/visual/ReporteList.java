@@ -25,6 +25,9 @@ public class ReporteList extends JDialog {
 	private JTable table_1;
 	private JLabel vacunalbl;
 	private JLabel enfermoslbl;
+	private JPanel pnlVacunas;
+	private JPanel pnlGrafico;
+	private JPanel pnlEnfermedades;
 
 	/**
 	 * Launch the application.
@@ -51,8 +54,7 @@ public class ReporteList extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel pnlEnfermedades = new JPanel();
-		pnlEnfermedades.setVisible(false);
+		pnlEnfermedades = new JPanel();
 		contentPanel.add(pnlEnfermedades, BorderLayout.CENTER);
 		pnlEnfermedades.setLayout(new BorderLayout(0, 0));
 		
@@ -63,8 +65,7 @@ public class ReporteList extends JDialog {
 			scrollPane.setViewportView(table);
 		}
 		{
-			JPanel pnlVacunas = new JPanel();
-			pnlVacunas.setVisible(false);
+			pnlVacunas = new JPanel();
 			contentPanel.add(pnlVacunas, BorderLayout.CENTER);
 			pnlVacunas.setLayout(new BorderLayout(0, 0));
 			{
@@ -77,7 +78,7 @@ public class ReporteList extends JDialog {
 			}
 		}
 		{
-			JPanel pnlGrafico = new JPanel();
+			pnlGrafico = new JPanel();
 			contentPanel.add(pnlGrafico, BorderLayout.CENTER);
 			{
 				vacunalbl = new JLabel("");
@@ -112,6 +113,9 @@ public class ReporteList extends JDialog {
 				tglbtnNewToggleButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						//----------------------------------->>>>>>>>
+						pnlVacunas.setVisible(false);
+						pnlGrafico.setVisible(false);
+						pnlEnfermedades.setVisible(true);
 					}
 				});
 				menuBar.add(tglbtnNewToggleButton);
@@ -121,6 +125,9 @@ public class ReporteList extends JDialog {
 				tglbtnNewToggleButton_1.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						//----------------------------------->>>>>>>>
+						pnlVacunas.setVisible(true);
+						pnlGrafico.setVisible(false);
+						pnlEnfermedades.setVisible(false);
 					}
 				});
 				menuBar.add(tglbtnNewToggleButton_1);
@@ -129,13 +136,18 @@ public class ReporteList extends JDialog {
 				JToggleButton tglbtnNewToggleButton_2 = new JToggleButton("Grafico de Barra");
 				tglbtnNewToggleButton_2.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						//----------------------------------->>>>>>>>
+						
+						pnlVacunas.setVisible(false);
+						pnlGrafico.setVisible(true);
+						pnlEnfermedades.setVisible(false);
+						repaint();
 					}
 				});
 				menuBar.add(tglbtnNewToggleButton_2);
 			}
 		}
 	}
+	
     public void paint(Graphics g) {
     	super.paint(g);
     	int alto1 = 13*10;//buscaCantidadDeVacunas()

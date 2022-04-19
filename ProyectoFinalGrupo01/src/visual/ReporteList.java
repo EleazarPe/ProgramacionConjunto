@@ -51,6 +51,7 @@ public class ReporteList extends JDialog {
 	private JToggleButton tglbtnVacuna;
 	private JToggleButton tglbtnGrafico;
 	private int totalInfectados =0;
+	private int totalVacunados =0;
 
 	/**
 	 * Launch the application.
@@ -104,7 +105,7 @@ public class ReporteList extends JDialog {
 				scrollPane_1.setBounds(5, 5, 559, 488);
 				pnlVacunas.add(scrollPane_1);
 				{
-					String headers[] = {"Matricula","Eslora","Fabricacion"};
+					String headers[] = {"Codigo","Nombre","Laboratorio","Vacunados"};
 					model1 = new DefaultTableModel();
 					model1.setColumnIdentifiers(headers);
 					table1 = new JTable();
@@ -178,6 +179,7 @@ public class ReporteList extends JDialog {
 						pnlGrafico.setVisible(false);
 						pnlEnfermedades.setVisible(false);
 						control = false;
+						loadTableVacuna();
 					}
 				});
 				menuBar.add(tglbtnVacuna);
@@ -204,13 +206,13 @@ public class ReporteList extends JDialog {
 	
     public void paint(Graphics g) {
     	super.paint(g);
-    	int alto1 = 4*20;//buscaCantidadDeVacunas()
+    	int alto1 = totalVacunados*20;//buscaCantidadDeVacunas()
     	int alto2 = totalInfectados*20;
     	int tama = 400;
     	if(control !=false) {
 	    	g.setColor(new Color(255,0,0));
 	    	g.fill3DRect(250,tama-alto1, 50, alto1, true);
-	    	//vacunalbl.setText("100");
+	    	vacunalbl.setText(""+totalVacunados);
 			vacunalbl.setBounds(250, (tama-alto1)-90 , 50, 20);
 	    	g.drawString("Vacuna", 250, 425);
 	    	
@@ -259,6 +261,7 @@ public class ReporteList extends JDialog {
 				}
 			}
 		}
+    	totalVacunados += contador;
     	return contador;
     }
     
@@ -266,10 +269,11 @@ public class ReporteList extends JDialog {
     	model1.setRowCount(0);
 		row2 = new Object[model1.getColumnCount()];
 		for (Vacuna vc : Clinica.getInstance().getVacunas()) {
-			//row2[0];
-			//row2[1];
-			//row[2];
-			//row2[3];
+			row2[0] = vc.getCodigo();
+			row2[1] = vc.getNombreString();
+			row2[2] = vc.getLaboratorioString();
+			row2[3]= retornaCantidadVacunas(vc.getNombreString());
+			model1.addRow(row2);
 		}
     }
     

@@ -13,10 +13,9 @@ import javax.swing.table.DefaultTableModel;
 import logico.Cita;
 import logico.Clinica;
 import logico.Dosis;
+import logico.Enfermedad;
 import logico.Historial;
 import logico.Paciente;
-import logico.Vacuna;
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
@@ -31,6 +30,7 @@ import javax.swing.SpinnerDateModel;
 import java.util.Date;
 import java.util.Calendar;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JToggleButton;
 import javax.swing.UIManager;
@@ -41,9 +41,9 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JList;
 
 public class CrearConsulta extends JDialog {
 
@@ -85,6 +85,10 @@ public class CrearConsulta extends JDialog {
 	private JTextField TxtApellidoV;
 	private JTextField TxtCedulaV;
 	private JTextField txtDoctorV;
+	private JList<String> list;
+	private DefaultListModel<String> lista1;
+	private JList<String> list_1;
+	private DefaultListModel<String> lista2;
 
 	/**
 	 * Launch the application.
@@ -270,8 +274,56 @@ public class CrearConsulta extends JDialog {
 			PnlObservaciones.setLayout(null);
 			
 			JTextPane TetxObservaciones = new JTextPane();
-			TetxObservaciones.setBounds(10, 22, 740, 97);
+			TetxObservaciones.setBounds(10, 22, 270, 97);
 			PnlObservaciones.add(TetxObservaciones);
+			
+			JPanel panel_1 = new JPanel();
+			panel_1.setBounds(327, 22, 170, 97);
+			PnlObservaciones.add(panel_1);
+			panel_1.setLayout(new BorderLayout(0, 0));
+			
+			JScrollPane scrollPane_1 = new JScrollPane();
+			panel_1.add(scrollPane_1, BorderLayout.CENTER);
+			lista1 = new DefaultListModel<>(); 
+			list = new JList<>(lista1);
+			scrollPane_1.setViewportView(list);
+			
+			JPanel panel_4 = new JPanel();
+			panel_4.setBounds(583, 22, 170, 97);
+			PnlObservaciones.add(panel_4);
+			panel_4.setLayout(new BorderLayout(0, 0));
+			
+			JScrollPane scrollPane_2 = new JScrollPane();
+			panel_4.add(scrollPane_2, BorderLayout.CENTER);
+			lista2 = new DefaultListModel<>(); 
+			list_1 = new JList<>(lista2);
+			scrollPane_2.setViewportView(list_1);
+			
+			JButton button = new JButton("<");
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					////////////<<<-------------------------
+					if(list_1.getSelectedIndex() > -1) {
+						lista1.addElement(list_1.getSelectedValue());
+						lista2.remove(list_1.getSelectedIndex());
+					}
+				}
+			});
+			button.setBounds(509, 79, 60, 23);
+			PnlObservaciones.add(button);
+			
+			JButton button_1 = new JButton(">");
+			button_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					////////////////////-------------->>>>
+					if(list.getSelectedIndex() > -1) {
+						lista2.addElement(list.getSelectedValue());
+						lista1.remove(list.getSelectedIndex());
+					}
+				}
+			});
+			button_1.setBounds(510, 44, 59, 23);
+			PnlObservaciones.add(button_1);
 			
 			JPanel pnlDiagnstico = new JPanel();
 			pnlDiagnstico.setBorder(new TitledBorder(null, "Dignostico", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -545,6 +597,9 @@ public class CrearConsulta extends JDialog {
 		});
 		menuBar.add(tglbtntVacuna);
 		loadTable();
+		System.out.println("TA ENTRANDO");
+		generarList();
+
 	}
 	private void loadTable() {
 		
@@ -589,6 +644,13 @@ public class CrearConsulta extends JDialog {
 			row[3] = "";
 			row[4] = "";
 			model3.addRow(row);
+		}
+	}
+	
+	private void generarList() {
+		for (Enfermedad ef : Clinica.getInstance().getenfermedadS()) {
+			lista1.addElement(ef.getCodigoString()+"-"+ef.getNombreString());
+			System.out.println(ef);
 		}
 	}
 }

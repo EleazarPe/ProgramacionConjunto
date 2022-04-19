@@ -40,8 +40,6 @@ public class Principal extends JFrame {
 
 	private Dimension dim;
 	private JPanel contentPane;
-	private JMenuItem registrar;
-	private JMenu mnMedico;
 
 	/**
 	 * Launch the application.
@@ -56,19 +54,18 @@ public class Principal extends JFrame {
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				JOptionPane.showConfirmDialog(null, "El programa esta apunto de cerrarse, todos los cambios han sido guardados por seguridad", "Advertencia",JOptionPane.WARNING_MESSAGE);
-				
-					FileOutputStream clinica2;
-					ObjectOutputStream clinicaWrite;
-					try {
-						clinica2 = new FileOutputStream("Clinica.dat");
-						clinicaWrite = new ObjectOutputStream(clinica2);
-						clinicaWrite.writeObject(Clinica.getInstance());
-					} catch (FileNotFoundException e1) {
-						e1.printStackTrace();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-
+				FileOutputStream clinica2;
+				ObjectOutputStream clinicaWrite;
+				try {
+					clinica2 = new  FileOutputStream("Clinica.dat");
+					clinicaWrite = new ObjectOutputStream(clinica2);
+					clinicaWrite.writeObject(Clinica.getInstance());
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			}
 		});
@@ -81,21 +78,23 @@ public class Principal extends JFrame {
 		setLocationRelativeTo(null);
 
 
+
+
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		mnMedico = new JMenu("Medico");
-		menuBar.add(mnMedico);
+		JMenu mnNewMenu = new JMenu("Medico");
+		menuBar.add(mnNewMenu);
 
-		registrar = new JMenuItem("Registrar");
-		registrar.addActionListener(new ActionListener() {
+		JMenuItem mntmNewMenuItem = new JMenuItem("Registrar");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				RegMedico reg = new RegMedico(null);
 				reg.setModal(true);
 				reg.setVisible(true);
 			}
 		});
-		mnMedico.add(registrar);
+		mnNewMenu.add(mntmNewMenuItem);
 
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Listado");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
@@ -105,7 +104,7 @@ public class Principal extends JFrame {
 				list.setVisible(true);
 			}
 		});
-		mnMedico.add(mntmNewMenuItem_1);
+		mnNewMenu.add(mntmNewMenuItem_1);
 
 		JMenu mnNewMenu_1 = new JMenu("Consulta");
 		menuBar.add(mnNewMenu_1);
@@ -177,12 +176,6 @@ public class Principal extends JFrame {
 			}
 		});
 		mnNewMenu_4.add(mntmNewMenuItem_6);
-		
-		JMenu mnNewMenu = new JMenu("Reporte");
-		menuBar.add(mnNewMenu);
-		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Control");
-		mnNewMenu.add(mntmNewMenuItem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -192,37 +185,22 @@ public class Principal extends JFrame {
 		panel.setBounds(5, 5, 1894, 985);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
-		if (!Clinica.getInstance().getLoginUserEmpleado().getNombre().equalsIgnoreCase("Admin")){
-			mnMedico.setEnabled(false);
-		}
-		
+
 		JButton btnNewButton = new JButton("Cerrar Sesión");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int option = JOptionPane.showConfirmDialog(null, "¿Desea cerrar sesión?", "Cierre de sesión",JOptionPane.YES_NO_OPTION);
-				if (option == JOptionPane.YES_OPTION) {
-					FileOutputStream clinica2;
-					ObjectOutputStream clinicaWrite;
-					try {
-						clinica2 = new FileOutputStream("Clinica.dat");
-						clinicaWrite = new ObjectOutputStream(clinica2);
-						clinicaWrite.writeObject(Clinica.getInstance());
-					} catch (FileNotFoundException e1) {
-						e1.printStackTrace();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-					Login login = new Login();
-					dispose();
-					login.setVisible(true);
+		btnNewButton.setVisible(false);
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int respuesta = JOptionPane.showConfirmDialog(null, "¿Esta seguro/a que desea cerrar sesion?","Confirmacion",JOptionPane.YES_NO_OPTION);
+				if (respuesta==JOptionPane.YES_OPTION) {
+					dispose(); //Aca se debe poner el metodo que cierre sesion correctamente.
 				}
 			}
 		});
 		btnNewButton.setIcon(new ImageIcon(img_login));
-		btnNewButton.setBounds(1730, 13, 152, 62);
+		btnNewButton.setBounds(1728, 13, 152, 62);
 		panel.add(btnNewButton);
-		
+
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBounds(0, 0, 1894, 985);
 		panel.add(lblLogo);

@@ -185,22 +185,34 @@ public class Principal extends JFrame {
 		panel.setBounds(5, 5, 1894, 985);
 		contentPane.add(panel);
 		panel.setLayout(null);
-
+		
 		JButton btnNewButton = new JButton("Cerrar Sesión");
-		btnNewButton.setVisible(false);
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int respuesta = JOptionPane.showConfirmDialog(null, "¿Esta seguro/a que desea cerrar sesion?","Confirmacion",JOptionPane.YES_NO_OPTION);
-				if (respuesta==JOptionPane.YES_OPTION) {
-					dispose(); //Aca se debe poner el metodo que cierre sesion correctamente.
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int option = JOptionPane.showConfirmDialog(null, "¿Desea cerrar sesión?", "Cierre de sesión",JOptionPane.YES_NO_OPTION);
+				if (option == JOptionPane.YES_OPTION) {
+					FileOutputStream clinica;
+					ObjectOutputStream clinicaWrite;
+					try {
+						clinica = new  FileOutputStream("Clinica.dat");
+						clinicaWrite = new ObjectOutputStream(clinica);
+						//Clinica.getInstance().actualizarVariablesStatic();
+						clinicaWrite.writeObject(Clinica.getInstance());
+					} catch (FileNotFoundException e1) {
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					Login login = new Login();
+					dispose();
+					login.setVisible(true);
 				}
 			}
 		});
 		btnNewButton.setIcon(new ImageIcon(img_login));
-		btnNewButton.setBounds(1728, 13, 152, 62);
+		btnNewButton.setBounds(1730, 13, 152, 62);
 		panel.add(btnNewButton);
-
+		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBounds(0, 0, 1894, 985);
 		panel.add(lblLogo);

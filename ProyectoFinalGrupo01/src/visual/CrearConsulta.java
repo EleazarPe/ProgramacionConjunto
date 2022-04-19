@@ -562,6 +562,7 @@ public class CrearConsulta extends JDialog {
 									Clinica.getInstance().insertarHistorial(nuevoHistorial);
 								}
 								Clinica.getInstance().insertarConsulta(auxConsulta);
+								Clinica.getInstance().eliminarCita(citaS);
 								JOptionPane.showMessageDialog(null, "Consulta Guarda", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 								tk.beep();
 							}	
@@ -613,6 +614,10 @@ public class CrearConsulta extends JDialog {
 				tglbtntCitas.setSelected(false);
 				panelCita.setVisible(false);
 				panelConsulta.setVisible(true);
+				cbxVacuna.setVisible(false);
+				textDoctor.setVisible(false);
+				spnFecha.setVisible(false);
+				
 				okButton.setText("Guardar");
 				okButton.setVisible(true);
 				
@@ -648,6 +653,9 @@ public class CrearConsulta extends JDialog {
 				panelConsulta.setVisible(false);
 				panelHistorialM.setVisible(false);
 				panelVacuna.setVisible(true);
+				cbxVacuna.setVisible(true);
+				textDoctor.setVisible(true);
+				spnFecha.setVisible(true);
 				okButton.setText("Aplicar");
 				okButton.setVisible(true);
 				txtCedula.setVisible(true);

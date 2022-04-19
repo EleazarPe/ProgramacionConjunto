@@ -251,6 +251,9 @@ public class Clinica implements Serializable {
 	public void insertarConsulta(Consulta consul) {
 		consultas.add(consul);
 	}
+	public void eliminarCita(Cita ct) {
+		misCitas.remove(ct);
+	}
 
 	public Usuario getLoginUserEmpleado() {
 		return registroUsuario;

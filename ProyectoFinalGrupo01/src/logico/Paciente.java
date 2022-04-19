@@ -13,7 +13,7 @@ public class Paciente extends Usuario implements Serializable {
 	private String tipoSangre;
 	private String Ocupacion;
 	private String TelefonoOpc;
-	private ArrayList<Vacuna> misVacunas;
+	private ArrayList<Dosis> misDosis;
 	private ArrayList<Cita> misCitas;
 
 	public Paciente(String nombre, String apellido, String cedula, Date fechaNaciento, String ocupacion,
@@ -23,7 +23,7 @@ public class Paciente extends Usuario implements Serializable {
 		this.tipoSangre = tipoSangre;
 		this.Ocupacion = ocupacion;
 		//this.misConsultas = new ArrayList<>();
-		this.misVacunas = new ArrayList<>();
+		this.misDosis = new ArrayList<>();
 		this.misCitas = new ArrayList<>();
 		this.TelefonoOpc = TelefonoOpc;
 	}
@@ -52,16 +52,16 @@ public class Paciente extends Usuario implements Serializable {
 		Ocupacion = ocupacion;
 	}
 
-	public ArrayList<Vacuna> getMisVacunas() {
-		return misVacunas;
+	public ArrayList<Dosis> getMisDosis() {
+		return misDosis;
 	}
 
-	public void setMisVacunas(ArrayList<Vacuna> misVacunas) {
-		this.misVacunas = misVacunas;
+	public void setMisDosis(ArrayList<Dosis> misds) {
+		this.misDosis = misds;
 	}
 
-	public void ingresarVacuna(Vacuna vaccine) {
-		misVacunas.add(vaccine);
+	public void ingresarDosis(Dosis vaccine) {
+		misDosis.add(vaccine);
 	}
 
 	public ArrayList<Cita> getMisCitas() {

@@ -256,12 +256,12 @@ public class Vacunacion extends JDialog {
 						if(auxiliarVacuna == null) {
 						auxVacuna = new VacunaEliminada(txtCedula.getText(), txtNombre.getText(), cbxOcupacion.getSelectedItem().toString(), txtDireccion.getText(), (Date) spinner.getValue(),txtTelefono.getText());
 						Dosis auxDosis = null;
-						auxDosis = new Dosis(cbxVacuna.getSelectedItem().toString(), txtPerosnal.getText(),true);
+						//auxDosis = new Dosis(cbxVacuna.getSelectedItem().toString(), txtPerosnal.getText(),true);
 						auxVacuna.insertarDosis(auxDosis);
 						//Clinica.getInstance().insertarVacuna(auxVacuna);
 						}else {
 							Dosis auxDosis = null;
-							auxDosis = new Dosis(cbxVacuna.getSelectedItem().toString(), txtPerosnal.getText(),true);
+							//auxDosis = new Dosis(cbxVacuna.getSelectedItem().toString(), txtPerosnal.getText(),true);
 							auxiliarVacuna.insertarDosis(auxDosis);
 							
 						}
@@ -280,7 +280,7 @@ public class Vacunacion extends JDialog {
 		model.setRowCount(0);
 		row = new Object[model.getColumnCount()];
 		for ( Dosis object :auxiliarVacuna.getDosisArrayList()) { //Clinica.getInstance().buscarVacunabyCedula(txtCedula.getText()).getDosisArrayList()/*auxiliarVacuna.getDosisArrayList()*/
-			row[0] = object.getNombre();
+			//row[0] = object.getNombre();
 			row[1] = formatter.format(object.getFecha()).toString();
 			row[2] = object.getDoctor();
 			model.addRow(row);

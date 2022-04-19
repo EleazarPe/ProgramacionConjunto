@@ -12,8 +12,10 @@ import javax.swing.table.DefaultTableModel;
 
 import logico.Cita;
 import logico.Clinica;
+import logico.Dosis;
 import logico.Historial;
 import logico.Paciente;
+import logico.Vacuna;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -78,6 +80,11 @@ public class CrearConsulta extends JDialog {
 	private Paciente pacienteS = null;
 	private JSpinner spnFechaNacimiento;
 	private JButton cancelButton;
+	private JTextField txtFechaV;
+	private JTextField txtNombreV;
+	private JTextField TxtApellidoV;
+	private JTextField TxtCedulaV;
+	private JTextField txtDoctorV;
 
 	/**
 	 * Launch the application.
@@ -311,13 +318,6 @@ public class CrearConsulta extends JDialog {
 			TextReceta = new JTextPane();
 			TextReceta.setBounds(10, 21, 213, 190);
 			pnlRecetas.add(TextReceta);
-			{
-				{
-					String headers[] = {"Prueba","Prueba1","Prieba","probando"};
-					model = new DefaultTableModel();
-					model.setColumnIdentifiers(headers);
-				}
-			}
 			
 			panelHistorialM = new JPanel();
 			panelHistorialM.setBounds(-2, 0, 784, 646);
@@ -370,12 +370,58 @@ public class CrearConsulta extends JDialog {
 			}
 			
 			JLabel lblNewLabel_3 = new JLabel("Nombres:");
-			lblNewLabel_3.setBounds(10, 350, 70, 14);
+			lblNewLabel_3.setBounds(10, 500, 70, 14);
 			panel_3.add(lblNewLabel_3);
 			
 			JLabel lblNewLabel_4 = new JLabel("Apellidos:");
-			lblNewLabel_4.setBounds(10, 400, 70, 14);
+			lblNewLabel_4.setBounds(10, 416, 70, 14);
 			panel_3.add(lblNewLabel_4);
+			
+			JLabel lblNewLabel_5 = new JLabel("ID NO.");
+			lblNewLabel_5.setBounds(10, 450, 70, 14);
+			panel_3.add(lblNewLabel_5);
+			
+			txtFechaV = new JTextField();
+			txtFechaV.setVisible(false);
+			txtFechaV.setEditable(false);
+			txtFechaV.setBounds(100, 400, 155, 25);
+			panel_3.add(txtFechaV);
+			txtFechaV.setColumns(10);
+			
+			txtNombreV = new JTextField();
+			txtNombreV.setVisible(false);
+			txtNombreV.setEditable(false);
+			txtNombreV.setBounds(100, 450, 155, 25);
+			panel_3.add(txtNombreV);
+			txtNombreV.setColumns(10);
+			
+			TxtApellidoV = new JTextField();
+			TxtApellidoV.setVisible(false);
+			TxtApellidoV.setEditable(false);
+			TxtApellidoV.setBounds(100, 500, 155, 25);
+			panel_3.add(TxtApellidoV);
+			TxtApellidoV.setColumns(10);
+			
+			JLabel lblNewLabel_6 = new JLabel("Fecha actual:");
+			lblNewLabel_6.setBounds(0, 0, 46, 14);
+			panel_3.add(lblNewLabel_6);
+			
+			TxtCedulaV = new JTextField();
+			TxtCedulaV.setVisible(false);
+			TxtCedulaV.setEditable(false);
+			TxtCedulaV.setBounds(100, 550, 155, 25);
+			panel_3.add(TxtCedulaV);
+			TxtCedulaV.setColumns(10);
+			
+			JLabel lblNewLabel_7 = new JLabel("Doctor:");
+			lblNewLabel_7.setBounds(0, 0, 46, 14);
+			panel_3.add(lblNewLabel_7);
+			
+			txtDoctorV = new JTextField();
+			txtDoctorV.setVisible(false);
+			txtDoctorV.setBounds(100, 600, 155, 25);
+			panel_3.add(txtDoctorV);
+			txtDoctorV.setColumns(10);
 			
 
 			
@@ -401,6 +447,9 @@ public class CrearConsulta extends JDialog {
 								txtNoId.setText(pacienteS.getID());
 								spnFechaNacimiento.setValue((Date)pacienteS.getFechaNaciento());
 								JOptionPane.showMessageDialog(null, "Paciente procesado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+							}
+							if(okButton.getText().equals("Aplicar")) {
+								////////////////////////////////////////////////----------------------->>>>>>>>>>>>>>>>>
 							}
 						}
 					}
@@ -466,6 +515,7 @@ public class CrearConsulta extends JDialog {
 				panelVacuna.setVisible(false);
 				panelHistorialM.setVisible(true);
 				okButton.setVisible(false);
+				loadTbleHistorial();
 
 			}
 		});
@@ -483,6 +533,12 @@ public class CrearConsulta extends JDialog {
 				panelVacuna.setVisible(true);
 				okButton.setText("Aplicar");
 				okButton.setVisible(true);
+				txtDoctorV.setVisible(true);
+				txtFechaV.setVisible(true);
+				TxtCedulaV.setVisible(true);
+				txtNombreV.setVisible(true);
+				TxtApellidoV.setVisible(true);
+				loadTableVacuna();
 				
 				
 			}
@@ -507,6 +563,21 @@ public class CrearConsulta extends JDialog {
 
 	}
 	
+	private void loadTableVacuna() {
+		if(pacienteS !=null) {
+			model.setRowCount(0);
+			row = new Object[model.getColumnCount()];
+			for ( Dosis object :pacienteS.getMisDosis()) {
+				row[0] = object.getVacinneVacuna().getNombreString();
+				formatter = new SimpleDateFormat("dd/MM/yyyy");
+				row[1] = formatter.format(object.getFecha()).toString();
+				row[2] = object.getDoctor();
+				model.addRow(row);
+			}
+		}
+		
+	}
+	
 	
 	private void loadTbleHistorial() {
 		model3.setRowCount(0);
@@ -517,6 +588,7 @@ public class CrearConsulta extends JDialog {
 			row[2] = "";
 			row[3] = "";
 			row[4] = "";
+			model3.addRow(row);
 		}
 	}
 }

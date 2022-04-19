@@ -89,7 +89,7 @@ public class ControlGraficoBarra extends JDialog {
 		int cantidad = 0;
 		for (Usuario paciente : Clinica.getInstance().getUsuarios()) {
 			if(paciente instanceof Paciente) {
-				cantidad += ((Paciente) paciente).getMisVacunas().size();
+				cantidad += ((Paciente) paciente).getMisDosis().size();
 			}
 		}
 		return cantidad;
@@ -98,7 +98,7 @@ public class ControlGraficoBarra extends JDialog {
 	
     public void paint(Graphics g) {
     	super.paint(g);
-    	int alto1 = 12*10;//buscaCantidadDeVacunas()
+    	int alto1 = 13*10;//buscaCantidadDeVacunas()
     	int alto2 = 4*10;
     	int tama = 200;
     	

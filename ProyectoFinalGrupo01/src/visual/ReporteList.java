@@ -22,7 +22,11 @@ import javax.swing.table.DefaultTableModel;
 
 import logico.Clinica;
 import logico.Consulta;
+import logico.Dosis;
 import logico.Enfermedad;
+import logico.Paciente;
+import logico.Usuario;
+import logico.Vacuna;
 
 public class ReporteList extends JDialog {
 
@@ -241,6 +245,31 @@ public class ReporteList extends JDialog {
 			row1[2] = ef.getInformacionString();
 			row1[3] = retornaCantEnfermedad(ef.getNombreString());
 			model2.addRow(row1);	
+		}
+    }
+    
+    private int retornaCantidadVacunas(String vacuna) {
+    	int contador = 0;
+    	for (Usuario us : Clinica.getInstance().getUsuarios()) {
+			if(us instanceof Paciente) {
+				for (Dosis ds : ((Paciente) us).getMisDosis()) {
+					if(ds.getVacinneVacuna().getNombreString().equalsIgnoreCase(vacuna)) {
+						contador +=1;
+					}
+				}
+			}
+		}
+    	return contador;
+    }
+    
+    private void loadTableVacuna() {
+    	model1.setRowCount(0);
+		row2 = new Object[model1.getColumnCount()];
+		for (Vacuna vc : Clinica.getInstance().getVacunas()) {
+			//row2[0];
+			//row2[1];
+			//row[2];
+			//row2[3];
 		}
     }
     

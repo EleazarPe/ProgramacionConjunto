@@ -245,4 +245,14 @@ public class Clinica implements Serializable {
 	public void setLoginUserEmpleado(Usuario loginUserEmpleado) {
 		Clinica.registroUsuario = registroUsuario;
 	}
+	
+	public Cita buscarCitaByCodigoPaciente(String codigo) {
+		Cita miCita = null;
+		for (Cita cit : misCitas) {
+			if(cit.getUserUsuario().getID().equalsIgnoreCase(codigo)) {
+				miCita = cit;
+			}
+		}
+		return miCita;
+	}
 }

@@ -21,6 +21,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import logico.Clinica;
+import logico.Consulta;
 import logico.Enfermedad;
 
 public class ReporteList extends JDialog {
@@ -45,6 +46,7 @@ public class ReporteList extends JDialog {
 	private JToggleButton tglbtnEnfermedades;
 	private JToggleButton tglbtnVacuna;
 	private JToggleButton tglbtnGrafico;
+	private int totalInfectados =0;
 
 	/**
 	 * Launch the application.
@@ -81,7 +83,7 @@ public class ReporteList extends JDialog {
 		scrollPane.setBounds(5, 5, 559, 488);
 		pnlEnfermedades.add(scrollPane);
 		{
-			String headers[] = {"Matricula","Eslora","Fabricacion"};
+			String headers[] = {"Codigo","Nombre","Informacion","infectados"};
 			model2 = new DefaultTableModel();
 			model2.setColumnIdentifiers(headers);
 			table = new JTable();
@@ -156,6 +158,7 @@ public class ReporteList extends JDialog {
 						pnlGrafico.setVisible(false);
 						pnlEnfermedades.setVisible(true);
 						control = false;
+						loadTableEnfermedad();
 					}
 				});
 				menuBar.add(tglbtnEnfermedades);
@@ -198,7 +201,7 @@ public class ReporteList extends JDialog {
     public void paint(Graphics g) {
     	super.paint(g);
     	int alto1 = 4*20;//buscaCantidadDeVacunas()
-    	int alto2 = 10*20;
+    	int alto2 = totalInfectados*20;
     	int tama = 400;
     	if(control !=false) {
 	    	g.setColor(new Color(255,0,0));
@@ -209,20 +212,36 @@ public class ReporteList extends JDialog {
 	    	
 	    	g.setColor(new Color(32,178,170));
 	    	g.fill3DRect(325,tama-alto2, 50, alto2, true);
+	    	enfermoslbl.setText(""+totalInfectados);
 			enfermoslbl.setBounds(325, (tama-alto2)-90 , 50, 20);
 	    	g.drawString("Enfermdad", 325, 425);
 	    	//reporte de listas 
     	}
     }
     
+    private int retornaCantEnfermedad(String nombre) {
+    	int contador =0;
+    	for (Consulta cons : Clinica.getInstance().getConsultas()) {
+			for (Enfermedad ef : cons.getMisEnfermedads()) {
+				if(ef.getNombreString().equalsIgnoreCase(nombre)) {
+					contador+=1;
+				}
+			}	
+		}
+    	totalInfectados += contador;
+    	return contador;
+    }
+    
     private void loadTableEnfermedad(){
 		model2.setRowCount(0);
 		row1 = new Object[model2.getColumnCount()];
-		//for (Enfermedad object : Clinica.getInstance().getConsultas().) {
-			
+		for (Enfermedad ef : Clinica.getInstance().getenfermedadS()) {
+			row1[0] = ef.getCodigoString();
+			row1[1] = ef.getNombreString();
+			row1[2] = ef.getInformacionString();
+			row1[3] = retornaCantEnfermedad(ef.getNombreString());
 			model2.addRow(row1);	
-		//}
-    	
+		}
     }
     
 }

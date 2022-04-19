@@ -59,17 +59,20 @@ public class ReporteList extends JDialog {
 		setTitle("Listas de Reporte");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ReporteList.class.getResource("/img/cruz-roja.png")));
 		setBounds(100, 100, 600, 600);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(new BorderLayout(0, 0));
+		contentPanel.setLayout(null);
 		
 		pnlEnfermedades = new JPanel();
-		contentPanel.add(pnlEnfermedades, BorderLayout.CENTER);
-		pnlEnfermedades.setLayout(new BorderLayout(0, 0));
+		pnlEnfermedades.setBounds(5, 5, 574, 488);
+		contentPanel.add(pnlEnfermedades);
+		pnlEnfermedades.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		pnlEnfermedades.add(scrollPane, BorderLayout.CENTER);
+		scrollPane.setBounds(5, 5, 574, 488);
+		pnlEnfermedades.add(scrollPane);
 		{
 			String headers[] = {"Matricula","Eslora","Fabricacion"};
 			model2 = new DefaultTableModel();
@@ -80,11 +83,13 @@ public class ReporteList extends JDialog {
 		scrollPane.setViewportView(table);
 		{
 			pnlVacunas = new JPanel();
-			contentPanel.add(pnlVacunas, BorderLayout.CENTER);
-			pnlVacunas.setLayout(new BorderLayout(0, 0));
+			pnlVacunas.setBounds(5, 5, 574, 488);
+			contentPanel.add(pnlVacunas);
+			pnlVacunas.setLayout(null);
 			{
 				JScrollPane scrollPane_1 = new JScrollPane();
-				pnlVacunas.add(scrollPane_1, BorderLayout.CENTER);
+				scrollPane_1.setBounds(5, 5, 574, 488);
+				pnlVacunas.add(scrollPane_1);
 				{
 					String headers[] = {"Matricula","Eslora","Fabricacion"};
 					model1 = new DefaultTableModel();
@@ -97,7 +102,8 @@ public class ReporteList extends JDialog {
 		}
 		{
 			pnlGrafico = new JPanel();
-			contentPanel.add(pnlGrafico, BorderLayout.CENTER);
+			pnlGrafico.setBounds(5, 5, 574, 488);
+			contentPanel.add(pnlGrafico);
 			pnlGrafico.setLayout(null);
 			{
 				vacunalbl = new JLabel("10");

@@ -198,6 +198,7 @@ public class ReporteList extends JDialog {
 	    	g.fill3DRect(325,tama-alto2, 50, alto2, true);
 			enfermoslbl.setBounds(325, (tama-alto2)-90 , 50, 20);
 	    	g.drawString("Enfermdad", 325, 425);
+	    	//reporte de listas 
     	}
     }
     

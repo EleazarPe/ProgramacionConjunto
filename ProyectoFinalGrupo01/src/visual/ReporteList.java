@@ -228,24 +228,25 @@ public class ReporteList extends JDialog {
     	totalVacunados=0;
     }
     
-    private int retornaCantEnfermedad(String nombre) {
+    /*private int retornaCantEnfermedad(String nombre) {
     	int contador =0;
     	for (Consulta cons : Clinica.getInstance().getConsultas()) {
 			for (Enfermedad ef : cons.getMisEnfermedads()) {
 				if(ef.getNombreString().equalsIgnoreCase(nombre)) {
 					contador+=1;
+					System.out.println(">>>>>>>>>>>>>>>>>>>>>>>Funcionando:<<<<<<<<<<<<<<<<<<<< ");
 				}
 			}	
 		}
     	totalInfectados += contador;
     	return contador;
-    }
+    }*/
     private void loadValores() {
     	totalInfectados=0;
     	totalVacunados=0;
-    	for (Enfermedad ef : Clinica.getInstance().getenfermedadS()) {
-    		retornaCantEnfermedad(ef.getNombreString());
-    	}
+    	//for (Enfermedad ef : Clinica.getInstance().getenfermedadS()) {
+    		//retornaCantEnfermedad(ef.getNombreString());
+    	//}
     	for (Vacuna vc : Clinica.getInstance().getVacunas()) {
     		retornaCantidadVacunas(vc.getNombreString());
     	}
@@ -259,7 +260,7 @@ public class ReporteList extends JDialog {
 			row1[0] = ef.getCodigoString();
 			row1[1] = ef.getNombreString();
 			row1[2] = ef.getInformacionString();
-			row1[3] = retornaCantEnfermedad(ef.getNombreString());
+			row1[3] = "1";//retornaCantEnfermedad(ef.getNombreString());
 			model2.addRow(row1);	
 		}
     }

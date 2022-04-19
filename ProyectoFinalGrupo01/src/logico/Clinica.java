@@ -279,4 +279,14 @@ public class Clinica implements Serializable {
 		}
 		return control;
 	}
+	
+	public Enfermedad buscarEnfermedadByNombre(String nombre) {
+		Enfermedad efEnfermedad = null;
+		for (Enfermedad ef : enfermedadS) {
+			if(ef.getNombreString().equalsIgnoreCase(nombre)) {
+				efEnfermedad = ef;
+			}
+		}
+		return efEnfermedad;
+	}
 }

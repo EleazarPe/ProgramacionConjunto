@@ -541,11 +541,17 @@ public class CrearConsulta extends JDialog {
 							}
 							
 							if(okButton.getText().equals("Guardar")) {
-
+								ArrayList<Enfermedad>enfermedads = new ArrayList<>();
+								for(int i =0; i < list_1.getModel().getSize();i++) {
+									System.out.println("<------------------Nombre: "+list_1.getModel().getElementAt(i));
+									enfermedads.add(Clinica.getInstance().buscarEnfermedadByNombre(list_1.getModel().getElementAt(i)));
+								}
+								
 								Consulta auxConsulta = null;
 								auxConsulta = new Consulta(citaS,TetxObservaciones.getText() , textSintomas.getText(), TextReceta.getText(),
 															confirmacion, Integer.parseInt(spnEstatura.getValue().toString()),Integer.parseInt(spnPeso.getValue().toString()), cbxTipoSangre.getSelectedItem().toString(),
 															cbxRhSangre.getSelectedItem().toString());
+								auxConsulta.setMisEnfermedads(enfermedads);
 								if(rdbtSi.isSelected()) {
 									Historial nuevoHistorial = new Historial(auxConsulta);
 									Clinica.getInstance().insertarHistorial(nuevoHistorial);
@@ -711,7 +717,7 @@ public class CrearConsulta extends JDialog {
 	
 	private void generarList() {
 		for (Enfermedad ef : Clinica.getInstance().getenfermedadS()) {
-			lista1.addElement(ef.getCodigoString()+"-"+ef.getNombreString());
+			lista1.addElement(ef.getNombreString());
 			System.out.println("Funcionando: "+ef);
 		}
 	}

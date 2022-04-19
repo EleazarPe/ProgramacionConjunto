@@ -153,3 +153,4 @@ public class ListVacuna extends JDialog {
 		}
 	}
 }
+

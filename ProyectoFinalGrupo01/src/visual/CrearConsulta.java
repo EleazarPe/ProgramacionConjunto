@@ -483,6 +483,7 @@ public class CrearConsulta extends JDialog {
 			panel_3.add(lblNewLabel_8);
 			
 			spnFecha = new JSpinner();
+			spnFecha.setVisible(false);
 			spnFecha.setEnabled(false);
 			spnFecha.setModel(new SpinnerDateModel(new Date(1650340800000L), new Date(1650340800000L), null, Calendar.DAY_OF_YEAR));
 			spnFecha.setEditor(new JSpinner.DateEditor(spnFechaNacimiento,"dd/MM/yyyy"));
@@ -499,6 +500,7 @@ public class CrearConsulta extends JDialog {
 			panel_3.add(cbxVacuna);
 			
 			textDoctor = new JTextField();
+			textDoctor.setVisible(false);
 			textDoctor.setEditable(false);
 			textDoctor.setBounds(350, 445, 155, 25);
 			panel_3.add(textDoctor);
@@ -636,6 +638,8 @@ public class CrearConsulta extends JDialog {
 				panelVacuna.setVisible(false);
 				panelHistorialM.setVisible(true);
 				okButton.setVisible(false);
+				spnFecha.setVisible(false);
+				textDoctor.setVisible(false);
 				loadTbleHistorial();
 
 			}
@@ -661,6 +665,8 @@ public class CrearConsulta extends JDialog {
 				txtCedula.setVisible(true);
 				txtNombreV.setVisible(true);
 				TxtApellidoV.setVisible(true);
+				spnFecha.setVisible(true);
+				textDoctor.setVisible(true);
 				loadTableVacuna();
 				
 				ArrayList<String> vacunasArrayList = new ArrayList<>();

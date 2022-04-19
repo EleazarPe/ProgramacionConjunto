@@ -536,6 +536,7 @@ public class CrearConsulta extends JDialog {
 				panelCita.setVisible(true);
 				okButton.setText("Consultar");
 				okButton.setVisible(true);
+				loadTable();
 				
 			}
 		});
@@ -596,7 +597,6 @@ public class CrearConsulta extends JDialog {
 			}
 		});
 		menuBar.add(tglbtntVacuna);
-		loadTable();
 		System.out.println("TA ENTRANDO");
 		generarList();
 
@@ -650,7 +650,7 @@ public class CrearConsulta extends JDialog {
 	private void generarList() {
 		for (Enfermedad ef : Clinica.getInstance().getenfermedadS()) {
 			lista1.addElement(ef.getCodigoString()+"-"+ef.getNombreString());
-			System.out.println(ef);
+			System.out.println("Funcionando: "+ef);
 		}
 	}
 }

@@ -18,7 +18,6 @@ import java.awt.Image;
 import javax.swing.border.MatteBorder;
 
 import logico.Clinica;
-import logico.Empleado;
 import logico.Medico;
 import logico.Usuario;
 
@@ -72,7 +71,7 @@ public class Login extends JDialog {
 					try {
 						clinica2 = new  FileOutputStream("Clinica.dat");
 						clinicaWrite = new ObjectOutputStream(clinica2);
-						Usuario aux = new Empleado("Admin", "Admin", "01", new Date(), "000001", "NaN", "Admin", "Admin", "Admin", "000001"); //Usuario("Admin", "Admin", "01", new Date(), "000001", "NaN", "00001");
+						Usuario aux = new Medico("Admin", "Admin", "01", new Date(), "000001", "NaN", "Admin", "Admin", "Admin", "000001", "NaN"); //Usuario("Admin", "Admin", "01", new Date(), "000001", "NaN", "00001");
 						//Usuario usuar = new Medico(1.nombre, 2.apellido, 3.cedula, 4.fechaNaciento, 5.telefono, 6.direccion, 7.login, 8.passowrd, 9.consultorio, 10.codigo, 11.especialidad)
 						Clinica.getInstance().insertarUsuario(aux);
 						System.out.println("Se crea el medico");

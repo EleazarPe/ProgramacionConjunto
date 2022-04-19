@@ -292,7 +292,7 @@ public class RegEnfermedad extends JDialog {
 		cbxTipo.setSelectedIndex(0);
 		spnFecha.setValue(new Date());
 		txtCodigo.setText("EF-"+ rand.nextInt(10) + 1+rand.nextInt(10) + 1+rand.nextInt(10) + 1);
-		//s
+		sliderPorcentaje.setValue(0);
 
 	}
 

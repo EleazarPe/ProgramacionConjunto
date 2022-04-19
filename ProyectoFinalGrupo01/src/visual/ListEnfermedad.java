@@ -148,7 +148,7 @@ public class ListEnfermedad extends JDialog {
 			row[2] = object.getTipoString();
 			row[3] = object.getInformacionString();
 			row[4] = new SimpleDateFormat("dd/MM/yyyy").format(object.getDescubierta());
-			row[5] = object.getTransmisibilidad();
+			row[5] = object.getTransmisibilidad()+"%";
 			model.addRow(row);	
 		}
 	}

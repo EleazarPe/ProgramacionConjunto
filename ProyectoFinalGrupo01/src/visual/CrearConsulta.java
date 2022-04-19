@@ -56,7 +56,7 @@ public class CrearConsulta extends JDialog {
 	private JTextField TxtNombres;
 	private JTextField txtNoId;
 	private JTextPane TextReceta;
-	private JTextPane textDiagnostico;
+	private JTextPane textSintomas;
 	private JRadioButton rdbtSi;
 	private JRadioButton rdbtnNo;
 	private JPanel panelConsulta;
@@ -78,6 +78,7 @@ public class CrearConsulta extends JDialog {
 	private JToggleButton tglbtntHistorialMedico;
 	private JToggleButton tglbtntVacuna;
 	private Paciente pacienteS = null;
+	private Cita citaS = null;
 	private JSpinner spnFechaNacimiento;
 	private JButton cancelButton;
 	private JTextField txtFechaV;
@@ -156,6 +157,7 @@ public class CrearConsulta extends JDialog {
 							if(select > -1) {
 								System.out.println("--------->"+table1.getValueAt(select, 1).toString());
 								pacienteS =  Clinica.getInstance().buscarPacienteById(table1.getValueAt(select, 1).toString());
+								
 							}
 							//---------------------------------------------------------->>>>
 						}
@@ -326,14 +328,15 @@ public class CrearConsulta extends JDialog {
 			PnlObservaciones.add(button_1);
 			
 			JPanel pnlDiagnstico = new JPanel();
-			pnlDiagnstico.setBorder(new TitledBorder(null, "Dignostico", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			pnlDiagnstico.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Sintomas:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 			pnlDiagnstico.setBounds(539, 11, 234, 171);
 			panelConsulta.add(pnlDiagnstico);
 			pnlDiagnstico.setLayout(null);
 			
-			textDiagnostico = new JTextPane();
-			textDiagnostico.setBounds(10, 21, 214, 139);
-			pnlDiagnstico.add(textDiagnostico);
+			textSintomas = new JTextPane();
+			textSintomas.setEditable(false);
+			textSintomas.setBounds(10, 21, 214, 139);
+			pnlDiagnstico.add(textSintomas);
 			
 			rdbtnNo = new JRadioButton("No");
 			rdbtnNo.addActionListener(new ActionListener() {
@@ -498,6 +501,7 @@ public class CrearConsulta extends JDialog {
 								TxtApellido.setText(pacienteS.getApellido());
 								txtNoId.setText(pacienteS.getID());
 								spnFechaNacimiento.setValue((Date)pacienteS.getFechaNaciento());
+								textSintomas.setText(citaS.getNotas());
 								JOptionPane.showMessageDialog(null, "Paciente procesado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 							}
 							if(okButton.getText().equals("Aplicar")) {

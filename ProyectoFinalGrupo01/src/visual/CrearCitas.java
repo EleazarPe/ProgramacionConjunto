@@ -427,6 +427,7 @@ public class CrearCitas extends JDialog {
 							paciente.insertarCita(auxCita);
 							Clinica.getInstance().insertarCita(auxCita);
 							JOptionPane.showMessageDialog(null, "Su Cita se a Agendado Correctamente..", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+							clean();
 						}
 					}
 				});
@@ -569,6 +570,23 @@ public class CrearCitas extends JDialog {
 		Mensaje.setVisible(true);
 		tk.beep ();
 	}
+	
+	private void clean() {
+		txtNid.setText("");
+		txtNombre.setText("");
+		txtApellido.setText("");
+		txtCelular.setText("");
+		txtTelefonoOpc.setText("");
+		txtCelular.setText("");
+		txtDireccion.setText("");
+		cbxOcupacion.setSelectedIndex(0);
+		cbxTipoBlood.setSelectedIndex(0);
+		cbxRh.setSelectedIndex(0);
+		cbxEspecialidad.setSelectedIndex(0);
+		cbxDoctor.setSelectedIndex(0);
+		TextNotas.setText("");
+	}
+
 
 	/*public void cerrar ()
 	{

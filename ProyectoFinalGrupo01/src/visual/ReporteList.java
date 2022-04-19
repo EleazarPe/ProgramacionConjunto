@@ -79,7 +79,7 @@ public class ReporteList extends JDialog {
 		table.setModel(model2);
 		scrollPane.setViewportView(table);
 		{
-			//reporte
+			//reporte23
 			pnlVacunas = new JPanel();
 			contentPanel.add(pnlVacunas, BorderLayout.CENTER);
 			pnlVacunas.setLayout(new BorderLayout(0, 0));
